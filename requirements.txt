@@ -2,3 +2,7 @@ django
 gunicorn
 django-heroku
 requests
+matplotlib
+io
+base64
+bokeh
