@@ -23,7 +23,7 @@ from django.http import HttpResponse
 from .models import Greeting 
  
 
-from bokeh.plotting import figure
+from bokeh.plotting import figure , curdoc
 from bokeh.resources import CDN
 from bokeh.embed import components
 
@@ -35,8 +35,9 @@ def index(request):
 
     script, div = components(plot, CDN)
 
-    return render(request, "index.html", {"the_script": script, "the_div": div})
+#    return render(request, "index.html", {"the_script": script, "the_div": div})
 
+    curdoc().add_root(plot)
 
 
 #def db(request):
