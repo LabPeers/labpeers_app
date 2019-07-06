@@ -20,8 +20,8 @@
 from django.shortcuts import render 
 from django.http import HttpResponse
 
-from .models import Greeting 
- 
+#from .models import Greeting 
+# 
 
 from bokeh.plotting import figure , curdoc
 from bokeh.resources import CDN
