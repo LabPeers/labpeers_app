@@ -34,7 +34,7 @@ def index(request):
     plot.circle([1,2], [3,4])
 
     script, div = components(plot, CDN)
-    curdoc().add_root(plot)
+#    curdoc().add_root(plot)
     return render(request, "index.html", {"the_script": script, "the_div": div})
 
 
