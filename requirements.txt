@@ -2,4 +2,4 @@ django
 gunicorn
 django-heroku
 requests
-bokeh
+bokeh==1.2.0
