@@ -18,7 +18,7 @@ class InputForm(ModelForm):
 
           
 class usersX(models.Model):
-      x = models.FloatField()
+      x = ArrayField(models.FloatField())
       
       
 class InputForm2(ModelForm):
