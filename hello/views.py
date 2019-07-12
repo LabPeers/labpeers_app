@@ -19,14 +19,13 @@
 
 from django.shortcuts import render 
 from django.http import HttpResponse
-
-from .models import Greeting 
-
-
 from bokeh.plotting import figure , curdoc
 from bokeh.resources import CDN
 from bokeh.embed import components
-
+from .models import Greeting 
+from .models import InputForm
+from .models import InputForm2
+from .compute import compute
 
 
 def index(request):
@@ -35,7 +34,32 @@ def index(request):
 
     script, div = components(plot, CDN)
 #    curdoc().add_root(plot)
-    return render(request, "index.html", {"the_script": script, "the_div": div})
+    
+    if request.method == 'POST':
+        form = InputForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            return present_output(form)
+    else:
+        form = InputForm()
+        
+        
+    if request.method == 'POST':
+        form2 = InputForm2(request.POST)
+        if form2.is_valid():
+            form2 = form2.save(commit=False)
+            return present_output(form2)
+    else:
+        form2 = InputForm2()       
+        
+        
+    return render(request, "index.html", {"the_script": script, "the_div": div, "form" : form, "form2" : form2})
+
+
+def present_output(form):
+    r = form.r
+    s = compute(r)
+    return HttpResponse('Hello, World! sin(%s)=%s' % (r, s))
 
 
 
