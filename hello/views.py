@@ -48,11 +48,21 @@ def index(request):
         form2 = InputForm2(request.POST)
         if form2.is_valid():
             form2 = form2.save(commit=False)
-            return present_output(form2)
+            return present_plot(form2)
     else:
         form2 = InputForm2()       
         
         
+    return render(request, "index.html", {"the_script": script, "the_div": div, "form" : form, "form2" : form2})
+
+
+def present_plot(form2):
+    plot = figure()
+    plot.circle(form2, form2)
+
+    script, div = components(plot, CDN)
+#    curdoc().add_root(plot)
+       
     return render(request, "index.html", {"the_script": script, "the_div": div, "form" : form, "form2" : form2})
 
 
