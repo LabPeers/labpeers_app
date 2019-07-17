@@ -65,7 +65,7 @@ def index(request):
 
 
 def present_plot(form2):  
-    return HttpResponse('This is it' form2)
+    return HttpResponse('This is it' % (form2))
 
 
 def present_output(form):
