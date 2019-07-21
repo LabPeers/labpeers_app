@@ -17,12 +17,13 @@ class InputForm(ModelForm):
           fields = "__all__"
 
           
-class usersX(models.Model):
-      x = ArrayField(models.FloatField())
+class Input2(models.Model):
+#      x = ArrayField(models.FloatField())
+      x = models.FloatField()
       
       
 class InputForm2(ModelForm):
       class Meta:
-          model = usersX
+          model = Input2
           fields = "__all__"
 

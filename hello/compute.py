@@ -1,4 +1,4 @@
 import math
 
-def compute(r):
-    return math.sin(r)
+def compute(*args):
+    return math.sin(*args)
