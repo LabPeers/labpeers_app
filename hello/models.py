@@ -7,23 +7,17 @@ class Greeting(models.Model):
       when = models.DateTimeField("date created", auto_now_add=True)
             
  
-class Input(models.Model):
-      r = models.FloatField()
+class Post(models.Model):
+#        p = ArrayField(models.CharField(max_length=3, blank=True))
+        post = models.CharField(max_length=500)
+        myX = ArrayField(models.IntegerField())
 
- 
-class InputForm(ModelForm):
-      class Meta:
-          model = Input
-          fields = "__all__"
+        
+        
+# =============================================================================
+#       r = models.FloatField()
+#       x = models.FloatField(default=0)
+# =============================================================================
 
-          
-class Input2(models.Model):
-#      x = ArrayField(models.FloatField())
-      x = models.FloatField()
-      
-      
-class InputForm2(ModelForm):
-      class Meta:
-          model = Input2
-          fields = "__all__"
+
 

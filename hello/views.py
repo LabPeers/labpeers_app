@@ -16,43 +16,86 @@
 #def index(request):
     # return HttpResponse('Hello from Python!')
  #   return render(request, "index.html")
-
+from django.views.generic import TemplateView
 from django.shortcuts import render 
 from django.http import HttpResponse
-from bokeh.plotting import figure , curdoc
+from bokeh.plotting import figure , curdoc , show , output_file
 from bokeh.resources import CDN
 from bokeh.embed import components
+#from bokeh.models import ColumnDataSource, ColorBar
+#from bokeh.palettes import Spectral6
+#from bokeh.transform import linear_cmap
+
+
 from .models import Greeting 
-from .models import InputForm
-from .models import InputForm2
+from .forms import HomeForm
 from .compute import compute
 
 
-def index(request):
-    plot = figure()
-    plot.circle([1,2], [3,4])
 
+#class HomeView(TemplateView):
+#    template_name = 'home/home.html'
+#
+#
+#    def get(self, request):
+#        form = HomeForm()
+#
+#        args = {
+#            'form': form
+#        }
+#        return render(request, self.template_name, args)
+#
+#
+#    def post(self, request):
+#        form = HomeForm(request.POST)
+#        if form.is_valid():
+#            post = form.save(commit=False)
+#            post.save()
+#
+#            text = form.cleaned_data['post']
+#            form = HomeForm()
+#            return redirect('home:home')
+#        
+#        args = {'form': form, 'text': text}
+#        return render(request, self.template_name, args)    
+
+
+def index(request):  
+    plot = figure(plot_width=400, plot_height=400, title="Hahaha")
+    
     script, div = components(plot, CDN)
+    
+    
+    form = HomeForm()
+    
+    if form.is_valid():
+            postall = form.save(commit=False)
+            postall.save()
+            form = HomeForm()
+            script, div = mainplot(form)
+    
+            
+    return render(request, "index.html", {"the_script": script, "the_div": div, "form": form})   
+
+
+
+
+def mainplot(request,form):
+    mytitle = form.post
+    
+    plot = figure(plot_width=400, plot_height=400, title=mytitle)
+    plot.circle([1,2,3], [3,4,7])
+    
+    script2, div2 = components(plot, CDN)
 #    curdoc().add_root(plot)
     
-    if request.method == 'POST':
-        form = InputForm(request.POST)
-        if form.is_valid():
-            form = form.save(commit=False)
-            return present_output(form)
-    else:
-        form = InputForm()
-        
-        
-    if request.method == 'POST':
-        form2 = InputForm2(request.POST)
-        if form2.is_valid():
-            form2 = form2.save(commit=False)
-            return present_plot(form2)
-    else:
-        form2 = InputForm2()
+    return {"the_script": script2, "the_div": div2} 
+    
 
-                
+
+
+     
+#        
 # =============================================================================
 #     if request.method == 'POST':
 #         form2 = InputForm2(request.POST)
@@ -72,21 +115,17 @@ def index(request):
 # =============================================================================
         
         
-    return render(request, "index.html", {"the_script": script, "the_div": div, "form" : form, "form2" : form2})
+   
 
 
-
-def present_output(form):
-    r = form.r
-    s = compute(r)
-    return HttpResponse('Hello, World! sin(%s)=%s' % (r, s))
-
-def present_plot(form2):
-    x = form2.x
-    y = compute(x)
-    return HttpResponse('Hello, World! sin(%y)=%y' % (x, y))
-
-
+# =============================================================================
+# def present_output(form):
+#     r = form.r
+#     s = compute(r)
+#     x = form.x
+#     t = compute(x)
+#     return HttpResponse('Hello, World! sin(%s)=%s' % (r, s))
+# =============================================================================
 
 
 
