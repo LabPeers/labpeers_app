@@ -61,8 +61,15 @@ from .compute import compute
 
 
 def index(request):  
+    plot = figure(plot_width=400, plot_height=400, title="Your title will go here 1")
+    script, div = components(plot, CDN)
+    
+    
+    
     if request.method == 'POST': # If the form has been submitted...
         form = HomeForm(request.POST) # A form bound to the POST data
+    
+    
     
         if form.is_valid():
             postall = form.save(commit=False)
@@ -72,7 +79,7 @@ def index(request):
     
     else:
         form = HomeForm()
-        plot = figure(plot_width=400, plot_height=400, title="Your title will go here")
+        plot = figure(plot_width=400, plot_height=400, title="Your title will go here2")
         script, div = components(plot, CDN)
     
             
