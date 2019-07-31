@@ -19,6 +19,7 @@
 from django.views.generic import TemplateView
 from django.shortcuts import render 
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from bokeh.plotting import figure , curdoc , show , output_file
 from bokeh.resources import CDN
 from bokeh.embed import components
@@ -76,6 +77,10 @@ def index(request):
             postall.save()
             form = HomeForm()
             script, div = mainplot(form)
+            
+            #print form.cleaned_data['my_form_field_name']
+
+            return HttpResponseRedirect('/thanks/') # Redirect after POST
     
     else:
         form = HomeForm()
