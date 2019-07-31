@@ -19,10 +19,11 @@ class HomeForm(forms.ModelForm):
         }
     ))
     
-    myX = ArrayField(models.IntegerField())
+    #myX = ArrayField(models.IntegerField())
     
 
     class Meta:
         model = Post
-        fields = ('post','myX',)
+        #fields = ('post','myX',)
 #        fields = "__all__"
+        fields = ('post',)

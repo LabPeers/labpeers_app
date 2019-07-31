@@ -10,7 +10,7 @@ class Greeting(models.Model):
 class Post(models.Model):
 #        p = ArrayField(models.CharField(max_length=3, blank=True))
         post = models.CharField(max_length=500)
-        myX = ArrayField(models.IntegerField())
+#        myX = ArrayField(models.IntegerField())
 
         
         
