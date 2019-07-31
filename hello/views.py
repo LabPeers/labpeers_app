@@ -94,8 +94,8 @@ def index(request):
 
 
 def mainplot(request,form):
-    mytitle = form.post
-    
+    #mytitle = form.post
+    mytitle = {'Now go'}
     plot = figure(plot_width=400, plot_height=400, title=mytitle)
     plot.circle([1,2,3], [3,4,7])
     
