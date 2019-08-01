@@ -27,4 +27,4 @@ class HomeForm(forms.ModelForm):
         #fields = ('post','myX',)
 #        fields = "__all__"
 #        fields = ('post',)
-        fields = ('post',)
+        fields = ('post')
