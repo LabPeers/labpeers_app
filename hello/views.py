@@ -73,8 +73,8 @@ def index(request):
     
     
         if form.is_valid():
-            postall = form.save(commit=False)
-            postall.save()
+            form.save(commit=False)
+            #postall.save()
             form = HomeForm()
             #script, div = mainplot(form)
             
