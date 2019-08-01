@@ -95,8 +95,8 @@ def index(request):
 
 def mainplot(request,form):
     #mytitle = form.post
-    mytitle = "Now it works"
-    plot = figure(plot_width=400, plot_height=400, title=mytitle)
+#    mytitle = "Now it works"
+    plot = figure(plot_width=400, plot_height=400, title="Now it sort of works")
     plot.circle([1,2,3], [3,4,7])
     
     script2, div2 = components(plot, CDN)
