@@ -76,7 +76,16 @@ def index(request):
             postall = form.save(commit=False)
             postall.save()
             form = HomeForm()
-            script, div = mainplot(form)
+            #script, div = mainplot(form)
+            
+            mytitle = "Now it works"
+            plot = figure(plot_width=400, plot_height=400, title=mytitle)
+            plot.circle([1,2,3], [3,4,7])
+    
+            script, div = components(plot, CDN)
+            
+            
+            
             
             #print form.cleaned_data['my_form_field_name']
 
@@ -93,16 +102,18 @@ def index(request):
 
 
 
-def mainplot(request,form):
-    #mytitle = form.post
-    mytitle = "Now it works"
-    plot = figure(plot_width=400, plot_height=400, title=mytitle)
-    plot.circle([1,2,3], [3,4,7])
-    
-    script2, div2 = components(plot, CDN)
-#    curdoc().add_root(plot)
-    
-    return {"the_script": script2, "the_div": div2} 
+# =============================================================================
+# def mainplot(request,form):
+#     #mytitle = form.post
+#     mytitle = "Now it works"
+#     plot = figure(plot_width=400, plot_height=400, title=mytitle)
+#     plot.circle([1,2,3], [3,4,7])
+#     
+#     script2, div2 = components(plot, CDN)
+# #    curdoc().add_root(plot)
+#     
+#     return {"the_script": script2, "the_div": div2} 
+# =============================================================================
     
 
 
