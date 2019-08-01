@@ -80,7 +80,7 @@ def index(request):
             
             #print form.cleaned_data['my_form_field_name']
 
-            return HttpResponseRedirect('/thanks/') # Redirect after POST
+#            return HttpResponseRedirect('/thanks/') # Redirect after POST
     
     else:
         form = HomeForm()
@@ -95,7 +95,7 @@ def index(request):
 
 def mainplot(request,form):
     #mytitle = form.post
-    mytitle = {'Now go'}
+    mytitle = {'Now it works'}
     plot = figure(plot_width=400, plot_height=400, title=mytitle)
     plot.circle([1,2,3], [3,4,7])
     
