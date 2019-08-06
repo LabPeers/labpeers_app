@@ -78,7 +78,7 @@ def index(request):
             form = HomeForm()
             #script, div = mainplot(form)
             
-            mytitle = form
+            mytitle = form.post
             plot = figure(plot_width=400, plot_height=400, title=mytitle)
             plot.circle([1,2,3], [3,4,7])
     
