@@ -29,7 +29,7 @@ from bokeh.embed import components
 
 
 from .models import Greeting 
-from .models import Post
+from .models import User_title
 from .forms import HomeForm
 from .compute import compute
 
@@ -80,12 +80,10 @@ def index(request):
             #script, div = mainplot(form)
             
             #mytitle = form.post
-            mytitle=Post()
-            mytitle.save()
             
-            mytitles = Post.objects.all()
+            mytitle = User_title.objects.all()
             
-            plot = figure(plot_width=400, plot_height=400, title=mytitles)
+            plot = figure(plot_width=400, plot_height=400, title=mytitle)
             plot.circle([1,2,3], [3,4,7])
     
             script, div = components(plot, CDN)

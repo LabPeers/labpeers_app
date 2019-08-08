@@ -7,9 +7,9 @@ class Greeting(models.Model):
       when = models.DateTimeField("date created", auto_now_add=True)
             
  
-class Post(models.Model):
+class User_title(models.Model):
 #        p = ArrayField(models.CharField(max_length=3, blank=True))
-        post = models.CharField(max_length=500)
+        user_title = models.CharField(max_length=500)
 #        myX = ArrayField(models.IntegerField())
 
         
