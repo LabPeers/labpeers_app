@@ -7,12 +7,12 @@ Created on Sun Jul 21 11:00:53 2019
 """
 from django.contrib.postgres.fields import ArrayField
 from django import forms
-from .models import Post
+from .models import User_title
 from django.db import models
 
 
 class HomeForm(forms.ModelForm):
-    post = forms.CharField(widget=forms.TextInput(
+    user_title = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'form-control',
             'placeholder': 'Enter the plot title here...'
@@ -23,7 +23,7 @@ class HomeForm(forms.ModelForm):
     
 
     class Meta:
-        model = Post
+        model = User_title
         #fields = ('post','myX',)
 #        fields = "__all__"
-        fields = ('post',)
+        fields = ('user_title',)
