@@ -62,13 +62,16 @@ from .compute import compute
 #        return render(request, self.template_name, args)    
 
 
-def index(request):  
-    plot = figure(plot_width=400, plot_height=400, title="Your title will go here 1")
-    script, div = components(plot, CDN)
-    form = HomeForm()
+def index(request): 
     
+    def get(self, request):    
+        plot = figure(plot_width=400, plot_height=400, title="Your title will go here 1")
+        script, div = components(plot, CDN)    
+        form = HomeForm()
+        return request, "index.html", {"the_script": script, "the_div": div, "form": form}
     
-    if request.method == 'POST': # If the form has been submitted...
+    def post(self, request):
+    #if request.method == 'POST': # If the form has been submitted...
         form = HomeForm(request.POST) # A form bound to the POST data
     
     
@@ -92,18 +95,18 @@ def index(request):
             
             form=HomeForm()
             
+        return render(request, "index.html", {"the_script": script, "the_div": div, "form": form})
             
             #print form.cleaned_data['my_form_field_name']
 
 #            return HttpResponseRedirect('/thanks/') # Redirect after POST
     
-    else:
-        form = HomeForm()
-        plot = figure(plot_width=400, plot_height=400, title="Your title will go here2")
-        script, div = components(plot, CDN)
+#    else:
+#        form = HomeForm()
+#        plot = figure(plot_width=400, plot_height=400, title="Your title will go here2")
+#        script, div = components(plot, CDN)
     
             
-    return render(request, "index.html", {"the_script": script, "the_div": div, "form": form})   
 
 
 
