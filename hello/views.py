@@ -68,7 +68,7 @@ def index(request):
         plot = figure(plot_width=400, plot_height=400, title="Your title will go here 1")
         script, div = components(plot, CDN)    
         form = HomeForm()
-        return request, "index.html", {"the_script": script, "the_div": div, "form": form}
+        return render(request, "index.html", {"the_script": script, "the_div": div, "form": form})
     
     def post(self, request):
     #if request.method == 'POST': # If the form has been submitted...
