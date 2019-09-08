@@ -75,20 +75,22 @@ def index(request):
     
         if form.is_valid():
             
+            mytitle=form.save()
             #postall.save()
-            form = HomeForm()
+            
             #script, div = mainplot(form)
-            form.save(commit=False)
+            #form.save(commit=False)
+
             #mytitle = form.post
             
-            mytitle = Graph_title.objects.all()
+            #mytitle = Graph_title.objects.all()
             
             plot = figure(plot_width=400, plot_height=400, title=mytitle)
             plot.circle([1,2,3], [3,4,7])
     
             script, div = components(plot, CDN)
             
-            
+            form=HomeForm()
             
             
             #print form.cleaned_data['my_form_field_name']
