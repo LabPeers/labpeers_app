@@ -28,7 +28,7 @@ from bokeh.embed import components
 #from bokeh.transform import linear_cmap
 
 
-from .models import Greeting 
+#from .models import Greeting 
 from .models import Graph_title
 from .forms import HomeForm
 from .compute import compute
