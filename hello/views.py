@@ -63,8 +63,8 @@ from .compute import compute
 
 
 def index(request): 
-plot = figure(plot_width=400, plot_height=400, title="Your title will go here 1")
-script, div = components(plot, CDN)     
+    plot = figure(plot_width=400, plot_height=400, title="Your title will go here 1")
+    script, div = components(plot, CDN)     
     
     def get(self, request):    
         form = HomeForm()
