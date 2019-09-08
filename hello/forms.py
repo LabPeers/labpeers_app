@@ -7,23 +7,18 @@ Created on Sun Jul 21 11:00:53 2019
 """
 from django.contrib.postgres.fields import ArrayField
 from django import forms
-from .models import User_title
+from .models import Graph_title
 from django.db import models
 
 
 class HomeForm(forms.ModelForm):
-    user_title = forms.CharField(widget=forms.TextInput(
-        attrs={
-            'class': 'form-control',
-            'placeholder': 'Enter the plot title here...'
-        }
-    ))
+    graph_title = forms.CharField()
     
     #myX = ArrayField(models.IntegerField())
     
 
     class Meta:
-        model = User_title
+        model = Graph_title
         #fields = ('post','myX',)
 #        fields = "__all__"
-        fields = ('user_title',)
+        fields = ('graph_title',)
