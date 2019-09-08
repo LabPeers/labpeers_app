@@ -74,11 +74,11 @@ def index(request):
     
     
         if form.is_valid():
-            form.save(commit=False)
+            
             #postall.save()
             form = HomeForm()
             #script, div = mainplot(form)
-            
+            form.save(commit=False)
             #mytitle = form.post
             
             mytitle = User_title.objects.all()
@@ -103,6 +103,17 @@ def index(request):
             
     return render(request, "index.html", {"the_script": script, "the_div": div, "form": form})   
 
+
+
+
+def db(request):
+
+   greeting = Greeting()
+   greeting.save()
+
+   greetings = Greeting.objects.all()
+
+   return render(request, "db.html", {"greetings": greetings})
 
 
 
@@ -154,17 +165,6 @@ def index(request):
 #     t = compute(x)
 #     return HttpResponse('Hello, World! sin(%s)=%s' % (r, s))
 # =============================================================================
-
-
-
-def db(request):
-
-   greeting = Greeting()
-   greeting.save()
-
-   greetings = Greeting.objects.all()
-
-   return render(request, "db.html", {"greetings": greetings})
 
 
 
