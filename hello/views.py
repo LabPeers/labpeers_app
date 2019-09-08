@@ -29,7 +29,7 @@ from bokeh.embed import components
 
 
 from .models import Greeting 
-from .models import User_title
+from .models import Graph_title
 from .forms import HomeForm
 from .compute import compute
 
@@ -81,7 +81,7 @@ def index(request):
             form.save(commit=False)
             #mytitle = form.post
             
-            mytitle = User_title.objects.all()
+            mytitle = Graph_title.objects.all()
             
             plot = figure(plot_width=400, plot_height=400, title=mytitle)
             plot.circle([1,2,3], [3,4,7])
