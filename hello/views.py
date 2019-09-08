@@ -65,6 +65,7 @@ from .compute import compute
 def index(request): 
     plot = figure(plot_width=400, plot_height=400, title="Your title will go here 1")
     script, div = components(plot, CDN)     
+    form = HomeForm()
     
     def get(self, request):    
         form = HomeForm()
@@ -96,6 +97,8 @@ def index(request):
             form=HomeForm()
             
         return render(request, "index.html", {"the_script": script, "the_div": div, "form": form})
+
+    return render(request, "index.html", {"the_script": script, "the_div": div, "form": form})
             
             #print form.cleaned_data['my_form_field_name']
 
