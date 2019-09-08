@@ -62,12 +62,12 @@ from .compute import compute
 #        return render(request, self.template_name, args)    
 
 
-def index(request): 
-    plot = figure(plot_width=400, plot_height=400, title="Your title will go here 1")
-    script, div = components(plot, CDN)     
-    form = HomeForm()
+class index(TemplateView): 
+    plot = figure(plot_width=400, plot_height=400, title='Outside function')
+    script, div = components(plot, CDN)   
     
-    def get(self, request):    
+    def get(self, request, script, div):
+        
         form = HomeForm()
         return render(request, "index.html", {"the_script": script, "the_div": div, "form": form})
     
@@ -98,8 +98,6 @@ def index(request):
             
         return render(request, "index.html", {"the_script": script, "the_div": div, "form": form})
 
-    return render(request, "index.html", {"the_script": script, "the_div": div, "form": form})
-            
             #print form.cleaned_data['my_form_field_name']
 
 #            return HttpResponseRedirect('/thanks/') # Redirect after POST
