@@ -67,13 +67,13 @@ class index(TemplateView):
     script, div = components(plot, CDN)   
     
     
-    def get(self, request):
+    def get(request):
         
         form = HomeForm()
         return render(request, "index.html", {"form": form})
     
     
-    def post(self, request):
+    def post(request):
     #if request.method == 'POST': # If the form has been submitted...
         form = HomeForm(request.POST) # A form bound to the POST data
     
