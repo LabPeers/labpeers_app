@@ -66,10 +66,12 @@ class index(TemplateView):
     plot = figure(plot_width=400, plot_height=400, title='Outside function')
     script, div = components(plot, CDN)   
     
+    
     def get(self, request):
         
         form = HomeForm()
         return render(request, "index.html", {"form": form})
+    
     
     def post(self, request):
     #if request.method == 'POST': # If the form has been submitted...
