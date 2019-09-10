@@ -34,7 +34,7 @@
         <h2>Home</h2>
         <form method="post">
             {% csrf_token %}
-            {{ form.post }}
+            {{ form.graph_title }}
             <br>
             <button type="submit">Submit</button>
         </form>
