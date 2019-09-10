@@ -85,7 +85,7 @@ class HomeView(TemplateView):
         if form.is_valid():
             
             graph_title=form.save(commit=False)
-            graph_title.user = request.user
+#            graph_title.user = request.user
             graph_title.save()
 
             mytitle = form.cleaned_data['graph_title']
@@ -102,7 +102,7 @@ class HomeView(TemplateView):
             plot.circle([1,2,3], [3,4,7])
      
             script, div = components(plot, CDN)
-            return redirect('hello:home')
+
             
             #form=HomeForm()
             
