@@ -84,7 +84,7 @@ class HomeView(TemplateView):
     
         if form.is_valid():
             
-            form.save()
+           # form.save()
            # graph_title=form.save()
 #            graph_title.user = request.user
 #            graph_title.save()
