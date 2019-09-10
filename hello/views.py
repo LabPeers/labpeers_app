@@ -63,15 +63,15 @@ from .compute import compute
 
 
 class HomeView(TemplateView):
-    template_name = './home.html'
-    plot = figure(plot_width=400, plot_height=400, title='Outside function')
-    script, div = components(plot, CDN)   
+    template_name = './home.html' 
     
     
     def get(self,request):
         
         form = HomeForm()
-        return render(request, self.template_name, {"form": form})
+        plot = figure(plot_width=400, plot_height=400, title='Outside function')
+        script, div = components(plot, CDN) 
+        return render(request, self.template_name, {"the_script": script, "the_div": div, "form": form})
     
     
     def post(self,request):
@@ -98,7 +98,7 @@ class HomeView(TemplateView):
             
             #form=HomeForm()
             
-        return render(request, "index.html", {"the_script": script, "the_div": div, "form": form})
+        return render(request, self.template_name, {"the_script": script, "the_div": div, "form": form})
         #return render(request, self.template_name, {"form": form})
 
             #print form.cleaned_data['my_form_field_name']
