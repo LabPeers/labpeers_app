@@ -12,12 +12,7 @@ from django.db import models
 
 
 class HomeForm(forms.ModelForm):
-    graph_title = forms.CharField(widget=forms.TextInput(
-        attrs={
-            'class': 'form-control',
-            'placeholder': 'Write a post...'
-        }
-    ))
+    graph_title = forms.CharField(widget=forms.TextInput())
     
     #myX = ArrayField(models.IntegerField())
     
