@@ -32,6 +32,7 @@ from bokeh.embed import components
 from .models import Graph_title
 from .forms import HomeForm
 from .compute import compute
+from django.contrib.auth.models import User
 
 
 
@@ -69,9 +70,10 @@ class HomeView(TemplateView):
     def get(self,request):
         
         form = HomeForm()
+        users = User.objects.exclude(id=request.user.id)
         plot = figure(plot_width=400, plot_height=400, title='Outside function')
         script, div = components(plot, CDN) 
-        return render(request, self.template_name, {"the_script": script, "the_div": div, "form": form})
+        return render(request, self.template_name, {"users": users, "the_script": script, "the_div": div, "form": form})
     
     
     def post(self,request):
@@ -82,7 +84,12 @@ class HomeView(TemplateView):
     
         if form.is_valid():
             
-            mytitle=form.save()
+            graph_title=form.save(commit=False)
+            graph_title.user = request.user
+            graph_title.save()
+
+            mytitle = form.cleaned_data['graph_title']
+            form = HomeForm()
             #postall.save()
             
            #script, div = mainplot(form)            #form.save(commit=False)

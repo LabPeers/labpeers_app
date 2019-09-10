@@ -15,6 +15,7 @@ class Graph_title(models.Model):
         graph_title = models.CharField(max_length=500)
 #        myX = ArrayField(models.IntegerField())
         #user = models.ForeignKey(User)
+        user = models.ForeignKey(User)
 
         
         
