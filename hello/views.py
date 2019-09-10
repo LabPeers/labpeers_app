@@ -102,6 +102,7 @@ class HomeView(TemplateView):
             plot.circle([1,2,3], [3,4,7])
      
             script, div = components(plot, CDN)
+            return redirect('hello:home')
             
             #form=HomeForm()
             
