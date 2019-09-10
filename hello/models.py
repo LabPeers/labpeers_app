@@ -23,6 +23,3 @@ class Graph_title(models.Model):
 #       r = models.FloatField()
 #       x = models.FloatField(default=0)
 # =============================================================================
-
-
-
