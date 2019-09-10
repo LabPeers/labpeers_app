@@ -91,10 +91,10 @@ class HomeView(TemplateView):
             
             #mytitle = Graph_title.objects.all()
             
-             plot = figure(plot_width=400, plot_height=400, title=mytitle)
-             plot.circle([1,2,3], [3,4,7])
+            plot = figure(plot_width=400, plot_height=400, title=mytitle)
+            plot.circle([1,2,3], [3,4,7])
      
-             script, div = components(plot, CDN)
+            script, div = components(plot, CDN)
             
             #form=HomeForm()
             
