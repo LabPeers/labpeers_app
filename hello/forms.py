@@ -20,5 +20,5 @@ class HomeForm(forms.ModelForm):
     class Meta:
         model = Graph_title
         #fields = ('post','myX',)
-        fields = "__all__"
-#        fields = ('graph_title',)
+#        fields = "__all__"
+        fields = ('graph_title',)

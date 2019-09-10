@@ -62,43 +62,45 @@ from .compute import compute
 #        return render(request, self.template_name, args)    
 
 
-class index(TemplateView): 
-    plot = figure(plot_width=400, plot_height=400, title='Outside function')
-    script, div = components(plot, CDN)   
+class HomeView(TemplateView):
+    template_name = './home.html'
+#    plot = figure(plot_width=400, plot_height=400, title='Outside function')
+#    script, div = components(plot, CDN)   
     
     
-    def get(request):
+    def get(self,request):
         
         form = HomeForm()
-        return render(request, "index.html", {"form": form})
+        return render(request, self.template_name, {"form": form})
     
     
-    def post(request):
+    def post(self,request):
     #if request.method == 'POST': # If the form has been submitted...
         form = HomeForm(request.POST) # A form bound to the POST data
     
     
     
-        if form.is_valid():
+#        if form.is_valid():
+#            
+#            mytitle=form.save()
+#            #postall.save()
+#            
+#            #script, div = mainplot(form)
+#            #form.save(commit=False)
+#
+#            #mytitle = form.post
+#            
+#            #mytitle = Graph_title.objects.all()
+#            
+#            plot = figure(plot_width=400, plot_height=400, title=mytitle)
+#            plot.circle([1,2,3], [3,4,7])
+#    
+#            script, div = components(plot, CDN)
+#            
+#            form=HomeForm()
             
-            mytitle=form.save()
-            #postall.save()
-            
-            #script, div = mainplot(form)
-            #form.save(commit=False)
-
-            #mytitle = form.post
-            
-            #mytitle = Graph_title.objects.all()
-            
-            plot = figure(plot_width=400, plot_height=400, title=mytitle)
-            plot.circle([1,2,3], [3,4,7])
-    
-            script, div = components(plot, CDN)
-            
-            form=HomeForm()
-            
-        return render(request, "index.html", {"the_script": script, "the_div": div, "form": form})
+        #return render(request, "index.html", {"the_script": script, "the_div": div, "form": form})
+        return render(request, self.template_name, {"form": form})
 
             #print form.cleaned_data['my_form_field_name']
 
