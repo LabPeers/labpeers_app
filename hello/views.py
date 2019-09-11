@@ -60,6 +60,8 @@ class HomeView(TemplateView):
             form.save()
             mytitle=form.cleaned_data['graph_title']
             myXdata=form.cleaned_data['myX']
+            myXlist=myXdata.split(",")
+            
             
 #            graph_title.user = request.user
 #            graph_title.save()
@@ -75,7 +77,7 @@ class HomeView(TemplateView):
             #mytitle = Graph_title.objects.all()
             
             plot = figure(plot_width=400, plot_height=400, title=mytitle)
-            plot.circle([1,2,3], [3,4,7])
+            plot.circle(myXlist, myXlist)
       
             script, div = components(plot, CDN)
  
