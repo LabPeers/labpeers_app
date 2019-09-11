@@ -13,7 +13,7 @@ from django.db import models
 
 class HomeForm(forms.ModelForm):
     graph_title = forms.CharField(widget=forms.TextInput())
-    myX = ArrayField(models.FloatField())
+    myX = forms.CharField(widget=forms.TextInput())
     
 
     class Meta:

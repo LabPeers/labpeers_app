@@ -29,8 +29,7 @@ from bokeh.embed import components
 
 
 #from .models import Greeting 
-from .models import Graph_title
-from .models import Graph_data
+#from .models import Graph_Data
 from .forms import HomeForm
 from .compute import compute
 from django.contrib.auth.models import User
