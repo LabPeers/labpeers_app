@@ -30,37 +30,11 @@ from bokeh.embed import components
 
 #from .models import Greeting 
 from .models import Graph_title
+from .models import Graph_data
 from .forms import HomeForm
 from .compute import compute
 from django.contrib.auth.models import User
 
-
-
-#class HomeView(TemplateView):
-#    template_name = 'home/home.html'
-#
-#
-#    def get(self, request):
-#        form = HomeForm()
-#
-#        args = {
-#            'form': form
-#        }
-#        return render(request, self.template_name, args)
-#
-#
-#    def post(self, request):
-#        form = HomeForm(request.POST)
-#        if form.is_valid():
-#            post = form.save(commit=False)
-#            post.save()
-#
-#            text = form.cleaned_data['post']
-#            form = HomeForm()
-#            return redirect('home:home')
-#        
-#        args = {'form': form, 'text': text}
-#        return render(request, self.template_name, args)    
 
 
 class HomeView(TemplateView):
@@ -81,12 +55,13 @@ class HomeView(TemplateView):
         form = HomeForm(request.POST) # A form bound to the POST data
     
     
-    
         if form.is_valid():
             
             #form.save()
             form.save()
             mytitle=form.cleaned_data['graph_title']
+            myXdata=form.cleaned_data['myX']
+            
 #            graph_title.user = request.user
 #            graph_title.save()
 

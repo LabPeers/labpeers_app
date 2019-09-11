@@ -7,18 +7,17 @@ Created on Sun Jul 21 11:00:53 2019
 """
 from django.contrib.postgres.fields import ArrayField
 from django import forms
-from .models import Graph_title
+from .models import Graph_Data
 from django.db import models
 
 
 class HomeForm(forms.ModelForm):
     graph_title = forms.CharField(widget=forms.TextInput())
-    
-    #myX = ArrayField(models.IntegerField())
+    myX = ArrayField(models.FloatField())
     
 
     class Meta:
-        model = Graph_title
+        model = Graph_Data
         #fields = ('post','myX',)
 #        fields = "__all__"
-        fields = ('graph_title',)
+        fields = ('graph_title','myX',)

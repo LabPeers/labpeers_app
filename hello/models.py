@@ -10,14 +10,12 @@ from django.contrib.auth.models import User
 #             
 # =============================================================================
  
-class Graph_title(models.Model):
-#        p = ArrayField(models.CharField(max_length=3, blank=True))
+class Graph_Data(models.Model):
         graph_title = models.CharField(max_length=500)
-#        myX = ArrayField(models.IntegerField())
-        #user = models.ForeignKey(User)
-#        user = models.ForeignKey(User)
+        myX = ArrayField(models.FloatField())
+        user = models.ForeignKey(User)
 
-        
+       
         
 # =============================================================================
 #       r = models.FloatField()

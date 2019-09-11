@@ -31,7 +31,7 @@
 <!--    {{ the_form|safe }} -->
 <div class="container">
     <div class="col-md-8">
-        <h2>Home</h2>
+        <h2>Title</h2>
         <form method="post">
             {% csrf_token %}
             {{ form.graph_title }}
@@ -40,6 +40,20 @@
         </form>
     </div>
  </div>
+ 
+ <div class="container">
+    <div class="col-md-8">
+        <h2>Data</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.myX }}
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+ </div>
+ 
+ 
  
 <!-- 
  <div class="container">
