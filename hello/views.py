@@ -84,8 +84,8 @@ class HomeView(TemplateView):
     
         if form.is_valid():
             
-           # form.save()
-           # graph_title=form.save()
+            #form.save()
+            graph_title=form.save()
 #            graph_title.user = request.user
 #            graph_title.save()
 
@@ -99,7 +99,7 @@ class HomeView(TemplateView):
             
             #mytitle = Graph_title.objects.all()
             
-            plot = figure(plot_width=400, plot_height=400, title='hello')
+            plot = figure(plot_width=400, plot_height=400, title=graph_title)
             plot.circle([1,2,3], [3,4,7])
       
             script, div = components(plot, CDN)
