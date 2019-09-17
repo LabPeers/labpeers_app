@@ -23,6 +23,11 @@ from django.http import HttpResponseRedirect
 from bokeh.plotting import figure , curdoc , show , output_file
 from bokeh.resources import CDN
 from bokeh.embed import components
+import pandas as pd
+from bokeh.models import ColumnDataSource, LinearColorMapper, ColorBar, BasicTicker, PrintfTickFormatter, HoverTool
+from bokeh.palettes import Viridis256
+from bokeh.transform import transform
+
 #from bokeh.models import ColumnDataSource, ColorBar
 #from bokeh.palettes import Spectral6
 #from bokeh.transform import linear_cmap
@@ -63,15 +68,34 @@ class HomeView(TemplateView):
             myXlist=myXdata.split(",")
             myYdata=form.cleaned_data['myY']
             myYlist=myYdata.split(",")
-#            myRdata=form.cleaned_data['myRadius']
-#            myRlist=myRdata.split(",")
+            myRdata=form.cleaned_data['myRadius']
+            myRlist=myRdata.split(",")
 #            
+            
+            #scale = 10
+            d = {'myXaxis': myXlist, 'myYaxis': myYlist,'myBubble': myRlist} 
+
+            df = pd.DataFrame(data = d)
+            source = ColumnDataSource(df)
+            plot = figure(plot_width=400, plot_height=400, title=mytitle)
+
+            color_mapper = LinearColorMapper(palette = Viridis256, low = df['myBubble'].min(), high = df['myBubble'].max())
+            color_bar = ColorBar(color_mapper = color_mapper,
+                                 location = (0, 0),
+                                 ticker = BasicTicker())
+            plot.add_layout(color_bar, 'right')
+            plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble', legend = None, fill_color = transform('myBubble', color_mapper), source = source)
+            plot.add_tools(HoverTool(tooltips = [('Count', '@count')]))
+
+            
+            script, div = components(plot, CDN)            
+            
             
 #            graph_title.user = request.user
 #            graph_title.save()
 
 #            mytitle = form.cleaned_data['graph_title']
-            form = HomeForm()
+
             #postall.save()
             
            #script, div = mainplot(form)            #form.save(commit=False)
@@ -80,12 +104,10 @@ class HomeView(TemplateView):
             
             #mytitle = Graph_title.objects.all()
             
-            plot = figure(plot_width=400, plot_height=400, title=mytitle)
-            plot.circle(myXlist, myYlist)
       
-            script, div = components(plot, CDN)
- 
 
+ 
+            form = HomeForm()
             
             #form=HomeForm()
             

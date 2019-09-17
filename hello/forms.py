@@ -22,4 +22,4 @@ class HomeForm(forms.ModelForm):
         model = Graph_Data
         #fields = ('post','myX',)
 #        fields = "__all__"
-        fields = ('graph_title','myX','myY',)
+        fields = ('graph_title','myX','myY','myRadius',)

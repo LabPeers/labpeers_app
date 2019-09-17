@@ -15,7 +15,7 @@ class Graph_Data(models.Model):
 #        myX = ArrayField(models.FloatField())
         myX = models.CharField(max_length=500)
         myY = models.CharField(max_length=500)
-#        myRadius = models.CharField(max_length=500)
+        myRadius = models.CharField(max_length=500)
         #user = models.ForeignKey(User)
 
        
