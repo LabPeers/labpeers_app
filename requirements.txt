@@ -4,3 +4,4 @@ django-heroku
 requests
 bokeh==1.2.0
 pandas
+numpy
