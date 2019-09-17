@@ -61,7 +61,11 @@ class HomeView(TemplateView):
             mytitle=form.cleaned_data['graph_title']
             myXdata=form.cleaned_data['myX']
             myXlist=myXdata.split(",")
-            
+            myYdata=form.cleaned_data['myY']
+            myYlist=myYdata.split(",")
+#            myRdata=form.cleaned_data['myRadius']
+#            myRlist=myRdata.split(",")
+#            
             
 #            graph_title.user = request.user
 #            graph_title.save()
@@ -77,7 +81,7 @@ class HomeView(TemplateView):
             #mytitle = Graph_title.objects.all()
             
             plot = figure(plot_width=400, plot_height=400, title=mytitle)
-            plot.circle(myXlist, myXlist)
+            plot.circle(myXlist, myYlist)
       
             script, div = components(plot, CDN)
  

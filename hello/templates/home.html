@@ -40,6 +40,14 @@
             {% csrf_token %}
             {{ form.myX }}
             <br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.myY }}
+            <br>  
+        <form method="post">
+            {% csrf_token %}
+            {{ form.myRadius }}
+            <br>   
             <button type="submit">Submit</button>
         </form>
     </div>
