@@ -71,6 +71,7 @@ class HomeView(TemplateView):
             myYlist=myYdata.split(",")
             myRdata=form.cleaned_data['myRadius']
             myRlist=myRdata.split(",")
+            myRlist=np.array(myRlist, dtype=np.float32)
 #            
             
             #scale = 10
@@ -80,8 +81,8 @@ class HomeView(TemplateView):
             source = ColumnDataSource(df)
             plot = figure(plot_width=400, plot_height=400, title=mytitle)
 
-            #color_mapper = LinearColorMapper(palette = Viridis256, low = min(df['myBubble']), high = max(df['myBubble']))
-            color_mapper = LinearColorMapper(palette = Viridis256, low = min(myRlist), high = max(myRlist))
+            color_mapper = LinearColorMapper(palette = Viridis256, low = min(df['myBubble']), high = max(df['myBubble']))
+            #color_mapper = LinearColorMapper(palette = Viridis256, low = min(myRlist), high = max(myRlist))
             color_bar = ColorBar(color_mapper = color_mapper,
                                  location = (0, 0),
                                  ticker = BasicTicker())
