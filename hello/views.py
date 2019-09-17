@@ -86,7 +86,7 @@ class HomeView(TemplateView):
                                  ticker = BasicTicker())
             plot.add_layout(color_bar, 'right')
             plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble', legend = None, fill_color = transform('myBubble', color_mapper), source = source)
-            plot.add_tools(HoverTool(tooltips = [('Count', '@count')]))
+            plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
 
             
             script, div = components(plot, CDN)            
