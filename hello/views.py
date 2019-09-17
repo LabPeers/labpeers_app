@@ -73,7 +73,7 @@ class HomeView(TemplateView):
 #            
             
             #scale = 10
-            d = {'myXaxis': myXlist, 'myYaxis': myYlist,'myBubble': myRlist} 
+            d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
 
             df = pd.DataFrame(data = d)
             source = ColumnDataSource(df)
