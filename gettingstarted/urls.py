@@ -20,8 +20,8 @@ import hello.views
 
 
 urlpatterns = [
-    path("", HomeView.as_view(), name='home'),
-    path("", HomeView.as_view(), name='bubblechart'),
+    path("", RealView.as_view(), name='home'),
+    path("bubblechart/", HomeView.as_view(), name='bubblechart'),
  #   path("db/", hello.views.db, name="db"),
  #   path("admin/", admin.site.urls),
 ]
