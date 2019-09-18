@@ -82,7 +82,7 @@ class HomeView(TemplateView):
 
             df = pd.DataFrame(data = d)
             source = ColumnDataSource(df)
-            plot = figure(plot_width=400, plot_height=400, title=mytitle)
+            plot = figure(plot_width=800, plot_height=600, title=mytitle)
 
             color_mapper = LinearColorMapper(palette = Viridis256, low = min(df['myBubble']), high = max(df['myBubble']))
             #color_mapper = LinearColorMapper(palette = Viridis256, low = min(myRlist), high = max(myRlist))
