@@ -40,10 +40,13 @@ from .forms import HomeForm
 from .compute import compute
 from django.contrib.auth.models import User
 
+class HomeReal(TemplateView):
+    template_name = './home.html'
 
-
+    
+    
 class HomeView(TemplateView):
-    template_name = './home.html' 
+    template_name = './bubblechart.html' 
     
     
     def get(self,request):

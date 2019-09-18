@@ -5,6 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 from hello.views import HomeView
+from hello.views import HomeReal
 
 import hello.views
 

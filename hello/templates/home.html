@@ -20,36 +20,7 @@
     Enter your data in the fields below and you will see your data displayed in the plot.
   </div>
 
-<span class="b">
-    {{ the_script| safe}}
 
-    {{ the_div| safe}}   
-</span>
-
-<span class="b">    
-
-    <div class="col-md-8">
-        <h2>Title</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.graph_title }}
-            <br>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.myX }}
-            <br>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.myY }}
-            <br>  
-        <form method="post">
-            {% csrf_token %}
-            {{ form.myRadius }}
-            <br>   
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-</span>
 
 <!-- 
  <div class="container">
