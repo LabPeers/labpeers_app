@@ -53,7 +53,7 @@ class HomeView(TemplateView):
         
         form = HomeForm()
         users = User.objects.exclude(id=request.user.id)
-        plot = figure(plot_width=400, plot_height=400, title='Outside function')
+        plot = figure(plot_width=600, plot_height=800, title='Outside function')
         script, div = components(plot, CDN) 
         return render(request, self.template_name, {"users": users, "the_script": script, "the_div": div, "form": form})
     
@@ -82,7 +82,7 @@ class HomeView(TemplateView):
 
             df = pd.DataFrame(data = d)
             source = ColumnDataSource(df)
-            plot = figure(plot_width=800, plot_height=600, title=mytitle)
+            plot = figure(plot_width=600, plot_height=800, title=mytitle)
 
             color_mapper = LinearColorMapper(palette = Viridis256, low = min(df['myBubble']), high = max(df['myBubble']))
             #color_mapper = LinearColorMapper(palette = Viridis256, low = min(myRlist), high = max(myRlist))
