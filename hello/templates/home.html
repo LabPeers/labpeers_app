@@ -20,16 +20,17 @@
     Enter your data in the fields below and you will see your data displayed in the plot.
   </div>
 
+<div class="row">
 
-  
+ <div class="column"> 
     {{ the_script| safe}}
 
     {{ the_div| safe}}   
+ </div>
 
-
-    
+ <div class="column">    
 <!--    {{ the_form|safe }} -->
-<div class="container">
+
     <div class="col-md-8">
         <h2>Title</h2>
         <form method="post">
@@ -51,7 +52,10 @@
             <button type="submit">Submit</button>
         </form>
     </div>
+
  </div>
+
+</div>
 
 <!-- 
  <div class="container">
