@@ -28,6 +28,7 @@ from bokeh.models import ColumnDataSource, LinearColorMapper, ColorBar, BasicTic
 from bokeh.palettes import Viridis256
 from bokeh.transform import transform
 import numpy as np
+from django.contrib.auth.forms import UserCreationForm
 
 #from bokeh.models import ColumnDataSource, ColorBar
 #from bokeh.palettes import Spectral6
@@ -43,7 +44,22 @@ from django.contrib.auth.models import User
 class HomeReal(TemplateView):
     template_name = './home.html'
 
+
+class Register(TemplateView):
+    template_name = './register.html'
+    userform = UserCreationForm
+
     
+    def get(self,request):        
+        userform = UserCreationForm        
+        return render(request, self.template_name, {"userform": userform})
+
+    def post(self,request):
+    #if request.method == 'POST': # If the form has been submitted...
+        userform = UserCreationForm(request.POST) # A form bound to the POST data
+        return render(request, self.template_name, {"userform": userform})
+
+
     
 class HomeView(TemplateView):
     template_name = './bubblechart.html' 

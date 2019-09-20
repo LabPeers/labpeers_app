@@ -6,8 +6,8 @@ admin.autodiscover()
 
 from hello.views import HomeView
 from hello.views import HomeReal
+from hello.views import Register
 
-import hello.views
 
 
 # To add a new path, first import the app:
@@ -22,6 +22,7 @@ import hello.views
 urlpatterns = [
     path("", HomeReal.as_view(), name='home'),
     path("bubblechart/", HomeView.as_view(), name='bubblechart'),
+    path("register/", Register.as_view(), name='register'),
  #   path("db/", hello.views.db, name="db"),
  #   path("admin/", admin.site.urls),
 ]
