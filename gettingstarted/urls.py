@@ -6,7 +6,7 @@ admin.autodiscover()
 
 from hello.views import HomeView
 from hello.views import HomeReal
-from hello.views import Register
+#from hello.views import Register
 
 
 
