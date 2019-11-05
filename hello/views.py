@@ -17,7 +17,7 @@
     # return HttpResponse('Hello from Python!')
  #   return render(request, "index.html")
 from django.views.generic import TemplateView
-from django.shortcuts import render 
+from django.shortcuts import render, redirect 
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from bokeh.plotting import figure , curdoc , show , output_file
@@ -29,6 +29,7 @@ from bokeh.palettes import Viridis256
 from bokeh.transform import transform
 import numpy as np
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, logout, authenticate
 
 #from bokeh.models import ColumnDataSource, ColorBar
 #from bokeh.palettes import Spectral6
@@ -45,20 +46,25 @@ class HomeReal(TemplateView):
     template_name = './home.html'
 
 
-class Register(TemplateView):
-    template_name = './register.html'
-    userform = UserCreationForm
-
-    
-    def get(self,request):        
-        userform = UserCreationForm        
-        return render(request, self.template_name, {"userform": userform})
-
-    def post(self,request):
-    #if request.method == 'POST': # If the form has been submitted...
-        userform = UserCreationForm(request.POST) # A form bound to the POST data
-        return render(request, self.template_name, {"userform": userform})
-
+# =============================================================================
+# class Register(TemplateView):
+#     template_name = './register.html'
+#     userform = UserCreationForm
+# 
+#     
+#     def get(self,request):        
+#         userform = UserCreationForm        
+#         return render(request, self.template_name, {"userform": userform})
+# 
+#     def post(self,request):
+#         if request.method == 'POST': # If the form has been submitted...
+#             userform = UserCreationForm(request.POST) # A form bound to the POST data
+#                 if userform.is_valid():
+#                     user=userform.save()
+#                     login(request, user)
+#                     return render(request, self.template_name, {"userform": userform})
+# 
+# =============================================================================
 
     
 class HomeView(TemplateView):

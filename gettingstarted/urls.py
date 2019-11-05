@@ -22,7 +22,7 @@ from hello.views import Register
 urlpatterns = [
     path("", HomeReal.as_view(), name='home'),
     path("bubblechart/", HomeView.as_view(), name='bubblechart'),
-    path("register/", Register.as_view(), name='register'),
+ ##   path("register/", Register.as_view(), name='register'),
  #   path("db/", hello.views.db, name="db"),
  #   path("admin/", admin.site.urls),
 ]
