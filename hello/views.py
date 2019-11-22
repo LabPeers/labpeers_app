@@ -110,7 +110,8 @@ class HomeView(TemplateView):
         TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
         ]
         table = DataTable(source=source1, columns=columns, width=400, height=400, editable=True)
-        script, div = components(plot,CDN,table)
+        script, div = components({'plot': plot,'table': table})
+     
         
         return render(request, self.template_name, {"users": users, "the_script": script, "the_div": div, 
                                                     "form": form})
@@ -182,7 +183,7 @@ class HomeView(TemplateView):
             ]
             table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
 
-            script, div = components(plot, CDN,table)
+            script, div = components({'plot': plot,'table': table})
             
         return render(request, self.template_name, {"the_script": script, "the_div": div, 
                                                     "form": form})

@@ -4,9 +4,12 @@
 {% block content %}
 <div class='main-container'>
     <div>
-        {{ the_script| safe}}
     
-        {{ the_div| safe}}   
+        {{ the_div.plot | safe}}  
+        
+        {{ the_div.table | safe}} 
+        
+        {{ the_script| safe}} 
         
     </div>
     
