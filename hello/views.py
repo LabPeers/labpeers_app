@@ -96,8 +96,23 @@ class HomeView(TemplateView):
         form = HomeForm()
         users = User.objects.exclude(id=request.user.id)
         plot = figure(plot_width=600, plot_height=600, title='Your title will go here')
-        script, div = components(plot, CDN) 
-        return render(request, self.template_name, {"users": users, "the_script": script, "the_div": div, "form": form})
+        script, div = components(plot, CDN)
+        
+        ########### -----DATA TABLE----- ########### 
+        myXlist=[]
+        myYlist=[]
+        myRlist=[]
+        d1 = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
+        df1 = pd.DataFrame(data = d1)
+        source1=ColumnDataSource(df1)
+        columns = [
+        TableColumn(field="myXlist", title="X-values", editor=DateEditor()),
+        TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
+        ]
+        table = DataTable(source=source1, columns=columns, width=400, height=400, editable=True)
+        script2, div2 = components(table)
+        
+        return render(request, self.template_name, {"users": users, "the_script": script, "the_div": div, "form": form, "the_script2":script2, "the_div2":div2})
     
     
     def post(self,request):
@@ -161,13 +176,13 @@ class HomeView(TemplateView):
 ########### -----DATA TABLE----- ########### 
            
             columns = [
-            TableColumn(field="x-values", title="X-values", editor=DateEditor(), formatter=DateFormatter()),
-            TableColumn(field="y-values", title="Y-values", editor=IntEditor()),
+            TableColumn(field="myXlist", title="X-values", editor=DateEditor()),
+            TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
             ]
             table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
-            show()
+
             
-            script, div_dict = components({"plot": plot, "table": table})
+            script, div_dict = components({"plot": plot, "table": table}, CDN)
             
             
         return render(request, self.template_name, {"the_script": script, "the_div": div_dict, "form": form, "table": table})
