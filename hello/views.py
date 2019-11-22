@@ -42,6 +42,26 @@ from .forms import HomeForm
 from .compute import compute
 from django.contrib.auth.models import User
 
+
+########
+from datetime import date
+from random import randint
+ 
+from bokeh.client import push_session
+from bokeh.document import Document
+from bokeh.models.glyphs import Line, Circle
+from bokeh.models import (
+    Plot, ColumnDataSource, DataRange1d,
+    LinearAxis, DatetimeAxis, Grid, HoverTool
+)
+from bokeh.models.widgets import (
+    Button, TableColumn, DataTable,
+    DateEditor, DateFormatter, IntEditor)
+from bokeh.models.layouts import WidgetBox, Column
+########
+
+
+
 class HomeReal(TemplateView):
     template_name = './home.html'
 
@@ -138,8 +158,18 @@ class HomeView(TemplateView):
             form = HomeForm()
             
             #form=HomeForm()
+
+########### -----DATA TABLE----- ########### 
+           
+            columns = [
+            TableColumn(field="x-values", title="X-values", editor=DateEditor(), formatter=DateFormatter()),
+            TableColumn(field="y-values", title="Y-values", editor=IntEditor()),
+            ]
+            data_table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
             
-        return render(request, self.template_name, {"the_script": script, "the_div": div, "form": form})
+            
+            
+        return render(request, self.template_name, {"the_script": script, "the_div": div, "form": form, "data_table": data_table})
         #return render(request, self.template_name, {"form": form})
 
             #print form.cleaned_data['my_form_field_name']
@@ -151,7 +181,6 @@ class HomeView(TemplateView):
 #        plot = figure(plot_width=400, plot_height=400, title="Your title will go here2")
 #        script, div = components(plot, CDN)
     
-            
 
 
 
