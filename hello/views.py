@@ -151,9 +151,6 @@ class HomeView(TemplateView):
             #mytitle = form.post
             
             #mytitle = Graph_title.objects.all()
-            
-      
-
  
             form = HomeForm()
             
