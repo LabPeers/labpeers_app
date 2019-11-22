@@ -96,7 +96,7 @@ class HomeView(TemplateView):
         form = HomeForm()
         users = User.objects.exclude(id=request.user.id)
         plot = figure(plot_width=600, plot_height=600, title='Your title will go here')
-        script, div = components(plot, CDN)
+        #script, div = components(plot, CDN)
         
         ########### -----DATA TABLE----- ########### 
         myXlist=[]
@@ -110,10 +110,10 @@ class HomeView(TemplateView):
         TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
         ]
         table = DataTable(source=source1, columns=columns, width=400, height=400, editable=True)
-        script2, div2 = components(table)
+        script, div = components(plot,CDN,table)
         
         return render(request, self.template_name, {"users": users, "the_script": script, "the_div": div, 
-                                                    "form": form, "the_script2":script2, "the_div2":div2})
+                                                    "form": form})
     
     
     def post(self,request):
@@ -154,7 +154,7 @@ class HomeView(TemplateView):
 
 
             
-            script, div = components(plot, CDN)      
+            #script, div = components(plot, CDN)      
             
             
 #            graph_title.user = request.user
@@ -182,10 +182,10 @@ class HomeView(TemplateView):
             ]
             table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
 
-            script2, div2 = components(table)
+            script, div = components(plot, CDN,table)
             
         return render(request, self.template_name, {"the_script": script, "the_div": div, 
-                                                    "form": form, "the_script2":script2, "the_div2":div2})
+                                                    "form": form})
         #return render(request, self.template_name, {"form": form})
 
             #print form.cleaned_data['my_form_field_name']
