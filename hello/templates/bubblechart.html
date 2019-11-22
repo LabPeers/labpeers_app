@@ -25,6 +25,22 @@
       </tr>
       
       <tr>
+        <th>X-axis label</th>
+        <td>    <form method="post">
+                {% csrf_token %}
+                {{ form.xlabel }}
+        </td>
+      </tr>
+      
+     <tr>
+        <th>Y-axis label</th>
+        <td>    <form method="post">
+                {% csrf_token %}
+                {{ form.ylabel }}
+        </td>
+      </tr>
+      
+      <tr>
         <th>x-Values</th>
         <td>    <form method="post">
                 {% csrf_token %}
