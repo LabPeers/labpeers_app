@@ -135,8 +135,10 @@ class HomeView(TemplateView):
             plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble', legend = None, fill_color = transform('myBubble', color_mapper), source = source)
             plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
 
+
+
             
-            script, div = components(plot, CDN)            
+            script, div = components(plot, CDN)      
             
             
 #            graph_title.user = request.user
@@ -164,6 +166,7 @@ class HomeView(TemplateView):
             ]
             data_table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
             show()
+            script, div_dict = components({"plot": plot, "data_table": data_table})
             
             
         return render(request, self.template_name, {"the_script": script, "the_div": div, "form": form, "data_table": data_table})
