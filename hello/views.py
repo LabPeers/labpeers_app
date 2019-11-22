@@ -166,7 +166,7 @@ class HomeView(TemplateView):
             TableColumn(field="y-values", title="Y-values", editor=IntEditor()),
             ]
             data_table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
-            
+            show()
             
             
         return render(request, self.template_name, {"the_script": script, "the_div": div, "form": form, "data_table": data_table})
