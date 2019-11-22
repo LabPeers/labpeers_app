@@ -164,12 +164,13 @@ class HomeView(TemplateView):
             TableColumn(field="x-values", title="X-values", editor=DateEditor(), formatter=DateFormatter()),
             TableColumn(field="y-values", title="Y-values", editor=IntEditor()),
             ]
-            data_table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
+            table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
             show()
-            script, div_dict = components({"plot": plot, "data_table": data_table})
+            
+            script, div_dict = components({"plot": plot, "table": table})
             
             
-        return render(request, self.template_name, {"the_script": script, "the_div": div, "form": form, "data_table": data_table})
+        return render(request, self.template_name, {"the_script": script, "the_div": div_dict, "form": form, "table": table})
         #return render(request, self.template_name, {"form": form})
 
             #print form.cleaned_data['my_form_field_name']
