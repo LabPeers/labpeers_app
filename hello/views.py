@@ -127,6 +127,9 @@ class HomeView(TemplateView):
             #form.save()
             form.save()
             mytitle=form.cleaned_data['graph_title']
+            myXlabel=form.cleaned_data['graph_xlabel']
+            myYlabel=form.cleaned_data['graph_ylabel']
+            
             myXdata=form.cleaned_data['myX']
             myXlist=myXdata.split(",")
             myYdata=form.cleaned_data['myY']
@@ -141,15 +144,17 @@ class HomeView(TemplateView):
 
             df = pd.DataFrame(data = d)
             source = ColumnDataSource(df)
-            plot = figure(plot_width=600, plot_height=600, title=mytitle)
+            plot = figure(plot_width=600, plot_height=600, title=mytitle, x_axis_label=myXlabel, y_axis_label=myYlabel)
 
-            color_mapper = LinearColorMapper(palette = Viridis256, low = min(df['myBubble']), high = max(df['myBubble']))
+            color_mapper = LinearColorMapper(palette = Viridis256, low = min(df['myBubble']), 
+                                             high = max(df['myBubble']))
             #color_mapper = LinearColorMapper(palette = Viridis256, low = min(myRlist), high = max(myRlist))
             color_bar = ColorBar(color_mapper = color_mapper,
                                  location = (0, 0),
                                  ticker = BasicTicker())
             plot.add_layout(color_bar, 'right')
-            plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble', legend = None, fill_color = transform('myBubble', color_mapper), source = source)
+            plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble', legend = None, 
+                         fill_color = transform('myBubble', color_mapper), source = source)
             plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
 
 

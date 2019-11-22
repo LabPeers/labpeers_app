@@ -12,10 +12,13 @@ from django.contrib.auth.models import User
  
 class Graph_Data(models.Model):
         graph_title = models.CharField(max_length=500)
+        graph_xlabel = models.CharField(max_length=500)
+        graph_ylabel = models.CharField(max_length=500)
 #        myX = ArrayField(models.FloatField())
         myX = models.CharField(max_length=500)
         myY = models.CharField(max_length=500)
         myRadius = models.CharField(max_length=500)
+
         #user = models.ForeignKey(User)
 
        

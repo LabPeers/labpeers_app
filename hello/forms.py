@@ -13,6 +13,8 @@ from django.db import models
 
 class HomeForm(forms.ModelForm):
     graph_title = forms.CharField(widget=forms.TextInput())
+    graph_xlabel = forms.CharField(widget=forms.TextInput())
+    graph_ylabel = forms.CharField(widget=forms.TextInput())
     myX = forms.CharField(widget=forms.TextInput())
     myY = forms.CharField(widget=forms.TextInput())
 #    myRadius= forms.CharField(widget=forms.TextInput())
