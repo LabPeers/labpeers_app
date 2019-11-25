@@ -90,8 +90,8 @@ class Register(TemplateView):
                  
              return render(request, self.template_name, {"userform":userform})
 
-         userform = UserCreationForm
-         return render(request, self.template_name,{"userform":userform} )
+         #userform = UserCreationForm
+         #return render(request, self.template_name,{"userform":userform} )
     
     
     
