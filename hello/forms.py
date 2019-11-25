@@ -17,11 +17,11 @@ class HomeForm(forms.ModelForm):
     graph_ylabel = forms.CharField(widget=forms.TextInput())
     myX = forms.CharField(widget=forms.TextInput())
     myY = forms.CharField(widget=forms.TextInput())
-#    myRadius= forms.CharField(widget=forms.TextInput())
+    myRadius= forms.CharField(widget=forms.TextInput())
     
 
     class Meta:
         model = Graph_Data
         #fields = ('post','myX',)
 #        fields = "__all__"
-        fields = ('graph_title','myX','myY','myRadius',)
+        fields = ('graph_title','graph_xlabel','graph_ylabel','myX','myY','myRadius',)

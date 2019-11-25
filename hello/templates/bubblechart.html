@@ -28,7 +28,7 @@
         <th>X-axis label</th>
         <td>    <form method="post">
                 {% csrf_token %}
-                {{ form.xlabel }}
+                {{ form.graph_xlabel }}
         </td>
       </tr>
       
@@ -36,7 +36,7 @@
         <th>Y-axis label</th>
         <td>    <form method="post">
                 {% csrf_token %}
-                {{ form.ylabel }}
+                {{ form.graph_ylabel }}
         </td>
       </tr>
       
