@@ -66,26 +66,34 @@ class HomeReal(TemplateView):
     template_name = './home.html'
 
 
-# =============================================================================
-# class Register(TemplateView):
-#     template_name = './register.html'
-#     userform = UserCreationForm
-# 
-#     
-#     def get(self,request):        
-#         userform = UserCreationForm        
-#         return render(request, self.template_name, {"userform": userform})
-# 
-#     def post(self,request):
-#         if request.method == 'POST': # If the form has been submitted...
-#             userform = UserCreationForm(request.POST) # A form bound to the POST data
-#                 if userform.is_valid():
-#                     user=userform.save()
-#                     login(request, user)
-#                     return render(request, self.template_name, {"userform": userform})
-# 
-# =============================================================================
 
+class Register(TemplateView):
+     template_name = './register.html'
+     userform = UserCreationForm
+ 
+     
+     def get(self,request):        
+         userform = UserCreationForm        
+         return render(request, self.template_name, {"userform": userform})
+ 
+     def post(self,request):
+         userform = UserCreationForm(request.POST) # A form bound to the POST data
+         if userform.is_valid():
+             user=userform.save()
+             username = userform.cleaned_data.get('username')
+             login(request, user)
+             return render(request, self.template_name, {"userform": userform})
+ 
+         else:
+             for msg in userform.error_messages:
+                 print(userform.error_messages[msg])
+                 
+             return render(request, self.template_name, {"userform":userform})
+
+         userform = UserCreationForm
+         return render(request, self.template_name,{"userform":userform} )
+    
+    
     
 class HomeView(TemplateView):
     template_name = './bubblechart.html' 
