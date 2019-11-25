@@ -82,7 +82,7 @@ class Register(TemplateView):
              user=userform.save()
              username = userform.cleaned_data.get('username')
              login(request, user)
-             return render(request, self.template_name, {"userform": userform})
+             return redirect("")
  
          else:
              for msg in userform.error_messages:
