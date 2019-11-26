@@ -17,6 +17,10 @@
     # return HttpResponse('Hello from Python!')
  #   return render(request, "index.html")
 from django.views.generic import TemplateView
+from django.views.generic.edit import FormView 
+from django.urls import reverse_lazy
+from django.views import generic
+
 from django.shortcuts import render, redirect 
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -91,35 +95,40 @@ class HomeReal(TemplateView):
 #                   context={"form":form})
 # =============================================================================
 
+class Register(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'register.html'
 
 
-
-class Register(TemplateView):
-     template_name = './register.html'
-     userform = UserCreationForm
- 
-     
-     def get(self,request):        
-         userform = UserCreationForm        
-         return render(request, self.template_name, {"userform": userform})
-  
-     def post(self,request):
-         userform = UserCreationForm(request.POST) # A form bound to the POST data
-         if userform.is_valid():
-             user=userform.save()
-             username = userform.cleaned_data.get('username')
-             login(request, user)
-             return redirect("home")
- 
-         else:
-             for msg in userform.error_messages:
-                 print(userform.error_messages[msg])
-                 
-             return render(request, self.template_name, {"userform":userform})
- 
-          #userform = UserCreationForm
-          #return render(request, self.template_name,{"userform":userform} )
-     
+# =============================================================================
+# class Register(FormView):
+#      template_name = './register.html'
+#      userform = UserCreationForm
+#  
+#      
+#      def get(self,request):        
+#          userform = UserCreationForm        
+#          return render(request, self.template_name, {"userform": userform})
+#   
+#      def post(self,request):
+#          userform = UserCreationForm(request.POST) # A form bound to the POST data
+#          if userform.is_valid():
+#              user=userform.save()
+#              username = userform.cleaned_data.get('username')
+#              login(request, user)
+#              return redirect("home")
+#  
+#          else:
+#              for msg in userform.error_messages:
+#                  print(userform.error_messages[msg])
+#                  
+#              return render(request, self.template_name, {"userform":userform})
+#  
+#           #userform = UserCreationForm
+#           #return render(request, self.template_name,{"userform":userform} )
+#      
+# =============================================================================
      
     
 class HomeView(TemplateView):
