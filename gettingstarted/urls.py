@@ -20,8 +20,8 @@ from hello.views import Register
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('accounts/', include('accounts.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path("accounts/", include('accounts.urls')),
+    path("accounts/", include('django.contrib.auth.urls')),
     path("", HomeReal.as_view(), name='home'),
     path("bubblechart/", HomeView.as_view(), name='bubblechart'),
     path("register/", Register.as_view(), name='register'),
