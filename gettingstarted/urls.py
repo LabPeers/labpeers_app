@@ -1,6 +1,5 @@
-from django.urls import path, include
-
 from django.contrib import admin
+from django.urls import path, include
 
 admin.autodiscover()
 
@@ -20,9 +19,11 @@ from hello.views import Register
 
 
 urlpatterns = [
+    path("admin/", admin.site.urls),
+    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path("", HomeReal.as_view(), name='home'),
     path("bubblechart/", HomeView.as_view(), name='bubblechart'),
     path("register/", Register.as_view(), name='register'),
  #   path("db/", hello.views.db, name="db"),
- #   path("admin/", admin.site.urls),
 ]
