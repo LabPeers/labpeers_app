@@ -3,17 +3,6 @@
 
 {% block content %}
 
-<!--{% if user.is_authenticated %}
-  <!--Hi {{ user.username }}!-->
-  <p><a href="{% url 'logout' %}">logout</a></p>
-  <!--<p><a href="{% url 'password_reset' %}">reset password</a></p> -->
-<!--{% else %}
-  <p>You are not logged in</p>
-  <!--<a href="{% url 'login' %}">login</a> -->
-{% endif %}-->
-
-
-
 <div class="jumbotron text-center">
   <div class="container">
   <a href="https://lab-peers.com">
@@ -21,7 +10,7 @@
 </a>
     <h1>Data made simple</h1>
     <p>You are free to use the Bubble chart app - however, it is still under construction and only offers basic functionality at this point in time.</p>
-    <a type="button" class="btn btn-lg btn-default" href="https://labpeers.herokuapp.com/bubblechart"><span class="glyphicon glyphicon-hand-right"></span> Make a Bubble Chart </a>
+    <a type="button" class="btn btn-lg btn-default" href="/bubblechart"><span class="glyphicon glyphicon-hand-right"></span> Make a Bubble Chart </a>
     <a type="button" class="btn btn-lg btn-primary" href="https://lab-peers.com/blog/#data-visualization"><span class="glyphicon glyphicon-flash"></span> Read our Blog on Data Visualization </a>
   </div>
 </div>
