@@ -118,6 +118,6 @@ STATIC_URL = "/static/"
 
 django_heroku.settings(locals())
 
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/bubblechart/'
-LOGOUT_REDIRECT_URL = '/home/'
+#LOGIN_URL = '/login/'
+#LOGIN_REDIRECT_URL = '/bubblechart/'
+#LOGOUT_REDIRECT_URL = '/home/'
