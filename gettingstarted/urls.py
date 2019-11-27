@@ -6,6 +6,7 @@ admin.autodiscover()
 from hello.views import HomeView
 from hello.views import HomeReal
 from hello.views import Register
+from hello.views import Profile
 
 
 
@@ -22,6 +23,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("hello/", include('gettingstarted.urls')),
     path("accounts/", include('django.contrib.auth.urls')),
+    path("accounts/profile/",Profile.as_view(), name='profile'),
     path("", HomeReal.as_view(), name='home'),
     path("bubblechart/", HomeView.as_view(), name='bubblechart'),
     path("register/", Register.as_view(), name='register'),

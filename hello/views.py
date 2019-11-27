@@ -68,6 +68,10 @@ from bokeh.models.layouts import WidgetBox, Column
 
 class HomeReal(TemplateView):
     template_name = './home.html'
+    
+
+class Profile(TemplateView):
+    template_name = './profile.html'    
 
 
 
