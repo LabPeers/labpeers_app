@@ -3,14 +3,16 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
+<!--{% if user.is_authenticated %}
+  <!--Hi {{ user.username }}!-->
   <p><a href="{% url 'logout' %}">logout</a></p>
-  <p><a href="{% url 'password_reset' %}">reset password</a></p>
-{% else %}
+  <!--<p><a href="{% url 'password_reset' %}">reset password</a></p> -->
+<!--{% else %}
   <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
-{% endif %}
+  <!--<a href="{% url 'login' %}">login</a> -->
+{% endif %}-->
+
+
 
 <div class="jumbotron text-center">
   <div class="container">
@@ -23,51 +25,8 @@
     <a type="button" class="btn btn-lg btn-primary" href="https://lab-peers.com/blog/#data-visualization"><span class="glyphicon glyphicon-flash"></span> Read our Blog on Data Visualization </a>
   </div>
 </div>
-<div class="container">
-<!-- 
-   <div class="alert alert-info text-center" role="alert">
-    Enter your data in the fields below and you will see your data displayed in the plot.
-  </div>
- -->
-
-
-<!-- 
- <div class="container">
-    <div class="col-md-8">
-        <h2>Data</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.myX }}
-            <br>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
- </div>
- -->
- 
- 
-<!-- 
- <div class="container">
-    <div class="col-md-8">
-        <h2>Data</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.myX }}
-            <br>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
- </div>
-
--->
-
-<!--
-    
-<form method="post" action="">{% csrf_token %}
-    Hello, World! Enter and ArrayField here {{ form }}
-    <input type="submit" value="equals" />
-</form>  
- --> 
- 
+<div class="container"> 
 </div>
+
+
 {% endblock %}
