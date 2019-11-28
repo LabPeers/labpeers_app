@@ -21,7 +21,8 @@ from hello.views import Profile
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("hello/", include('gettingstarted.urls')),
+    path("accounts/", include('accounts.urls')), # new
+    #path("hello/", include('gettingstarted.urls')),
     path("accounts/", include('django.contrib.auth.urls')),
     path("accounts/profile/",Profile.as_view(), name='profile'),
     path("", HomeReal.as_view(), name='home'),

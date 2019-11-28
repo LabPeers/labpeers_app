@@ -2,7 +2,9 @@
 {% load staticfiles %}
 
 {% block content %}
-
+{% if user.is_authenticated %}
+Hi {{ user.username }}!
+{% endif %}
 <div class="jumbotron text-center">
   <div class="container">
   <a href="https://lab-peers.com">
