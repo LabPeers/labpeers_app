@@ -7,6 +7,7 @@ from hello.views import HomeView
 from hello.views import HomeReal
 from hello.views import Register
 from hello.views import Profile
+from accounts.views import SignUp
 
 
 
@@ -27,6 +28,6 @@ urlpatterns = [
     path("accounts/profile/",Profile.as_view(), name='profile'),
     path("", HomeReal.as_view(), name='home'),
     path("bubblechart/", HomeView.as_view(), name='bubblechart'),
-    path("register/", Register.as_view(), name='register'),
+    path("accounts/signup/", SignUp.as_view(), name='signup'),
  #   path("db/", hello.views.db, name="db"),
 ]
