@@ -22,7 +22,7 @@ from accounts.views import SignUp
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("accounts/", include('accounts.urls')), # new
+    path("", include('accounts.urls')), # new
     #path("hello/", include('gettingstarted.urls')),
     path("accounts/", include('django.contrib.auth.urls')),
     path("accounts/profile/",Profile.as_view(), name='profile'),
