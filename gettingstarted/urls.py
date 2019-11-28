@@ -8,7 +8,7 @@ from hello.views import HomeReal
 #from hello.views import Register
 from hello.views import Profile
 #from accounts.views import SignUp
-from . import views
+from accounts import views
 
 
 
