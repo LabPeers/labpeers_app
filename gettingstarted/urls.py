@@ -28,6 +28,6 @@ urlpatterns = [
     path("accounts/profile/",Profile.as_view(), name='profile'),
     path("", HomeReal.as_view(), name='home'),
     path("bubblechart/", HomeView.as_view(), name='bubblechart'),
-    path("accounts/signup/", SignUp.as_view(), name='signup'),
+    path("accounts/signup/", views.SignUp, name='signup'),
  #   path("db/", hello.views.db, name="db"),
 ]
