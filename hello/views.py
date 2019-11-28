@@ -98,12 +98,14 @@ class Profile(TemplateView):
 #                   template_name = "./register.html",
 #                   context={"form":form})
 # =============================================================================
-
-class Register(generic.CreateView):
-    form_class = UserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'register.html'
-
+# =============================================================================
+# 
+# class Register(generic.CreateView):
+#     form_class = UserCreationForm
+#     success_url = reverse_lazy('login')
+#     template_name = 'register.html'
+# 
+# =============================================================================
 
 # =============================================================================
 # class Register(FormView):
