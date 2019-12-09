@@ -112,9 +112,14 @@
       <li class="navbar-right">
         <a href="https://lab-peers.com"><span class="glyphicon glyphicon-book"></span> LabPeers Home</a>
       </li>
-      <li class="navbar-right">
-        <a href="/accounts/signup"> Register</a>
-      </li>
+      {% if user.is_authenticated %}
+          <li class="navbar-right"><a href="/accounts/">{{user.username}}</a></li>
+          <li class="navbar-right"><a href="/accounts/logout"> Logout</a></li>
+      {% else %}
+          <li class="navbar-right"><a href="/accounts/signup"> Register</a></li>
+          <li class="navbar-right"><a href="/accounts/login"> Login</a></li>
+
+      {% endif %}
     </ul>
   </div>
 </nav>
