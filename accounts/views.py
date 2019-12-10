@@ -37,10 +37,10 @@ def SignUp(request):
 
 
 # =============================================================================
-# def logout_request(request):
-#     logout(request)
-#     messages.info(request, "Logged out successfully!")
-#     return redirect("home")
+def logout_request(request):
+    logout(request)
+    messages.info(request, "Logged out successfully!")
+    return redirect("home")
 # =============================================================================
 
     
