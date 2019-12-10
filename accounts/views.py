@@ -1,5 +1,5 @@
 # accounts/views.py
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import login, logout, authenticate
@@ -32,3 +32,15 @@ def SignUp(request):
                 
     form = UserCreationForm
     return render(request, 'signup.html', {"form":form})
+
+
+
+
+def logout_request(request):
+    logout(request)
+    messages.info(request, "Logged out successfully!")
+    return redirect("")
+
+    
+    
+
