@@ -3,6 +3,9 @@ from django.db import models
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 
+#Import so you can associate user and their data
+from django.conf import settings
+
 # Create your models here.
 # =============================================================================
 # class Greeting(models.Model):
@@ -11,6 +14,8 @@ from django.contrib.auth.models import User
 # =============================================================================
  
 class Graph_Data(models.Model):
+        user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, 
+                                 on_delete=models.CASCADE)
         graph_title = models.CharField(max_length=500)
         graph_xlabel = models.CharField(default='x-axis label',max_length=500)
         graph_ylabel = models.CharField(default='y-axis label',max_length=500)

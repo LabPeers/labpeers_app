@@ -32,8 +32,7 @@ from bokeh.models import ColumnDataSource, LinearColorMapper, ColorBar, BasicTic
 from bokeh.palettes import Viridis256
 from bokeh.transform import transform
 import numpy as np
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login, logout, authenticate
+
 
 #from bokeh.models import ColumnDataSource, ColorBar
 #from bokeh.palettes import Spectral6
@@ -43,7 +42,6 @@ from django.contrib.auth import login, logout, authenticate
 #from .models import Greeting 
 #from .models import Graph_Data
 from .forms import HomeForm
-from .compute import compute
 from django.contrib.auth.models import User
 
 
