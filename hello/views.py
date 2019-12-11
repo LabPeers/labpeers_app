@@ -141,7 +141,7 @@ class HomeView(TemplateView):
     def get(self,request):
         
         form = HomeForm()
-        users = User.objects.exclude(id=request.user.id)
+        #users = User.objects.exclude(id=request.user.id)
         plot = figure(plot_width=600, plot_height=600, title='Your title will go here')
         #script, div = components(plot, CDN)
         
@@ -159,9 +159,10 @@ class HomeView(TemplateView):
         table = DataTable(source=source1, columns=columns, width=400, height=400, editable=True)
         script, div = components({'plot': plot,'table': table})
      
-        
-        return render(request, self.template_name, {"users": users, "the_script": script, "the_div": div, 
+        return render(request, self.template_name, {"the_script": script, "the_div": div, 
                                                     "form": form})
+        #return render(request, self.template_name, {"users": users, "the_script": script, "the_div": div, 
+         #                                           "form": form})
     
     
     def post(self,request):
