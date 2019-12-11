@@ -168,7 +168,8 @@ class HomeView(TemplateView):
     def post(self,request):
     #if request.method == 'POST': # If the form has been submitted...
         if not request.user.is_authenticated:
-            raise Http404
+            #raise Http404
+            redirect("login")
         
         
         form = HomeForm(request.POST) # A form bound to the POST data
