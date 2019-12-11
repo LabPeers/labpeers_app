@@ -167,51 +167,49 @@ class HomeView(TemplateView):
     
     def post(self,request):
     #if request.method == 'POST': # If the form has been submitted...
-        if not request.user.is_authenticated:
+        if request.user.is_authenticated:
             #raise Http404
-            raise redirect("login")
         
-        
-        form = HomeForm(request.POST) # A form bound to the POST data
+            form = HomeForm(request.POST) # A form bound to the POST data
     
     
-        if form.is_valid():
+            if form.is_valid():
             
             #form.save()
-            instance=form.save(commit=False)
-            instance.user=request.user
-            instance.save()
+                instance=form.save(commit=False)
+                instance.user=request.user
+                instance.save()
             
-            mytitle=form.cleaned_data['graph_title']
-            myXlabel=form.cleaned_data['graph_xlabel']
-            myYlabel=form.cleaned_data['graph_ylabel']
+                mytitle=form.cleaned_data['graph_title']
+                myXlabel=form.cleaned_data['graph_xlabel']
+                myYlabel=form.cleaned_data['graph_ylabel']
             
-            myXdata=form.cleaned_data['myX']
-            myXlist=myXdata.split(",")
-            myYdata=form.cleaned_data['myY']
-            myYlist=myYdata.split(",")
-            myRdata=form.cleaned_data['myRadius']
-            myRlist=myRdata.split(",")
-            myRlist=np.array(myRlist, dtype=np.float32)
+                myXdata=form.cleaned_data['myX']
+                myXlist=myXdata.split(",")
+                myYdata=form.cleaned_data['myY']
+                myYlist=myYdata.split(",")
+                myRdata=form.cleaned_data['myRadius']
+                myRlist=myRdata.split(",")
+                myRlist=np.array(myRlist, dtype=np.float32)
 #            
             
             #scale = 10
-            d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
+                d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
 
-            df = pd.DataFrame(data = d)
-            source = ColumnDataSource(df)
-            plot = figure(plot_width=600, plot_height=600, title=mytitle, x_axis_label=myXlabel, y_axis_label=myYlabel)
+                df = pd.DataFrame(data = d)
+                source = ColumnDataSource(df)
+                plot = figure(plot_width=600, plot_height=600, title=mytitle, x_axis_label=myXlabel, y_axis_label=myYlabel)
 
-            color_mapper = LinearColorMapper(palette = Viridis256, low = min(df['myBubble']), 
+                color_mapper = LinearColorMapper(palette = Viridis256, low = min(df['myBubble']), 
                                              high = max(df['myBubble']))
             #color_mapper = LinearColorMapper(palette = Viridis256, low = min(myRlist), high = max(myRlist))
-            color_bar = ColorBar(color_mapper = color_mapper,
+                color_bar = ColorBar(color_mapper = color_mapper,
                                  location = (0, 0),
                                  ticker = BasicTicker())
-            plot.add_layout(color_bar, 'right')
-            plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble', legend = None, 
+                plot.add_layout(color_bar, 'right')
+                plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble', legend = None, 
                          fill_color = transform('myBubble', color_mapper), source = source)
-            plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
+                plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
 
 
 
@@ -232,22 +230,25 @@ class HomeView(TemplateView):
             
             #mytitle = Graph_title.objects.all()
  
-            form = HomeForm()
+                form = HomeForm()
             
             #form=HomeForm()
 
 ########### -----DATA TABLE----- ########### 
            
-            columns = [
-            TableColumn(field="myXlist", title="X-values", editor=DateEditor()),
-            TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
-            ]
-            table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
+                columns = [
+                        TableColumn(field="myXlist", title="X-values", editor=DateEditor()),
+                        TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
+                        ]
+                table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
 
-            script, div = components({'plot': plot,'table': table})
+                script, div = components({'plot': plot,'table': table})
             
-        return render(request, self.template_name, {"the_script": script, "the_div": div, 
+            return render(request, self.template_name, {"the_script": script, "the_div": div, 
                                                     "form": form})
+    
+        else:
+            return redirect("login")
         #return render(request, self.template_name, {"form": form})
 
             #print form.cleaned_data['my_form_field_name']
