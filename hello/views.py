@@ -21,9 +21,8 @@ from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
 from django.views import generic
 
-from django.shortcuts import render, redirect 
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from bokeh.plotting import figure , curdoc , show , output_file
 from bokeh.resources import CDN
 from bokeh.embed import components
@@ -167,13 +166,20 @@ class HomeView(TemplateView):
     
     def post(self,request):
     #if request.method == 'POST': # If the form has been submitted...
+        if not request.user.is_authenticated():
+            raise Http404
+        
+        
         form = HomeForm(request.POST) # A form bound to the POST data
     
     
         if form.is_valid():
             
             #form.save()
-            form.save()
+            instance=form.save(commit=False)
+            instance.user=request.user
+            instance.save()
+            
             mytitle=form.cleaned_data['graph_title']
             myXlabel=form.cleaned_data['graph_xlabel']
             myYlabel=form.cleaned_data['graph_ylabel']
