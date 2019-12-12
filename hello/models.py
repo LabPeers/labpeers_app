@@ -16,7 +16,8 @@ from django.conf import settings
 class Graph_Data(models.Model):
         user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, 
                                  on_delete=models.CASCADE)
-        graph_title = models.CharField(max_length=500)
+        graph_filename=models.CharField(default='Your_file_name',max_length=500, primary_key=True)
+        graph_title = models.CharField(default='Your graph title',max_length=500)
         graph_xlabel = models.CharField(default='x-axis label',max_length=500)
         graph_ylabel = models.CharField(default='y-axis label',max_length=500)
 #        myX = ArrayField(models.FloatField())
