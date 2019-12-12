@@ -179,7 +179,7 @@ class HomeView(TemplateView):
                 instance=form.save(commit=False)
                 instance.user=request.user
                 instance.save()
-                graph_filename=form.cleaned_data['graph_filename']
+              #  graph_filename=form.cleaned_data['graph_filename']
                 mytitle=form.cleaned_data['graph_title']
                 myXlabel=form.cleaned_data['graph_xlabel']
                 myYlabel=form.cleaned_data['graph_ylabel']
@@ -244,8 +244,7 @@ class HomeView(TemplateView):
 
                 script, div = components({'plot': plot,'table': table})
             
-            return render(request, self.template_name, {"the_script": script, "the_div": div, 
-                                                    "form": form, "graph_filename": graph_filename})
+            return render(request, self.template_name, {"the_script": script, "the_div": div, "form": form})
     
         else:
             return redirect("login")
