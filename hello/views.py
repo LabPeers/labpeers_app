@@ -230,7 +230,7 @@ class HomeView(TemplateView):
             
             #mytitle = Graph_title.objects.all()
  
-                #form = HomeForm()
+                form = HomeForm()
             
             #form=HomeForm()
 
