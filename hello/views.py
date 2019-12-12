@@ -174,7 +174,6 @@ class HomeView(TemplateView):
     
     
             if form.is_valid():
-                print(form.cleaned_data)
             
             #form.save()
                 instance=form.save(commit=False)
@@ -231,7 +230,7 @@ class HomeView(TemplateView):
             
             #mytitle = Graph_title.objects.all()
  
-                form = HomeForm()
+                #form = HomeForm()
             
             #form=HomeForm()
 
