@@ -17,7 +17,8 @@
     <h5> {{ user.username }}, enter your Data here: </h5>  
     <table>
       <tr>
-        <th>Filename for your Project</th>
+        <th>Filename for your Project
+        <br> <i>Please enter a new filename each time you resubmit your data!</i></th>
         <td>    <form method="post">
                 {% csrf_token %}
                 {{ form.graph_filename }}
