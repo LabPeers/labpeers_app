@@ -246,6 +246,10 @@ class HomeView(TemplateView):
             
                 return render(request, self.template_name, {"the_script": script, "the_div": div, 
                                                     "form": form})
+            
+            else:
+                return redirect("bubblechart")
+                
     
         else:
             return redirect("login")
