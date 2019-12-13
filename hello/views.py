@@ -244,7 +244,7 @@ class HomeView(TemplateView):
 
                 script, div = components({'plot': plot,'table': table})
             
-                return render(request, self.template_name, {"the_script": script, "the_div": div, "form": form})
+            return render(request, self.template_name, {"the_script": script, "the_div": div, "form": form})
     
         else:
             return redirect("login")
