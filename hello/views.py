@@ -230,7 +230,7 @@ class HomeView(TemplateView):
             
             #mytitle = Graph_title.objects.all()
  
-                form = HomeForm()
+                form = HomeForm(request.POST)
             
             #form=HomeForm()
 
@@ -244,7 +244,7 @@ class HomeView(TemplateView):
 
                 script, div = components({'plot': plot,'table': table})
             
-            return render(request, self.template_name, {"the_script": script, "the_div": div, 
+                return render(request, self.template_name, {"the_script": script, "the_div": div, 
                                                     "form": form})
     
         else:
