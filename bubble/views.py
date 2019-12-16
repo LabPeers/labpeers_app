@@ -75,7 +75,7 @@ class Projects(TemplateView):
     template_name = './projects.html'
     
     def get(self, request):
-        graph_data=Graph_Data.objects.all(user=request.user)
+        graph_data=Graph_Data.objects.filter(user=request.user)
        # myfilename=graph_data.graph_filename
        # mydate=graph_data.myDate
         return render(request, self.template_name, 
