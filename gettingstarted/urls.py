@@ -3,10 +3,10 @@ from django.urls import path, include
 
 admin.autodiscover()
 
-from hello.views import HomeView
-from hello.views import HomeReal
+from bubble.views import HomeView
+from bubble.views import HomeReal
 #from hello.views import Register
-from hello.views import Profile
+from bubble.views import Profile
 #from hello.views import HomeView_details
 #from accounts.views import SignUp
 #from . import views
