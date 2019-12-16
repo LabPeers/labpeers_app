@@ -5,7 +5,11 @@
 
 <h2>Choose your project:</h2>
 
-{{ form.graph_filename(pk=1)}}
+{% for graph_filename in form %}
+
+<p> {{ form.graph_filename(pk=1)}} </p>
+
+{% endfor %}
 
 
 

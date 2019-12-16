@@ -24,6 +24,7 @@ class Graph_Data(models.Model):
         myX = models.CharField(max_length=500)
         myY = models.CharField(max_length=500)
         myRadius = models.CharField(max_length=500)
+        myDate = models.DateTimeField(auto_now=True)
 
         #user = models.ForeignKey(User)
 

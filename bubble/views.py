@@ -39,7 +39,7 @@ import numpy as np
 
 
 #from .models import Greeting 
-#from .models import Graph_Data
+from .models import Graph_Data
 from .forms import HomeForm
 from django.contrib.auth.models import User
 
@@ -73,6 +73,9 @@ class Profile(TemplateView):
 
 class Projects(TemplateView):
     template_name = './projects.html'
+    
+#    def get(self, request):
+        
 
 
 
