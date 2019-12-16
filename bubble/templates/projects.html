@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<h2>Choose your project:</h2>
+
+{{ form.graph_filename(pk=1)}}
+
+
+
+{% endblock %}
+
+<!-- 
+    <div class="col-md-8">
+        <h2>Title</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.graph_title }}
+            <br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.myX }}
+            <br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.myY }}
+            <br>  
+        <form method="post">
+            {% csrf_token %}
+            {{ form.myRadius }}
+            <br>   
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+ -->    
+    
+
+
+<!-- 
+ <div class="container">
+    <div class="col-md-8">
+        <h2>Data</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.myX }}
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+ </div>
+ -->
+ 
+ 
+<!-- 
+ <div class="container">
+    <div class="col-md-8">
+        <h2>Data</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.myX }}
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+ </div>
+
+-->
+
+<!--
+    
+<form method="post" action="">{% csrf_token %}
+    Hello, World! Enter and ArrayField here {{ form }}
+    <input type="submit" value="equals" />
+</form>  
+ --> 
+ 

@@ -68,7 +68,11 @@ class HomeReal(TemplateView):
     
 
 class Profile(TemplateView):
-    template_name = './profile.html'    
+    template_name = './profile.html'  
+    
+
+class Projects(TemplateView):
+    template_name = './projects.html'
 
 
 

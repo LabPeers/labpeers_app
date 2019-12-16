@@ -30,6 +30,7 @@ urlpatterns = [
     path("accounts/profile/",Profile.as_view(), name='profile'),
     path("", HomeReal.as_view(), name='home'),
     path("bubblechart/", HomeView.as_view(), name='bubblechart'),
+    path("projects/", Projects.as_view(), name='projects')
  #   path('bubblechart/<graph_filename>/', HomeView_details.as_view(), name='your_project'),
  #   path("accounts/signup/", views.SignUp, name='signup'),
  #   path("db/", hello.views.db, name="db"),

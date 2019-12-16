@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "bubble",
-    "accounts.apps.AccountsConfig", # new
+    "accounts.apps.AccountsConfig",
+    "floppyforms",# new
 ]
 
 MIDDLEWARE = [
