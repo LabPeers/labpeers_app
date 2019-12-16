@@ -7,6 +7,7 @@ from bubble.views import HomeView
 from bubble.views import HomeReal
 #from hello.views import Register
 from bubble.views import Profile
+from bubble.views import Projects
 #from hello.views import HomeView_details
 #from accounts.views import SignUp
 #from . import views
