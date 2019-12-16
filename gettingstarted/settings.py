@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "bubble",
     "accounts.apps.AccountsConfig",
-    "floppyforms",# new
 ]
 
 MIDDLEWARE = [
