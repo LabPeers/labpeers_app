@@ -74,7 +74,12 @@ class Profile(TemplateView):
 class Projects(TemplateView):
     template_name = './projects.html'
     
-#    def get(self, request):
+    def get(self, request):
+        graph_data=Graph_Data.objects.all()
+       # myfilename=graph_data.graph_filename
+       # mydate=graph_data.myDate
+        return render(request, self.template_name, 
+                      {'graph_data' : graph_data})
         
 
 

@@ -5,9 +5,10 @@
 
 <h2>Choose your project:</h2>
 
-{% for graph_filename in form %}
+{% for myvar in graph_data %}
 
-<p> {{ form.graph_filename(pk=1)}} </p>
+<h3> {{ myvar.graph_filename }} </h3>
+<p> {{ myvar.date }} </p>
 
 {% endfor %}
 
