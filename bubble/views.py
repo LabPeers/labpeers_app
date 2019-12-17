@@ -229,7 +229,7 @@ class DetailView(TemplateView):
     template_name = './bubblechart.html' 
     
     
-    def get(self,request):
+    def get(self,request,pk):
         
         graph_data=Graph_Data.objects.filter(self.kwargs['pk'])
         
