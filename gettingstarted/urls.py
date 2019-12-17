@@ -28,7 +28,7 @@ urlpatterns = [
     path("", include('accounts.urls')), # new
     #path("hello/", include('gettingstarted.urls')),
     path("accounts/", include('django.contrib.auth.urls')),
-    path("accounts/profile/",Profile.as_view(), name='profile'),
+    path("accounts/",Profile.as_view(), name='profile'),
     path("", HomeReal.as_view(), name='home'),
     path("bubblechart/", HomeView.as_view(), name='bubblechart'),
     path("projects/", Projects.as_view(), name='projects')
