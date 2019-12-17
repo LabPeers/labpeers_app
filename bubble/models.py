@@ -38,7 +38,7 @@ class Graph_Data(models.Model):
        
         def save(self, *args, **kwargs): # new
            if not self.slug:
-               self.slug = slugify(self.title)
+               self.slug = slugify(self.graph_filename)
            return super().save(*args, **kwargs)
         
 
