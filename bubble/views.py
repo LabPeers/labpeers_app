@@ -233,15 +233,15 @@ class DetailView(TemplateView):
         
         graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
         
-        form = HomeForm()
+        form = HomeForm(graph_data)
         #users = User.objects.exclude(id=request.user.id)
         plot = figure(plot_width=600, plot_height=600, title='Your title will go here')
         #script, div = components(plot, CDN)
         
         ########### -----DATA TABLE----- ########### 
-        myXlist=graph_data.myX
-        myYlist=graph_data.myY
-        myRlist=graph_data.myRadius
+        myXlist=[]#graph_data.myX
+        myYlist=[]#graph_data.myY
+        myRlist=[]#graph_data.myRadius
         d1 = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
         df1 = pd.DataFrame(data = d1)
         source1=ColumnDataSource(df1)
