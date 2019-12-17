@@ -8,6 +8,7 @@ from bubble.views import HomeReal
 #from hello.views import Register
 from bubble.views import Profile
 from bubble.views import Projects
+from bubble.views import DetailView
 #from hello.views import HomeView_details
 #from accounts.views import SignUp
 #from . import views
@@ -31,6 +32,7 @@ urlpatterns = [
     path("accounts/",Profile.as_view(), name='profile'),
     path("", HomeReal.as_view(), name='home'),
     path("bubblechart/", HomeView.as_view(), name='bubblechart'),
+    path("bubblechart/<slug:slug>", DetailView.as_view(), name='bubblechart_project'),
     path("projects/", Projects.as_view(), name='projects')
  #   path('bubblechart/<graph_filename>/', HomeView_details.as_view(), name='your_project'),
  #   path("accounts/signup/", views.SignUp, name='signup'),

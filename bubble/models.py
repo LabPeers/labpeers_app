@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 
 #Import so you can associate user and their data
 from django.conf import settings
+from django.urls import reverse
+from django.template.defaultfilters import slugify # new
 
 # Create your models here.
 # =============================================================================
@@ -25,6 +27,20 @@ class Graph_Data(models.Model):
         myY = models.CharField(max_length=500)
         myRadius = models.CharField(max_length=500)
         myDate = models.DateTimeField(auto_now=True)
+        slug=models.SlugField(default='new',null=False, unique=True)
+        
+        
+        def __str__(self):
+            return self.graph_filename
+
+        def get_absolute_url(self):
+           return reverse('bubblechart_project', kwargs={'slug': self.slug})
+       
+        def save(self, *args, **kwargs): # new
+           if not self.slug:
+               self.slug = slugify(self.title)
+           return super().save(*args, **kwargs)
+        
 
         #user = models.ForeignKey(User)
 

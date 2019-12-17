@@ -61,8 +61,6 @@ from bokeh.models.widgets import (
 from bokeh.models.layouts import WidgetBox, Column
 ########
 
-from slugify import slugify
-
 
 
 class HomeReal(TemplateView):
@@ -132,9 +130,7 @@ class HomeView(TemplateView):
                 instance.user=request.user
                 instance.save()
                 
-                myfilename=form.cleaned_data['graph_filename']
-                myslug=slugify(myfilename)
-            
+           #     myfilename=form.cleaned_data['graph_filename']    
                 mytitle=form.cleaned_data['graph_title']
                 myXlabel=form.cleaned_data['graph_xlabel']
                 myYlabel=form.cleaned_data['graph_ylabel']
@@ -220,6 +216,15 @@ class HomeView(TemplateView):
 #        plot = figure(plot_width=400, plot_height=400, title="Your title will go here2")
 #        script, div = components(plot, CDN)
     
+
+
+
+    
+class DetailView(TemplateView):
+    template_name = './bubblechart.html'     
+
+
+
 
 
 

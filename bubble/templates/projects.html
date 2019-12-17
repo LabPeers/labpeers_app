@@ -7,16 +7,18 @@
 
 {% for myvar in graph_data %}
 
-<h3> {{ myvar.graph_filename }} </h3> 
-<a type="button" class="btn btn-lg btn-default" href="/bubblechart/<int:pk>">
+  <ul>
+
+<li> <p>{{ myvar.graph_filename }}</p>
+<a type="button" class="btn btn-lg btn-default" href={{ article.get_absolute_url }}>
 <span class="glyphicon glyphicon-edit"></span></a>
 
 <a type="button" class="btn btn-lg btn-default" href="/projects">
 <span class="glyphicon glyphicon-trash"></span></a>
 
-<p> {{ myvar.myDate }} </p>
-<p> {{ myvar.user }} </p>
-
+<p>{{ myvar.myDate }}, {{ myvar.user }}</p>
+</li>
+</ul>
 {% endfor %}
 
 
