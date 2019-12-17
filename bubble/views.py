@@ -225,7 +225,112 @@ class HomeView(TemplateView):
     
 class DetailView(TemplateView):
     template_name = './bubblechart.html'     
-
+    
+    template_name = './bubblechart.html' 
+    
+    
+    def get(self,request):
+        
+        graph_data=Graph_Data.objects.filter(self.kwargs['pk'])
+        
+        form = HomeForm()
+        #users = User.objects.exclude(id=request.user.id)
+        plot = figure(plot_width=600, plot_height=600, title='Your title will go here')
+        #script, div = components(plot, CDN)
+        
+        ########### -----DATA TABLE----- ########### 
+        myXlist=graph_data.myX
+        myYlist=graph_data.myY
+        myRlist=graph_data.myRadius
+        d1 = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
+        df1 = pd.DataFrame(data = d1)
+        source1=ColumnDataSource(df1)
+        columns = [
+        TableColumn(field="myXlist", title="X-values", editor=DateEditor()),
+        TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
+        ]
+        table = DataTable(source=source1, columns=columns, width=400, height=400, editable=True)
+        script, div = components({'plot': plot,'table': table})
+     
+        return render(request, self.template_name, {"the_script": script, "the_div": div, 
+                                                    "form": form})
+        #return render(request, self.template_name, {"users": users, "the_script": script, "the_div": div, 
+         #                                           "form": form})
+    
+    
+#    def post(self,request):
+#    #if request.method == 'POST': # If the form has been submitted...
+#        if request.user.is_authenticated:
+#            #raise Http404
+#        
+#            form = HomeForm(request.POST) # A form bound to the POST data
+#    
+#    
+#            if form.is_valid():
+#            
+#            #form.save()
+#                instance=form.save(commit=False)
+#                instance.user=request.user
+#                instance.save()
+#                
+##                myfilename=form.cleaned_data['graph_filename']
+##                myslug=slugify(myfilename)
+#                mytitle=form.cleaned_data['graph_title']
+#                myXlabel=form.cleaned_data['graph_xlabel']
+#                myYlabel=form.cleaned_data['graph_ylabel']
+#            
+#                myXdata=form.cleaned_data['myX']
+#                myXlist=myXdata.split(",")
+#                myYdata=form.cleaned_data['myY']
+#                myYlist=myYdata.split(",")
+#                myRdata=form.cleaned_data['myRadius']
+#                myRlist=myRdata.split(",")
+#                myRlist=np.array(myRlist, dtype=np.float32)
+##            
+#            
+#            #scale = 10
+#                d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
+#
+#                df = pd.DataFrame(data = d)
+#                source = ColumnDataSource(df)
+#                plot = figure(plot_width=600, plot_height=600, title=mytitle, 
+#                              x_axis_label=myXlabel, y_axis_label=myYlabel)
+#
+#                color_mapper = LinearColorMapper(palette = Viridis256, low = min(df['myBubble']), 
+#                                             high = max(df['myBubble']))
+#            #color_mapper = LinearColorMapper(palette = Viridis256, low = min(myRlist), high = max(myRlist))
+#                color_bar = ColorBar(color_mapper = color_mapper,
+#                                 location = (0, 0),
+#                                 ticker = BasicTicker())
+#                plot.add_layout(color_bar, 'right')
+#                plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble', legend = None, 
+#                         fill_color = transform('myBubble', color_mapper), source = source)
+#                plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
+#
+#
+# 
+#                form = HomeForm(request.POST)
+#            
+#
+############ -----DATA TABLE----- ########### 
+#           
+#                columns = [
+#                        TableColumn(field="myXlist", title="X-values", editor=DateEditor()),
+#                        TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
+#                        ]
+#                table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
+#
+#                script, div = components({'plot': plot,'table': table})
+#            
+#                return render(request, self.template_name, {"the_script": script, "the_div": div, 
+#                                                    "form": form})
+#            
+#            else:
+#                return redirect("bubblechart")
+#                
+#    
+#        else:
+#            return redirect("login")
 
 
 
