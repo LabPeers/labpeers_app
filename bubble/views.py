@@ -61,6 +61,8 @@ from bokeh.models.widgets import (
 from bokeh.models.layouts import WidgetBox, Column
 ########
 
+from django.template.defaultfilters import slugify
+
 
 
 class HomeReal(TemplateView):
@@ -130,7 +132,8 @@ class HomeView(TemplateView):
                 instance.user=request.user
                 instance.save()
                 
-           #     myfilename=form.cleaned_data['graph_filename']    
+#                myfilename=form.cleaned_data['graph_filename']
+#                myslug=slugify(myfilename)
                 mytitle=form.cleaned_data['graph_title']
                 myXlabel=form.cleaned_data['graph_xlabel']
                 myYlabel=form.cleaned_data['graph_ylabel']
