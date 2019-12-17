@@ -231,7 +231,7 @@ class DetailView(TemplateView):
     
     def get(self,request,pk):
         
-        graph_data=Graph_Data.objects.filter(self.kwargs['pk'])
+        graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
         
         form = HomeForm()
         #users = User.objects.exclude(id=request.user.id)
