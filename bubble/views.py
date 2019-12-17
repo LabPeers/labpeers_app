@@ -232,28 +232,29 @@ class DetailView(TemplateView):
     def get(self,request,pk):
         
         graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
+        return redirect('home')
         
-        form = HomeForm(graph_data)
-        #users = User.objects.exclude(id=request.user.id)
-        plot = figure(plot_width=600, plot_height=600, title='Your title will go here')
-        #script, div = components(plot, CDN)
-        
-        ########### -----DATA TABLE----- ########### 
-        myXlist=[]#graph_data.myX
-        myYlist=[]#graph_data.myY
-        myRlist=[]#graph_data.myRadius
-        d1 = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
-        df1 = pd.DataFrame(data = d1)
-        source1=ColumnDataSource(df1)
-        columns = [
-        TableColumn(field="myXlist", title="X-values", editor=DateEditor()),
-        TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
-        ]
-        table = DataTable(source=source1, columns=columns, width=400, height=400, editable=True)
-        script, div = components({'plot': plot,'table': table})
-     
-        return render(request, self.template_name, {"the_script": script, "the_div": div, 
-                                                    "form": form})
+#        form = HomeForm(graph_data)
+#        #users = User.objects.exclude(id=request.user.id)
+#        plot = figure(plot_width=600, plot_height=600, title='Your title will go here')
+#        #script, div = components(plot, CDN)
+#        
+#        ########### -----DATA TABLE----- ########### 
+#        myXlist=[]#graph_data.myX
+#        myYlist=[]#graph_data.myY
+#        myRlist=[]#graph_data.myRadius
+#        d1 = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
+#        df1 = pd.DataFrame(data = d1)
+#        source1=ColumnDataSource(df1)
+#        columns = [
+#        TableColumn(field="myXlist", title="X-values", editor=DateEditor()),
+#        TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
+#        ]
+#        table = DataTable(source=source1, columns=columns, width=400, height=400, editable=True)
+#        script, div = components({'plot': plot,'table': table})
+#     
+#        return render(request, self.template_name, {"the_script": script, "the_div": div, 
+#                                                    "form": form})
         #return render(request, self.template_name, {"users": users, "the_script": script, "the_div": div, 
          #                                           "form": form})
     
