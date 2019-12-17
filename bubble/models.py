@@ -28,14 +28,14 @@ class Graph_Data(models.Model):
         myRadius = models.CharField(max_length=500)
         myDate = models.DateTimeField(auto_now=True)
        # slug=models.SlugField(default='new',null=False, unique=True)
-        slug=slugify(graph_filename)
-        
-        
-        def __str__(self):
-            return self.graph_filename
 
-        def get_absolute_url(self):
-           return reverse('bubblechart_project', kwargs={'slug': self.slug})
+        
+#        
+#        def __str__(self):
+#            return self.graph_filename
+#
+#        def get_absolute_url(self):
+#           return reverse('bubblechart_project', kwargs={'slug': self.slug})
        
 #        def save(self, *args, **kwargs): # new
 #           if not self.slug:

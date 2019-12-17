@@ -18,7 +18,7 @@ class HomeForm(forms.ModelForm):
     myX = forms.CharField(widget=forms.TextInput())
     myY = forms.CharField(widget=forms.TextInput())
     myRadius= forms.CharField(widget=forms.TextInput())
-    slug=forms.SlugField(widget=forms.TextInput())
+   # slug=forms.SlugField(widget=forms.TextInput())
     
 
     class Meta:
