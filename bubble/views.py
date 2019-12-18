@@ -63,9 +63,9 @@ from bokeh.models.layouts import WidgetBox, Column
 
 from django.template.defaultfilters import slugify
 
-myXlist=[]
-myYlist=[]
-myRlist=[]
+myXlist=[1,2]
+myYlist=[3,4]
+myRlist=[10,50]
 mytitle='Your title will go here'
 myXlabel='x-axis label'
 myYlabel='y-axis label'
