@@ -93,8 +93,9 @@ def bubbleplot(request,**kwargs):
     plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
     
     script, div = components({'plot': plot})
+    plotdict={"the_script": script, "the_div": div}
     
-    return ({"the_script": script, "the_div": div})
+    return plotdict
     
 
 
