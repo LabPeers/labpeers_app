@@ -226,8 +226,6 @@ class HomeView(TemplateView):
 class DetailView(TemplateView):
     template_name = './bubblechart.html'     
     
-    template_name = './bubblechart.html' 
-    
     
     def get(self,request,pk):
         
