@@ -73,7 +73,7 @@ myYlabel='y-axis label'
 
 
 
-def bubbleplot(request,**kwargs):
+def bubbleplot(**kwargs):
     d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
 
     df = pd.DataFrame(data = d)
@@ -134,7 +134,7 @@ class HomeView(TemplateView):
         
         ########### -----DATA TABLE----- ########### 
         
-        plotdict=bubbleplot
+        plotdict=bubbleplot()
 #        x = plotdict["the_script"]
 #        y = plotdict["the_div"]
      #  script, div = components({'plot': plot})
