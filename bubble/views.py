@@ -73,7 +73,7 @@ myYlabel='y-axis label'
 
 
 
-def bubbleplot(**kwargs):
+def bubbleplot():
     d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
 
     df = pd.DataFrame(data = d)
