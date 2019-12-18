@@ -138,7 +138,7 @@ class HomeView(TemplateView):
 #        x = plotdict["the_script"]
 #        y = plotdict["the_div"]
      #  script, div = components({'plot': plot})
-        dict2={"form",form}
+        dict2={"form":form}
         dict3={**plotdict , **dict2}
         
      
