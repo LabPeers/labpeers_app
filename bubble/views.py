@@ -92,7 +92,9 @@ def bubbleplot(request,**kwargs):
                  fill_color = transform('myBubble', color_mapper), source = source)
     plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
     
-    return (plot,)
+    script, div = components({'plot': plot})
+    
+    return ({"the_script": script, "the_div": div})
     
 
 
@@ -131,8 +133,8 @@ class HomeView(TemplateView):
         
         ########### -----DATA TABLE----- ########### 
         
-        plot=bubbleplot
-        script, div = components({'plot': plot})
+        {"the_script": script, "the_div": div}=bubbleplot
+     #  script, div = components({'plot': plot})
      
         return render(request, self.template_name, {"the_script": script, "the_div": div, 
                                                     "form": form})
