@@ -133,11 +133,14 @@ class HomeView(TemplateView):
         
         ########### -----DATA TABLE----- ########### 
         
-        {"the_script": script, "the_div": div}=bubbleplot
+        plotdict=bubbleplot
+#        x = plotdict["the_script"]
+#        y = plotdict["the_div"]
      #  script, div = components({'plot': plot})
+        plotdict["form"]=form
+        
      
-        return render(request, self.template_name, {"the_script": script, "the_div": div, 
-                                                    "form": form})
+        return render(request, self.template_name, plotdict)
    
     
     
