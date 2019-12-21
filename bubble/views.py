@@ -177,23 +177,10 @@ class HomeView(TemplateView):
 #            
             
             #scale = 10
-                d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
-
-                df = pd.DataFrame(data = d)
-                source = ColumnDataSource(df)
-                plot = figure(plot_width=600, plot_height=600, title=mytitle, 
-                              x_axis_label=myXlabel, y_axis_label=myYlabel)
-
-                color_mapper = LinearColorMapper(palette = Viridis256, low = min(df['myBubble']), 
-                                             high = max(df['myBubble']))
-            #color_mapper = LinearColorMapper(palette = Viridis256, low = min(myRlist), high = max(myRlist))
-                color_bar = ColorBar(color_mapper = color_mapper,
-                                 location = (0, 0),
-                                 ticker = BasicTicker())
-                plot.add_layout(color_bar, 'right')
-                plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble', legend = None, 
-                         fill_color = transform('myBubble', color_mapper), source = source)
-                plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
+                plotdict=bubbleplot()
+                dict2={"form":form}
+                dict3={**plotdict , **dict2}
+                
 
 
 
@@ -220,16 +207,15 @@ class HomeView(TemplateView):
 
 ########### -----DATA TABLE----- ########### 
            
-                columns = [
-                        TableColumn(field="myXlist", title="X-values", editor=DateEditor()),
-                        TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
-                        ]
-                table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
-
-                script, div = components({'plot': plot,'table': table})
+#                columns = [
+#                        TableColumn(field="myXlist", title="X-values", editor=DateEditor()),
+#                        TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
+#                        ]
+#                table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
+#
+#                script, div = components({'plot': plot,'table': table})
             
-                return render(request, self.template_name, {"the_script": script, "the_div": div, 
-                                                    "form": form})
+                return render(request, self.template_name, dict3)
             
             else:
                 return redirect("bubblechart")
