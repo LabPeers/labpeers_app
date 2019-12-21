@@ -121,7 +121,7 @@ class HomeView(TemplateView):
     template_name = './bubblechart.html' 
     
     
-    def get(self,request):
+    def get(self,request,pk):
         
         myXlist=[1,2]
         myYlist=[3,4]
@@ -168,7 +168,7 @@ class HomeView(TemplateView):
                 filename_list=graph_data.values_list('graph_filename')
                 if myfilename in filename_list:
                     x=filename_list(myfilename)
-                    graph_data.objects.filter(pk=x).delete()
+                    graph_data.objects.filter(x).delete()
 
                 
                 instance=form.save(commit=False)
