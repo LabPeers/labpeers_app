@@ -235,7 +235,7 @@ class DetailView(TemplateView):
         
         graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
         
-        form=graph_data
+        form=HomeForm(initial={graph_data})
                 
         mytitle=graph_data.graph_title
         myXlabel=graph_data.graph_xlabel
