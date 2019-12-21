@@ -236,25 +236,7 @@ class DetailView(TemplateView):
         graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
         
         form=graph_data
-        
-#        instance=form.save(commit=False)
-#        instance.user=request.user
-#        instance.save()
-#                
-##                myfilename=form.cleaned_data['graph_filename']
-##                myslug=slugify(myfilename)
-#        mytitle=form.cleaned_data['graph_title']
-#        myXlabel=form.cleaned_data['graph_xlabel']
-#        myYlabel=form.cleaned_data['graph_ylabel']
-#            
-#        myXdata=form.cleaned_data['myX']
-#        myXlist=myXdata.split(",")
-#        myYdata=form.cleaned_data['myY']
-#        myYlist=myYdata.split(",")
-#        myRdata=form.cleaned_data['myRadius']
-#        myRlist=myRdata.split(",")
-#        myRlist=np.array(myRlist, dtype=np.float32)
-        
+                
         mytitle=graph_data.graph_title
         myXlabel=graph_data.graph_xlabel
         myYlabel=graph_data.graph_ylabel
@@ -279,5 +261,67 @@ class DetailView(TemplateView):
 
             
         return render(request, self.template_name, dict3)
+   
+    
+    
+    def post(self,request):
+    #if request.method == 'POST': # If the form has been submitted...
+        if request.user.is_authenticated:
+            #raise Http404
+        
+            form = HomeForm(request.POST) # A form bound to the POST data
+    
+    
+            if form.is_valid():
+            
+            #form.save()
+                instance=form.save(commit=False)
+                instance.user=request.user
+                instance.save()
+                
+#                myfilename=form.cleaned_data['graph_filename']
+#                myslug=slugify(myfilename)
+                mytitle=form.cleaned_data['graph_title']
+                myXlabel=form.cleaned_data['graph_xlabel']
+                myYlabel=form.cleaned_data['graph_ylabel']
+            
+                myXdata=form.cleaned_data['myX']
+                myXlist=myXdata.split(",")
+                myYdata=form.cleaned_data['myY']
+                myYlist=myYdata.split(",")
+                myRdata=form.cleaned_data['myRadius']
+                myRlist=myRdata.split(",")
+                myRlist=np.array(myRlist, dtype=np.float32)
+#            
+            
+            #scale = 10
+                plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
+                dict2={"form":form}
+                dict3={**plotdict , **dict2}
+                
+
+ 
+                form = HomeForm(request.POST)
+            
+            #form=HomeForm()
+
+########### -----DATA TABLE----- ########### 
+           
+#                columns = [
+#                        TableColumn(field="myXlist", title="X-values", editor=DateEditor()),
+#                        TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
+#                        ]
+#                table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
+#
+#                script, div = components({'plot': plot,'table': table})
+            
+                return render(request, self.template_name, dict3)
+            
+            else:
+                return redirect("bubblechart")
+                
+    
+        else:
+            return redirect("login")
                 
   
