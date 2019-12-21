@@ -167,8 +167,10 @@ class HomeView(TemplateView):
                 graph_data=Graph_Data.objects.filter(user=request.user)
                 filename_list=graph_data.values_list('graph_filename')
                 print('HELLO')
+                print(filename_list)
+                print(myfilename)
                 if myfilename in filename_list:
-                    print(myfilename)
+                    print('HELLO2')
                     x=filename_list(myfilename)
                     return redirect('home')
 #                    n=x-1
