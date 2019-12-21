@@ -61,7 +61,7 @@ from bokeh.models.widgets import (
 from bokeh.models.layouts import WidgetBox, Column
 ########
 
-from django.template.defaultfilters import slugify
+#from django.template.defaultfilters import slugify
 
 
 
@@ -151,7 +151,7 @@ class HomeView(TemplateView):
    
     
     
-    def post(self,request):
+    def post(self,request,pk):
     #if request.method == 'POST': # If the form has been submitted...
         if request.user.is_authenticated:
             #raise Http404
@@ -162,6 +162,15 @@ class HomeView(TemplateView):
             if form.is_valid():
             
             #form.save()
+                #Check if filename already exists!!
+                myfilename=form.cleaned_data['graph_filename']
+                graph_data=Graph_Data.objects.filter(user=request.user)
+                filename_list=graph_data.values_list('graph_filename')
+                if myfilename in filename_list:
+                    x=filename_list(myfilename)
+                    del graph_data(x)
+
+                
                 instance=form.save(commit=False)
                 instance.user=request.user
                 instance.save()
