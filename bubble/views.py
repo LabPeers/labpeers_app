@@ -166,12 +166,14 @@ class HomeView(TemplateView):
                 myfilename=form.cleaned_data['graph_filename']
                 graph_data=Graph_Data.objects.filter(user=request.user)
                 filename_list=graph_data.values_list('graph_filename',flat=True)
+                filename_list2=list(filename_list)
                 print('HELLO')
                 print(filename_list)
+                print(filename_list2)
                 print(myfilename)
                 if myfilename in filename_list:
                     print('HELLO2')
-                    x=filename_list(myfilename)
+                    x=filename_list2(myfilename)
                     return redirect('home')
 #                    n=x-1
 #                    data_row_old=Graph_Data.objects.raw('SELECT * FROM bubble_graph_data LIMIT (%s,),1' (n))
