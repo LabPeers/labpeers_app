@@ -174,8 +174,7 @@ class HomeView(TemplateView):
                 if myfilename in filename_list:
                     print('HELLO2')
                     x=filename_list2.index(myfilename)
-                    n=x-1
-                    data_row_old=Graph_Data.objects.raw('SELECT * FROM bubble_graph_data LIMIT (%s,),1' (n))
+                    data_row_old=graph_data.objects.get(pk=x)
                     data_row_old.delete()
                     print('Deleted')
 
