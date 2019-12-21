@@ -165,7 +165,7 @@ class HomeView(TemplateView):
                 #Avoid rows with same filename!!
                 myfilename=form.cleaned_data['graph_filename']
                 graph_data=Graph_Data.objects.filter(user=request.user)
-                filename_list=graph_data.values_list('graph_filename')
+                filename_list=graph_data.values_list('graph_filename',flat=True)
                 print('HELLO')
                 print(filename_list)
                 print(myfilename)
