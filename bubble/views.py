@@ -173,7 +173,7 @@ class HomeView(TemplateView):
                 print(myfilename)
                 if myfilename in filename_list:
                     print('HELLO2')
-                    x=filename_list2(myfilename)
+                    x=filename_list2.index(myfilename)
                     return redirect('home')
 #                    n=x-1
 #                    data_row_old=Graph_Data.objects.raw('SELECT * FROM bubble_graph_data LIMIT (%s,),1' (n))
