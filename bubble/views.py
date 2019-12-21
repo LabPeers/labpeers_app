@@ -268,8 +268,8 @@ class DetailView(TemplateView):
     #if request.method == 'POST': # If the form has been submitted...
         if request.user.is_authenticated:
             #raise Http404
-        
-            form = HomeForm(request.POST) # A form bound to the POST data
+            graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
+            form = HomeForm(initial={graph_data}) # A form bound to the POST data
     
     
             if form.is_valid():
