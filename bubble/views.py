@@ -264,7 +264,7 @@ class DetailView(TemplateView):
    
     
     
-    def post(self,request):
+    def post(self,request,pk):
     #if request.method == 'POST': # If the form has been submitted...
         if request.user.is_authenticated:
             #raise Http404
