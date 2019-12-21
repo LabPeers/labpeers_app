@@ -73,7 +73,7 @@ myYlabel='y-axis label'
 
 
 
-def bubbleplot():
+def bubbleplot(*args):
     d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
 
     df = pd.DataFrame(data = d)
@@ -177,7 +177,7 @@ class HomeView(TemplateView):
 #            
             
             #scale = 10
-                plotdict=bubbleplot()
+                plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
                 dict2={"form":form}
                 dict3={**plotdict , **dict2}
                 
