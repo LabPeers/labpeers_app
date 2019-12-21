@@ -168,9 +168,10 @@ class HomeView(TemplateView):
                 filename_list=graph_data.values_list('graph_filename')
                 if myfilename in filename_list:
                     x=filename_list(myfilename)
-                    n=x-1
-                    data_row_old=Graph_Data.objects.raw('SELECT * FROM bubble_graph_data LIMIT (%s,),1' (n))
-                    data_row_old.delete()
+                    return redirect('home')
+#                    n=x-1
+#                    data_row_old=Graph_Data.objects.raw('SELECT * FROM bubble_graph_data LIMIT (%s,),1' (n))
+#                    data_row_old.delete()
 
                 
                 instance=form.save(commit=False)
