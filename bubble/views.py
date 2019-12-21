@@ -121,7 +121,7 @@ class HomeView(TemplateView):
     template_name = './bubblechart.html' 
     
     
-    def get(self,request,pk):
+    def get(self,request):
         
         myXlist=[1,2]
         myYlist=[3,4]
@@ -151,7 +151,7 @@ class HomeView(TemplateView):
    
     
     
-    def post(self,request,pk):
+    def post(self,request):
     #if request.method == 'POST': # If the form has been submitted...
         if request.user.is_authenticated:
             #raise Http404
