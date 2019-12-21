@@ -237,21 +237,33 @@ class DetailView(TemplateView):
         
         form=graph_data
         
-        instance=form.save(commit=False)
-        instance.user=request.user
-        instance.save()
-                
-#                myfilename=form.cleaned_data['graph_filename']
-#                myslug=slugify(myfilename)
-        mytitle=form.cleaned_data['graph_title']
-        myXlabel=form.cleaned_data['graph_xlabel']
-        myYlabel=form.cleaned_data['graph_ylabel']
+#        instance=form.save(commit=False)
+#        instance.user=request.user
+#        instance.save()
+#                
+##                myfilename=form.cleaned_data['graph_filename']
+##                myslug=slugify(myfilename)
+#        mytitle=form.cleaned_data['graph_title']
+#        myXlabel=form.cleaned_data['graph_xlabel']
+#        myYlabel=form.cleaned_data['graph_ylabel']
+#            
+#        myXdata=form.cleaned_data['myX']
+#        myXlist=myXdata.split(",")
+#        myYdata=form.cleaned_data['myY']
+#        myYlist=myYdata.split(",")
+#        myRdata=form.cleaned_data['myRadius']
+#        myRlist=myRdata.split(",")
+#        myRlist=np.array(myRlist, dtype=np.float32)
+        
+        mytitle=graph_data.graph_title
+        myXlabel=graph_data.graph_xlabel
+        myYlabel=graph_data.graph_ylabel
             
-        myXdata=form.cleaned_data['myX']
+        myXdata=graph_data.myX
         myXlist=myXdata.split(",")
-        myYdata=form.cleaned_data['myY']
+        myYdata=graph_data.myY
         myYlist=myYdata.split(",")
-        myRdata=form.cleaned_data['myRadius']
+        myRdata=graph_data.myRadius
         myRlist=myRdata.split(",")
         myRlist=np.array(myRlist, dtype=np.float32)
 #            
@@ -263,7 +275,7 @@ class DetailView(TemplateView):
                 
 
  
-        form = HomeForm(request.POST)
+        #form = HomeForm(request.POST)
 
             
         return render(request, self.template_name, dict3)
