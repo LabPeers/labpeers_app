@@ -63,17 +63,10 @@ from bokeh.models.layouts import WidgetBox, Column
 
 from django.template.defaultfilters import slugify
 
-myXlist=[1,2]
-myYlist=[3,4]
-myRlist=[10,50]
-mytitle='Your title will go here'
-myXlabel='x-axis label'
-myYlabel='y-axis label'
 
 
 
-
-def bubbleplot(*args):
+def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
     d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
 
     df = pd.DataFrame(data = d)
@@ -96,7 +89,10 @@ def bubbleplot(*args):
     plotdict={"the_script": script, "the_div": div}
     
     return plotdict
-    
+
+
+
+
 
 
 
@@ -127,6 +123,15 @@ class HomeView(TemplateView):
     
     def get(self,request):
         
+        myXlist=[1,2]
+        myYlist=[3,4]
+        myRlist=[10,50]
+        mytitle='Your title will go here'
+        myXlabel='x-axis label'
+        myYlabel='y-axis label'
+        
+        
+        
         form = HomeForm()
         #users = User.objects.exclude(id=request.user.id)
         #plot = figure(plot_width=600, plot_height=600, title='Your title will go here')
@@ -134,7 +139,7 @@ class HomeView(TemplateView):
         
         ########### -----DATA TABLE----- ########### 
         
-        plotdict=bubbleplot()
+        plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
 #        x = plotdict["the_script"]
 #        y = plotdict["the_div"]
      #  script, div = components({'plot': plot})
@@ -234,6 +239,8 @@ class HomeView(TemplateView):
 #        plot = figure(plot_width=400, plot_height=400, title="Your title will go here2")
 #        script, div = components(plot, CDN)
     
+
+
 
 
 
