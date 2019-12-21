@@ -168,7 +168,7 @@ class HomeView(TemplateView):
                 filename_list=graph_data.values_list('graph_filename')
                 if myfilename in filename_list:
                     x=filename_list(myfilename)
-                    data_row_old=graph_data.objects.get(pk=x)
+                    data_row_old=graph_data.objects.all(pk=x)
                     data_row_old.delete()
 
                 
