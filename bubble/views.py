@@ -173,7 +173,8 @@ class HomeView(TemplateView):
                 print(myfilename)
                 if myfilename in filename_list:
                     print('HELLO2')
-                    x=filename_list2.index(myfilename)
+                    #x=filename_list2.index(myfilename)
+                    x=21
                     print(x)
                     data_row_old=Graph_Data.objects.get(pk=x)
                     data_row_old.delete()
