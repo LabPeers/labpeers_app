@@ -180,7 +180,7 @@ class HomeView(TemplateView):
                     print(x)
                     
                     instance=get_object_or_404(Graph_Data,id = x)
-                    form = GraphData(request.POST or None, instance=instance)
+                    form = HomeForm(request.POST or None, instance=instance)
                     if form.is_valid():
                         instance = form.save(commit=False)
                         #instance.save()
