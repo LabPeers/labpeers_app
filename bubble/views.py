@@ -63,6 +63,9 @@ from bokeh.models.layouts import WidgetBox, Column
 
 #from django.template.defaultfilters import slugify
 
+from django.shortcuts import get_object_or_404
+
+
 
 
 
@@ -175,11 +178,20 @@ class HomeView(TemplateView):
                     repeat=Graph_Data.objects.get(graph_filename=myfilename)
                     x=repeat.id
                     print(x)
-                    form=Graph_Data.objects.get(id=x)
-                    print(form)
-                    instance=form.save()
                     
-                    print('HELLO2')
+                    instance=get_object_or_404(Graph_Data,id = x)
+                    form = GraphData(request.POST or None, instance=instance)
+                    if form.is_valid():
+                        instance = form.save(commit=False)
+                        #instance.save()
+
+                    
+                    
+#                    Graph_Data(id=x)=form
+#                    print(form)
+#                    instance=form.save()
+#                    
+#                    print('HELLO2')
                     #x=filename_list2.index(myfilename)
                     #graph_data(21)=form
 #                    x=21
