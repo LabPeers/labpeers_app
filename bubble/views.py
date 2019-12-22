@@ -256,9 +256,11 @@ class EditView(TemplateView):
         
         
            # form=graph_data
-            form = HomeForm()
-            graph_data=Graph_Data.objects.get(pk=pk)
-            form=graph_data
+#            form = HomeForm()
+#            graph_data=Graph_Data.objects.get(pk=pk)
+#            form=graph_data
+            instance = get_object_or_404(Graph_Data, pk=pk)
+            form = HomeForm(request.POST or None, instance=instance)
             
             mytitle=graph_data.graph_title
             myXlabel=graph_data.graph_xlabel
