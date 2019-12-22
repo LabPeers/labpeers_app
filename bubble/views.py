@@ -118,6 +118,22 @@ class Projects(TemplateView):
                       {'graph_data' : graph_data})
         
 
+class DeleteView(TemplateView):
+    template_name = './projects.html'
+  
+#if request.method == 'POST': # If the form has been submitted...
+    def get(self,request,pk):
+    
+        if request.user.is_authenticated:
+            #raise Http404
+            data_row_old=Graph_Data.objects.get(pk)
+            data_row_old.delete()
+#                    
+            print('Deleted')   
+            
+            return redirect('projects')
+        
+
    
     
 class HomeView(TemplateView):
@@ -365,5 +381,3 @@ class DetailView(TemplateView):
     
         else:
             return redirect("login")
-                
-  
