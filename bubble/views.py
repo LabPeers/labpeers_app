@@ -294,65 +294,68 @@ class EditView(TemplateView):
             form = HomeForm(request.POST or None, instance=instance)
 #            if form.is_valid():
 #                instance = form.save(commit=False)
+            if form.is_valid():
 
-
-            myfilename=form.cleaned_data['graph_filename']
-            graph_data=Graph_Data.objects.filter(user=request.user)
-            filename_list=graph_data.values_list('graph_filename',flat=True)
-            filename_list2=list(filename_list)
-            print('HELLO')
-            print(filename_list)
-            print(filename_list2)
-            print(myfilename)
-            if myfilename in filename_list:
-                repeat=Graph_Data.objects.get(graph_filename=myfilename)
-                x=repeat.id
-                print(x)
+                myfilename=form.cleaned_data['graph_filename']
+                graph_data=Graph_Data.objects.filter(user=request.user)
+                filename_list=graph_data.values_list('graph_filename',flat=True)
+                filename_list2=list(filename_list)
+                print('HELLO')
+                print(filename_list)
+                print(filename_list2)
+                print(myfilename)
                     
-                instance=get_object_or_404(Graph_Data,id = x)
-                form = HomeForm(request.POST or None, instance=instance)
-                if form.is_valid():
-                    instance = form.save(commit=False)
-                else:
-                    return redirect("bubblechart")
+                if myfilename in filename_list:
+                    repeat=Graph_Data.objects.get(graph_filename=myfilename)
+                    x=repeat.id
+                    print(x)
+                    
+                    instance=get_object_or_404(Graph_Data,id = x)
+                    form = HomeForm(request.POST or None, instance=instance)
+                    if form.is_valid():
+                        instance = form.save(commit=False)
+                    else:
+                        return redirect("bubblechart")
 
-            else:
+                else:
                   instance=form.save(commit=False)  
 
             
             #form.save()
-            instance=form.save(commit=False)
-            instance.user=request.user
-            instance.save()
+                instance=form.save(commit=False)
+                instance.user=request.user
+                instance.save()
                 
 #                myfilename=form.cleaned_data['graph_filename']
 #                myslug=slugify(myfilename)
-            mytitle=form.cleaned_data['graph_title']
-            myXlabel=form.cleaned_data['graph_xlabel']
-            myYlabel=form.cleaned_data['graph_ylabel']
+                mytitle=form.cleaned_data['graph_title']
+                myXlabel=form.cleaned_data['graph_xlabel']
+                myYlabel=form.cleaned_data['graph_ylabel']
             
-            myXdata=form.cleaned_data['myX']
-            myXlist=myXdata.split(",")
-            myYdata=form.cleaned_data['myY']
-            myYlist=myYdata.split(",")
-            myRdata=form.cleaned_data['myRadius']
-            myRlist=myRdata.split(",")
-            myRlist=np.array(myRlist, dtype=np.float32)
+                myXdata=form.cleaned_data['myX']
+                myXlist=myXdata.split(",")
+                myYdata=form.cleaned_data['myY']
+                myYlist=myYdata.split(",")
+                myRdata=form.cleaned_data['myRadius']
+                myRlist=myRdata.split(",")
+                myRlist=np.array(myRlist, dtype=np.float32)
 #            
             
-            #scale = 10
-            plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
-            dict2={"form":form}
-            dict3={**plotdict , **dict2}
+                #scale = 10
+                plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
+                dict2={"form":form}
+                dict3={**plotdict , **dict2}
                 
 
  
-            form = HomeForm(request.POST)
+                form = HomeForm(request.POST)
 
             
-            return render(request, self.template_name, dict3)
+                return render(request, self.template_name, dict3)
             
-                
+            else: 
+
+                return redirect("bubblechart")
     
         else:
             return redirect("login")
