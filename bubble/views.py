@@ -175,7 +175,7 @@ class HomeView(TemplateView):
                     repeat=Graph_Data.objects.get(graph_filename=myfilename)
                     x=repeat.id
                     print(x)
-                    form=Graph_Data(id=x)
+                    form=Graph_Data.objects.filter(id=x)
                     instance=form.save()
                     
                     print('HELLO2')
