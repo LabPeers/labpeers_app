@@ -176,7 +176,7 @@ class HomeView(TemplateView):
                     x=repeat.id
                     print(x)
                     form=Graph_Data(id=x)
-                    instance=form.save(commit=False)
+                    instance=form.save()
                     
                     print('HELLO2')
                     #x=filename_list2.index(myfilename)
