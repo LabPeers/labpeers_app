@@ -126,7 +126,7 @@ class DeleteView(TemplateView):
     
         if request.user.is_authenticated:
             #raise Http404
-            data_row_old=Graph_Data.objects.get(pk)
+            data_row_old=Graph_Data.objects.get(pk=pk)
             data_row_old.delete()
 #                    
             print('Deleted')   
