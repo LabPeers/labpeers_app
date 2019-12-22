@@ -128,8 +128,6 @@ class DeleteView(TemplateView):
             #raise Http404
             data_row_old=Graph_Data.objects.get(pk=pk)
             data_row_old.delete()
-#                    
-            print('Deleted')   
             
             return redirect('projects')
         
@@ -199,23 +197,7 @@ class HomeView(TemplateView):
                     form = HomeForm(request.POST or None, instance=instance)
                     if form.is_valid():
                         instance = form.save(commit=False)
-                        #instance.save()
 
-                    
-                    
-#                    Graph_Data(id=x)=form
-#                    print(form)
-#                    instance=form.save()
-#                    
-#                    print('HELLO2')
-                    #x=filename_list2.index(myfilename)
-                    #graph_data(21)=form
-#                    x=21
-#                    print(x)
-#                    data_row_old=Graph_Data.objects.get(pk=x)
-#                    data_row_old.delete()
-#                    
-#                    print('Deleted')
                 else:
                   instance=form.save(commit=False)  
 
@@ -248,17 +230,7 @@ class HomeView(TemplateView):
  
                 form = HomeForm(request.POST)
             
-            #form=HomeForm()
 
-########### -----DATA TABLE----- ########### 
-           
-#                columns = [
-#                        TableColumn(field="myXlist", title="X-values", editor=DateEditor()),
-#                        TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
-#                        ]
-#                table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
-#
-#                script, div = components({'plot': plot,'table': table})
             
                 return render(request, self.template_name, dict3)
             
@@ -268,50 +240,41 @@ class HomeView(TemplateView):
     
         else:
             return redirect("login")
-        #return render(request, self.template_name, {"form": form})
-
-            #print form.cleaned_data['my_form_field_name']
-
-#            return HttpResponseRedirect('/thanks/') # Redirect after POST
-    
-#    else:
-#        form = HomeForm()
-#        plot = figure(plot_width=400, plot_height=400, title="Your title will go here2")
-#        script, div = components(plot, CDN)
-    
-
-
-
-
 
     
-class DetailView(TemplateView):
+
+    
+class EditView(TemplateView):
     template_name = './bubblechart.html'     
     
     
     def get(self,request,pk):
+        if request.user.is_authenticated:
         
-        graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
+#        graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
+
+            graph_data=Graph_Data.objects.get(pk=pk)    
         
-        form=HomeForm(initial={graph_data})
+        
+            form=graph_data
                 
-        mytitle=graph_data.graph_title
-        myXlabel=graph_data.graph_xlabel
-        myYlabel=graph_data.graph_ylabel
+            mytitle=graph_data.graph_title
+            myXlabel=graph_data.graph_xlabel
+            myYlabel=graph_data.graph_ylabel
             
-        myXdata=graph_data.myX
-        myXlist=myXdata.split(",")
-        myYdata=graph_data.myY
-        myYlist=myYdata.split(",")
-        myRdata=graph_data.myRadius
-        myRlist=myRdata.split(",")
-        myRlist=np.array(myRlist, dtype=np.float32)
+            myXdata=graph_data.myX
+            myXlist=myXdata.split(",")
+            myYdata=graph_data.myY
+            myYlist=myYdata.split(",")
+            myRdata=graph_data.myRadius
+            myRlist=myRdata.split(",")
+            myRlist=np.array(myRlist, dtype=np.float32)
 #            
             
-        #scale = 10
-        plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
-        dict2={"form":form}
-        dict3={**plotdict , **dict2}
+            #scale = 10
+            plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
+            dict2={"form":form}
+            dict3={**plotdict , **dict2}
                 
 
  
@@ -326,57 +289,69 @@ class DetailView(TemplateView):
     #if request.method == 'POST': # If the form has been submitted...
         if request.user.is_authenticated:
             #raise Http404
-            graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
-            form = HomeForm(initial={graph_data}) # A form bound to the POST data
-    
-    
-            if form.is_valid():
+            
+            instance = get_object_or_404(Graph_Data, pk=pk)
+            form = HomeForm(request.POST or None, instance=instance)
+#            if form.is_valid():
+#                instance = form.save(commit=False)
+
+
+            myfilename=form.cleaned_data['graph_filename']
+            graph_data=Graph_Data.objects.filter(user=request.user)
+            filename_list=graph_data.values_list('graph_filename',flat=True)
+            filename_list2=list(filename_list)
+            print('HELLO')
+            print(filename_list)
+            print(filename_list2)
+            print(myfilename)
+            if myfilename in filename_list:
+                repeat=Graph_Data.objects.get(graph_filename=myfilename)
+                x=repeat.id
+                print(x)
+                    
+                instance=get_object_or_404(Graph_Data,id = x)
+                form = HomeForm(request.POST or None, instance=instance)
+                if form.is_valid():
+                    instance = form.save(commit=False)
+                else:
+                    return redirect("bubblechart")
+
+            else:
+                  instance=form.save(commit=False)  
+
             
             #form.save()
-                instance=form.save(commit=False)
-                instance.user=request.user
-                instance.save()
+            instance=form.save(commit=False)
+            instance.user=request.user
+            instance.save()
                 
 #                myfilename=form.cleaned_data['graph_filename']
 #                myslug=slugify(myfilename)
-                mytitle=form.cleaned_data['graph_title']
-                myXlabel=form.cleaned_data['graph_xlabel']
-                myYlabel=form.cleaned_data['graph_ylabel']
+            mytitle=form.cleaned_data['graph_title']
+            myXlabel=form.cleaned_data['graph_xlabel']
+            myYlabel=form.cleaned_data['graph_ylabel']
             
-                myXdata=form.cleaned_data['myX']
-                myXlist=myXdata.split(",")
-                myYdata=form.cleaned_data['myY']
-                myYlist=myYdata.split(",")
-                myRdata=form.cleaned_data['myRadius']
-                myRlist=myRdata.split(",")
-                myRlist=np.array(myRlist, dtype=np.float32)
+            myXdata=form.cleaned_data['myX']
+            myXlist=myXdata.split(",")
+            myYdata=form.cleaned_data['myY']
+            myYlist=myYdata.split(",")
+            myRdata=form.cleaned_data['myRadius']
+            myRlist=myRdata.split(",")
+            myRlist=np.array(myRlist, dtype=np.float32)
 #            
             
             #scale = 10
-                plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
-                dict2={"form":form}
-                dict3={**plotdict , **dict2}
+            plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
+            dict2={"form":form}
+            dict3={**plotdict , **dict2}
                 
 
  
-                form = HomeForm(request.POST)
-            
-            #form=HomeForm()
+            form = HomeForm(request.POST)
 
-########### -----DATA TABLE----- ########### 
-           
-#                columns = [
-#                        TableColumn(field="myXlist", title="X-values", editor=DateEditor()),
-#                        TableColumn(field="myYlist", title="Y-values", editor=IntEditor()),
-#                        ]
-#                table = DataTable(source=source, columns=columns, width=400, height=400, editable=True)
-#
-#                script, div = components({'plot': plot,'table': table})
             
-                return render(request, self.template_name, dict3)
+            return render(request, self.template_name, dict3)
             
-            else:
-                return redirect("bubblechart")
                 
     
         else:
