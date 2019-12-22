@@ -172,7 +172,7 @@ class HomeView(TemplateView):
                 print(filename_list2)
                 print(myfilename)
                 if myfilename in filename_list:
-                    repeat=Graph_Data.objects.get('graph_filename'=myfilename)
+                    repeat=Graph_Data.objects.get(graph_filename=myfilename)
                     x=repeat.id
                     print(x)
                     form=Graph_Data(id=x)
