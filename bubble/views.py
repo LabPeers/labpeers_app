@@ -172,16 +172,26 @@ class HomeView(TemplateView):
                 print(filename_list2)
                 print(myfilename)
                 if myfilename in filename_list:
+                    repeat=Graph_Data.objects.get(myfilename)
+                    x=repeat.id
+                    print(x)
+                    form=Graph_Data(id=x)
+                    instance=form.save(commit=False)
+                    
                     print('HELLO2')
                     #x=filename_list2.index(myfilename)
-                    x=21
-                    print(x)
-                    data_row_old=Graph_Data.objects.get(pk=x)
-                    data_row_old.delete()
-                    print('Deleted')
+                    #graph_data(21)=form
+#                    x=21
+#                    print(x)
+#                    data_row_old=Graph_Data.objects.get(pk=x)
+#                    data_row_old.delete()
+#                    
+#                    print('Deleted')
+                else:
+                  instance=form.save(commit=False)  
 
                 
-                instance=form.save(commit=False)
+              #  instance=form.save(commit=False)
                 instance.user=request.user
                 instance.save()
                 
