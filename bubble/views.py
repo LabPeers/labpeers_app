@@ -248,41 +248,41 @@ class EditView(TemplateView):
     template_name = './bubblechart.html'     
     
     
-    def get(self,request,pk):
-        if request.user.is_authenticated:
-        
-#        graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
-
-            graph_data=Graph_Data.objects.get(pk=pk)    
-        
-        
-           # form=graph_data
-            form = HomeForm()
-                
-            mytitle=graph_data.graph_title
-            myXlabel=graph_data.graph_xlabel
-            myYlabel=graph_data.graph_ylabel
-            
-            myXdata=graph_data.myX
-            myXlist=myXdata.split(",")
-            myYdata=graph_data.myY
-            myYlist=myYdata.split(",")
-            myRdata=graph_data.myRadius
-            myRlist=myRdata.split(",")
-            myRlist=np.array(myRlist, dtype=np.float32)
+#    def get(self,request,pk):
+#        if request.user.is_authenticated:
+#        
+##        graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
+#
+#            graph_data=Graph_Data.objects.get(pk=pk)    
+#        
+#        
+#           # form=graph_data
+#            form = HomeForm()
+#                
+#            mytitle=graph_data.graph_title
+#            myXlabel=graph_data.graph_xlabel
+#            myYlabel=graph_data.graph_ylabel
 #            
-            
-            #scale = 10
-            plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
-            dict2={"form":form}
-            dict3={**plotdict , **dict2}
-                
-
- 
-        #form = HomeForm(request.POST)
-
-            
-        return render(request, self.template_name, dict3)
+#            myXdata=graph_data.myX
+#            myXlist=myXdata.split(",")
+#            myYdata=graph_data.myY
+#            myYlist=myYdata.split(",")
+#            myRdata=graph_data.myRadius
+#            myRlist=myRdata.split(",")
+#            myRlist=np.array(myRlist, dtype=np.float32)
+##            
+#            
+#            #scale = 10
+#            plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
+#            dict2={"form":form}
+#            dict3={**plotdict , **dict2}
+#                
+#
+# 
+#        #form = HomeForm(request.POST)
+#
+#            
+#        return render(request, self.template_name, dict3)
    
     
     
