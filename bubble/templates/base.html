@@ -89,36 +89,36 @@
  
  
     
-.containerbubble{
-  display:flex;
-  justify-content: space-around;
+    .containerbubble{
+      display:flex;
+      justify-content: space-around;
+      flex-direction:row;
+    }
 
-}
-.myflex-direction{
-  flex-direction:row;
-}
-.divchart{
-  width:45%;
-}
+    .divchart{
+      width:45%;
+    }
 
-.divtable{
-  width:45%;
-}
+    .divtable{
+      width:45%;
+    }
 
 
-@media screen and (max-width: 500px) {
-  .myflex-direction{
-  flex-direction:column;
-  }
+    @media screen and (max-width: 500px) {
+     .containerbubble{
+      display:flex;
+      justify-content: space-around;
+      flex-direction:column;
+    }
   
-.divchart{
+    .divchart{
       width:95%;
       }
 
     .divtable{
       width:95%;
       }
-}
+    }
 
 
   </style>
