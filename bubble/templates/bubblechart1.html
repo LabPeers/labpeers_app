@@ -2,11 +2,8 @@
 {% load staticfiles %}
 
 {% block content %}
-
-<div class="container flex-direction">
-
-
-    <div class="div1">
+<div class='main-container'>
+    <div>
     
         {{ the_div.plot | safe}}  
         
@@ -16,7 +13,7 @@
         
     </div>
     
-    <div class="div2"> 
+    <div> 
     <h4> {{ user.username }}, enter your Data here: </h4>  
     <table>
       <tr>
