@@ -5,7 +5,7 @@ from django.views import generic
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from accounts.forms import RegistrationForm
+from .forms import RegistrationForm
 
 
 # =============================================================================
