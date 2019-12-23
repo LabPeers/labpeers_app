@@ -85,6 +85,43 @@
         display: flex;
         justify-content: space-around;
     }
+    
+ 
+ 
+    
+.container{
+  display:inline-flex;
+  flex-wrap:wrap;
+  border:1px solid black;
+}
+.flex-direction{
+  flex-direction:row;
+}
+.div1{
+  width:50%;
+}
+
+.div2{
+  background:#b7999c;
+  width:50%;
+}
+
+
+@media screen and (max-width: 500px) {
+  .flex-direction{
+  flex-direction:column;
+  }
+  
+.div1{
+  width:80%;
+  }
+
+.div2{
+    width:80%;
+  }
+
+  
+}
 
 
   </style>
