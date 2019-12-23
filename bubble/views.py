@@ -104,7 +104,11 @@ class HomeReal(TemplateView):
     
 
 class Profile(TemplateView):
-    template_name = './profile.html'  
+    template_name = './profile.html' 
+    
+    args = {'user': request.user}
+    
+    return render(request, self.template_name, args)
     
 
 class Projects(TemplateView):
