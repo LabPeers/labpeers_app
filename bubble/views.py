@@ -109,6 +109,8 @@ class Profile(TemplateView):
     def get(self, request):
     
         args = {'user': request.user}
+        
+        
     
         return render(request, self.template_name, args)
     

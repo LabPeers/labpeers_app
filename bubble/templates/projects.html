@@ -3,21 +3,25 @@
 
 {% block content %}
 
-<h2>Choose your project:</h2>
+<div class="main-container">
 
+<table>
+<caption><b>Your Projects</b></caption>
 {% for myvar in graph_data %}
-
-<p>{{ myvar.graph_filename }}</p>
+<tr>
+<td>{{ myvar.graph_filename }}
 <a type="button" class="btn btn-lg btn-default" href="/bubblechart/{{ myvar.pk }}">>
 <span class="glyphicon glyphicon-edit"></span></a>
 
 <a type="button" class="btn btn-lg btn-default" href="/projects/{{ myvar.pk }}">
-<span class="glyphicon glyphicon-trash"></span></a>
-
-<p>{{ myvar.myDate }}, {{ myvar.user }}</p>
+<span class="glyphicon glyphicon-trash"></span></a></td>
+<td>{{ myvar.myDate }}</td> 
+<td>{{ myvar.user }}</td> 
+</tr>
 {% endfor %}
+</table>
 
-
+</div>
 
 {% endblock %}
 
