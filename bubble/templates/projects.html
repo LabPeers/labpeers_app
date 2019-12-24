@@ -9,14 +9,15 @@
 <caption><b>Your Projects</b></caption>
 {% for myvar in graph_data %}
 <tr>
-<td>{{ myvar.graph_filename }}
+<td>{{ myvar.graph_filename }}</td>
+<td>{{ myvar.myDate }}</td> 
+<td>{{ myvar.user }}</td> 
+<td>
 <a type="button" class="btn btn-lg btn-default" href="/bubblechart/{{ myvar.pk }}">>
 <span class="glyphicon glyphicon-edit"></span></a>
 
 <a type="button" class="btn btn-lg btn-default" href="/projects/{{ myvar.pk }}">
 <span class="glyphicon glyphicon-trash"></span></a></td>
-<td>{{ myvar.myDate }}</td> 
-<td>{{ myvar.user }}</td> 
 </tr>
 {% endfor %}
 </table>
