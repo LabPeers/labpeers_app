@@ -122,3 +122,6 @@ django_heroku.settings(locals())
 #LOGIN_URL = '/login/'
 #LOGIN_REDIRECT_URL = '/bubblechart/'
 #LOGOUT_REDIRECT_URL = '/home/'
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
