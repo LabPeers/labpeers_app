@@ -129,6 +129,8 @@ django_heroku.settings(locals())
 #EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 #EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 
 EMAIL_HOST = 'smtp.sendgrid.net'
