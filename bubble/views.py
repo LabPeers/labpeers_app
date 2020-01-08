@@ -127,11 +127,10 @@ class Profile(TemplateView):
             
             if form.is_valid():
                 instance = form.save(commit=False)
-                instance.user=request.user
                 instance.save()
                 args = {'user': request.user,'form':form}
                 
-                return render(request, self.template_name, args)  
+        return render(request, self.template_name, args)  
     
     
 
