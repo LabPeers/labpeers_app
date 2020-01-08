@@ -125,9 +125,10 @@ class Profile(TemplateView):
             form = UserProfileForm(request.POST or None, request.FILES or None) # A form bound to the POST data
             
             if form.is_valid():
-                instance = form.save(commit=False)
-                instance.save()
-                return HttpResponseRedirect(instance.get_absolute_url())
+                form = form.save(commit=False)
+                form.user = request.user
+                form.save()
+              #  return HttpResponseRedirect(instance.get_absolute_url())
             
             args = {'form':form}
                 
