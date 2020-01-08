@@ -43,8 +43,11 @@ INSTALLED_APPS = [
     "accounts.apps.AccountsConfig",
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = [    
     "django.middleware.security.SecurityMiddleware",
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -116,6 +119,9 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = "/static/"
+
+MEDIA_URL = "/media"
+MEDIA_ROOT = os.path.join(BASE_DIR, "live-static-files", "media-root")
 
 django_heroku.settings(locals())
 
