@@ -65,7 +65,7 @@ from bokeh.models.layouts import WidgetBox, Column
 
 from django.shortcuts import get_object_or_404
 
-from .accounts.forms import UserProfileForm
+from accounts.forms import UserProfileForm
 
 
 
