@@ -110,15 +110,14 @@ class HomeReal(TemplateView):
 class Profile(TemplateView):
     template_name = './profile.html' 
     
-    def get(self, request, pk):
+    def get(self, request):
     
         args = {'user': request.user}
         
         return render(request, self.template_name, args)
     
        
-    def post(self,request, pk):
-        instance = get_object_or_404(UserProfile, pk=pk)
+    def post(self,request):
     #if request.method == 'POST': # If the form has been submitted...
         if request.user.is_authenticated:
             #raise Http404
@@ -130,7 +129,7 @@ class Profile(TemplateView):
                 instance.save()
                 return HttpResponseRedirect(instance.get_absolute_url())
             
-            args = {'instance': instance,'form':form}
+            args = {'form':form}
                 
             return render(request, self.template_name, args)  
     
