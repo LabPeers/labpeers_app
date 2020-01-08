@@ -66,6 +66,7 @@ from bokeh.models.layouts import WidgetBox, Column
 from django.shortcuts import get_object_or_404
 
 from accounts.forms import UserProfileForm
+from accounts.models import UserProfile
 
 
 
@@ -127,6 +128,7 @@ class Profile(TemplateView):
             
             if form.is_valid():
                 instance = form.save(commit=False)
+                form.instance.user = UserProfile.objects.get(user=self.request.user)
                 instance.save()
                 args = {'user': request.user,'form':form}
                 
