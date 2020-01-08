@@ -119,7 +119,8 @@ class Profile(TemplateView):
         return render(request, self.template_name, args)
     
        
-    def post(self,request):
+    def post(self,request, id=None):
+        instance = get_object_or_404(UserProfile, id=id)
     #if request.method == 'POST': # If the form has been submitted...
         if request.user.is_authenticated:
             #raise Http404
@@ -128,11 +129,12 @@ class Profile(TemplateView):
             
             if form.is_valid():
                 instance = form.save(commit=False)
-                form.instance.user = UserProfile.objects.get(user=self.request.user)
                 instance.save()
-                args = {'user': request.user,'form':form}
+                return HttpResponseRedirect(instance.get_absolute_url())
+            
+            args = {'instance': instance,'form':form}
                 
-        return render(request, self.template_name, args)  
+            return render(request, self.template_name, args)  
     
     
 
