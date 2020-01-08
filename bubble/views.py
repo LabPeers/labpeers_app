@@ -65,6 +65,8 @@ from bokeh.models.layouts import WidgetBox, Column
 
 from django.shortcuts import get_object_or_404
 
+from .accounts.forms import UserProfileForm
+
 
 
 
@@ -101,6 +103,7 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
 
 class HomeReal(TemplateView):
     template_name = './home.html'
+  
     
 
 class Profile(TemplateView):
@@ -113,6 +116,21 @@ class Profile(TemplateView):
         
     
         return render(request, self.template_name, args)
+    
+       
+    def post(self,request):
+    #if request.method == 'POST': # If the form has been submitted...
+        if request.user.is_authenticated:
+            #raise Http404
+        
+            form = UserProfileForm(request.POST or None, request.FILES or none) # A form bound to the POST data
+            
+            if form.is_valid():
+                form.save()
+                args = {'user': request.user,'form':form}
+                
+                return render(request, self.template_name,args)  
+    
     
 
 class Projects(TemplateView):
