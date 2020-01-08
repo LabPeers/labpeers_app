@@ -6,7 +6,6 @@ from django.conf import settings
 
 class UserProfile(models.Model):
     #user=models.OneToOneField(User,on_delete=models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, 
-                                 on_delete=models.CASCADE)
+    user = models.ForeignKey(User, unique=True, on_delete=models.CASCADE)
     image=models.ImageField(upload_to='profile_image', blank=True, null=True)
     
