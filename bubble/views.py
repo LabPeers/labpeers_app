@@ -116,23 +116,35 @@ class Profile(TemplateView):
         
         return render(request, self.template_name, args)
     
+
+def youfunc(request):
+    youtemplate = UserProfileForm()
+    if request.method == 'POST':
+        youform = UserProfileForm(request.POST, request.FILES)
+        if youform.is_valid():
+           youform.save()
+           #return HttpResponseRedirect('http://www.You.url') # or other
+    #youquery = .objects.order_by('image').last()
+    return render(request, "YouProject/YouHtml.html", {'youtemplate': youtemplate})
+
+
        
-    def post(self,request):
-    #if request.method == 'POST': # If the form has been submitted...
-        if request.user.is_authenticated:
-            #raise Http404
-        
-            form = UserProfileForm(request.POST or None, request.FILES or None) # A form bound to the POST data
-            
-            if form.is_valid():
-                form = form.save(commit=False)
-                form.user = request.user
-                form.save()
-              #  return HttpResponseRedirect(instance.get_absolute_url())
-            
-            args = {'form':form}
-                
-            return render(request, self.template_name, args)  
+#    def post(self,request):
+#    #if request.method == 'POST': # If the form has been submitted...
+#        if request.user.is_authenticated:
+#            #raise Http404
+#        
+#            form = UserProfileForm(request.POST or None, request.FILES or None) # A form bound to the POST data
+#            
+#            if form.is_valid():
+#                form = form.save(commit=False)
+#                form.user = request.user
+#                form.save()
+#              #  return HttpResponseRedirect(instance.get_absolute_url())
+#            
+#            args = {'form':form}
+#                
+#            return render(request, self.template_name, args)  
     
     
 
