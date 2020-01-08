@@ -126,7 +126,9 @@ class Profile(TemplateView):
             form = UserProfileForm(request.POST or None, request.FILES or None) # A form bound to the POST data
             
             if form.is_valid():
-                form.save()
+                instance = form.save(commit=False)
+                instance.user=request.user
+                instance.save()
                 args = {'user': request.user,'form':form}
                 
                 return render(request, self.template_name,args)  
