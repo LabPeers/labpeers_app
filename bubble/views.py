@@ -110,12 +110,10 @@ class HomeReal(TemplateView):
 class Profile(TemplateView):
     template_name = './profile.html' 
     
-    def get(self, request):
+    def get(self, request, pk):
     
         args = {'user': request.user}
         
-        
-    
         return render(request, self.template_name, args)
     
        
