@@ -123,7 +123,7 @@ class Profile(TemplateView):
         if request.user.is_authenticated:
             #raise Http404
         
-            form = UserProfileForm(request.POST or None, request.FILES or none) # A form bound to the POST data
+            form = UserProfileForm(request.POST or None, request.FILES or None) # A form bound to the POST data
             
             if form.is_valid():
                 form.save()
