@@ -131,7 +131,7 @@ class Profile(TemplateView):
                 instance.save()
                 args = {'user': request.user,'form':form}
                 
-                return render(request, self.template_name,args)  
+                return render(request, self.template_name, args)  
     
     
 
