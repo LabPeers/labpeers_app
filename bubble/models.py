@@ -1,12 +1,7 @@
-from django.contrib.postgres.fields import ArrayField
 from django.db import models
-from django.forms import ModelForm
-from django.contrib.auth.models import User
 
 #Import so you can associate user and their data
 from django.conf import settings
-from django.urls import reverse
-from django.template.defaultfilters import slugify # new
 
 # Create your models here.
 # =============================================================================
