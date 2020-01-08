@@ -29,8 +29,8 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
          <h4 class="w3-center">My Profile</h4>
          <!--<p class="w3-center"><img src="https://www.w3schools.com/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>-->
          <form method="post" action='' enctype='multipart/form-data'>{% csrf_token %}
-         <p class="w3-center"><img src="{{ user.userprofile.image.url }}" class="w3-circle" style="height:106px;width:106px" alt=""></p>
-         <input type='file' class='btn btn=default' value='Upload profile picture' />
+         <p class="w3-center"><img src="{{ user.userprofile.image.url }} | https://www.w3schools.com/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt=""></p>
+         <input type='submit' class='btn btn=default' value='Upload profile picture' />
          </form>
          <hr>
          <p><i class="fa fa-user-circle-o fa-fw w3-margin-right w3-text-theme"></i> Username: {{ user.username }}
