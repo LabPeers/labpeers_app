@@ -108,7 +108,7 @@ class Profile(TemplateView):
     
     def get(self, request):
         
-        p_form = UserProfileForm(instance=request.user.userprofile)
+        p_form = UserProfileForm(instance=request.user.UserProfile)
         args = {'user': request.user, 'p_form': p_form}
         
         return render(request, self.template_name, args)
