@@ -20,9 +20,10 @@ from django.views.generic import TemplateView
 from django.views.generic.edit import FormView 
 from django.urls import reverse_lazy
 from django.views import generic
-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.contrib import messages
+
 from bokeh.plotting import figure , curdoc , show , output_file
 from bokeh.resources import CDN
 from bokeh.embed import components
@@ -38,15 +39,7 @@ import numpy as np
 #from bokeh.transform import linear_cmap
 
 
-#from .models import Greeting 
-from .models import Graph_Data
-from .forms import HomeForm
-from django.contrib.auth.models import User
-
-
 ########
-from datetime import date
-from random import randint
  
 from bokeh.client import push_session
 from bokeh.document import Document
@@ -63,10 +56,13 @@ from bokeh.models.layouts import WidgetBox, Column
 
 #from django.template.defaultfilters import slugify
 
-from django.shortcuts import get_object_or_404
+#from .models import Greeting 
+from .models import Graph_Data
+from .forms import HomeForm
 
 from accounts.forms import UserProfileForm
 from accounts.models import UserProfile
+
 
 
 
@@ -111,8 +107,9 @@ class Profile(TemplateView):
     template_name = './profile.html' 
     
     def get(self, request):
-    
-        args = {'user': request.user}
+        
+        p_form = UserProfileForm(instance=request.user.userprofile)
+        args = {'user': request.user, 'p_form': p_form}
         
         return render(request, self.template_name, args)
     
@@ -121,15 +118,18 @@ class Profile(TemplateView):
         if request.user.is_authenticated:
             #raise Http404
         
-            form = UserProfileForm(request.POST or None, request.FILES or None) # A form bound to the POST data
+            #p_form = UserProfileForm(request.POST or None, request.FILES or None) # A form bound to the POST data
+            p_form = UserProfileForm(request.POST, request.FILES, instance=request.user.UserProfile) # A form bound to the POST data
             
-            if form.is_valid():
-                form = form.save(commit=False)
-                form.user = request.user
-                form.save()
+            if p_form.is_valid():
+                #p_form = p_form.save(commit=False)
+                #p_form.user = request.user
+                p_form.save()
               #  return HttpResponseRedirect(instance.get_absolute_url())
+                messages.success(request, f'Image successfully uploaded!')
+                return redirect('profile')
             
-            args = {'form':form}
+            args = {'user': request.user,'p_form':p_form}
                 
             return render(request, self.template_name, args)  
 
