@@ -119,7 +119,7 @@ class Profile(TemplateView):
             #raise Http404
         
             #p_form = UserProfileForm(request.POST or None, request.FILES or None) # A form bound to the POST data
-            p_form = UserProfileForm(request.POST, request.FILES, instance=request.user.UserProfile) # A form bound to the POST data
+            p_form = UserProfileForm(request.POST, request.FILES, instance=request.user.userprofile) # A form bound to the POST data
             
             if p_form.is_valid():
                 #p_form = p_form.save(commit=False)
