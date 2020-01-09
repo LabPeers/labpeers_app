@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% load static %}
+<!-- {% load static %}-->
 
 {% block content %}
 
@@ -34,7 +34,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
          <p class="w3-center"><img src="user.userprofile.image.url" class="w3-circle" style="height:106px;width:106px" alt=""></p>
          <input type='submit' class='btn btn=default' value='Upload profile picture' />
          </form>
-         <img src="{% static "default.jpg" %}" alt="Hi!" />
+         <img src="{% static "default.jpg" %}" alt="Hi!" style="width:170px;height:170px;border:0;"/>
          <hr>
          <p><i class="fa fa-user-circle-o fa-fw w3-margin-right w3-text-theme"></i> Username: {{ user.username }}
 </p>
