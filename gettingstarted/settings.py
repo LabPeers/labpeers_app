@@ -24,11 +24,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be used, if set, instead)."
 
+#SECRET_KEY = os.getenv('SECRET_KEY', 'Optional default value')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cfehome.herokuapp.com']
 
 
 # Application definition
