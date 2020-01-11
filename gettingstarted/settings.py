@@ -140,6 +140,8 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media-root")
 print(MEDIA_ROOT)
 
+MEDIAFILES_DIRS = (MEDIA_ROOT)
+
 django_heroku.settings(locals())
 
 #LOGIN_URL = '/login/'
