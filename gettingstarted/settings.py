@@ -30,7 +30,7 @@ SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be us
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['cfehome.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
