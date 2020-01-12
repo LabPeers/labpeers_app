@@ -8,3 +8,4 @@ numpy
 slugify
 whitenoise
 boto
+django-storages
