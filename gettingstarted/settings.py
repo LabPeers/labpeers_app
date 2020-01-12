@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "bubble",
     "accounts.apps.AccountsConfig",
+    "storages",
 ]
 
 MIDDLEWARE = [    
@@ -143,6 +144,19 @@ print(MEDIA_ROOT)
 MEDIAFILES_DIRS = (MEDIA_ROOT)
 
 django_heroku.settings(locals())
+
+
+#AWS Settings:
+
+AWS_QUERYSTRING_AUTH = False
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = os.environ['labpeersbubble']
+MEDIA_URL = 'http://%s.s3.amazonaws.com/labpeers/' % AWS_STORAGE_BUCKET_NAME
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
+
+
+
 
 #LOGIN_URL = '/login/'
 #LOGIN_REDIRECT_URL = '/bubblechart/'
