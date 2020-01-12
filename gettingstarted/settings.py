@@ -134,7 +134,7 @@ print(STATIC_ROOT)
 
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #MEDIA_URL = "/media/"
 
@@ -156,6 +156,8 @@ MEDIA_URL = 'http://%s.s3.us-east-2.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
 AWS_REGION = 'us-east-2'
 AWS_S3_HOST = 's3.%s.amazonaws.com' % AWS_REGION
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 
