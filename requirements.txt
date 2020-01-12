@@ -7,4 +7,4 @@ pandas
 numpy
 slugify
 whitenoise
-django-storages boto
+boto
