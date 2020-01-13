@@ -52,6 +52,7 @@ from bokeh.models.widgets import (
     Button, TableColumn, DataTable,
     DateEditor, DateFormatter, IntEditor)
 from bokeh.models.layouts import WidgetBox, Column
+from bokeh.io import export_png
 ########
 
 #from django.template.defaultfilters import slugify
@@ -172,6 +173,8 @@ class DeleteView(TemplateView):
             
             return redirect('projects')
         
+#def SavePlot(plot):
+#    export_png(plot, filename="title.png")
 
    
     
@@ -281,6 +284,7 @@ class HomeView(TemplateView):
     
         else:
             return redirect("login")
+
 
     
 

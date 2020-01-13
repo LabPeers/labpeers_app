@@ -24,6 +24,16 @@ class Graph_Data(models.Model):
         myDate = models.DateTimeField(auto_now=True)
        # slug=models.SlugField(default='new',null=False, unique=True)
 
+
+
+class Gallery_Plots(models.Model):
+        user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, 
+                                 on_delete=models.CASCADE)
+        myplots = models.ImageField(upload_to='plots/', blank=True, null=True)
+        
+ 
+
+
         
 #        
 #        def __str__(self):
