@@ -29,6 +29,8 @@ class Graph_Data(models.Model):
 class Gallery_Plots(models.Model):
         user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, 
                                  on_delete=models.CASCADE)
+        plotname = models.CharField(default='NewPlot',max_length=200)
+        myDate = models.DateTimeField(auto_now=True)
         myplots = models.ImageField(upload_to='plots/', blank=True, null=True)
         
  

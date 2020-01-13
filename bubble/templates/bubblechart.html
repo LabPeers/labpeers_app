@@ -79,6 +79,11 @@
     <br>
     <button type="submit">Submit/Update</button>
     
+    <form method="post">
+                {% csrf_token %}
+                {{ formplot.plotname }}
+    <button type="submit">Save plot to gallery</button>
+    
 
     </div>
     

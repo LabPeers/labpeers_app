@@ -10,6 +10,7 @@ from bubble.views import Profile
 from bubble.views import Projects
 from bubble.views import EditView
 from bubble.views import DeleteView
+from bubble.views import GalleryView
 #from hello.views import HomeView_details
 #from accounts.views import SignUp
 #from . import views
@@ -36,6 +37,7 @@ urlpatterns = [
     path("bubblechart/<int:pk>", EditView.as_view(), name='bubblechart_project'),
     path("projects/", Projects.as_view(), name='projects'),
     path("projects/<int:pk>", DeleteView.as_view(), name='projects_delete'),
+    path("bubblechart/gallery/", GalleryView.as_view(), name='gallery'),
  #   path('bubblechart/<graph_filename>/', HomeView_details.as_view(), name='your_project'),
  #   path("accounts/signup/", views.SignUp, name='signup'),
  #   path("db/", hello.views.db, name="db"),

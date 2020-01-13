@@ -6,7 +6,7 @@ Created on Sun Jul 21 11:00:53 2019
 @author: egetenmeyer
 """
 from django import forms
-from .models import Graph_Data
+from .models import Graph_Data, Gallery_Plots
 
 
 
@@ -27,3 +27,12 @@ class HomeForm(forms.ModelForm):
 #        fields = "__all__"
         fields = ('graph_filename','graph_title','graph_xlabel','graph_ylabel',
                   'myX','myY','myRadius',)
+
+
+
+class GalleryForm(forms.ModelForm):
+    plotname=forms.CharField(widget=forms.TextInput())
+    
+    class Meta:
+        model = Gallery_Plots
+        fields = ('plotname',)

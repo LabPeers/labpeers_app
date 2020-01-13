@@ -23,6 +23,8 @@ from django.views import generic
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib import messages
+from django.forms import modelformset_factory
+
 
 from bokeh.plotting import figure , curdoc , show , output_file
 from bokeh.resources import CDN
@@ -58,7 +60,7 @@ from bokeh.io import export_png
 #from django.template.defaultfilters import slugify
 
 #from .models import Greeting 
-from .models import Graph_Data
+from .models import Graph_Data, Gallery_Plots
 from .forms import HomeForm
 
 from accounts.forms import UserProfileForm
@@ -173,8 +175,7 @@ class DeleteView(TemplateView):
             
             return redirect('projects')
         
-def SavePlot(plot):
-    export_png(plot, filename="title.png")
+        
 
    
     
@@ -218,7 +219,7 @@ class HomeView(TemplateView):
             #raise Http404
         
             form = HomeForm(request.POST) # A form bound to the POST data
-    
+            formplot = GalleryForm(request.POST)
     
             if form.is_valid():
             
@@ -278,8 +279,24 @@ class HomeView(TemplateView):
             
                 return render(request, self.template_name, dict3)
             
+            
             else:
                 return redirect("bubblechart")
+            
+            
+            if formplot.is_valid():
+                myplotname=formplot.cleaned_data['plotname']
+                newplot=export_png(plotdict, filename=myplotname + ".png")
+                plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
+                plotimage.save()
+                
+                return render(request, self.template_name, dict3)
+            
+            
+            else:
+                return redirect("bubblechart")
+                
+                
                 
     
         else:
@@ -407,3 +424,17 @@ class EditView(TemplateView):
     
         else:
             return redirect("login")
+
+
+
+
+
+class GalleryView(TemplateView):
+    template_name = './gallery.html'  
+      
+    def get(self, request):
+        gallery_plots=Gallery_Plots.objects.filter(user=request.user)
+       # myfilename=graph_data.graph_filename
+       # mydate=graph_data.myDate
+        return render(request, self.template_name, 
+                      {'gallery_plots' : gallery_plots})
