@@ -173,8 +173,8 @@ class DeleteView(TemplateView):
             
             return redirect('projects')
         
-#def SavePlot(plot):
-#    export_png(plot, filename="title.png")
+def SavePlot(plot):
+    export_png(plot, filename="title.png")
 
    
     
