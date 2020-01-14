@@ -9,3 +9,4 @@ slugify
 whitenoise
 boto3
 django-storages
+selenium

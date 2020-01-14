@@ -222,7 +222,7 @@ class HomeView(TemplateView):
         
             if 'plot_data' in request.POST:
                 form = HomeForm(request.POST) # A form bound to the POST data
-
+                formplot = GalleryForm(request.POST or None)
     
                 if form.is_valid():
             
@@ -271,7 +271,7 @@ class HomeView(TemplateView):
                     
                     #scale = 10
                     plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
-                    dict2={"form":form}
+                    dict2={"form":form,"formplot":formplot}
                     dict3={**plotdict , **dict2}
                     
                     
@@ -290,10 +290,11 @@ class HomeView(TemplateView):
             
             elif 'make_png' in request.POST:
                 formplot = GalleryForm(request.POST)
+                form = HomeForm(request.POST or None)
             
                 if formplot.is_valid():
-                    formplot.save()
                     print("I'm in the make png loop now!")
+                    formplot.save()
                     myplotname=formplot.cleaned_data['plotname']
                     newplot=export_png(plotdict, filename=myplotname + ".png")
                     plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
@@ -442,9 +443,10 @@ class EditView(TemplateView):
             
             
             elif 'make_png' in request.POST:
-            
+                formplot = GalleryForm(request.POST)
             
                 if formplot.is_valid():
+                    print("I'm in the make png loop now!")
                     myplotname=formplot.cleaned_data['plotname']
                     newplot=export_png(plotdict, filename=myplotname + ".png")
                     plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
