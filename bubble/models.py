@@ -31,7 +31,7 @@ class Gallery_Plots(models.Model):
                                  on_delete=models.CASCADE)
         plotname = models.CharField(default='NewPlot',max_length=200)
         myDate = models.DateTimeField(auto_now=True)
-        myplots = models.ImageField(upload_to='plots/', blank=True, null=True)
+        myplots = models.ImageField(upload_to='plots', blank=True, null=True)
         
  
 
