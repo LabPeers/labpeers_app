@@ -282,7 +282,7 @@ class HomeView(TemplateView):
                         plot = figure(plot_width=600, plot_height=600, title=mytitle, 
                                           x_axis_label=myXlabel, y_axis_label=myYlabel)
                         
-                        filename=myplotname + ".png"
+                        filename="plots/" + myplotname + ".png"
                         print(filename)
                         newplot=export_png(plot, filename)
                         plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
