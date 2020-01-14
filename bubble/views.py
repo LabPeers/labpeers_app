@@ -270,7 +270,7 @@ class HomeView(TemplateView):
             
             #scale = 10
                 plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
-                dict2={"form":form}
+                dict2={"form":form,"formplot":formplot}
                 dict3={**plotdict , **dict2}
                 
 
@@ -319,6 +319,8 @@ class EditView(TemplateView):
     def get(self,request,pk):
         if request.user.is_authenticated:
 #        #        graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
+            
+            formplot = GalleryForm()
 
             graph_data=Graph_Data.objects.get(pk=pk)    
         
@@ -344,7 +346,7 @@ class EditView(TemplateView):
             
             #scale = 10
             plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
-            dict2={"form":form}
+            dict2={"form":form,"formplot":formplot}
             dict3={**plotdict , **dict2}
                 
 
@@ -363,6 +365,7 @@ class EditView(TemplateView):
             
             instance = get_object_or_404(Graph_Data, pk=pk)
             form = HomeForm(request.POST or None, instance=instance)
+            formplot = GalleryForm(request.POST)
 #            if form.is_valid():
 #                instance = form.save(commit=False)
             if form.is_valid():
@@ -414,12 +417,13 @@ class EditView(TemplateView):
             
                 #scale = 10
                 plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
-                dict2={"form":form}
+                dict2={"form":form,"formplot":formplot}
                 dict3={**plotdict , **dict2}
                 
 
  
                 form = HomeForm(request.POST)
+                formplot = GalleryForm(request.POST)
 
             
                 return render(request, self.template_name, dict3)
@@ -427,6 +431,26 @@ class EditView(TemplateView):
             else: 
 
                 return redirect("bubblechart")
+            
+            if formplot.is_valid():
+                myplotname=formplot.cleaned_data['plotname']
+                newplot=export_png(plotdict, filename=myplotname + ".png")
+                plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
+                plotimage.save()
+                
+                formplot = GalleryForm(request.POST)
+                dict2={"form":form,"formplot":formplot}
+                dict3={**plotdict , **dict2}
+                
+                return render(request, self.template_name, dict3)
+            
+            
+            else:
+                return redirect("bubblechart")
+            
+            
+            
+            
     
         else:
             return redirect("login")
