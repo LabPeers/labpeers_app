@@ -267,13 +267,31 @@ class HomeView(TemplateView):
                     
                     #scale = 10
                 plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
+                
+                
+                if 'make_png' in request.POST:
+                    print("1 I'm in the make png loop now!")
+                    formplot = GalleryForm(request.POST)
+            
+                    if formplot.is_valid():
+                        print("2 I'm in the make png loop now!")
+                        formplot.save()
+                        myplotname=formplot.cleaned_data['plotname']
+                        newplot=export_png(plotdict, filename=myplotname + ".png")
+                        plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
+                        plotimage.save()
+                    
+                        formplot = GalleryForm(request.POST)
+                
+
+                
                 dict2={"form":form,"formplot":formplot}
                 dict3={**plotdict , **dict2}
                     
                     
                     
                 form = HomeForm(request.POST)
-                formplot = GalleryForm()
+                formplot = GalleryForm(request.POST or None)
                     
 
             
@@ -285,31 +303,6 @@ class HomeView(TemplateView):
             
             
             
-            if 'make_png' in request.POST:
-                print("1 I'm in the make png loop now!")
-                formplot = GalleryForm(request.POST)
-            
-                if formplot.is_valid():
-                    print("2 I'm in the make png loop now!")
-                    formplot.save()
-                    myplotname=formplot.cleaned_data['plotname']
-                    newplot=export_png(plotdict, filename=myplotname + ".png")
-                    plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
-                    plotimage.save()
-                    
-                    formplot = GalleryForm(request.POST)
-                    dict2={"form":form,"formplot":formplot}
-                    dict3={**plotdict , **dict2}
-                    
-                    
-                    return render(request, self.template_name, dict3)
-                
-                
-                else:
-                    return redirect("bubblechart")
-                
-                
-                
     
         else:
             return redirect("login")
