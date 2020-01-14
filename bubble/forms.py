@@ -31,7 +31,7 @@ class HomeForm(forms.ModelForm):
 
 
 class GalleryForm(forms.ModelForm):
-    plotname=forms.CharField(widget=forms.TextInput())
+    plotname=forms.CharField(required=False,widget=forms.TextInput())
     
     class Meta:
         model = Gallery_Plots
