@@ -61,7 +61,7 @@ from bokeh.io import export_png
 
 #from .models import Greeting 
 from .models import Graph_Data, Gallery_Plots
-from .forms import HomeForm
+from .forms import HomeForm, GalleryForm
 
 from accounts.forms import UserProfileForm
 from accounts.models import UserProfile
@@ -195,6 +195,8 @@ class HomeView(TemplateView):
         
         
         form = HomeForm()
+        formplot = GalleryForm()
+        
         #users = User.objects.exclude(id=request.user.id)
         #plot = figure(plot_width=600, plot_height=600, title='Your title will go here')
         #script, div = components(plot, CDN)
@@ -205,7 +207,7 @@ class HomeView(TemplateView):
 #        x = plotdict["the_script"]
 #        y = plotdict["the_div"]
      #  script, div = components({'plot': plot})
-        dict2={"form":form}
+        dict2={"form":form,"formplot":formplot}
         dict3={**plotdict , **dict2}
         
      
@@ -289,6 +291,10 @@ class HomeView(TemplateView):
                 newplot=export_png(plotdict, filename=myplotname + ".png")
                 plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
                 plotimage.save()
+                
+                formplot = GalleryForm(request.POST)
+                dict2={"form":form,"formplot":formplot}
+                dict3={**plotdict , **dict2}
                 
                 return render(request, self.template_name, dict3)
             
