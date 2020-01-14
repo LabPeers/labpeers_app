@@ -286,10 +286,11 @@ class HomeView(TemplateView):
             
             
             if 'make_png' in request.POST:
+                print("1 I'm in the make png loop now!")
                 formplot = GalleryForm(request.POST)
             
                 if formplot.is_valid():
-                    print("I'm in the make png loop now!")
+                    print("2 I'm in the make png loop now!")
                     formplot.save()
                     myplotname=formplot.cleaned_data['plotname']
                     newplot=export_png(plotdict, filename=myplotname + ".png")
@@ -440,10 +441,11 @@ class EditView(TemplateView):
             
             
             if 'make_png' in request.POST:
+                print("1Edit I'm in the make png loop now!")
                 formplot = GalleryForm(request.POST)
             
                 if formplot.is_valid():
-                    print("I'm in the make png loop now!")
+                    print("2Edit I'm in the make png loop now!")
                     myplotname=formplot.cleaned_data['plotname']
                     newplot=export_png(plotdict, filename=myplotname + ".png")
                     plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
