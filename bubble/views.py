@@ -245,10 +245,10 @@ class HomeView(TemplateView):
                     if form.is_valid():
                         instance = form.save(commit=False)
                         
-                    else:
-                        instance=form.save(commit=False)  
-                        instance.user=request.user
-                        instance.save()
+                else:
+                    instance=form.save(commit=False)  
+                    instance.user=request.user
+                    instance.save()
                                 
 #                    myfilename=form.cleaned_data['graph_filename']
 #                    myslug=slugify(myfilename)
