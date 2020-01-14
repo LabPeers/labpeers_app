@@ -221,7 +221,7 @@ class HomeView(TemplateView):
             #raise Http404
         
             form = HomeForm(request.POST) # A form bound to the POST data
-
+            formplot = GalleryForm()
     
             if form.is_valid():
             
@@ -267,12 +267,13 @@ class HomeView(TemplateView):
                     
                     #scale = 10
                 plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
-                dict2={"form":form}
+                dict2={"form":form,"formplot":formplot}
                 dict3={**plotdict , **dict2}
                     
                     
                     
                 form = HomeForm(request.POST)
+                formplot = GalleryForm()
                     
 
             
@@ -370,7 +371,7 @@ class EditView(TemplateView):
             
             instance = get_object_or_404(Graph_Data, pk=pk)
             form = HomeForm(request.POST or None, instance=instance)
-            formplot = GalleryForm(request.POST)
+            formplot = GalleryForm()
 #                if form.is_valid():
 #                    instance = form.save(commit=False)
             if form.is_valid():
@@ -422,12 +423,13 @@ class EditView(TemplateView):
                     
                     #scale = 10
                 plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
-                dict2={"form":form}
+                dict2={"form":form,"formplot":formplot}
                 dict3={**plotdict , **dict2}
                 
 
  
                 form = HomeForm(request.POST)
+                formplot = GalleryForm()
                     
                     
                 return render(request, self.template_name, dict3)
