@@ -220,77 +220,72 @@ class HomeView(TemplateView):
         if request.user.is_authenticated:
             #raise Http404
         
-            if 'plot_data' in request.POST:
-                form = HomeForm(request.POST) # A form bound to the POST data
-                formplot = GalleryForm(request.POST or None)
+            form = HomeForm(request.POST) # A form bound to the POST data
+
     
-                if form.is_valid():
+            if form.is_valid():
             
                     #form.save()
                     #Avoid rows with same filename!!
-                    myfilename=form.cleaned_data['graph_filename']
-                    graph_data=Graph_Data.objects.filter(user=request.user)
-                    filename_list=graph_data.values_list('graph_filename',flat=True)
-                    filename_list2=list(filename_list)
-                    print('HELLO')
-                    print(filename_list)
-                    print(filename_list2)
-                    print(myfilename)
-                    if myfilename in filename_list:
-                        repeat=Graph_Data.objects.get(graph_filename=myfilename)
-                        x=repeat.id
-                        print(x)
+                myfilename=form.cleaned_data['graph_filename']
+                graph_data=Graph_Data.objects.filter(user=request.user)
+                filename_list=graph_data.values_list('graph_filename',flat=True)
+                filename_list2=list(filename_list)
+                print('HELLO')
+                print(filename_list)
+                print(filename_list2)
+                print(myfilename)
+                if myfilename in filename_list:
+                    repeat=Graph_Data.objects.get(graph_filename=myfilename)
+                    x=repeat.id
+                    print(x)
+                    
+                    instance=get_object_or_404(Graph_Data,id = x)
+                    form = HomeForm(request.POST or None, instance=instance)
+                    if form.is_valid():
+                        instance = form.save(commit=False)
                         
-                        instance=get_object_or_404(Graph_Data,id = x)
-                        form = HomeForm(request.POST or None, instance=instance)
-                        if form.is_valid():
-                            instance = form.save(commit=False)
-                            
-                        else:
-                            instance=form.save(commit=False)  
-                                
-                                
-                                #  instance=form.save(commit=False)
-                            instance.user=request.user
-                            instance.save()
+                    else:
+                        instance=form.save(commit=False)  
+                        instance.user=request.user
+                        instance.save()
                                 
 #                    myfilename=form.cleaned_data['graph_filename']
 #                    myslug=slugify(myfilename)
-                    mytitle=form.cleaned_data['graph_title']
-                    myXlabel=form.cleaned_data['graph_xlabel']
-                    myYlabel=form.cleaned_data['graph_ylabel']
-                    
-                    myXdata=form.cleaned_data['myX']
-                    myXlist=myXdata.split(",")
-                    myYdata=form.cleaned_data['myY']
-                    myYlist=myYdata.split(",")
-                    myRdata=form.cleaned_data['myRadius']
-                    myRlist=myRdata.split(",")
-                    myRlist=np.array(myRlist, dtype=np.float32)
+                mytitle=form.cleaned_data['graph_title']
+                myXlabel=form.cleaned_data['graph_xlabel']
+                myYlabel=form.cleaned_data['graph_ylabel']
+                
+                myXdata=form.cleaned_data['myX']
+                myXlist=myXdata.split(",")
+                myYdata=form.cleaned_data['myY']
+                myYlist=myYdata.split(",")
+                myRdata=form.cleaned_data['myRadius']
+                myRlist=myRdata.split(",")
+                myRlist=np.array(myRlist, dtype=np.float32)
 #                
                     
                     #scale = 10
-                    plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
-                    dict2={"form":form,"formplot":formplot}
-                    dict3={**plotdict , **dict2}
+                plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
+                dict2={"form":form}
+                dict3={**plotdict , **dict2}
                     
                     
                     
-                    form = HomeForm(request.POST)
+                form = HomeForm(request.POST)
                     
 
             
-                    return render(request, self.template_name, dict3)
+                return render(request, self.template_name, dict3)
                 
             
-                else:
-                    return redirect("bubblechart")
+            else:
+                return redirect("bubblechart")
             
             
             
-            elif 'make_png' in request.POST:
+            if 'make_png' in request.POST:
                 formplot = GalleryForm(request.POST)
-                form = HomeForm(request.POST or None)
             
                 if formplot.is_valid():
                     print("I'm in the make png loop now!")
