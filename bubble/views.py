@@ -288,7 +288,7 @@ class HomeView(TemplateView):
 #                        
                         filename="/plots/" + myplotname + ".png"
                         print(filename)
-                        newplot=export_png(plot, filename)
+                        newplot=export_png(plot)
                         print(newplot)
                         
                         
