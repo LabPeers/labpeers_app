@@ -279,7 +279,7 @@ class HomeView(TemplateView):
                         myplotname=formplot.cleaned_data['plotname']
                         instance2.plotname=myplotname
                         instance2.user=request.user
-                        instance2.myplots="/profile_pics/image.jpg"
+                        instance2.myplots="/profile_pics/99F615D3-643E-458E-B4CC-5C40351B45A3.jpeg"
                         instance2.save()
 
                         
