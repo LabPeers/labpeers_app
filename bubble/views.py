@@ -55,6 +55,7 @@ from bokeh.models.widgets import (
     DateEditor, DateFormatter, IntEditor)
 from bokeh.models.layouts import WidgetBox, Column
 from bokeh.io import export_png
+from bokeh.io.export import get_screenshot_as_png
 ########
 
 #from django.template.defaultfilters import slugify
@@ -283,13 +284,26 @@ class HomeView(TemplateView):
 
                         
                         #Testplot
+                        
+#                        filename="/plots/" + myplotname + ".png"
+#                        print(filename)
+#                        newplot=export_png(plot)
+#                        print(newplot)
+                        
+                        
+                        #figure = io.BytesIO()
                         plot = figure(plot_width=600, plot_height=600, title=mytitle, 
                                           x_axis_label=myXlabel, y_axis_label=myYlabel)
-#                        
-                        filename="/plots/" + myplotname + ".png"
-                        print(filename)
-                        newplot=export_png(plot)
-                        print(newplot)
+                        
+                        img = get_screenshot_as_png(plot)
+                        
+                        
+                        #newplot=export_png(plot)
+                        
+#                        plt.plot(xvalues, yvalues)
+#                        plt.savefig(figure, format="png")
+                        #content_file = ImageFile(figure)
+                        
                         
                         
 #                        img_data = io.BytesIO()
@@ -305,7 +319,8 @@ class HomeView(TemplateView):
 #                        plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
 #                        plotimage.save()
                     
-                        instance2.myplots=newplot                   
+                        #instance2.myplots=newplot   
+                        instance2.myplots=img
                         #instance2.myplots="/profile_pics/99F615D3-643E-458E-B4CC-5C40351B45A3.jpeg"
                         instance2.save()                    
                     
