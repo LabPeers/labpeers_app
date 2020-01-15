@@ -282,9 +282,25 @@ class HomeView(TemplateView):
                         plot = figure(plot_width=600, plot_height=600, title=mytitle, 
                                           x_axis_label=myXlabel, y_axis_label=myYlabel)
                         
-                        filename="plots/" + myplotname + ".png"
+                        filename=myplotname + ".png"
                         print(filename)
                         newplot=export_png(plot, filename)
+                        print(newplot)
+                        
+                        
+#                        img_data = io.BytesIO()
+#                        plt.savefig(img_data, format='png')
+#                        img_data.seek(0)
+#
+#                        s3 = boto3.resource('s3')
+#                        bucket = s3.Bucket(BUCKET_NAME)
+#                        bucket.put_object(Body=img_data, ContentType='image/png', Key=KEY)
+#                        
+                        
+                        
+                        
+                        
+                        
                         plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
                         plotimage.save()
                     
