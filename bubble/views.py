@@ -67,7 +67,9 @@ from .forms import HomeForm, GalleryForm
 from accounts.forms import UserProfileForm
 from accounts.models import UserProfile
 
+import StringIO
 
+from django.core.files.uploadedfile import InMemoryUploadedFile
 
 
 
@@ -320,7 +322,7 @@ class HomeView(TemplateView):
 #                        plotimage.save()
                     
                         #instance2.myplots=newplot   
-                        instance2.myplots=img
+                        instance2.myplots=InMemoryUploadedFile(img)
                         #instance2.myplots="/profile_pics/99F615D3-643E-458E-B4CC-5C40351B45A3.jpeg"
                         instance2.save()                    
                     
