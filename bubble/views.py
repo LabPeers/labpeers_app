@@ -67,7 +67,7 @@ from .forms import HomeForm, GalleryForm
 from accounts.forms import UserProfileForm
 from accounts.models import UserProfile
 
-import StringIO
+
 
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
