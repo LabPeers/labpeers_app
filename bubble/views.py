@@ -282,10 +282,10 @@ class HomeView(TemplateView):
                         plot = figure(plot_width=600, plot_height=600, title=mytitle, 
                                           x_axis_label=myXlabel, y_axis_label=myYlabel)
                         
-                        filename="/tmp/" + myplotname + ".png"
-                        print(filename)
-                        newplot=export_png(plot, filename)
-                        print(newplot)
+#                        filename="/tmp/" + myplotname + ".png"
+#                        print(filename)
+#                        newplot=export_png(plot, filename)
+#                        print(newplot)
                         
                         
 #                        img_data = io.BytesIO()
@@ -297,10 +297,7 @@ class HomeView(TemplateView):
 #                        bucket.put_object(Body=img_data, ContentType='image/png', Key=KEY)
 #                        
                         
-                        
-                        
-                        
-                        
+                        newplot="LabPeers_icon.png"
                         plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
                         plotimage.save()
                     
