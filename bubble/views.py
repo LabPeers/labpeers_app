@@ -279,7 +279,7 @@ class HomeView(TemplateView):
                         myplotname=formplot.cleaned_data['plotname']
                         instance2.plotname=myplotname
                         instance2.user=request.user
-                        instance2.myplots="/bubble/static/LabPeers_icon.png"
+                        instance2.myplots="/profile_pics/image.jpg"
                         instance2.save()
 
                         
