@@ -275,13 +275,18 @@ class HomeView(TemplateView):
             
                     if formplot.is_valid():
                         print("2 I'm in the make png loop now!")
-                        formplot.save()
+                        instance2=formplot.save(commit=False)
                         myplotname=formplot.cleaned_data['plotname']
+                        instance2.plotname=myplotname
+                        instance2.user=request.user
+                        instance2.myplots="/bubble/static/LabPeers_icon.png"
+                        instance2.save()
+
                         
                         #Testplot
-                        plot = figure(plot_width=600, plot_height=600, title=mytitle, 
-                                          x_axis_label=myXlabel, y_axis_label=myYlabel)
-                        
+#                        plot = figure(plot_width=600, plot_height=600, title=mytitle, 
+#                                          x_axis_label=myXlabel, y_axis_label=myYlabel)
+#                        
 #                        filename="/tmp/" + myplotname + ".png"
 #                        print(filename)
 #                        newplot=export_png(plot, filename)
@@ -297,9 +302,9 @@ class HomeView(TemplateView):
 #                        bucket.put_object(Body=img_data, ContentType='image/png', Key=KEY)
 #                        
                         
-                        newplot="/bubble/static/LabPeers_icon.png"
-                        plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
-                        plotimage.save()
+#                        newplot="/bubble/static/LabPeers_icon.png"
+#                        plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
+#                        plotimage.save()
                     
                         formplot = GalleryForm(request.POST)
                 
