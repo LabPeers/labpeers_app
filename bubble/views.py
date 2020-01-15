@@ -279,18 +279,17 @@ class HomeView(TemplateView):
                         myplotname=formplot.cleaned_data['plotname']
                         instance2.plotname=myplotname
                         instance2.user=request.user
-                        instance2.myplots="/profile_pics/99F615D3-643E-458E-B4CC-5C40351B45A3.jpeg"
-                        instance2.save()
+
 
                         
                         #Testplot
-#                        plot = figure(plot_width=600, plot_height=600, title=mytitle, 
-#                                          x_axis_label=myXlabel, y_axis_label=myYlabel)
+                        plot = figure(plot_width=600, plot_height=600, title=mytitle, 
+                                          x_axis_label=myXlabel, y_axis_label=myYlabel)
 #                        
-#                        filename="/tmp/" + myplotname + ".png"
-#                        print(filename)
-#                        newplot=export_png(plot, filename)
-#                        print(newplot)
+                        filename="/tmp/" + myplotname + ".png"
+                        print(filename)
+                        newplot=export_png(plot, filename)
+                        print(newplot)
                         
                         
 #                        img_data = io.BytesIO()
@@ -305,6 +304,10 @@ class HomeView(TemplateView):
 #                        newplot="/bubble/static/LabPeers_icon.png"
 #                        plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
 #                        plotimage.save()
+                    
+                        instance2.myplots=newplot                   
+                        #instance2.myplots="/profile_pics/99F615D3-643E-458E-B4CC-5C40351B45A3.jpeg"
+                        instance2.save()                    
                     
                         formplot = GalleryForm(request.POST)
                 
