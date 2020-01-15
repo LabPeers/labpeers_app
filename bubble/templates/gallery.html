@@ -12,13 +12,12 @@
 <td>{{ myvar.plotname }}</td>
 <td>{{ myvar.myDate }}</td> 
 <td>{{ myvar.user }}</td> 
-<td>{{ myvar.myplots }}</td> 
+<td>{{ myvar.myplots }}</td>
+<td><img src="{{ object.myvar.myplots.url }}" alt="image"></td>
 <td>
-<a type="button" class="btn btn-lg btn-default" href="/bubblechart/{{ myvar.pk }}">>
-<span class="glyphicon glyphicon-edit"></span></a>
 
-<a type="button" class="btn btn-lg btn-default" href="/projects/{{ myvar.pk }}">
-<span class="glyphicon glyphicon-trash"></span></a></td>
+<!--<a type="button" class="btn btn-lg btn-default" href="/projects/{{ myvar.pk }}">-->
+<!--<span class="glyphicon glyphicon-trash"></span></a></td>-->
 </tr>
 {% endfor %}
 </table>
