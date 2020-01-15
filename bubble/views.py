@@ -297,7 +297,7 @@ class HomeView(TemplateView):
 #                        bucket.put_object(Body=img_data, ContentType='image/png', Key=KEY)
 #                        
                         
-                        newplot="LabPeers_icon.png"
+                        newplot="/bubble/static/LabPeers_icon.png"
                         plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
                         plotimage.save()
                     
