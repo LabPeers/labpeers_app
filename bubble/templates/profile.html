@@ -104,12 +104,11 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         <hr class="w3-clear">
         <p>Soon your latest saved plots will show up here!</p>
           <div class="w3-row-padding" style="margin:0 -16px">
+          {% for myvar in gallery_plots %}
             <div class="w3-half">
-              <!--<img src="/w3images/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">-->
+              <img src="{{ myvar.myplots.url }}" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
             </div>
-            <div class="w3-half">
-              <!--<img src="/w3images/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">-->
-          </div>
+          {% endfor %}
         </div>
         <!--<button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>--> 
         <!--<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>--> 
