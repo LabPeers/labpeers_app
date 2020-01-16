@@ -34,7 +34,8 @@ from bokeh.models import ColumnDataSource, LinearColorMapper, ColorBar, BasicTic
 from bokeh.palettes import Viridis256
 from bokeh.transform import transform
 import numpy as np
-
+from io import BytesIO
+from django.core.files.base import ContentFile
 
 #from bokeh.models import ColumnDataSource, ColorBar
 #from bokeh.palettes import Spectral6
@@ -304,17 +305,34 @@ class HomeView(TemplateView):
                         img_name = myplotname + '.png'
  #                       img_path = settings.MEDIA_ROOT + img_name
 #                        img_path = "/plots/" + img_name
-
-
-                        image_field.save(img_name, InMemoryUploadedFile(
-                                pillow_image,       # file
-                                None,               # field_name
-                                img_name,           # file name
-                                'image/png',       # content_type
-                                pillow_image.tell,  # size
-                                None)               # content_type_extra
-                        )
                         
+                        f = BytesIO()
+                        
+                        try: 
+                            pillow_image.save(f, format = 'png')
+                            image_field.save(img_name, ContentFile(f.getvalue()))
+                        
+                        finally:
+                            f.close()
+                        
+ 
+#                        thumb_io = StringIO.StringIO()
+#                     #   img.save(thumb_io, format='PNG')
+#                        thumb_file = InMemoryUploadedFile(thumb_io, None, 'foo.jpg', 'image/jpeg', thumb_io.len, None)
+#                        default_storage.save("uploads", thumb_file)
+#
+#
+#
+#
+#                        image_field.save(img_name, InMemoryUploadedFile(
+#                                pillow_image,       # file
+#                                None,               # field_name
+#                                img_name,           # file name
+#                                'image/png',       # content_type
+#                                pillow_image.tell,  # size
+#                                None)               # content_type_extra
+#                        )
+#                        
                         
                         
                         
@@ -342,7 +360,7 @@ class HomeView(TemplateView):
 #                        plotimage.save()
                     
                         #instance2.myplots=newplot   
-                        instance2.myplots=InMemoryUploadedFile(img)
+                       # instance2.myplots=InMemoryUploadedFile(img)
                         #instance2.myplots="/profile_pics/99F615D3-643E-458E-B4CC-5C40351B45A3.jpeg"
                         instance2.save()                    
                     
