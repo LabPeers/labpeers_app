@@ -15,6 +15,7 @@ class HomeForm(forms.ModelForm):
     graph_title = forms.CharField(required=False, widget=forms.TextInput())
     graph_xlabel = forms.CharField(required=False, widget=forms.TextInput())
     graph_ylabel = forms.CharField(required=False, widget=forms.TextInput())
+    graph_description = forms.CharField(required=False, widget=forms.Textarea())
     myX = forms.CharField(widget=forms.TextInput())
     myY = forms.CharField(widget=forms.TextInput())
     myRadius= forms.CharField(widget=forms.TextInput())

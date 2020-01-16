@@ -17,6 +17,7 @@ class Graph_Data(models.Model):
         graph_title = models.CharField(default='Your graph title',max_length=500)
         graph_xlabel = models.CharField(default='x-axis label',max_length=500)
         graph_ylabel = models.CharField(default='y-axis label',max_length=500)
+        graph_description = models.CharField(default='This is what you can see in this graph...', max_length=2000)
 #        myX = ArrayField(models.FloatField())
         myX = models.CharField(max_length=500)
         myY = models.CharField(max_length=500)
