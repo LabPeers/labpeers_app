@@ -97,7 +97,7 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
     script, div = components({'plot': plot})
     plotdict={"the_script": script, "the_div": div}
     
-    return plotdict
+    return plotdict, plot
 
 
 
@@ -270,7 +270,7 @@ class HomeView(TemplateView):
 #                
                     
                     #scale = 10
-                plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
+                plotdict, plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
                 
                 
                 if 'make_png' in request.POST:
@@ -295,8 +295,8 @@ class HomeView(TemplateView):
                         
                         
                         #figure = io.BytesIO()
-                        plot = figure(plot_width=600, plot_height=600, title=mytitle, 
-                                          x_axis_label=myXlabel, y_axis_label=myYlabel)
+#                        plot = figure(plot_width=600, plot_height=600, title=mytitle, 
+#                                          x_axis_label=myXlabel, y_axis_label=myYlabel)
                         
                         pillow_image = get_screenshot_as_png(plot)
                         
@@ -315,53 +315,10 @@ class HomeView(TemplateView):
                         finally:
                             f.close()
                         
- 
-#                        thumb_io = StringIO.StringIO()
-#                     #   img.save(thumb_io, format='PNG')
-#                        thumb_file = InMemoryUploadedFile(thumb_io, None, 'foo.jpg', 'image/jpeg', thumb_io.len, None)
-#                        default_storage.save("uploads", thumb_file)
-#
-#
-#
-#
-#                        image_field.save(img_name, InMemoryUploadedFile(
-#                                pillow_image,       # file
-#                                None,               # field_name
-#                                img_name,           # file name
-#                                'image/png',       # content_type
-#                                pillow_image.tell,  # size
-#                                None)               # content_type_extra
-#                        )
-#                        
-                        
-                        
-                        
-                        
+                      
                         
                         #newplot=export_png(plot)
                         
-#                        plt.plot(xvalues, yvalues)
-#                        plt.savefig(figure, format="png")
-                        #content_file = ImageFile(figure)
-                        
-                        
-                        
-#                        img_data = io.BytesIO()
-#                        plt.savefig(img_data, format='png')
-#                        img_data.seek(0)
-#
-#                        s3 = boto3.resource('s3')
-#                        bucket = s3.Bucket(BUCKET_NAME)
-#                        bucket.put_object(Body=img_data, ContentType='image/png', Key=KEY)
-#                        
-                        
-#                        newplot="/bubble/static/LabPeers_icon.png"
-#                        plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
-#                        plotimage.save()
-                    
-                        #instance2.myplots=newplot   
-                       # instance2.myplots=InMemoryUploadedFile(img)
-                        #instance2.myplots="/profile_pics/99F615D3-643E-458E-B4CC-5C40351B45A3.jpeg"
                         instance2.save()                    
                     
                         formplot = GalleryForm(request.POST)
@@ -427,7 +384,7 @@ class EditView(TemplateView):
 #            
             
             #scale = 10
-            plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
+            plotdict, plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
             dict2={"form":form,"formplot":formplot}
             dict3={**plotdict , **dict2}
                 
@@ -499,7 +456,7 @@ class EditView(TemplateView):
 #                
                     
                     #scale = 10
-                plotdict=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
+                plotdict, plot=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
                 
                 if 'make_png' in request.POST:
                     print("1Edit I'm in the make png loop now!")
