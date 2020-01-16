@@ -297,7 +297,27 @@ class HomeView(TemplateView):
                         plot = figure(plot_width=600, plot_height=600, title=mytitle, 
                                           x_axis_label=myXlabel, y_axis_label=myYlabel)
                         
-                        img = get_screenshot_as_png(plot)
+                        pillow_image = get_screenshot_as_png(plot)
+                        
+                        
+                        image_field = instance2.myplots
+                        img_name = myplotname + '.png'
+ #                       img_path = settings.MEDIA_ROOT + img_name
+#                        img_path = "/plots/" + img_name
+
+
+                        image_field.save(img_name, InMemoryUploadedFile(
+                                pillow_image,       # file
+                                None,               # field_name
+                                img_name,           # file name
+                                'image/png',       # content_type
+                                pillow_image.tell,  # size
+                                None)               # content_type_extra
+                        )
+                        
+                        
+                        
+                        
                         
                         
                         #newplot=export_png(plot)
