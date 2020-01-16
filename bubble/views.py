@@ -283,28 +283,12 @@ class HomeView(TemplateView):
                         myplotname=formplot.cleaned_data['plotname']
                         instance2.plotname=myplotname
                         instance2.user=request.user
-
-
-                        
-                        #Testplot
-                        
-#                        filename="/plots/" + myplotname + ".png"
-#                        print(filename)
-#                        newplot=export_png(plot)
-#                        print(newplot)
-                        
-                        
-                        #figure = io.BytesIO()
-#                        plot = figure(plot_width=600, plot_height=600, title=mytitle, 
-#                                          x_axis_label=myXlabel, y_axis_label=myYlabel)
                         
                         pillow_image = get_screenshot_as_png(plot)
                         
                         
                         image_field = instance2.myplots
                         img_name = myplotname + '.png'
- #                       img_path = settings.MEDIA_ROOT + img_name
-#                        img_path = "/plots/" + img_name
                         
                         f = BytesIO()
                         
@@ -314,8 +298,6 @@ class HomeView(TemplateView):
                         
                         finally:
                             f.close()
-                        
-                      
                         
                         #newplot=export_png(plot)
                         
@@ -459,15 +441,35 @@ class EditView(TemplateView):
                 plotdict, plot=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
                 
                 if 'make_png' in request.POST:
-                    print("1Edit I'm in the make png loop now!")
+                    print("1 I'm in the make png loop now!")
                     formplot = GalleryForm(request.POST)
             
                     if formplot.is_valid():
-                        print("2Edit I'm in the make png loop now!")
+                        print("2 I'm in the make png loop now!")
+                        instance2=formplot.save(commit=False)
                         myplotname=formplot.cleaned_data['plotname']
-                        newplot=export_png(plotdict, filename=myplotname + ".png")
-                        plotimage= Gallery_Plots(plotname=myplotname, myplots=newplot)
-                        plotimage.save()    
+                        instance2.plotname=myplotname
+                        instance2.user=request.user
+                        
+                        pillow_image = get_screenshot_as_png(plot)
+                        
+                        
+                        image_field = instance2.myplots
+                        img_name = myplotname + '.png'
+                        
+                        f = BytesIO()
+                        
+                        try: 
+                            pillow_image.save(f, format = 'png')
+                            image_field.save(img_name, ContentFile(f.getvalue()))
+                        
+                        finally:
+                            f.close()
+                        
+                        #newplot=export_png(plot)
+                        
+                        instance2.save()                    
+                    
                         formplot = GalleryForm(request.POST)
                 
 
