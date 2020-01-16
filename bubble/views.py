@@ -178,7 +178,20 @@ class DeleteView(TemplateView):
             data_row_old.delete()
             
             return redirect('projects')
-        
+
+
+class DeletePlotView(TemplateView):
+    template_name = './gallery.html'
+  
+#if request.method == 'POST': # If the form has been submitted...
+    def get(self,request,pk):
+    
+        if request.user.is_authenticated:
+            #raise Http404
+            plot_row_old=Gallery_Plots.objects.get(pk=pk)
+            plot_row_old.delete()
+            
+            return redirect('gallery')        
         
 
    
