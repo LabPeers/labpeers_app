@@ -53,24 +53,13 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
           <div id="Demo3" class="w3-hide w3-container">
          <div class="w3-row-padding">
          <br>
+         {% for myvar in gallery_plots %}
            <div class="w3-half">
-             <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
+             <img src="{{ myvar.myplots.url }}" style="width:100%" class="w3-margin-bottom">
            </div>
-           <div class="w3-half">
-             <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
+           <!--<div class="w3-half">-->
+             <!--<img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">-->
+           <!--</div>-->
          </div>
           </div>
         </div>      
