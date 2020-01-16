@@ -116,9 +116,15 @@ class Profile(TemplateView):
     def get(self, request):
         
         p_form = UserProfileForm(instance=request.user.userprofile)
-        args = {'user': request.user, 'p_form': p_form}
+        
+        gallery_plots=Gallery_Plots.objects.filter(user=request.user)
+        
+        args = {'user': request.user, 'p_form': p_form, 'gallery_plots' : gallery_plots}
         
         return render(request, self.template_name, args)
+
+    
+    
     
     def post(self,request):
     #if request.method == 'POST': # If the form has been submitted...
