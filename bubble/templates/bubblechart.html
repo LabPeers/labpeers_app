@@ -65,6 +65,14 @@
                 {{ form.myRadius }}
         </td>
       </tr>
+      
+      <tr>
+        <th>Description</th>
+        <td>    <form method="post">
+                {% csrf_token %}
+                {{ form.graph_description }}
+        </td>
+      </tr>
     </table>
     <br>
     <button type="submit" name="plot_data">Submit/Update</button>
