@@ -268,7 +268,7 @@ class HomeView(TemplateView):
                     instance.save()
                                 
 #                    myfilename=form.cleaned_data['graph_filename']
-#                    myslug=slugify(myfilename)
+#                    myslug=slugify(myfilename)   
                 mytitle=form.cleaned_data['graph_title']
                 myXlabel=form.cleaned_data['graph_xlabel']
                 myYlabel=form.cleaned_data['graph_ylabel']

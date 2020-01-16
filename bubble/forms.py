@@ -26,7 +26,7 @@ class HomeForm(forms.ModelForm):
         model = Graph_Data
         #fields = ('post','myX',)
 #        fields = "__all__"
-        fields = ('graph_filename','graph_title','graph_xlabel','graph_ylabel',
+        fields = ('graph_filename','graph_title','graph_xlabel','graph_ylabel','graph_description',
                   'myX','myY','myRadius',)
 
 
