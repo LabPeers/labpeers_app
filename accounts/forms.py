@@ -31,6 +31,7 @@ class RegistrationForm(UserCreationForm):
     
 
 class UserProfileForm(forms.ModelForm):
+    image = forms.ImageField(required=False, error_messages = {'invalid':("Image files only")}, widget=forms.FileInput)
     class Meta:
         model = UserProfile
         fields = (
