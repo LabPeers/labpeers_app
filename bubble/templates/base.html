@@ -132,27 +132,20 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+<nav class="navbar navbar-default navbar-static-top navbar-inverse" style="background:white;color:black;">
   <div class="container">
     <ul class="nav navbar-nav">
+      <li class="active">
+        <a href="https://lab-peers.com"><img src="{% static 'LabPeers_icon.png'%}" alt="LabPeers icon"></a>
+      </li>
       <li class="active">
         <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
       </li>
       <li>
-        <a href="/bubblechart"><span class="glyphicon glyphicon-user"></span> Your Bubble Chart</a>
-      </li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-info-sign"></span> Getting Started Guide <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="https://lab-peers.com">Getting Started with Bubble Charts</a></li>
-        
-          </ul>
+        <a href="/bubblechart">New Chart</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li class="navbar-right">
-        <a href="https://lab-peers.com"><span class="glyphicon glyphicon-book"></span> LabPeers Home</a>
-      </li>
       {% if user.is_authenticated %}
           <li class="navbar-right">
           <li class="dropdown">
@@ -161,12 +154,9 @@
             <li><a href="/accounts/profile/"> My Profile</a></li>
             <li><a href="/projects/"> My Projects</a></li>
             <li><a href="/gallery/"> My Plots</a></li>          
-            <li><a href="/accounts/logout"> Logout</a></li>
-            
-        
+            <li><a href="/accounts/logout"> Logout</a></li>    
           </ul>
       </li>
-          <li class="navbar-right"><a href="/accounts/logout"> Logout</a></li>
       {% else %}
           <li class="navbar-right"><a href="/accounts/signup"> Register</a></li>
           <li class="navbar-right"><a href="/accounts/login"> Login</a></li>
