@@ -119,7 +119,9 @@ class Profile(TemplateView):
         
         gallery_plots=Gallery_Plots.objects.filter(user=request.user)
         
-        args = {'user': request.user, 'p_form': p_form, 'gallery_plots' : gallery_plots}
+        plots2show = Gallery_Plots.objects.filter(user=request.user).order_by('-myDate')[0:2]
+        
+        args = {'user': request.user, 'p_form': p_form, 'gallery_plots' : gallery_plots, 'plots2show' : plots2show}
         
         return render(request, self.template_name, args)
 

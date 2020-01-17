@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!--<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">-->
-<link rel="stylesheet" href="{% static '/admin/css/w3-theme-blue-grey.css'%}">
+<link rel="stylesheet" href="{% static 'w3-theme-blue-grey.css'%}">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -104,7 +104,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Sodo Sans", sans-serif}
         <h4>My Latest Plots</h4><br>
         <hr class="w3-clear">
           <div class="w3-row-padding" style="margin:0 -16px">
-          {% for myvar in gallery_plots %}
+          {% for myvar in plots2show %}
             <div class="w3-half">
               <img src="{{ myvar.myplots.url }}" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
             </div>
