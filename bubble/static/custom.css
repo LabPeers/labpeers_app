@@ -126,9 +126,16 @@
     color: black;
     }
     
+    
+    .btn-primary {
+    background:#701556;
+    }
+    
+    
   <!--Navigation bar-->  
-    .nav a {
+    .navbar-nav > li > a {
     vertical-align:middle;
+    color: black;
     }
 
 
