@@ -122,6 +122,14 @@
     caption { 
     display: table-caption;
     text-align: center;
-    font-size: 10vw !important;
+    font-size: 2vw !important;
     color: black;
     }
+    
+  <!--Navigation bar-->  
+    .nav a {
+    vertical-align:middle;
+    }
+
+
+    .nav ul{margin:0;}
