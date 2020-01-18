@@ -11,6 +11,7 @@
 <title> Data made simple </title>
   <link rel="shortcut icon" type="image/png" href="{% static 'LabPeers_icon.png'%}">
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'custom.css'%}">
   <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.css">  
   <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.css"/>
   <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-tables-1.2.0.min.css"/>
@@ -23,118 +24,12 @@
   <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
  
 
-  <style type="text/css">
-    .jumbotron {
-        <!--background: #532f8c;-->
-        background: #b7999c;<!--labpeers rose-->
-        color: white;
-        padding-bottom: 80px
-    }
-    .jumbotron .btn-primary {
-        background: #845ac7;
-        border-color: #845ac7
-    }
-    .jumbotron .btn-primary:hover {
-        background: #7646c1
-    }
-    .jumbotron p {
-        color: #d9ccee;
-        max-width: 75%;
-        margin: 1em auto 2em
-    }
-    .navbar+.jumbotron {
-        margin-top: -20px
-    }
-    .jumbotron .lang-logo {
-        display: block;
-        background: #b01302;
-        border-radius: 50%;
-        overflow: hidden;
-        width: 100px;
-        height: 100px;
-        margin: auto;
-        border: 2px solid white
-    }
-    .jumbotron .lang-logo img {
-        max-width: 100%
-    }
-    body {
-    padding-bottom: 50px;
-    }
-
-    .firstDiv {
-        display: inline-block;
-    }
-    
-    .secondDiv {
-        display: inline-block;
-    }
-    
-    table {
-        border-collapse: collapse;
-    }
-
-    td, th {
-        border-bottom: 1px solid #ddd;
-        text-align: left;
-        padding: 8px;
-    }
-    
-    tr:nth-child(even) {
-        background-color: #ffffff;
-    }
-    
-    
-    .main-container {
-        padding: 20px 0;
-        display: flex;
-        justify-content: space-around;
-    }
-    
- 
- 
-    
-    .flex-container{
-      display: flex;
-      justify-content: space-around;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items:center;
-    }
-
-    .flex-container > div{
-      width:600px;
-    }
-
-
-
-    @media screen (min-width: 520px) and (max-width:699px) {
-     .flex-container{
-      flex-direction:column;
-    }
-  
-    .flex-container > div{
-      width:480px;
-      font-size:36px;
-      }
-
-    }
-    
-    
-    caption { 
-    display: table-caption;
-    text-align: center;
-    font-size: 2vw !important;
-    color: black;
-    }
-
-  </style>
 
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top navbar-inverse" style="background:white;color:black;">
   <div class="container">
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav" style="text-align: center;">
       <li>
         <a href="https://lab-peers.com"><img src="{% static 'LabPeers_icon.png'%}" alt="LabPeers icon" style="width:60px;height:60px;border:0;background:white"></a>
       </li>
