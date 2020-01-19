@@ -101,6 +101,7 @@
     }
 
     .flex-container > div{
+    width: 550px
     }
     
      @media screen (min-width: 520px) and (max-width:699px) {
@@ -130,11 +131,11 @@
     background:#701556;
     }
     
-    
-    .navbar-nav > li > a {
-    vertical-align:middle;
-    font color: black;
-    }
+
+
+.nav.navbar-nav.navbar-right li a {
+color: black;
+}
 
 
     .navbar-inverse .navbar-nav>li>a {
