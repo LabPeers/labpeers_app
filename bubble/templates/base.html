@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html>
-{% load staticfiles %}
-{% load static %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
-
-
-
-
 <title> Data made simple </title>
   <link rel="shortcut icon" type="image/png" href="{% static 'LabPeers_icon.png'%}">
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
@@ -31,6 +25,8 @@
   <div class="container">
   <div class="navbar-header">
   <a class="navbar-brand" href="https://lab-peers.com"
+  {% load staticfiles %}
+  {% load static %}
   <img src="{% static 'LabPeers_icon.png'%}" width="30" height="30" alt="LabPeers_icon">
   </a>
   </div>
