@@ -127,13 +127,20 @@
     }
     
     
-    .btn-primary {
-    background:#701556;
-    }
+.btn-primary {
+background:#701556;
+}
     
+.navbar {
+border-color: #dfe0e2;
+}
 
 
 .nav.navbar-nav.navbar-right li a {
+color: black;
+}
+
+.nav.navbar-nav li a {
 color: black;
 }
 
