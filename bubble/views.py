@@ -80,8 +80,11 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
 
     df = pd.DataFrame(data = d)
     source = ColumnDataSource(df)
-    plot = figure(plot_width=600, plot_height=600, title=mytitle, 
-                  x_axis_label=myXlabel, y_axis_label=myYlabel)
+#    plot = figure(plot_width=600, plot_height=600, title=mytitle, 
+#                  x_axis_label=myXlabel, y_axis_label=myYlabel)
+    plot = figure(title=mytitle, x_axis_label=myXlabel, y_axis_label=myYlabel)
+
+    plot.sizing_mode = "scale_width"
 
     color_mapper = LinearColorMapper(palette = Viridis256, low = min(df['myBubble']), 
                                              high = max(df['myBubble']))
