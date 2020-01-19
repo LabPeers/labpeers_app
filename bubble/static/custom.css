@@ -132,11 +132,20 @@
     }
     
     
-  <!--Navigation bar-->  
     .navbar-nav > li > a {
     vertical-align:middle;
     font color: black;
     }
 
 
+    .navbar-inverse .navbar-nav>li>a {
+    font color: black;
+    }
+
+
+
     .nav ul{margin:0;}
+    
+.blue-square-container {
+text-align: center;
+}
