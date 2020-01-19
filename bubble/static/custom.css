@@ -102,6 +102,18 @@
 
     .flex-container > div{
     }
+    
+     @media screen (min-width: 520px) and (max-width:699px) {
+     .flex-container{
+      flex-direction:column;
+    }
+  
+    .flex-container > div{
+      width:300px;
+      font-size:36px;
+      }
+
+    }
 
 
     
