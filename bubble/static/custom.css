@@ -90,13 +90,15 @@ padding-top: 81px;
         display: flex;
         justify-content: space-around;
     }
+ 
+ 
     
 .homecontainer {
     width: 100 vw;
-    height:80vw;
+    height:90 vw;
     display: flex;
     justify-content: space-around;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .homecontainer > .column.left {
@@ -107,7 +109,7 @@ padding-top: 81px;
 }
 
 .homecontainer > .column.left > .textcentered{
-    display: inline-block;
+    /*display: inline-block;*/
 }
 
 
