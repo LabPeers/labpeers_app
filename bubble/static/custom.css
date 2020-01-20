@@ -92,9 +92,10 @@ padding-top: 81px;
     }
     
 .homecontainer {
+    min-height: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: stretch;
+    flex-direction: row;
 }
 
 .homecontainer > .column.left {
