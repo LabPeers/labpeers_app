@@ -11,12 +11,12 @@
   <a href="{% url 'login' %}">login</a>
 {% endif %}
 
-<div class="flex-container">
-    <div style="border-left: 1px solid; border-color:#dfe0e2">
+<div class="homecontainer">
+    <div class="column left">
       <h1>You are on the best track!</h1>    
     </div>
 
-    <div>
+    <div class="column right">
       <h2>What would you like to do?</h2>
       <a type="button" class="btn btn-lg btn-default" href="/bubblechart"><span class="glyphicon glyphicon-hand-right"></span> Track something new? </a>
           <a type="button" class="btn btn-lg btn-default" href="/projects"><span class="glyphicon glyphicon-hand-right"></span> Update a previous chart? </a>

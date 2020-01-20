@@ -91,6 +91,22 @@ padding-top: 81px;
         justify-content: space-around;
     }
     
+.homecontainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.homecontainer > .column.left {
+    flex: 0 0 230px;
+}
+
+.homecontainer > .column.right {
+    border-left: 1px solid #dfe0e2;
+}
+    
+    
+    
  
  
     
@@ -150,6 +166,8 @@ color: black;
     .navbar-inverse .navbar-nav>li>a {
     font color: black;
     }
+    
+ul.nav a:hover { color: #dfe0e2 !important; }
 
     
 .blue-square-container {
