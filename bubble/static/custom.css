@@ -96,14 +96,12 @@ padding-top: 81px;
     height:80vw;
     display: flex;
     justify-content: space-around;
-    align-items: center;
     flex-direction: row;
 }
 
 .homecontainer > .column.left {
     flex: 0 0 500px;
     height: 100%;
-    text-align: center;
     border-right: 1px solid #dfe0e2;
     position: fixed
 }
