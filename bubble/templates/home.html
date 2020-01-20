@@ -11,17 +11,15 @@
   <a href="{% url 'login' %}">login</a>
 {% endif %}
 
-<div class="homecontainer">
-    <div class="column left">
-
-          <h1>You are on the best track!</h1>
+ 
+<div class="homerow">
+  <div class="homecolumn1" style="background-color:#aaa;">
+    <h2>You are on the best track!</h2>
           <!--<img src="{% static 'mountain_climbing.jpeg'%} class="w3-circle" style="height:106px;width:106px" alt="">-->
           <img src="{% static 'mountain_climbing.jpeg'%}" style="height:180px;width:180px" alt="Mountain_climbing">
-   
-    </div>
-
-    <div class="column right">
-      <h2>What would you like to do?</h2>
+  </div>
+  <div class="homecolumn2" style="background-color:#bbb;">
+    <h2>What would you like to do?</h2>
           <a type="button" class="btn btn-lg btn-default" href="/bubblechart"><span class="glyphicon glyphicon-hand-right"></span> Track something new? </a>
           <br>
           <a type="button" class="btn btn-lg btn-default" href="/projects"><span class="glyphicon glyphicon-hand-right"></span> Update a previous chart? </a>
@@ -31,9 +29,9 @@
           <a type="button" class="btn btn-lg btn-default" href="/bubblechart"><span class="glyphicon glyphicon-hand-right"></span> Make a bubble chart? </a>
           <br>
           <a type="button" class="btn btn-lg btn-default" href="https://lab-peers.com"><span class="glyphicon glyphicon-hand-right"></span> Read our blog? </a>
-    </div>
-    
-</div>
+   
+  </div>
+</div>  
 
 
 {% endblock %}

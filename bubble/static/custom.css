@@ -119,8 +119,26 @@ padding-top: 81px;
     
     
     
- 
- 
+.homerow {
+  display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.homecolumn1 {
+  flex: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+  position: fixed
+}
+
+.homecolumn2 {
+  flex: 50%;
+  padding: 10px;
+  height: 90 vw; /* Should be removed. Only for demonstration */
+  overflow: scroll;
+}
+
+   
     
     .flex-container{
       display: flex;
