@@ -132,7 +132,7 @@ padding-top: 81px;
 }
 
 .homecolumn2 {
-  flex: 60%;
+  flex: 55%;
   padding: 10px;
   height: 100vw; /* Should be removed. Only for demonstration */
   overflow: scroll;
