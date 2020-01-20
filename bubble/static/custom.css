@@ -103,10 +103,17 @@ padding-top: 81px;
     flex: 0 0 500px;
     height: 100%;
     align-items: center;
+    text-align: center;
+    border-right: 1px solid #dfe0e2;
+    position: fixed
 }
 
+.homecontainer > .column.left > .textcentered{
+    display: inline-block;
+}
+
+
 .homecontainer > .column.right {
-    border-left: 1px solid #dfe0e2;
     overflow: scroll;
 }
     
@@ -156,6 +163,9 @@ background:#701556;
     
 .navbar {
 border-color: #dfe0e2;
+box-shadow: 10px 10px 5px grey;
+
+
 }
 
 
