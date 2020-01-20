@@ -125,16 +125,16 @@ padding-top: 81px;
 
 /* Create two equal columns that sits next to each other */
 .homecolumn1 {
-  flex: 50%;
+  flex: 40%;
   padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
+  height: 100vw; /* Should be removed. Only for demonstration */
   position: fixed
 }
 
 .homecolumn2 {
-  flex: 50%;
+  flex: 60%;
   padding: 10px;
-  height: 90 vw; /* Should be removed. Only for demonstration */
+  height: 100vw; /* Should be removed. Only for demonstration */
   overflow: scroll;
 }
 
