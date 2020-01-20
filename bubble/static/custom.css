@@ -56,9 +56,11 @@
     .jumbotron .lang-logo img {
         max-width: 100%
     }
-    body {
-    padding-bottom: 50px;
-    }
+    
+body {
+padding-bottom: 50px;
+padding-top: 70px;   
+}
 
     .firstDiv {
         display: inline-block;
