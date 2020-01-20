@@ -98,11 +98,13 @@ padding-top: 81px;
 }
 
 .homecontainer > .column.left {
-    flex: 0 0 230px;
+    flex: 0 0 500px;
+    height: 100%;
 }
 
 .homecontainer > .column.right {
     border-left: 1px solid #dfe0e2;
+    overflow: scroll;
 }
     
     
@@ -167,7 +169,7 @@ color: black;
     font color: black;
     }
     
-ul.nav a:hover { color: #dfe0e2 !important; }
+ul.nav a:hover { color: #bb2490 !important; }
 
     
 .blue-square-container {
