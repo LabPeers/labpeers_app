@@ -93,13 +93,13 @@ padding-top: 81px;
  
  
     
-.homecontainer {
-    width: 100 vw;
-    height:90 vw;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-}
+    .flex-container{
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items:center;
+    }
 
 .homecontainer > .column.left {
     flex: 0 0 500px;
@@ -108,45 +108,46 @@ padding-top: 81px;
     position: fixed
 }
 
-.homecontainer > .column.left > .textcentered{
-    /*display: inline-block;*/
-}
-
 
 .homecontainer > .column.right {
     overflow: scroll;
 }
     
     
-    
-.homerow {
-  display: flex;
-}
 
 /* Create two equal columns that sits next to each other */
 .homecolumn1 {
-  flex: 40%;
-  padding: 10px;
+  border-right: 1px solid #dfe0e2;
   height: 100vw; /* Should be removed. Only for demonstration */
   position: fixed
+  width:550px
 }
 
 .homecolumn2 {
   flex: 55%;
-  padding: 10px;
-  height: 100vw; /* Should be removed. Only for demonstration */
+  width:550px
+  /* Should be removed. Only for demonstration */
   overflow: scroll;
 }
 
-   
-    
-    .flex-container{
-      display: flex;
-      justify-content: space-around;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items:center;
+
+     @media screen (min-width: 520px) and (max-width:699px) {
+     .flex-container{
+      flex-direction:column;
     }
+  
+    .flex-container > homecolumn1{
+      width:300px;
+      }
+      
+      
+    .flex-container > homecolumn2{
+      width:300px;
+      }      
+
+    }
+
+
 
     .flex-container > div{
     width: 550px
