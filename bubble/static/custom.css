@@ -200,3 +200,14 @@ ul.nav a:hover { color: #bb2490 !important; }
 .blue-square-container {
 text-align: center;
 }
+
+
+/*Make navbar collapsible on mobile only*/
+@media (max-width: 700px) {
+  .navbar-header {
+    background-color: white;
+  }
+  nav.navbar {
+    border: 0px;
+  }
+}
