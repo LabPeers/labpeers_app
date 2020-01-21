@@ -91,17 +91,24 @@ padding-top: 81px;
         justify-content: space-around;
     }
  
+ .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+
  
     
-    .flex-container{
-      display: flex;
-      justify-content: space-around;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items:center;
+.flex-container{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items:center;
     }
-    
-    
+  
 
 /* Create two equal columns that sits next to each other */
 .homecolumn1 {
@@ -115,7 +122,7 @@ padding-top: 81px;
   width:550px
   /* Should be removed. Only for demonstration */
   overflow: scroll;
-  align-items: start;
+  align-items:stretch;
 }
 
 
