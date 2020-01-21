@@ -106,7 +106,7 @@ padding-top: 81px;
 /* Create two equal columns that sits next to each other */
 .homecolumn1 {
   border-right: 1px solid #dfe0e2;
-  height: 100vh; /* Should be removed. Only for demonstration */
+  /*height: 100vh; Should be removed. Only for demonstration */
   position: fixed
   width:550px
 }
