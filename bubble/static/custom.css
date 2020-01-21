@@ -100,25 +100,13 @@ padding-top: 81px;
       flex-wrap: wrap;
       align-items:center;
     }
-
-.homecontainer > .column.left {
-    flex: 0 0 500px;
-    height: 100%;
-    border-right: 1px solid #dfe0e2;
-    position: fixed
-}
-
-
-.homecontainer > .column.right {
-    overflow: scroll;
-}
     
     
 
 /* Create two equal columns that sits next to each other */
 .homecolumn1 {
   border-right: 1px solid #dfe0e2;
-  height: 100vw; /* Should be removed. Only for demonstration */
+  height: 100vh; /* Should be removed. Only for demonstration */
   position: fixed
   width:550px
 }
@@ -127,6 +115,7 @@ padding-top: 81px;
   width:550px
   /* Should be removed. Only for demonstration */
   overflow: scroll;
+  align-items: start;
 }
 
 
@@ -181,7 +170,7 @@ background:#701556;
     
 .navbar {
 border-color: #dfe0e2;
-box-shadow: 0px 7px 5px #dfe0e2;
+box-shadow: 0px 5px 4px #dfe0e2;
 }
 
 
@@ -194,9 +183,9 @@ color: black;
 }
 
 
-    .navbar-inverse .navbar-nav>li>a {
-    font color: black;
-    }
+.navbar-inverse .navbar-nav>li>a {
+font color: black;
+}
     
 ul.nav a:hover { color: #bb2490 !important; }
 
