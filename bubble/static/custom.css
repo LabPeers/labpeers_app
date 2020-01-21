@@ -119,10 +119,10 @@ padding-top: 81px;
 
 .homecolumn2 {
   width:550px
-  border-left: 1px solid #dfe0e2;
+  /*border-left: 1px solid #dfe0e2;*/
   /* Should be removed. Only for demonstration */
   overflow: scroll;
-  align-items:stretch;
+
 }
 
 
