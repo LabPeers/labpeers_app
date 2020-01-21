@@ -65,10 +65,6 @@ padding-bottom: 50px;
 padding-top: 81px;   
 }
 
- @media screen (min-width: 520px) and (max-width:699px) {
-     body{
-      padding-top: 120px;
-    }
 
 
 
