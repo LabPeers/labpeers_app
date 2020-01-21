@@ -56,11 +56,22 @@
     .jumbotron .lang-logo img {
         max-width: 100%
     }
+ 
+ 
+/*So that navbar doesn't cut off content*/
     
 body {
 padding-bottom: 50px;
 padding-top: 81px;   
 }
+
+ @media screen (min-width: 520px) and (max-width:699px) {
+     body{
+      padding-top: 120px;
+    }
+
+
+
 
     .firstDiv {
         display: inline-block;
