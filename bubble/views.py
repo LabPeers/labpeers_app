@@ -332,7 +332,7 @@ class HomeView(TemplateView):
                 myYlist=myYdata.split(",")
                 myRdata=form.cleaned_data['myRadius']
                 myRlist=myRdata.split(",")
-                #myRlist=np.array(myRlist, dtype=np.float32)
+                myRlist=np.array(myRlist, dtype=np.float32)
 #                
                     
                     #scale = 10
