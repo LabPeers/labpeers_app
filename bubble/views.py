@@ -90,6 +90,7 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
     x1=min(myXlist)
     print(x1)
     index_x1=np.where(myXlist == x1)
+    index_x1=index_x1[0]
     print(index_x1)
     myr1=myRlist[index_x1]
     print(myr1)
@@ -98,16 +99,19 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
     
     x2=max(myXlist)
     index_x2=np.where(myXlist == x2)
+    index_x2=index_x2[0]
     myr2=myRlist[index_x2]
     myxmax=x2 + 0.7 * myr2
     
     y1=min(myYlist)
     index_y1=np.where(myYlist == y1)
+    index_y1=index_y1[0]
     myr3=myRlist[index_y1]
     myymin=x1 - 0.7 * myr3
     
     y2=max(myYlist)
     index_y2=np.where(myYlist == y2)
+    index_y2=index_y2[0]
     myr4=myRlist[index_y2]
     myymax=y2 + 0.7 * myr4
     
