@@ -90,6 +90,7 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
     x1=min(myXlist)
     print(x1)
     index_x1=np.where(myXlist == x1)
+    print(index_x1)
     index_x1=index_x1[0]
     print(index_x1)
     myr1=myRlist[index_x1]
