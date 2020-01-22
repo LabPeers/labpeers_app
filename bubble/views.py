@@ -255,12 +255,19 @@ class HomeView(TemplateView):
     
     def get(self,request):
         
-        myXlist=[1,2]
-        myYlist=[3,4]
-        myRlist=[10,50]
+        myXlist='1,2'
+        myYlist='3,4'
+        myRlist='10,50'
         mytitle='Your title will go here'
         myXlabel='x-axis label'
         myYlabel='y-axis label'
+        
+        myXlist=myXlist.split(",")
+        myXlist=np.array(myXlist, dtype=np.float32)
+        myYlist=myYlist.split(",")
+        myYlist=np.array(myYlist, dtype=np.float32)
+        myRlist=myRlist.split(",")
+        myRlist=np.array(myRlist, dtype=np.float32)
         
         
         
