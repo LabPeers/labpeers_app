@@ -86,7 +86,15 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
 
     plot.sizing_mode = "scale_width"
 
-    color_mapper = LinearColorMapper(palette = Viridis256, low = min(df['myBubble']), 
+
+    LabPeers = ['#000000','#12030E','#25071C','#380A2B','#4A0E39','#5D1248',
+                    '#701556','#821964','#951C73','#A82081','#BB2490','#BB2490',
+                    '#C1399B','#C84FA6','#CF65B1','#D67BBC','#DD91C7','#E3A7D2',
+                    '#EABDDD','#F1D3E8','#F8E9F3','#FFFFFF']
+
+
+
+    color_mapper = LinearColorMapper(palette = LabPeers, low = min(df['myBubble']), 
                                              high = max(df['myBubble']))
             #color_mapper = LinearColorMapper(palette = Viridis256, low = min(myRlist), high = max(myRlist))
     color_bar = ColorBar(color_mapper = color_mapper,
