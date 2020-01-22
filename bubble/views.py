@@ -88,7 +88,7 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
 #                  x_axis_label=myXlabel, y_axis_label=myYlabel)
     
     
-    
+    x1=min(myXlist)
     index_x1=myXlist.argmin()
     print(index_x1)
     myr1=myRlist[index_x1]
@@ -96,17 +96,17 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
     myxmin=x1 - 0.7 * myr1
     print(myxmin)
     
-
+    x2=max(myXlist)
     index_x2=myXlist.argmax()
     myr2=myRlist[index_x2]
     myxmax=x2 + 0.7 * myr2
     
-
+    y1=min(myYlist)
     index_y1=myYlist.argmin()
     myr3=myRlist[index_y1]
-    myymin=x1 - 0.7 * myr3
+    myymin=y1 - 0.7 * myr3
     
- 
+    y2=max(myYlist)
     index_y2=myYlist.argmax()
     myr4=myRlist[index_y2]
     myymax=y2 + 0.7 * myr4
