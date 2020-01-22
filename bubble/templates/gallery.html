@@ -8,10 +8,10 @@
 <table>
 {% for myvar in gallery_plots %}
 <tr>
-<td>{{ myvar.plotname }}</td>
+<td><strong>{{ myvar.plotname }}</strong></td>
 <td>{{ myvar.myDate }}</td> 
-<td>{{ myvar.user }}</td> 
-<td>{{ myvar.myplots }}</td>
+<!--<td>{{ myvar.user }}</td>--> 
+<!--<td>{{ myvar.myplots }}</td>--> 
 <td><img src="{{ myvar.myplots.url }}" alt="image" style="width:200px;height:200px;"></td>
 <td>
 

@@ -8,10 +8,10 @@
 <table>
 {% for myvar in graph_data %}
 <tr>
-<td>{{ myvar.graph_filename }}</td>
+<td><strong>{{ myvar.graph_filename }}</strong></td>
 <td>{{ myvar.graph_description }}</td>
 <td>{{ myvar.myDate }}</td> 
-<td>{{ myvar.user }}</td> 
+<!--<td>{{ myvar.user }}</td>-->
 <td>
 <a type="button" class="btn btn-lg btn-default" href="/bubblechart/{{ myvar.pk }}">>
 <span class="glyphicon glyphicon-edit"></span></a>
