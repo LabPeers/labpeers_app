@@ -232,6 +232,7 @@ text-align: center;
 .icon-bar
 {
   color:black !important; /*Whatever colour you want for icon lines*/
+  background:black !important;
 }
 
 
