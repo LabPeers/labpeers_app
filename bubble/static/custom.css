@@ -178,6 +178,15 @@ padding-top: 81px;
     }
     
     
+ @media screen (min-width: 520px) and (max-width:699px) {
+    caption { 
+    display: table-caption;
+    text-align: center;
+    font-size: 5vw !important;
+    color: black;
+    }    
+    
+    
 .btn-primary {
 background:#701556;
 }
