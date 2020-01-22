@@ -96,11 +96,11 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
     myxmax=x2+0.7*myRlist[index_x2]
     
     y1=min(myYlist)
-    index_y1=myXlist.index(y1)
+    index_y1=myYlist.index(y1)
     myymin=x1-0.7*myRlist[index_y1]
     
     y2=max(myYlist)
-    index_y2=myXlist.index(y2)
+    index_y2=myYlist.index(y2)
     myymax=y2+0.7*myRlist[index_y2]
     
     
