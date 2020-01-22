@@ -77,7 +77,7 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 
 def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
     myscale=1
-    myRlist=myRlist/abs(myscale)
+    myRlist=[x / abs(myscale) for x in myRlist]
     
     
     d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
