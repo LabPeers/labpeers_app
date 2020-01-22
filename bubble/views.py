@@ -76,13 +76,39 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 
 
 def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
+    myscale=1
+    myRlist=myRlist/abs(myscale)
+    
+    
     d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
 
     df = pd.DataFrame(data = d)
     source = ColumnDataSource(df)
 #    plot = figure(plot_width=600, plot_height=600, title=mytitle, 
 #                  x_axis_label=myXlabel, y_axis_label=myYlabel)
-    plot = figure(title=mytitle, x_axis_label=myXlabel, y_axis_label=myYlabel)
+    
+    x1=min(myXlist)
+    index_x1=myXlist.index(x1)
+    myxmin=x1-0.7*myRlist(index_x1)
+    
+    x2=max(myXlist)
+    index_x2=myXlist.index(x2)
+    myxmax=x2+0.7*myRlist(index_x2)
+    
+    y1=min(myYlist)
+    index_y1=myXlist.index(y1)
+    myymin=x1-0.7*myRlist(index_y1)
+    
+    y2=max(myYlist)
+    index_y2=myXlist.index(y2)
+    myymax=y2+0.7*myRlist(index_y2)
+    
+    
+    
+    
+    
+    plot = figure(title=mytitle, x_axis_label=myXlabel, y_axis_label=myYlabel, 
+                  x_range=(myxmin, myxmax), y_range=(myymin, myymax))
 
     plot.sizing_mode = "scale_width"
 
