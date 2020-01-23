@@ -319,8 +319,8 @@ class HomeView(TemplateView):
             source=source,
             columns=columns,
             width=800,
-            editable=True,
-            reorderable=False,
+#            editable=True,
+#            reorderable=False,
         )
 
 #        def on_change_data_source(attr, old, new):
@@ -484,8 +484,8 @@ class HomeView(TemplateView):
                         source=source,
                         columns=columns,
                         width=800,
-                        editable=True,
-                        reorderable=False,
+#                        editable=True,
+#                        reorderable=False,
                         )
 
 #                def on_change_data_source(attr, old, new):
