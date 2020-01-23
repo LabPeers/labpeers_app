@@ -10,3 +10,4 @@ whitenoise
 boto3
 django-storages
 selenium
+django-tables2

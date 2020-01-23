@@ -316,7 +316,7 @@ class HomeView(TemplateView):
                 TableColumn(field="myRlist", title="Bubble size"),
         ]
         
-        data_table = DataTable(source=source, columns=columns, fit_columns=True)
+        data_table = DataTable(source=source, columns=columns, width=500)
 #            editable=True,
 #            reorderable=False,
        
