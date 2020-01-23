@@ -58,6 +58,7 @@ from bokeh.models.layouts import WidgetBox, Column
 from bokeh.io import export_png
 from bokeh.io.export import get_screenshot_as_png
 from bokeh.models.widgets import Slider
+import copy
 
 ########
 
@@ -265,6 +266,8 @@ class DeletePlotView(TemplateView):
             return redirect('gallery')        
         
 
+
+
    
     
 class HomeView(TemplateView):
@@ -298,12 +301,61 @@ class HomeView(TemplateView):
         #script, div = components(plot, CDN)
         
         ########### -----DATA TABLE----- ########### 
+        dict_table = {
+                'myXlist': myXlist,
+                'myYlist': myYlist,
+                'myRlist': myRlist,
+                }
+        source = ColumnDataSource(data=dict_table)
+
+        old_source = ColumnDataSource(copy.deepcopy(dict_table))
+
+        columns = [
+            TableColumn(field="x", title="x"),
+            TableColumn(field="y", title="y")
+        ]
+
+        data_table = DataTable(
+            source=source,
+            columns=columns,
+            width=800,
+            editable=True,
+            reorderable=False,
+        )
+
+        def on_change_data_source(attr, old, new):
+            # old, new and source.data are the same dictionaries
+            print('-- SOURCE DATA: {}'.format(source.data))
+            print('>> OLD SOURCE: {}'.format(old_source.data))
+
+            # to check changes in the 'y' column:
+            indices = list(range(len(old['y'])))
+            changes = [(i,j,k) for i,j,k in zip(indices, old_source.data['y'], source.data['y']) if j != k]
+            print('>> CHANGES: {}'.format(changes))
+
+            old_source.data = copy.deepcopy(source.data)
+
+        
+    
+        print('SOURCE DATA: {}'.format(source.data))
+
+
+        data_table.source.on_change('data', on_change_data_source)
+
+        curdoc().add_root(data_table)
+        
+        
+        
+        
+        
+        
+        
         
         plotdict , plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
 #        x = plotdict["the_script"]
 #        y = plotdict["the_div"]
      #  script, div = components({'plot': plot})
-        dict2={"form":form,"formplot":formplot}
+        dict2={"form":form,"formplot":formplot,"data_table":data_table}
         dict3={**plotdict , **dict2}
         
      
