@@ -151,7 +151,7 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, myScale):
                          location = (0, 0),
                          ticker = BasicTicker())
     plot.add_layout(color_bar, 'right')
-    plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble2', legend = None, 
+    plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble'/myScale, legend = None, 
                  fill_color = transform('myBubble', color_mapper), source = source)
     plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
    # plot.add_tools(slider)
