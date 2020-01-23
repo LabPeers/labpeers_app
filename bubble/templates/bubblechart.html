@@ -6,7 +6,7 @@
 <div class="flex-container">
 
 
-    <div> 
+    <div class="homecolumn2"> 
     <center><H4>Your Bubblechart Data</H4></center>
     <table>
       <tr>
@@ -82,9 +82,13 @@
     <br>
     <button type="submit" name="plot_data">Submit/Update</button>
     
+        {{ the_div_t.data_table | safe}} 
+        
+        {{ the_script_t| safe}} 
+    
     </div>
 
-    <div>
+    <div class="homecolumn1">
     
         {{ the_div.plot | safe}}  
         
@@ -92,20 +96,15 @@
         
         {{ the_script| safe}} 
         
-    </div>
-    
-
-    
-    <div>
-    
+        
     <form method="post">
                 {% csrf_token %}
                 {{ formplot.plotname }}
     <button type="submit" name="make_png">Save plot to gallery</button>
-    
-
+        
     </div>
     
+
 
 </div>
 
