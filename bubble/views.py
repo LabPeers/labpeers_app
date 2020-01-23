@@ -315,13 +315,11 @@ class HomeView(TemplateView):
                 TableColumn(field="myYlist", title="Y-values"),
                 TableColumn(field="myRlist", title="Bubble size"),
         ]
-        data_table = DataTable(
-            source=source,
-            columns=columns,
-            width=800,
+        
+        data_table = DataTable(source=source, columns=columns, fit_columns=True)
 #            editable=True,
 #            reorderable=False,
-        )
+       
 
 #        def on_change_data_source(attr, old, new):
 #            # old, new and source.data are the same dictionaries
@@ -356,11 +354,11 @@ class HomeView(TemplateView):
 #        x = plotdict["the_script"]
 #        y = plotdict["the_div"]
      #  script, div = components({'plot': plot})
-        dict2={"form":form,"formplot":formplot,"data_table":data_table}
+        dict2={"form":form,"formplot":formplot}
         dict3={**plotdict , **dict2}
-        
+        dict4={**dict3, **tabledict}
      
-        return render(request, self.template_name, dict3, tabledict)
+        return render(request, self.template_name, dict4)
    
     
     
@@ -516,14 +514,14 @@ class HomeView(TemplateView):
                 
                 
                 
-                
+                dict4={**dict3, **tabledict}
                 
                 
                 
                 
 
             
-                return render(request, self.template_name, dict3, tabledict)
+                return render(request, self.template_name, dict4)
                 
             
             else:
