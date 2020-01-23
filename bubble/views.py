@@ -276,6 +276,7 @@ class HomeView(TemplateView):
         myXlist='1,2'
         myYlist='3,4'
         myRlist='10,50'
+        myScale=1
         mytitle='Your title will go here'
         myXlabel='x-axis label'
         myYlabel='y-axis label'
@@ -298,7 +299,7 @@ class HomeView(TemplateView):
         
         ########### -----DATA TABLE----- ########### 
         
-        plotdict , plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
+        plotdict , plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
 #        x = plotdict["the_script"]
 #        y = plotdict["the_div"]
      #  script, div = components({'plot': plot})
@@ -360,10 +361,11 @@ class HomeView(TemplateView):
                 myRdata=form.cleaned_data['myRadius']
                 myRlist=myRdata.split(",")
                 myRlist=np.array(myRlist, dtype=np.float32)
+                myScale=form.cleaned_data['myScale']
 #                
                     
                     #scale = 10
-                plotdict, plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
+                plotdict, plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
                 
                 
                 if 'make_png' in request.POST:
@@ -456,10 +458,11 @@ class EditView(TemplateView):
             myRdata=graph_data.myRadius
             myRlist=myRdata.split(",")
             myRlist=np.array(myRlist, dtype=np.float32)
+            myScale=graph_data.myScale
 #            
             
             #scale = 10
-            plotdict, plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
+            plotdict, plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
             dict2={"form":form,"formplot":formplot}
             dict3={**plotdict , **dict2}
                 
@@ -528,10 +531,10 @@ class EditView(TemplateView):
                 myRdata=form.cleaned_data['myRadius']
                 myRlist=myRdata.split(",")
                 myRlist=np.array(myRlist, dtype=np.float32)
-#                
+                myScale=form.cleaned_data['myScale']
                     
                     #scale = 10
-                plotdict, plot=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist)
+                plotdict, plot=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
                 
                 if 'make_png' in request.POST:
                     print("1 I'm in the make png loop now!")
