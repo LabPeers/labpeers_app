@@ -82,11 +82,11 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, myScale):
 #    myRlist=[x / abs(myscale) for x in myRlist]
 #    
     
-    d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist, 'myScale' : myScale}
-    
     myRlist2=myRlist/myScale
     
-    d2= {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble2': myRlist2, 'myScale' : myScale}
+    d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist, 'myBubble2': myRlist2, 'myScale' : myScale}
+
+
 
     df = pd.DataFrame(data = d)
     source = ColumnDataSource(df)
@@ -151,7 +151,7 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, myScale):
                          location = (0, 0),
                          ticker = BasicTicker())
     plot.add_layout(color_bar, 'right')
-    plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble'/myScale, legend = None, 
+    plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble2', legend = None, 
                  fill_color = transform('myBubble', color_mapper), source = source)
     plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
    # plot.add_tools(slider)
