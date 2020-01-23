@@ -64,6 +64,11 @@
                 {% csrf_token %}
                 {{ form.myRadius }}
         </td>
+        <th>Scaling Factor</th>
+        <td>    <form method="post">
+                {% csrf_token %}
+                {{ form.myScale }}
+        </td>
       </tr>
       
       <tr>

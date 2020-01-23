@@ -19,6 +19,7 @@ class HomeForm(forms.ModelForm):
     myX = forms.CharField(widget=forms.TextInput())
     myY = forms.CharField(widget=forms.TextInput())
     myRadius= forms.CharField(widget=forms.TextInput())
+    myScale=forms.FloatField(widget=forms.NumberInput())
    # slug=forms.SlugField(widget=forms.TextInput())
     
 
@@ -27,7 +28,7 @@ class HomeForm(forms.ModelForm):
         #fields = ('post','myX',)
 #        fields = "__all__"
         fields = ('graph_filename','graph_title','graph_xlabel','graph_ylabel','graph_description',
-                  'myX','myY','myRadius',)
+                  'myX','myY','myRadius','myScale',)
 
 
 

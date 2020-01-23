@@ -77,12 +77,16 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 
 
 
-def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
+def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, myScale):
 #    myscale=1
 #    myRlist=[x / abs(myscale) for x in myRlist]
 #    
     
-    d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist} 
+    d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist, 'myScale' : myScale}
+    
+    myRlist2=myRlist/myScale
+    
+    d2= {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble2': myRlist2, 'myScale' : myScale}
 
     df = pd.DataFrame(data = d)
     source = ColumnDataSource(df)
@@ -97,23 +101,27 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
     print(index_x1)
     myr1=myRlist[index_x1]
     print(myr1)
-    myxmin=x1 - 0.7 * myr1/FirstScale
+    #myxmin=x1 - 0.7 * myr1/FirstScale
+    myxmin=x1 - FirstScale
     print(myxmin)
     
     x2=max(myXlist)
     index_x2=myXlist.argmax()
     myr2=myRlist[index_x2]
-    myxmax=x2 + 0.7 * myr2/FirstScale
+    #myxmax=x2 + 0.7 * myr2/FirstScale
+    myxmax=x2 + FirstScale
     
     y1=min(myYlist)
     index_y1=myYlist.argmin()
     myr3=myRlist[index_y1]
-    myymin=y1 - 0.7 * myr3/FirstScale
+    #myymin=y1 - 0.7 * myr3/FirstScale
+    myymin=y1 - FirstScale
     
     y2=max(myYlist)
     index_y2=myYlist.argmax()
     myr4=myRlist[index_y2]
-    myymax=y2 + 0.7 * myr4/FirstScale
+    #myymax=y2 + 0.7 * myr4/FirstScale
+    myymax=y2 + FirstScale
     
     
 #    start=min(myRlist)
@@ -143,7 +151,7 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
                          location = (0, 0),
                          ticker = BasicTicker())
     plot.add_layout(color_bar, 'right')
-    plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble', legend = None, 
+    plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble2', legend = None, 
                  fill_color = transform('myBubble', color_mapper), source = source)
     plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
    # plot.add_tools(slider)

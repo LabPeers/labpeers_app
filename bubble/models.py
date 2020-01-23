@@ -22,6 +22,7 @@ class Graph_Data(models.Model):
         myX = models.CharField(max_length=500)
         myY = models.CharField(max_length=500)
         myRadius = models.CharField(max_length=500)
+        myScale= models.FloatField(default=1,max_length=1)
         myDate = models.DateTimeField(auto_now=True)
        # slug=models.SlugField(default='new',null=False, unique=True)
 
