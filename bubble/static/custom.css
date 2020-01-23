@@ -122,6 +122,7 @@ padding-top: 81px;
   /*height: 100vh; Should be removed. Only for demonstration */
   position: fixed;
   width:550px;
+  columns: 550px 2;
 }
 
 .homecolumn2 {
@@ -130,6 +131,7 @@ padding-top: 81px;
   /* Should be removed. Only for demonstration */
   overflow: scroll;
   align-items:center;
+  columns: 550px 2;
 
 }
 
