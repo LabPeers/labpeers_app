@@ -116,10 +116,10 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
     myymax=y2 + 0.7 * myr4/FirstScale
     
     
-    start=min(myRlist)
-    end=max(myRlist)
-    slider = Slider(start, end, value=1, step=abs(end-start)/100, title="Bubble size scaling factor")
- 
+#    start=min(myRlist)
+#    end=max(myRlist)
+#    slider = Slider(start, end, value=1, step=abs(end-start)/100, title="Bubble size scaling factor")
+# 
     
     
     plot = figure(title=mytitle, x_axis_label=myXlabel, y_axis_label=myYlabel, 
@@ -146,7 +146,7 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
     plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble', legend = None, 
                  fill_color = transform('myBubble', color_mapper), source = source)
     plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
-    plot.add_tools(slider)
+   # plot.add_tools(slider)
 
 
     script, div = components({'plot': plot})
