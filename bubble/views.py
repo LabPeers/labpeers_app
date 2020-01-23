@@ -308,13 +308,13 @@ class HomeView(TemplateView):
                 }
         source = ColumnDataSource(data=dict_table)
 
-        old_source = ColumnDataSource(copy.deepcopy(dict_table))
+        #old_source = ColumnDataSource(copy.deepcopy(dict_table))
 
         columns = [
-            TableColumn(field="x", title="x"),
-            TableColumn(field="y", title="y")
+                TableColumn(field="myXlist", title="X-values"),
+                TableColumn(field="myYlist", title="Y-values"),
+                TableColumn(field="myRlist", title="Bubble size"),
         ]
-
         data_table = DataTable(
             source=source,
             columns=columns,
@@ -323,26 +323,26 @@ class HomeView(TemplateView):
             reorderable=False,
         )
 
-        def on_change_data_source(attr, old, new):
-            # old, new and source.data are the same dictionaries
-            print('-- SOURCE DATA: {}'.format(source.data))
-            print('>> OLD SOURCE: {}'.format(old_source.data))
-
-            # to check changes in the 'y' column:
-            indices = list(range(len(old['y'])))
-            changes = [(i,j,k) for i,j,k in zip(indices, old_source.data['y'], source.data['y']) if j != k]
-            print('>> CHANGES: {}'.format(changes))
-
-            old_source.data = copy.deepcopy(source.data)
-
-        
-    
-        print('SOURCE DATA: {}'.format(source.data))
-
-
-        data_table.source.on_change('data', on_change_data_source)
-
-        curdoc().add_root(data_table)
+#        def on_change_data_source(attr, old, new):
+#            # old, new and source.data are the same dictionaries
+#            print('-- SOURCE DATA: {}'.format(source.data))
+#            print('>> OLD SOURCE: {}'.format(old_source.data))
+#
+#            # to check changes in the 'y' column:
+#            indices = list(range(len(old['y'])))
+#            changes = [(i,j,k) for i,j,k in zip(indices, old_source.data['y'], source.data['y']) if j != k]
+#            print('>> CHANGES: {}'.format(changes))
+#
+#            old_source.data = copy.deepcopy(source.data)
+#
+#        
+#    
+#        print('SOURCE DATA: {}'.format(source.data))
+#
+#
+#        data_table.source.on_change('data', on_change_data_source)
+#
+#        curdoc().add_root(data_table)
         
         script_t, div_t = components({'data_table': data_table})
         tabledict={"the_script_t": script_t, "the_div_t": div_t}
@@ -472,11 +472,12 @@ class HomeView(TemplateView):
                         }
                 source = ColumnDataSource(data=dict_table)
 
-                old_source = ColumnDataSource(copy.deepcopy(dict_table))
+                #old_source = ColumnDataSource(copy.deepcopy(dict_table))
 
                 columns = [
-                        TableColumn(field="x", title="x"),
-                        TableColumn(field="y", title="y")
+                        TableColumn(field="myXlist", title="X-values"),
+                        TableColumn(field="myYlist", title="Y-values"),
+                        TableColumn(field="myRlist", title="Bubble size"),
                 ]
 
                 data_table = DataTable(
@@ -487,26 +488,26 @@ class HomeView(TemplateView):
                         reorderable=False,
                         )
 
-                def on_change_data_source(attr, old, new):
-                    # old, new and source.data are the same dictionaries
-                    print('-- SOURCE DATA: {}'.format(source.data))
-                    print('>> OLD SOURCE: {}'.format(old_source.data))
-                    
-                    # to check changes in the 'y' column:
-                    indices = list(range(len(old['y'])))
-                    changes = [(i,j,k) for i,j,k in zip(indices, old_source.data['y'], source.data['y']) if j != k]
-                    print('>> CHANGES: {}'.format(changes))
-                    
-                    old_source.data = copy.deepcopy(source.data)
-
-        
-    
-                print('SOURCE DATA: {}'.format(source.data))
-
-
-                data_table.source.on_change('data', on_change_data_source)
-
-                curdoc().add_root(data_table)
+#                def on_change_data_source(attr, old, new):
+#                    # old, new and source.data are the same dictionaries
+#                    print('-- SOURCE DATA: {}'.format(source.data))
+#                    print('>> OLD SOURCE: {}'.format(old_source.data))
+#                    
+#                    # to check changes in the 'y' column:
+#                    indices = list(range(len(old['y'])))
+#                    changes = [(i,j,k) for i,j,k in zip(indices, old_source.data['y'], source.data['y']) if j != k]
+#                    print('>> CHANGES: {}'.format(changes))
+#                    
+#                    old_source.data = copy.deepcopy(source.data)
+#
+#        
+#    
+#                print('SOURCE DATA: {}'.format(source.data))
+#
+#
+#                data_table.source.on_change('data', on_change_data_source)
+#
+#                curdoc().add_root(data_table)
         
                 script_t, div_t = components({'data_table': data_table})
                 tabledict={"the_script_t": script_t, "the_div_t": div_t}
