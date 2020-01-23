@@ -57,6 +57,8 @@ from bokeh.models.widgets import (
 from bokeh.models.layouts import WidgetBox, Column
 from bokeh.io import export_png
 from bokeh.io.export import get_screenshot_as_png
+from bokeh.models.widgets import Slider
+
 ########
 
 #from django.template.defaultfilters import slugify
@@ -87,32 +89,37 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
 #    plot = figure(plot_width=600, plot_height=600, title=mytitle, 
 #                  x_axis_label=myXlabel, y_axis_label=myYlabel)
     
-    
+    #Scaled myRlist
+    BiggestBubble=max(myRlist)
+    FirstScale=BiggestBubble/10
     x1=min(myXlist)
     index_x1=myXlist.argmin()
     print(index_x1)
     myr1=myRlist[index_x1]
     print(myr1)
-    myxmin=x1 - 0.7 * myr1
+    myxmin=x1 - 0.7 * myr1/FirstScale
     print(myxmin)
     
     x2=max(myXlist)
     index_x2=myXlist.argmax()
     myr2=myRlist[index_x2]
-    myxmax=x2 + 0.7 * myr2
+    myxmax=x2 + 0.7 * myr2/FirstScale
     
     y1=min(myYlist)
     index_y1=myYlist.argmin()
     myr3=myRlist[index_y1]
-    myymin=y1 - 0.7 * myr3
+    myymin=y1 - 0.7 * myr3/FirstScale
     
     y2=max(myYlist)
     index_y2=myYlist.argmax()
     myr4=myRlist[index_y2]
-    myymax=y2 + 0.7 * myr4
+    myymax=y2 + 0.7 * myr4/FirstScale
     
     
-    
+    start=min(myRlist)
+    end=max(myRlist)
+    slider = Slider(start, end, value=1, step=abs(end-start)/100, title="Bubble size scaling factor")
+ 
     
     
     plot = figure(title=mytitle, x_axis_label=myXlabel, y_axis_label=myYlabel, 
@@ -128,6 +135,7 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
 
 
 
+
     color_mapper = LinearColorMapper(palette = LabPeers, low = min(df['myBubble']), 
                                              high = max(df['myBubble']))
             #color_mapper = LinearColorMapper(palette = Viridis256, low = min(myRlist), high = max(myRlist))
@@ -138,7 +146,9 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist):
     plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble', legend = None, 
                  fill_color = transform('myBubble', color_mapper), source = source)
     plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
-    
+    plot.add_tools(slider)
+
+
     script, div = components({'plot': plot})
     plotdict={"the_script": script, "the_div": div}
     
