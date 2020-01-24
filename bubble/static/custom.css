@@ -218,7 +218,7 @@ background:#701556;
     
 .navbar {
 border-color: #dfe0e2;
-background: white;
+background: !white;
 box-shadow: 0px 5px 4px #dfe0e2;
 }
 
@@ -227,12 +227,8 @@ color: #bb2490;
 }
 
 
-.nav.navbar-nav.navbar-right li a {
-color: black;
-}
-
-.nav.navbar-nav li a {
-color: black;
+.nav a {
+color: black; // applies to all of the ul links
 }
 
 
