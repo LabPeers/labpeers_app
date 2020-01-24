@@ -11,15 +11,15 @@ from .models import Graph_Data, Gallery_Plots
 
 
 class HomeForm(forms.ModelForm):
-    graph_filename=forms.CharField(widget=forms.TextInput())
-    graph_title = forms.CharField(required=False, widget=forms.TextInput())
-    graph_xlabel = forms.CharField(required=False, widget=forms.TextInput())
-    graph_ylabel = forms.CharField(required=False, widget=forms.TextInput())
-    graph_description = forms.CharField(required=False, widget=forms.Textarea())
-    myX = forms.CharField(widget=forms.TextInput())
-    myY = forms.CharField(widget=forms.TextInput())
-    myRadius= forms.CharField(widget=forms.TextInput())
-    myScale=forms.FloatField(widget=forms.NumberInput())
+    graph_filename=forms.CharField(widget=forms.TextInput(attrs={'placeholder':'e.g. MyFilename'}))
+    graph_title = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder':'e.g. MyTitle'}))
+    graph_xlabel = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder':'e.g. x-axis'}))
+    graph_ylabel = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder':'e.g. y-axis'}))
+    graph_description = forms.CharField(required=False, widget=forms.Textarea(attrs={'placeholder':'e.g. This graph is very important!'}))
+    myX = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'e.g. 1,2,3'}))
+    myY = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'e.g. 1,5,9'}))
+    myRadius= forms.CharField(widget=forms.TextInput(attrs={'placeholder':'e.g. 5,10,30'}))
+    myScale=forms.FloatField(widget=forms.NumberInput(attrs={'placeholder':'e.g. 1.2'}))
    # slug=forms.SlugField(widget=forms.TextInput())
     
 
@@ -33,7 +33,7 @@ class HomeForm(forms.ModelForm):
 
 
 class GalleryForm(forms.ModelForm):
-    plotname=forms.CharField(required=False,widget=forms.TextInput())
+    plotname=forms.CharField(required=False,widget=forms.TextInput(attrs={'placeholder':'e.g. MyPlot'}))
     
     class Meta:
         model = Gallery_Plots

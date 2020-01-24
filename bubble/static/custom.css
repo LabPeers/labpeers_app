@@ -215,7 +215,10 @@ width:90%;
 .btn-primary {
 background:#701556;
 }
-    
+  
+  
+/*NAVBAR DEFINITION!!!*/
+  
 .navbar {
 border-color: #dfe0e2;
 background: !white;
@@ -232,11 +235,7 @@ color: black; !important
 }
 
 
-.navbar-inverse .navbar-nav>li>a {
-font color: black;
-}
-    
-ul.nav a:hover { color: #bb2490 !important; }
+/*End of NAVBAR DEFINITION!!!*/
 
     
 .blue-square-container {
@@ -244,15 +243,6 @@ text-align: center;
 }
 
 
-/*Make navbar collapsible on mobile only*/
-@media (max-width: 700px) {
-  .navbar-header {
-    background-color: white;
-  }
-  nav.navbar {
-    border: 0px;
-  }
-}
 
 .icon-bar
 {
