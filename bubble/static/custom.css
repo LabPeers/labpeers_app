@@ -61,8 +61,8 @@
 /*So that navbar doesn't cut off content*/
     
 body {
-padding-bottom: 50px;
-padding-top: 81px;   
+padding-bottom: 20px;
+padding-top: 91px;   
 }
 
 
@@ -228,7 +228,7 @@ color: #bb2490;
 
 
 .nav a {
-color: black; // applies to all of the ul links
+color: black; !important
 }
 
 
