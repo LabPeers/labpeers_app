@@ -48,21 +48,21 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Sodo Sans", sans-serif}
         </a>
         
         <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#Nav1" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <i class="fa fa-bars" aria-hidden="true"></i><!--<span class="navbar-toggler-icon"></span>-->
         </button>
   
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="Nav1">
-            <ul class="navbar-nav" style="background:white;color:black;hover:black">
+            <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/"><span class="glyphicon glyphicon-home"></span><strong> HOME</strong> </a>
+                <a class="nav-link" href="/" style="color:black;"><span class="glyphicon glyphicon-home"></span><strong> Home</strong> </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/bubblechart"><span class="glyphicon glyphicon-plus"></span><strong> CHART </strong> </a>
+                <a class="nav-link" href="/bubblechart"><span class="glyphicon glyphicon-plus"></span><strong> Chart </strong> </a>
             </li>
             </ul>
             
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto nav">
               {% if user.is_authenticated %}
                   <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
