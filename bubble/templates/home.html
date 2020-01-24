@@ -11,37 +11,37 @@
   <a href="{% url 'login' %}">login</a>
 {% endif %}
 
-<div class=row>
+<div class="container-fluid">
+    <div class="row">
  
-<div class="col-md-6">
-  <div class="leftside d-flex justify-content-center align-items-center">
-    <center><h3>You are on the best track!</h3></center>
+        <div class="col-sm-6 col-12 py-2 d-flex align-items-center justify-content-center" id="left">
+            <h3>You are on the best track!</h3>
           <!--<img src="{% static 'mountain_climbing.jpeg'%} class="w3-circle" style="height:106px;width:106px" alt="">-->
-          <img src="{% static 'mountain_climbing.jpeg'%}" style="height:180px;width:180px" alt="Mountain_climbing" class="center">
-  </div>
-</div>
+            <img src="{% static 'mountain_climbing.jpeg'%}" style="height:180px;width:180px" alt="Mountain_climbing" class="center">
+         </div>
 
-<div class="col-md-6">
-  <div class="rightside d-flex justify-content-center align-items-center">
-    <h2>What would you like to do?</h2>
-    <br>
-    <a type="button" class="btn btn-lg btn-default" id="purplebutton" href="/bubblechart" style="background:#821964; color:white;"><span class="glyphicon glyphicon-hand-right"></span> Track something new? </a>
-    <br>
-    <br>
-    <a type="button" class="btn btn-lg btn-default" href="/projects"><span class="glyphicon glyphicon-hand-right"></span> Update a previous chart? </a>
-    <br>
-    <br>
-    <a type="button" class="btn btn-lg btn-default" id="purplebutton" href="/gallery" style="background:#821964; color:white;"><span class="glyphicon glyphicon-hand-right"></span> See your tracking plots? </a>
-    <br>
-    <br>
-    <a type="button" class="btn btn-lg btn-default" href="/bubblechart"><span class="glyphicon glyphicon-hand-right"></span> Make a bubble chart? </a>
-    <br>
-    <br>
-    <a type="button" class="btn btn-lg btn-default" id="purplebutton" href="https://lab-peers.com" style="background:#821964; color:white;"><span class="glyphicon glyphicon-hand-right"></span> Read our blog? </a>
-   
-  </div>
-</div>
+
+        <div class="col-sm-6 col-12 offset-0 offset-sm-6 py-2">
+            <h2>What would you like to do?</h2>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" id="purplebutton" href="/bubblechart" style="background:#821964; color:white;"><span class="glyphicon glyphicon-hand-right"></span> Track something new? </a>
+            <br>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" href="/projects"><span class="glyphicon glyphicon-hand-right"></span> Update a previous chart? </a>
+            <br>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" id="purplebutton" href="/gallery" style="background:#821964; color:white;"><span class="glyphicon glyphicon-hand-right"></span> See your tracking plots? </a>
+            <br>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" href="/bubblechart"><span class="glyphicon glyphicon-hand-right"></span> Make a bubble chart? </a>
+            <br>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" id="purplebutton" href="https://lab-peers.com" style="background:#821964; color:white;"><span class="glyphicon glyphicon-hand-right"></span> Read our blog? </a>   
+        </div>
+
+    </div>
   
 </div>
+
 
 {% endblock %}

@@ -3,111 +3,109 @@
 
 {% block content %}
 
-<div class="row">
+<div class="container-fluid">
+    <div class="row">
     
-    <div class="col-md-6">
+        <div class="col-sm-6 col-12 py-2 d-flex align-items-center justify-content-center" id="left">
 
-    <div class="leftside d-flex justify-content-center align-items-center">
     
-       <center> {{ the_div.plot | safe}}  </center>
+            {{ the_div.plot | safe}}
         
-        <center> {{ the_div.table | safe}} </center>
+            {{ the_div.table | safe}}
         
-        <center> {{ the_script| safe}} </center>
+            {{ the_script| safe}}
         
-        
-    <form method="post">
+            <br>
+            <form method="post">
                 {% csrf_token %}
                 {{ formplot.plotname }}
-    <button type="submit" name="make_png">Save plot to gallery</button>
+            <button type="submit" name="make_png">Save plot to gallery</button>
         
-    </div>
-    </div>
+        </div>
 
 
 
-    <div class="col-md-6">
-    <div class="rightside d-flex justify-content-center align-items-center"> 
-    <center><H4>Your Bubblechart Data</H4></center>
-    <table>
-      <tr>
-        <th>Filename for your Project</th>
-        <td>    <form method="post">
-                {% csrf_token %}
-                {{ form.graph_filename }}
-        </td>
-      </tr>
-    
-    
-      <tr>
-        <th>Graph Title</th>
-        <td>    <form method="post">
-                {% csrf_token %}
-                {{ form.graph_title }}
-        </td>
-      </tr>
-      
-      <tr>
-        <th>X-axis label</th>
-        <td>    <form method="post">
-                {% csrf_token %}
-                {{ form.graph_xlabel }}
-        </td>
-      </tr>
-      
-     <tr>
-        <th>Y-axis label</th>
-        <td>    <form method="post">
-                {% csrf_token %}
-                {{ form.graph_ylabel }}
-        </td>
-      </tr>
-      
-      <tr>
-        <th>x-Values</th>
-        <td>    <form method="post">
-                {% csrf_token %}
-                {{ form.myX }}
-        </td>
-      </tr>
-      
-      <tr>
-        <th>y-Values</th>
-        <td><form method="post">
-                {% csrf_token %}
-                {{ form.myY }}
-        </td>
-      </tr>
-  
-      <tr>
-        <th>Bubble size</th>
-        <td>    <form method="post">
-                {% csrf_token %}
-                {{ form.myRadius }}
-        </td>
-        <th>Scaling Factor</th>
-        <td>    <form method="post">
-                {% csrf_token %}
-                {{ form.myScale }}
-        </td>
-      </tr>
-      
-      <tr>
-        <th>Description</th>
-        <td>    <form method="post">
-                {% csrf_token %}
-                {{ form.graph_description }}
-        </td>
-      </tr>
-    </table>
-    <br>
-    <button type="submit" name="plot_data">Submit/Update</button>
-    
-        {{ the_div_t.data_table | safe}} 
+    <div class="col-sm-6 col-12 offset-0 offset-sm-6 py-2">
+        <H3>Your Bubblechart Data</H4>
+        <table>
+          <tr>
+            <th>Filename for your Project</th>
+            <td>    <form method="post">
+                    {% csrf_token %}
+                    {{ form.graph_filename }}
+            </td>
+          </tr>
         
-        {{ the_script_t| safe}} 
+        
+          <tr>
+            <th>Graph Title</th>
+            <td>    <form method="post">
+                    {% csrf_token %}
+                    {{ form.graph_title }}
+            </td>
+          </tr>
+      
+          <tr>
+            <th>X-axis label</th>
+            <td>    <form method="post">
+                    {% csrf_token %}
+                    {{ form.graph_xlabel }}
+            </td>
+          </tr>
+          
+         <tr>
+                <th>Y-axis label</th>
+        <td>    <form method="post">
+                        {% csrf_token %}
+                    {{ form.graph_ylabel }}
+        </td>
+          </tr>
+              
+          <tr>
+            <th>x-Values</th>
+            <td>    <form method="post">
+                    {% csrf_token %}
+                    {{ form.myX }}
+            </td>
+          </tr>
+          
+          <tr>
+            <th>y-Values</th>
+            <td><form method="post">
+                    {% csrf_token %}
+                    {{ form.myY }}
+            </td>
+          </tr>
+      
+          <tr>
+            <th>Bubble size</th>
+            <td>    <form method="post">
+                    {% csrf_token %}
+                    {{ form.myRadius }}
+            </td>
+            <th>Scaling Factor</th>
+            <td>    <form method="post">
+                    {% csrf_token %}
+                    {{ form.myScale }}
+            </td>
+          </tr>
+          
+          <tr>
+            <th>Description</th>
+            <td>    <form method="post">
+                    {% csrf_token %}
+                    {{ form.graph_description }}
+            </td>
+          </tr>
+        </table>
+        <br>
+        <button type="submit" name="plot_data">Submit/Update</button>
+        
+            {{ the_div_t.data_table | safe}} 
+            
+            {{ the_script_t| safe}} 
     
-    </div>
+        </div>
 
     </div>
 

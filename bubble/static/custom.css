@@ -106,6 +106,17 @@ padding-top: 81px;
 }
 
 
+/*Home and Bubblechart page*/
+@media (min-width: 576px){
+    #left {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+    }
+}
+
+
+
  
     
 .flex-container{
