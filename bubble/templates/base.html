@@ -55,10 +55,10 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Sodo Sans", sans-serif}
           <div class="collapse navbar-collapse" id="Nav1">
             <ul class="navbar-nav" style="background:white;color:black;hover:black">
             <li class="nav-item">
-            <a href="/"><span class="glyphicon glyphicon-home"></span><strong> HOME</strong> </a>
+            <a class="nav-link" href="/"><span class="glyphicon glyphicon-home"></span><strong> HOME</strong> </a>
             </li>
             <li class="nav-item">
-            <a href="/bubblechart"><span class="glyphicon glyphicon-plus"></span><strong> CHART </strong> </a>
+            <a class="nav-link" href="/bubblechart"><span class="glyphicon glyphicon-plus"></span><strong> CHART </strong> </a>
             </li>
             </ul>
             <ul class="navbar-nav navbar-right">
@@ -66,12 +66,13 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Sodo Sans", sans-serif}
                   <li class="navbar-right">
                   <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <span class="glyphicon glyphicon-user"></span> {{user.username}} <span class="caret"></span></a>
+                      <span class="glyphicon glyphicon-user"></span> {{user.username}} <span class="caret"></span>
+                      </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a href="/accounts/profile/"> My Profile</a></li>
-                    <a href="/projects/"> My Projects</a></li>
-                    <a href="/gallery/"> My Plots</a></li>          
-                    <a href="/accounts/logout"> Logout</a></li>    
+                    <a class="dropdown-item" href="/accounts/profile/"> My Profile</a>
+                    <a class="dropdown-item" href="/projects/"> My Projects</a>
+                    <a class="dropdown-item" href="/gallery/"> My Plots</a>    
+                    <a class="dropdown-item" href="/accounts/logout"> Logout</a>   
                   </div>
                   </li>
               {% else %}
@@ -81,7 +82,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Sodo Sans", sans-serif}
               {% endif %}
             </ul>
           </div><!-- /.navbar-collapse -->
-    </div>
+    <!--</div>-->
 </nav>
 
 {% if messages %}
