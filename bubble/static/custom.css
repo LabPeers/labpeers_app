@@ -218,7 +218,12 @@ background:#701556;
     
 .navbar {
 border-color: #dfe0e2;
+background: white;
 box-shadow: 0px 5px 4px #dfe0e2;
+}
+
+.navbar a:hover {
+color: #bb2490; 
 }
 
 
