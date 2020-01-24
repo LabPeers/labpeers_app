@@ -115,23 +115,26 @@ padding-top: 81px;
   flex-wrap: wrap;
   /*align-items:center;*/
     }
-  
+
+
+
 
 /* Create two equal columns that sits next to each other */
-.homecolumn1 {
+.leftside {
   /*height: 100vh; Should be removed. Only for demonstration */
   position: fixed;
-  width:550px;
+
 }
 
-.homecolumn2 {
-  width:550px;
+.rightside {
   /*border-left: 1px solid #dfe0e2;*/
   /* Should be removed. Only for demonstration */
   overflow: scroll;
   align-items:center;
 
 }
+
+
 
 
      @media screen (min-width: 520px) and (max-width:699px) {
