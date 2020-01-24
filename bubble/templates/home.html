@@ -11,14 +11,18 @@
   <a href="{% url 'login' %}">login</a>
 {% endif %}
 
-<div class=flex-container>
+<div class=row>
  
-  <div class="homecolumn1">
+<div class="col-md-6">
+  <div class="leftside">
     <center><h3>You are on the best track!</h3></center>
           <!--<img src="{% static 'mountain_climbing.jpeg'%} class="w3-circle" style="height:106px;width:106px" alt="">-->
           <img src="{% static 'mountain_climbing.jpeg'%}" style="height:180px;width:180px" alt="Mountain_climbing" class="center">
   </div>
-  <div class="homecolumn2">
+</div>
+
+<div class="col-md-6">
+  <div class="rightside">
     <h2>What would you like to do?</h2>
     <br>
     <a type="button" class="btn btn-lg btn-default" id="purplebutton" href="/bubblechart" style="background:#821964; color:white;"><span class="glyphicon glyphicon-hand-right"></span> Track something new? </a>
@@ -36,6 +40,7 @@
     <a type="button" class="btn btn-lg btn-default" id="purplebutton" href="https://lab-peers.com" style="background:#821964; color:white;"><span class="glyphicon glyphicon-hand-right"></span> Read our blog? </a>
    
   </div>
+</div>
   
 </div>
 
