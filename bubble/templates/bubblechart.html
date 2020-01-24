@@ -94,14 +94,7 @@
                     {{ form.myScale }}
             </td>
           </tr>
-          </table>
-          
-            {{ the_div_t.data_table | safe}} 
-            
-            {{ the_script_t| safe}} 
-          
-          
-            <table>
+
           <tr>
             <th>Description</th>
             <td>    <form method="post">
@@ -116,6 +109,11 @@
         
         <body>
   <table class="editabletable" border="1">
+    <tr>
+        <th>x-Values</th>
+        <th>y-Values</th>
+        <th>Bubble size</th>
+    </tr>
     <tr>
       <td><div contenteditable>a</div></td>
       <td><div contenteditable>b</div></td>
