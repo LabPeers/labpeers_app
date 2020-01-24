@@ -117,7 +117,7 @@ padding-top: 81px;
     }
 
 .leftside, .rightside {
-/*height:50vh;*/
+height:50vh;
 width:100%;
 }
 
@@ -131,15 +131,15 @@ width:100%;
 /* Create two equal columns that sits next to each other */
 .leftside {
   /*height: 100vh; Should be removed. Only for demonstration */
-  position: fixed;
+  /*position: fixed;*/
 
 }
 
 .rightside {
   /*border-left: 1px solid #dfe0e2;*/
   /* Should be removed. Only for demonstration */
-  overflow: scroll;
-  align-items:center;
+  /*overflow: scroll;
+  align-items:center;*/
 
 }
 
