@@ -224,10 +224,10 @@ init();
         var myTab = document.getElementById('empTable');
 
         // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
-        for (i = 1; i < myTab.columns.length; i++) {
+        for (i = 1; i < myTab.col.length; i++) {
 
             // GET THE CELLS COLLECTION OF THE CURRENT ROW.
-            var objCells = myTab.columns.item(i).cells;
+            var objCells = myTab.col.item(i).cells;
 
             // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
             for (var j = 0; j < objCells.length; j++) {
