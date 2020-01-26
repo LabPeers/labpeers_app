@@ -65,7 +65,7 @@
               
           <tr>
             <th>x-Values</th>
-            <td>    <form method="post">
+            <td id="x-values">    <form method="post">
                     {% csrf_token %}
                     {{ form.myX }}
             </td>
@@ -236,8 +236,9 @@ init();
             //for (var j = 0; j < objCells.length; j++) {
               //  info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML;
             //}
-            info.innerHTML = info.innerHTML + '<br />';     // ADD A BREAK (TAG).
+            info.innerHTML = info.innerHTML + ',';     // ADD A BREAK (TAG).
         }
+        document.getElementById('x-values').innerHTML = info.innerHTML;
     }
 </script>
 
