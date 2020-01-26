@@ -16,7 +16,7 @@ class HomeForm(forms.ModelForm):
     graph_xlabel = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder':'e.g. x-axis'}))
     graph_ylabel = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder':'e.g. y-axis'}))
     graph_description = forms.CharField(required=False, widget=forms.Textarea(attrs={'placeholder':'e.g. This graph is very important!'}))
-    myX = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'e.g. 1,2,3', 'id':'x-values'}))
+    myX = forms.CharField(widget=forms.TextInput(attrs={'id':'x-values','placeholder':'e.g. 1,2,3'}))
     myY = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'e.g. 1,5,9'}))
     myRadius= forms.CharField(widget=forms.TextInput(attrs={'placeholder':'e.g. 5,10,30'}))
     myScale=forms.FloatField(widget=forms.NumberInput(attrs={'placeholder':'e.g. 1.2'}))
