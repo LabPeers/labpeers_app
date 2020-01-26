@@ -219,8 +219,9 @@ init();
 
 
 
+
     function showTableData() {
-        document.getElementById('info').innerHTML = "";
+        document.getElementById('info').innerText = "";
         var myTab = document.getElementById('empTable');
 
         // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
@@ -229,22 +230,30 @@ init();
             // GET THE CELLS COLLECTION OF THE CURRENT ROW.
             //var objCells = myTab.rows.item(i).cells;
             var objCells = myTab.rows.item(i).cells.item(0);
-                info.innerHTML = info.innerHTML + objCells.innerHTML;
+                info.innerText = info.innerText + objCells.innerText;
+                
 
             // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
             //for (var j = 0; j < objCells.length; j++) {
-              //  info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML;
+              //  info.innerText = info.innerText + ' ' + objCells.item(j).innerText;
             //}
             if (i < myTab.rows.length -1){
-            info.innerHTML = info.innerHTML + ',';     // ADD A Comma
+            info.innerText = info.innerText + ',';     // ADD A Comma
             } else{
-            info.innerHTML = info.innerHTML;
+            info.innerText = info.innerText;
 
             }
         }
-        //document.getElementById('x-values').innerHTML = info.innerHTML; //Write the column content into Data Table
-        document.getElementById('x-values').innerHTML = str1; //Write the column content into Data Table
-    }
+        document.getElementById('x-values').innerText = info.innerText; //Write the column content into Data Table
+        //document.getElementById('x-values').innerText = str1; //Write the column content into Data Table
+    }    
+    
+    
+    
+    
+    
+    
+    
 </script>
 
 
