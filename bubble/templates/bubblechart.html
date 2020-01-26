@@ -70,10 +70,8 @@
             <td id="x-values">    
             
             <form method="post">
-            <div contenteditable>
                     {% csrf_token %}
-                    {{ form.myX }}
-                    </div>
+                    {{ form.myX id="x-values"}}
             </td>
           </tr>
           
