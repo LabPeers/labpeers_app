@@ -19,7 +19,9 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ formplot.plotname }}
+                </form>
                 <button type="submit" name="make_png">Save plot to gallery</button>
+                
                 
              </div>   
         
@@ -65,9 +67,13 @@
               
           <tr>
             <th>x-Values</th>
-            <td id="x-values">    <form method="post">
+            <td id="x-values">    
+            
+            <form method="post">
+            <div contenteditable>
                     {% csrf_token %}
                     {{ form.myX }}
+                    </div>
             </td>
           </tr>
           
