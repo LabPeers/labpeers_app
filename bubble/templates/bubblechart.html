@@ -229,18 +229,20 @@ init();
             // GET THE CELLS COLLECTION OF THE CURRENT ROW.
             //var objCells = myTab.rows.item(i).cells;
             var objCells = myTab.rows.item(i).cells.item(0);
-            info.innerHTML = info.innerHTML + ',' + objCells.innerHTML;
+            //info.innerHTML = info.innerHTML + objCells.innerHTML;
+            info.innerHTML = str.concat(info.innerHTML,objCells.innerHTML);
             
 
             // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
             //for (var j = 0; j < objCells.length; j++) {
               //  info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML;
             //}
-           // if (i < myTab.rows.length -1){
+            if (i < myTab.rows.length -1){
+            info.innerHTML = str.concat(info.innerHTML,',');
             //info.innerHTML = info.innerHTML + ',';     // ADD A Comma
-            //} else{
-            //info.innerHTML = info.innerHTML;
-            //}
+            } else{
+            info.innerHTML = info.innerHTML;
+            }
         }
         document.getElementById('x-values').innerHTML = info.innerHTML; //Write the column content into Data Table
     }
