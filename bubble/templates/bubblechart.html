@@ -231,7 +231,10 @@ init();
             var objCells = myTab.rows.item(i).cells.item(0);
             //info.innerHTML = info.innerHTML + objCells.innerHTML;
             //info.innerHTML = str.concat(info.innerHTML,objCells.innerHTML);
-            info.textContent = str.concat(info.textContent,objCells.textContent);
+            str1=String(info.innerHTML)
+            str2=String(objCells.innerHTML)
+            str1=str.concat(str1,str2)
+         
 
             // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
             //for (var j = 0; j < objCells.length; j++) {
@@ -239,11 +242,12 @@ init();
             //}
             if (i < myTab.rows.length -1){
             //info.innerHTML = str.concat(info.innerHTML,',');
-            info.textContent = str.concat(info.textContent,',');
+            str1=str.concat(str1,',');
             //info.innerHTML = info.innerHTML + ',';     // ADD A Comma
             } else{
             //info.innerHTML = info.innerHTML;
-            info.textContent = info.textContent;
+            //info.textContent = info.textContent;
+            str1=str1;
             }
         }
         document.getElementById('x-values').innerHTML = info.innerHTML; //Write the column content into Data Table
