@@ -108,7 +108,7 @@
           </tr>
         </table>
         <br>
-        <button type="submit" name="plot_data">Submit/Update onclick="showTableData()"</button>
+        <button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button>
         
         
 
@@ -232,15 +232,11 @@ init();
         for (i = 1; i < myTab.rows.length; i++) {
 
             // GET THE CELLS COLLECTION OF THE CURRENT ROW.
-            //var objCells = myTab.rows.item(i).cells;
             var objCells = myTab.rows.item(i).cells.item(0);
                 info.innerText = info.innerText + objCells.innerText;
                 
 
-            // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
-            //for (var j = 0; j < objCells.length; j++) {
-              //  info.innerText = info.innerText + ' ' + objCells.item(j).innerText;
-            //}
+            // READ CELL VALUE OF THE CURENT ROW.
             if (i < myTab.rows.length -1){
             info.innerText = info.innerText + ',';     // ADD A Comma
             } else{
@@ -250,9 +246,7 @@ init();
             info.innerText = info.innerText.split(" ").join(""); 
         }
         document.getElementById('x-values').value = info.innerText; //Write the column content into Data Table
-        //document.getElementById('x-values').innerText = str1; //Write the column content into Data Table
-        //{{ form.myX }}=info.innerText;
-        //{{ myX }} = info.innerText;
+
     }    
     
     
