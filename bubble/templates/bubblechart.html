@@ -124,9 +124,9 @@
         <th></th>
     </tr>
     <tr>
-        <td><div contenteditable id="x-values"></div></td>
-        <td><div contenteditable id="y-values"></div></td>
-        <td><div contenteditable id="bubble-size"></div></td>
+        <td><div contenteditable></div></td>
+        <td><div contenteditable></div></td>
+        <td><div contenteditable></div></td>
         <td><a class="deleteRow"></a></td>
         <tfoot>
         <tr>
@@ -325,9 +325,9 @@ $(document).ready(function () {
         var newRow = $("<tr>");
         var cols = "";
 
-        cols += '<td><div contenteditable id="x-values' + counter + '"></div></td>';
-        cols += '<td><div contenteditable id="y-values' + counter + '"></div></td>';
-        cols += '<td><div contenteditable id="bubble-size' + counter + '"></div></td>';
+        cols += '<td><div contenteditable></div></td>';
+        cols += '<td><div contenteditable></div></td>';
+        cols += '<td><div contenteditable></div></td>';
 
         cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
         newRow.append(cols);
@@ -347,18 +347,6 @@ $(document).ready(function () {
 
 
 
-function calculateRow(row) {
-    var price = +row.find('div[id^="price"]').val();
-
-}
-
-function calculateGrandTotal() {
-    var grandTotal = 0;
-    $("table.editabletable").find('div[id^="price"]').each(function () {
-        grandTotal += +$(this).val();
-    });
-    $("#grandtotal").text(grandTotal.toFixed(2));
-}
 
     
     
