@@ -127,10 +127,10 @@
     </thead>
     <tbody>
     <tr>
-        <td class="col-sm-4"><input type="text" name="x-values" class="form-control" /><div contenteditable></div></td>
-        <td class="col-sm-4"><input type="text" name="y-values"  class="form-control"/><div contenteditable></div></td>
-        <td class="col-sm-3"><input type="text" name="bubble-size"  class="form-control"/><div contenteditable></div></td>
-        <td class="col-sm-2"><a class="deleteRow"></a></td>
+        <td><input name="x-values"/><div contenteditable></div></td>
+        <td><input name="y-values"/><div contenteditable></div></td>
+        <td><input name="bubble-size"/><div contenteditable></div></td>
+        <td><a class="deleteRow"></a></td>
     </tbody>
         <tfoot>
         <tr>
@@ -329,9 +329,9 @@ $(document).ready(function () {
         var newRow = $("<tr>");
         var cols = "";
 
-        cols += '<td><input type="text" class="form-control" name="x-values' + counter + '"/><div contenteditable></div></td>';
-        cols += '<td><input type="text" class="form-control" name="y-values' + counter + '"/><div contenteditable></div></td>';
-        cols += '<td><input type="text" class="form-control" name="bubble-size' + counter + '"/><div contenteditable></div></td>';
+        cols += '<td><input name="x-values' + counter + '"/><div contenteditable></div></td>';
+        cols += '<td><input name="y-values' + counter + '"/><div contenteditable></div></td>';
+        cols += '<td><input name="bubble-size' + counter + '"/><div contenteditable></div></td>';
 
         cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
         newRow.append(cols);
