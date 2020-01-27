@@ -329,9 +329,9 @@ $(document).ready(function () {
         var newRow = $("<tr>");
         var cols = "";
 
-        cols += '<td><input type="text" class="form-control" name="x-values' + counter + '"/></td>';
-        cols += '<td><input type="text" class="form-control" name="y-values' + counter + '"/></td>';
-        cols += '<td><input type="text" class="form-control" name="bubble-size' + counter + '"/></td>';
+        cols += '<td><input type="text" class="form-control" name="x-values' + counter + '"/><div contenteditable></div></td>';
+        cols += '<td><input type="text" class="form-control" name="y-values' + counter + '"/><div contenteditable></div></td>';
+        cols += '<td><input type="text" class="form-control" name="bubble-size' + counter + '"/><div contenteditable></div></td>';
 
         cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
         newRow.append(cols);
