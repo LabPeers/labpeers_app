@@ -19,7 +19,7 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ formplot.plotname }}
-                </form>
+                
                 <button type="submit" name="make_png">Save plot to gallery</button>
                 
                 
@@ -112,26 +112,26 @@
         
         
 
-  <table id="empTable" class="editabletable" border="1">
+  <table id="empTable" class="editabletable">
     <tr>
         <th>x-Values</th>
         <th>y-Values</th>
         <th>Bubble size</th>
     </tr>
     <tr>
-      <td><div contenteditable>a</div></td>
-      <td><div contenteditable>b</div></td>
-      <td><div contenteditable>c</div></td>
+      <td><div contenteditable></div></td>
+      <td><div contenteditable></div></td>
+      <td><div contenteditable></div></td>
     </tr>
     <tr>
-      <td><div contenteditable>d</div></td>
-      <td><div contenteditable>e</div></td>
-      <td><div contenteditable>f</div></td>
+      <td><div contenteditable></div></td>
+      <td><div contenteditable></div></td>
+      <td><div contenteditable></div></td>
     </tr>
     <tr>
-      <td><div contenteditable>g</div></td>
-      <td><div contenteditable>h</div></td>
-      <td><div contenteditable>i</div></td>
+      <td><div contenteditable></div></td>
+      <td><div contenteditable></div></td>
+      <td><div contenteditable></div></td>
     </tr>
   </table>
 
@@ -247,6 +247,7 @@ init();
             info.innerText = info.innerText;
 
             }
+            info.innerText = info.innerText.split(" ").join(""); 
         }
         document.getElementById('x-values').value = info.innerText; //Write the column content into Data Table
         //document.getElementById('x-values').innerText = str1; //Write the column content into Data Table
