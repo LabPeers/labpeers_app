@@ -116,12 +116,13 @@
         
         
 
-  <table id="empTable" class="editabletable" align="center">
+  <table id="empTable" class="table editabletable" align="center">
     <thead>
     <tr>
-        <th style="width:25%">x-Values</th>
-        <th style="width:25%">y-Values</th>
-        <th style="width:25%">Bubble size</th>
+        <th>x-Values</th>
+        <th>y-Values</th>
+        <th>Bubble size</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -334,13 +335,13 @@ $(document).ready(function () {
 
         cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
         newRow.append(cols);
-        $("table.order-list").append(newRow);
+        $("table.editabletable").append(newRow);
         counter++;
     });
 
 
 
-    $("table.order-list").on("click", ".ibtnDel", function (event) {
+    $("table.editabletable").on("click", ".ibtnDel", function (event) {
         $(this).closest("tr").remove();       
         counter -= 1
     });
@@ -357,7 +358,7 @@ function calculateRow(row) {
 
 function calculateGrandTotal() {
     var grandTotal = 0;
-    $("table.order-list").find('input[name^="price"]').each(function () {
+    $("table.editabletable").find('input[name^="price"]').each(function () {
         grandTotal += +$(this).val();
     });
     $("#grandtotal").text(grandTotal.toFixed(2));
