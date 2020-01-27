@@ -18,7 +18,7 @@
         
                 <br>
                 <form method="post">
-                    % csrf_token %}
+                    {% csrf_token %}
                     {{ formplot.plotname }}
                 
                 <button type="submit" name="make_png">Save plot to gallery</button>
@@ -126,41 +126,10 @@
     </thead>
     <tbody>
     <tr>
-      <td><div contenteditable></div></td>
-      <td><div contenteditable></div></td>
-      <td><div contenteditable></div></td>
-    </tr>
-    <tr>
-      <td><div contenteditable></div></td>
-      <td><div contenteditable></div></td>
-      <td><div contenteditable></div></td>
-      <td class="col-sm-2"><a class="deleteRow"></a></td>
-    </tr>
-    <tr>
-      <td><div contenteditable></div></td>
-      <td><div contenteditable></div></td>
-      <td><div contenteditable></div></td>
-      <td class="col-sm-2"><a class="deleteRow"></a></td>
-      
-    </tr>
-    <tr>
-      <td><div contenteditable></div></td>
-      <td><div contenteditable></div></td>
-      <td><div contenteditable></div></td>
-      <td class="col-sm-2"><a class="deleteRow"></a></td>
-    </tr>
-        <tr>
-      <td><div contenteditable></div></td>
-      <td><div contenteditable></div></td>
-      <td><div contenteditable></div></td>
-      <td class="col-sm-2"><a class="deleteRow"></a></td>
-    </tr>
-    <tr>
-      <td><div contenteditable></div></td>
-      <td><div contenteditable></div></td>
-      <td><div contenteditable></div></td>
-      <td class="col-sm-2"><a class="deleteRow"></a></td>
-    </tr>
+        <td class="col-sm-4"><input type="text" name="x-values" class="form-control" /><div contenteditable></div></td>
+        <td class="col-sm-4"><input type="text" name="y-values"  class="form-control"/><div contenteditable></div></td>
+        <td class="col-sm-3"><input type="text" name="bubble-size"  class="form-control"/><div contenteditable></div></td>
+        <td class="col-sm-2"><a class="deleteRow"></a></td>
     </tbody>
         <tfoot>
         <tr>
@@ -359,9 +328,9 @@ $(document).ready(function () {
         var newRow = $("<tr>");
         var cols = "";
 
-        cols += '<td><input type="text" class="form-control" name="name' + counter + '"/></td>';
-        cols += '<td><input type="text" class="form-control" name="mail' + counter + '"/></td>';
-        cols += '<td><input type="text" class="form-control" name="phone' + counter + '"/></td>';
+        cols += '<td><input type="text" class="form-control" name="x-values' + counter + '"/></td>';
+        cols += '<td><input type="text" class="form-control" name="y-values' + counter + '"/></td>';
+        cols += '<td><input type="text" class="form-control" name="bubble-size' + counter + '"/></td>';
 
         cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
         newRow.append(cols);
