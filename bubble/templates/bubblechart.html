@@ -25,7 +25,7 @@
                 <table align="center">
                     <tr>
                         <th>Description</th>
-                        <td>    <form method="post">
+                        <td style="border: none !important;">    <form method="post">
                             {% csrf_token %}
                             {{ form.graph_description }}
                         </td>
@@ -39,7 +39,7 @@
 
 
     <div class="col-sm-6 col-12 offset-0 offset-sm-6 py-2 align-items-center">
-        <H3>Your Bubblechart Data</H4>
+        <center><H4>Your Bubblechart Data</H4></center>
         <table align="center">
           <tr>
             <th>Filename for your Project</th>
@@ -139,7 +139,7 @@
   </table>
   <p id="info"></p> 
   <br>
-  <button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button>
+  <center><button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button></center>
 
   <!--<p><input type="button" id="bt" value="Show Table Data" onclick="showTableData()" /></p>-->
           
