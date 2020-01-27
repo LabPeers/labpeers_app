@@ -108,15 +108,15 @@
           </tr>
         </table>
         <br>
-        <button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button>
+       <!-- <button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button>-->
         
         
 
   <table id="empTable" class="editabletable">
     <tr>
-        <th>x-Values</th>
-        <th>y-Values</th>
-        <th>Bubble size</th>
+        <th style="width:25%">x-Values</th>
+        <th style="width:25%">y-Values</th>
+        <th style="width:25%">Bubble size</th>
     </tr>
     <tr>
       <td><div contenteditable></div></td>
@@ -134,9 +134,12 @@
       <td><div contenteditable></div></td>
     </tr>
   </table>
+  <p id="info"></p> 
+  <br>
+  <button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button>
 
-  <p><input type="button" id="bt" value="Show Table Data" onclick="showTableData()" /></p>
-    <p id="info"></p>      
+  <!--<p><input type="button" id="bt" value="Show Table Data" onclick="showTableData()" /></p>-->
+          
     
         </div>
 
@@ -225,6 +228,10 @@ init();
 
 
     function showTableData() {
+       
+       
+       //x-value
+       
         document.getElementById('info').innerText = "";
         var myTab = document.getElementById('empTable');
 
@@ -247,6 +254,60 @@ init();
         }
         document.getElementById('x-values').value = info.innerText; //Write the column content into Data Table
 
+
+
+        //y-value
+        document.getElementById('info').innerText = "";
+        var myTab = document.getElementById('empTable');
+
+        // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
+        for (i = 1; i < myTab.rows.length; i++) {
+
+            // GET THE CELLS COLLECTION OF THE CURRENT ROW.
+            var objCells = myTab.rows.item(i).cells.item(1);
+                info.innerText = info.innerText + objCells.innerText;
+                
+
+            // READ CELL VALUE OF THE CURENT ROW.
+            if (i < myTab.rows.length -1){
+            info.innerText = info.innerText + ',';     // ADD A Comma
+            } else{
+            info.innerText = info.innerText;
+
+            }
+            info.innerText = info.innerText.split(" ").join(""); 
+        }
+        document.getElementById('y-values').value = info.innerText; //Write the column content into Data Table
+    
+    
+    
+        //Bubblesize
+        document.getElementById('info').innerText = "";
+        var myTab = document.getElementById('empTable');
+
+        // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
+        for (i = 1; i < myTab.rows.length; i++) {
+
+            // GET THE CELLS COLLECTION OF THE CURRENT ROW.
+            var objCells = myTab.rows.item(i).cells.item(2);
+                info.innerText = info.innerText + objCells.innerText;
+                
+
+            // READ CELL VALUE OF THE CURENT ROW.
+            if (i < myTab.rows.length -1){
+            info.innerText = info.innerText + ',';     // ADD A Comma
+            } else{
+            info.innerText = info.innerText;
+
+            }
+            info.innerText = info.innerText.split(" ").join(""); 
+        }
+        document.getElementById('Bubble-size').value = info.innerText; //Write the column content into Data Table
+    
+    
+    
+    
+    
     }    
     
     
