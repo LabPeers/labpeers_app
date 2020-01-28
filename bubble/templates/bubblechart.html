@@ -129,20 +129,11 @@
         <td><div contenteditable></div></td>
         <td><a class="deleteRow"></a></td>
     </tr> 
-    
-    <tfoot>
-        <tr>
-            <td colspan="5" style="text-align: left;">
-                <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
-            </td>
-        </tr>
-        <tr>
-        </tr>
-    </tfoot>
- 
   </table>
   <p id="info"></p> 
   <br>
+  <center><button type="button" onclick="AddRowFunction()">Add Row</button></center>
+  
   <center><button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button></center>
 
   <!--<p><input type="button" id="bt" value="Show Table Data" onclick="showTableData()" /></p>-->
@@ -293,7 +284,7 @@ init();
         var myTab = document.getElementById('empTable');
 
         // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
-        for (i = 1; i < myTab.rows.length-1; i++) {
+        for (i = 1; i < myTab.rows.length; i++) {
 
             // GET THE CELLS COLLECTION OF THE CURRENT ROW.
             var objCells = myTab.rows.item(i).cells.item(2);
@@ -301,7 +292,7 @@ init();
                 
 
             // READ CELL VALUE OF THE CURENT ROW.
-            if (i < myTab.rows.length -2){
+            if (i < myTab.rows.length -1){
             info.innerText = info.innerText + ',';     // ADD A Comma
             } else{
             info.innerText = info.innerText;
@@ -321,10 +312,13 @@ init();
 
 //ADD AND DELETE ROWS!!
 
-$(document).ready(function () {
-    var counter = 0;
+//$(document).ready(function () {
+//    var counter = 0;
 
-    $("#addrow").on("click", function () {
+//    $("#addrow").on("click", function () {
+    
+    function AddRowFunction() {
+        var table = document.getElementById("empTable");
         var newRow = $("<tr>");
         var cols = "";
 
@@ -335,14 +329,15 @@ $(document).ready(function () {
         cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
         newRow.append(cols);
         $("table.editabletable").append(newRow);
-        counter++;
-    });
+        };
+//        counter++;
+//    });
 
 
 
     $("table.editabletable").on("click", ".ibtnDel", function (event) {
         $(this).closest("tr").remove();       
-        counter -= 1
+//        counter -= 1
     });
 
 
