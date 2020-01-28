@@ -129,6 +129,7 @@
         <td><div contenteditable></div></td>
         <td><a class="deleteRow"></a></td>
         <td><input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" /></td>
+    </tr>    
   </table>
   <p id="info"></p> 
   <form>
@@ -316,7 +317,7 @@ init();
 $(document).ready(function () {
     var counter = 0;
 
-    $("#addrow").on("click", function () {
+    $('empTable').on("click", function () {
         var newRow = $("<tr>");
         var cols = "";
 
