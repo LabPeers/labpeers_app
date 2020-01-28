@@ -75,7 +75,7 @@
         </td>
           </tr>
               
-          <tr><!-- style="display:none;">-->
+          <tr style="display:none;">
             <th>x-Values</th>
             <td>    
             
@@ -121,13 +121,12 @@
         <th>x-Values</th>
         <th>y-Values</th>
         <th>Bubble size</th>
-        <th></th>
     </tr>
     <tr>
-        <td><div contenteditable></div></td>
-        <td><div contenteditable></div></td>
-        <td><div contenteditable></div></td>
-        <td><button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button></td>
+        <td class="col-sm-4"><div contenteditable></div></td>
+        <td class="col-sm-4"><div contenteditable></div></td>
+        <td class="col-sm-3"><div contenteditable></div></td>
+        <td class="col-sm-2"><button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button></td>
     </tr> 
 
   </table>
@@ -332,7 +331,8 @@ function AddRowFunction() {
 
 
 function myDeleteFunction() {
-  document.getElementById('empTable').deleteRow(myTab.rows.length-1);
+  var myTab = document.getElementById('empTable');
+  document.getElementById('empTable').deleteRow(myTab.rows.length  - 1);
 }
 
 
