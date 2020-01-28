@@ -136,7 +136,7 @@
   <br>
   <center><button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button></center>
 
-  <<p><input type="button" id="bt" value="Show Table Data" onclick="showTableData()" /></p>
+  <!--<p><input type="button" id="bt" value="Show Table Data" onclick="showTableData()" /></p>-->
           
     
         </div>
@@ -323,7 +323,7 @@ $(document).ready(function () {
         cols += '<td><div contenteditable></div></td>';
         cols += '<td><div contenteditable></div></td>';
 
-        cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
+        cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  <i class="fa fa-times" aria-hidden="true"></i>></td>';
         newRow.append(cols);
         $("table.editabletable").append(newRow);
         counter++;
