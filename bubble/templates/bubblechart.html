@@ -127,14 +127,14 @@
         <td><div contenteditable></div></td>
         <td><div contenteditable></div></td>
         <td><div contenteditable></div></td>
-        <td><a class="deleteRow"></a></td>
+        <td><button type="button" onclick="myDeleteFunction()">Delete</button></td>
     </tr> 
 
   </table>
   <p id="info"></p> 
   <br>
   <center><button type="button" onclick="AddRowFunction()">Add row</button></center>
-  
+  <br>
   <center><button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button></center>
 
   <!--<p><input type="button" id="bt" value="Show Table Data" onclick="showTableData()" /></p>-->
@@ -324,13 +324,16 @@ function AddRowFunction() {
 //  cell2.innerHTML = <div contenteditable></div>;
 //  cell3.innerHTML = <div contenteditable></div>;
 //  cell4.innerHTML = <div contenteditable></div>;
-  cell1.innerHTML = "Hello";
-  cell2.innerHTML = "Hello";
-  cell3.innerHTML = "Hello";
-  cell4.innerHTML = "Hello";
+  cell1.innerHTML = <div contenteditable></div>;
+  cell2.innerHTML = <div contenteditable></div>;
+  cell3.innerHTML = <div contenteditable></div>;
+  cell4.innerHTML = <button type="button" onclick="myDeleteFunction()">Delete</button>;
 }
 
 
+function myDeleteFunction() {
+  document.getElementById('empTable').deleteRow(myTab.rows.length);
+}
 
 
 
