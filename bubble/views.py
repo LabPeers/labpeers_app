@@ -545,8 +545,10 @@ class EditView(TemplateView):
             
             formplot = GalleryForm()
 
-            graph_data=Graph_Data.objects.get(pk=pk)    
-        
+            graph_data=Graph_Data.objects.get(pk=pk)
+            mypkX=graph_data.myX
+            mypkY=graph_data.myY
+            mypkRadius=graph_data.myRadius
         
            # form=graph_data
 #            form = HomeForm()
@@ -573,7 +575,7 @@ class EditView(TemplateView):
             
             #scale = 10
             plotdict, plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
-            dict2={"form":form,"formplot":formplot}
+            dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkRadius":mypkRadius}
             dict3={**plotdict , **dict2}
                 
 
