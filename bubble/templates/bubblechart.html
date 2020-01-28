@@ -128,13 +128,12 @@
         <td><div contenteditable></div></td>
         <td><div contenteditable></div></td>
         <td><a class="deleteRow"></a></td>
+    </tr>  
+    <tr>
         <td><input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" /></td>
-    </tr>    
+    </tr>  
   </table>
   <p id="info"></p> 
-  <form>
-  <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
-  </form>
   <br>
   <center><button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button></center>
 
@@ -286,7 +285,7 @@ init();
         var myTab = document.getElementById('empTable');
 
         // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
-        for (i = 1; i < myTab.rows.length; i++) {
+        for (i = 1; i < myTab.rows.length-1; i++) {
 
             // GET THE CELLS COLLECTION OF THE CURRENT ROW.
             var objCells = myTab.rows.item(i).cells.item(2);
@@ -294,7 +293,7 @@ init();
                 
 
             // READ CELL VALUE OF THE CURENT ROW.
-            if (i < myTab.rows.length -1){
+            if (i < myTab.rows.length -2){
             info.innerText = info.innerText + ',';     // ADD A Comma
             } else{
             info.innerText = info.innerText;
@@ -317,7 +316,7 @@ init();
 $(document).ready(function () {
     var counter = 0;
 
-    $('empTable').on("click", function () {
+    $("#addrow").on("click", function () {
         var newRow = $("<tr>");
         var cols = "";
 
