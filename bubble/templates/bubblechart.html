@@ -129,10 +129,11 @@
         <td><div contenteditable></div></td>
         <td><a class="deleteRow"></a></td>
     </tr> 
+
   </table>
   <p id="info"></p> 
   <br>
-  <center><button type="button" onclick="AddRowFunction()">Add Row</button></center>
+  <center><button type="button" onclick="AddRowFunction()">Add row</button></center>
   
   <center><button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button></center>
 
@@ -284,7 +285,7 @@ init();
         var myTab = document.getElementById('empTable');
 
         // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
-        for (i = 1; i < myTab.rows.length; i++) {
+        for (i = 1; i < myTab.rows.length-1; i++) {
 
             // GET THE CELLS COLLECTION OF THE CURRENT ROW.
             var objCells = myTab.rows.item(i).cells.item(2);
@@ -292,7 +293,7 @@ init();
                 
 
             // READ CELL VALUE OF THE CURENT ROW.
-            if (i < myTab.rows.length -1){
+            if (i < myTab.rows.length -2){
             info.innerText = info.innerText + ',';     // ADD A Comma
             } else{
             info.innerText = info.innerText;
@@ -311,6 +312,20 @@ init();
     
 
 //ADD AND DELETE ROWS!!
+
+function AddRowFunction() {
+  var myTab = document.getElementById("empTable");
+  var row = table.insertRow(myTab.rows.length);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  cell1.innerHTML = <div contenteditable></div>;
+  cell2.innerHTML = <div contenteditable></div>;
+  cell3.innerHTML = <div contenteditable></div>;
+}
+
+
+
 
 //$(document).ready(function () {
 //    var counter = 0;
