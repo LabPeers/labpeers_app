@@ -17,7 +17,6 @@
     # return HttpResponse('Hello from Python!')
  #   return render(request, "index.html")
 from django.views.generic import TemplateView
-from django.views.generic.edit import FormView 
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render, redirect, get_object_or_404
@@ -54,11 +53,10 @@ from bokeh.models import (
 from bokeh.models.widgets import (
     Button, TableColumn, DataTable,
     DateEditor, DateFormatter, IntEditor)
-from bokeh.models.layouts import WidgetBox, Column
-from bokeh.io import export_png
+
 from bokeh.io.export import get_screenshot_as_png
-from bokeh.models.widgets import Slider
-import copy
+
+
 
 ########
 
@@ -69,11 +67,10 @@ from .models import Graph_Data, Gallery_Plots
 from .forms import HomeForm, GalleryForm
 
 from accounts.forms import UserProfileForm
-from accounts.models import UserProfile
 
 
 
-from django.core.files.uploadedfile import InMemoryUploadedFile
+
 
 
 
@@ -301,22 +298,22 @@ class HomeView(TemplateView):
         #script, div = components(plot, CDN)
         
         ########### -----DATA TABLE----- ########### 
-        dict_table = {
-                'myXlist': myXlist,
-                'myYlist': myYlist,
-                'myRlist': myRlist,
-                }
-        source = ColumnDataSource(data=dict_table)
+#        dict_table = {
+#                'myXlist': myXlist,
+#                'myYlist': myYlist,
+#                'myRlist': myRlist,
+#                }
+#        source = ColumnDataSource(data=dict_table)
 
         #old_source = ColumnDataSource(copy.deepcopy(dict_table))
-
-        columns = [
-                TableColumn(field="myXlist", title="X-values"),
-                TableColumn(field="myYlist", title="Y-values"),
-                TableColumn(field="myRlist", title="Bubble size"),
-        ]
-        
-        data_table = DataTable(source=source, columns=columns, width=500)
+#
+#        columns = [
+#                TableColumn(field="myXlist", title="X-values"),
+#                TableColumn(field="myYlist", title="Y-values"),
+#                TableColumn(field="myRlist", title="Bubble size"),
+#        ]
+#        
+#        data_table = DataTable(source=source, columns=columns, width=500)
 #            editable=True,
 #            reorderable=False,
        
@@ -341,24 +338,25 @@ class HomeView(TemplateView):
 #        data_table.source.on_change('data', on_change_data_source)
 #
 #        curdoc().add_root(data_table)
-        
-        script_t, div_t = components({'data_table': data_table})
-        tabledict={"the_script_t": script_t, "the_div_t": div_t}
-    
+#        
+#        script_t, div_t = components({'data_table': data_table})
+#        tabledict={"the_script_t": script_t, "the_div_t": div_t}
+#    
         ########### -----DATA TABLE END----- ###########
         
       
         
         
         plotdict , plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
+        
 #        x = plotdict["the_script"]
 #        y = plotdict["the_div"]
      #  script, div = components({'plot': plot})
         dict2={"form":form,"formplot":formplot}
         dict3={**plotdict , **dict2}
-        dict4={**dict3, **tabledict}
+#        dict4={**dict3, **tabledict}
      
-        return render(request, self.template_name, dict4)
+        return render(request, self.template_name, dict3)
    
     
     
@@ -463,28 +461,28 @@ class HomeView(TemplateView):
                 
                 
                         ########### -----DATA TABLE----- ########### 
-                dict_table = {
-                        'myXlist': myXlist,
-                        'myYlist': myYlist,
-                        'myRlist': myRlist,
-                        }
-                source = ColumnDataSource(data=dict_table)
-
-                #old_source = ColumnDataSource(copy.deepcopy(dict_table))
-
-                columns = [
-                        TableColumn(field="myXlist", title="X-values"),
-                        TableColumn(field="myYlist", title="Y-values"),
-                        TableColumn(field="myRlist", title="Bubble size"),
-                ]
-
-                data_table = DataTable(
-                        source=source,
-                        columns=columns,
-                        width=800,
-#                        editable=True,
-#                        reorderable=False,
-                        )
+#                dict_table = {
+#                        'myXlist': myXlist,
+#                        'myYlist': myYlist,
+#                        'myRlist': myRlist,
+#                        }
+#                source = ColumnDataSource(data=dict_table)
+#
+#                #old_source = ColumnDataSource(copy.deepcopy(dict_table))
+#
+#                columns = [
+#                        TableColumn(field="myXlist", title="X-values"),
+#                        TableColumn(field="myYlist", title="Y-values"),
+#                        TableColumn(field="myRlist", title="Bubble size"),
+#                ]
+#
+#                data_table = DataTable(
+#                        source=source,
+#                        columns=columns,
+#                        width=800,
+##                        editable=True,
+##                        reorderable=False,
+#                        )
 
 #                def on_change_data_source(attr, old, new):
 #                    # old, new and source.data are the same dictionaries
@@ -506,22 +504,22 @@ class HomeView(TemplateView):
 #                data_table.source.on_change('data', on_change_data_source)
 #
 #                curdoc().add_root(data_table)
-        
-                script_t, div_t = components({'data_table': data_table})
-                tabledict={"the_script_t": script_t, "the_div_t": div_t}
+#        
+#                script_t, div_t = components({'data_table': data_table})
+#                tabledict={"the_script_t": script_t, "the_div_t": div_t}
     
                 ########### -----DATA TABLE END----- ###########
                 
                 
                 
-                dict4={**dict3, **tabledict}
+                #dict4={**dict3, **tabledict}
                 
                 
                 
                 
 
             
-                return render(request, self.template_name, dict4)
+                return render(request, self.template_name, dict3)
                 
             
             else:
@@ -562,12 +560,15 @@ class EditView(TemplateView):
             myYlabel=graph_data.graph_ylabel
             myXdata=graph_data.myX
             myXlist=myXdata.split(",")
+            myXlist=np.array(myXlist, dtype=np.float32)
             myYdata=graph_data.myY
             myYlist=myYdata.split(",")
+            myYlist=np.array(myYlist, dtype=np.float32)
             myRdata=graph_data.myRadius
             myRlist=myRdata.split(",")
             myRlist=np.array(myRlist, dtype=np.float32)
             myScale=graph_data.myScale
+            
 #            
             
             #scale = 10
