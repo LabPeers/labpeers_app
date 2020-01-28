@@ -285,7 +285,7 @@ init();
         var myTab = document.getElementById('empTable');
 
         // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
-        for (i = 1; i < myTab.rows.length-1; i++) {
+        for (i = 1; i < myTab.rows.length; i++) {
 
             // GET THE CELLS COLLECTION OF THE CURRENT ROW.
             var objCells = myTab.rows.item(i).cells.item(2);
@@ -293,7 +293,7 @@ init();
                 
 
             // READ CELL VALUE OF THE CURENT ROW.
-            if (i < myTab.rows.length -2){
+            if (i < myTab.rows.length -1){
             info.innerText = info.innerText + ',';     // ADD A Comma
             } else{
             info.innerText = info.innerText;
@@ -332,7 +332,7 @@ function AddRowFunction() {
 
 
 function myDeleteFunction() {
-  document.getElementById('empTable').deleteRow(myTab.rows.length);
+  document.getElementById('empTable').deleteRow(myTab.rows.length-1);
 }
 
 
