@@ -142,7 +142,7 @@
   <center><button type="button" onclick="AddRowFunction()">Add row</button></center>
   <br>
   <center><button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button></center>
-  <center><button type="submit" name="plot_data" onclick="createTable({{ mypkX }},{{ mypkY }},{{ mypkRadius }})">Load Data</button></center>
+  <center><button type="submit" name="plot_data" onclick="loadData({{ mypkX }},{{ mypkY }},{{ mypkRadius }})">Load Data</button></center>
 
   <!--<p><input type="button" id="bt" value="Show Table Data" onclick="showTableData()" /></p>-->
           
@@ -365,7 +365,9 @@ return table;
 
 }
 
-document.getElementById("empTable").innerHTML = createTable({{ mypkX }},{{ mypkY }},{{ mypkRadius }});    
+function loadData({{ mypkX }},{{ mypkY }},{{ mypkRadius }}){
+document.getElementById("empTable").innerHTML = createTable({{ mypkX }},{{ mypkY }},{{ mypkRadius }});
+}    
     
     
     
