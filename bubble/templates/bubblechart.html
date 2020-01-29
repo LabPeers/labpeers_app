@@ -142,6 +142,7 @@
   <center><button type="button" onclick="AddRowFunction()">Add row</button></center>
   <br>
   <center><button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button></center>
+  <center><button type="submit" name="plot_data" onclick="createTable({{ mypkX }},{{ mypkY }},{{ mypkRadius }})">Load Data</button></center>
 
   <!--<p><input type="button" id="bt" value="Show Table Data" onclick="showTableData()" /></p>-->
           
@@ -343,10 +344,26 @@ function myDeleteFunction() {
 }
 
 
+function createTable({{ mypkX }},{{ mypkY }},{{ mypkRadius }}){
+var myX = {{ mypkX }};
+var myXs = myX.split(',');
+var myY = {{ mypkY }};
+var myYs = myY.split(',');
+var myRadius = {{ mypkRadius }};
+var myRadiuss = myRadius.split(',');
+//var schoolArr = school_list.split(',');
+//var pctArr = pct_list.split(',');
+var table = "<table>";
+for (var i=0; i< myXs.length; i++) {
+    table = table + "<tr><td><div contenteditable>"+ myXs[i]+"</div></td><td><div contenteditable>"
+                                                   + myYs[i]+"</div></td><td><div contenteditable>" 
+                                                   + myRadiuss[i]+"</div></td><td><div contenteditable></tr>";
+}
+table = table + "</table>";
 
+return table;
 
-
-
+}
     
     
     
