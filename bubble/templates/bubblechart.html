@@ -343,9 +343,29 @@ function myDeleteFunction() {
   document.getElementById('empTable').deleteRow(myTab.rows.length  - 1);
 }
 
+function createTable({{ mypkX }},{{ mypkY }},{{ mypkRadius }}){
+var myX = {{ mypkX }};
+var myXs = myX.split(',');
+var myY = {{ mypkY }};
+var myYs = myY.split(',');
+var myRadius = {{ mypkRadius }};
+var myRadiuss = myRadius.split(',');
+//var schoolArr = school_list.split(',');
+//var pctArr = pct_list.split(',');
+var table = '<table>';
+for (var i=0; i< myXs.length; i++) {
+    table = table + '<tr><td><div contenteditable>'+ myXs[i]+'</div></td><td><div contenteditable>
+                                                   + myYs[i]+'</div></td><td><div contenteditable>' 
+                                                   + myRadiuss[i]+'</div></td><td>
+                                                     <button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button></td></tr>';
+}
+table = table + '</table>';
 
+return table;
 
-    
+}
+
+document.getElementById("empTable").innerHTML = createTable({{ mypkX }},{{ mypkY }},{{ mypkRadius }});    
     
     
     
