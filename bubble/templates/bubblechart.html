@@ -351,7 +351,6 @@ var myYs = myY.split(',');
 var myRadius = '{{ mypkRadius }}';
 var myRadiuss = myRadius.split(',');
 //var thistable = '<table>';
-alert(thitable);
 //for (var i=0; i< myXs.length; i++) {
 //    thistable = thistable + '<tr><td><div contenteditable>'+ myXs[i]+'</div></td><td><div contenteditable>+ myYs[i]+'</div></td><td><div contenteditable>' + myRadiuss[i]+'</div></td><td><button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button></td></tr>';
 //}
@@ -362,11 +361,11 @@ alert(thitable);
 //}
 //thistable = thistable + '</table>';
 
-thistable="<table><tr><td>Hello</td></tr></table>";
+thistable='<table><tr><td>Hello</td></tr></table>';
 
 //alert("I got to the end!");
-document.getElementById("empTable").innerHTML = thistable;
-//return thistable;
+//document.getElementById("empTable").innerHTML = thistable;
+return thistable;
 }
 
 
