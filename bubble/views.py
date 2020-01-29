@@ -638,8 +638,10 @@ class EditView(TemplateView):
                     
                 myXdata=form.cleaned_data['myX']
                 myXlist=myXdata.split(",")
+                myXlist=np.array(myXlist, dtype=np.float32)
                 myYdata=form.cleaned_data['myY']
                 myYlist=myYdata.split(",")
+                myYlist=np.array(myYlist, dtype=np.float32)
                 myRdata=form.cleaned_data['myRadius']
                 myRlist=myRdata.split(",")
                 myRlist=np.array(myRlist, dtype=np.float32)
