@@ -341,7 +341,7 @@ function myDeleteFunction() {
   document.getElementById('empTable').deleteRow(myTab.rows.length  - 1);
 }
 
-function createTable({{ mypkX }},{{ mypkY }},{{ mypkRadius }}){
+function fillTable({{ mypkX }},{{ mypkY }},{{ mypkRadius }}){
 var myX = {{ mypkX }};
 var myXs = myX.split(',');
 var myY = {{ mypkY }};
@@ -364,7 +364,7 @@ return thistable;
 }
 
 function loadmyData({{ mypkX }},{{ mypkY }},{{ mypkRadius }}){
-document.getElementById("empTable").innerHTML = createTable({{ mypkX }},{{ mypkY }},{{ mypkRadius }});
+document.getElementById("empTable").innerHTML = fillTable({{ mypkX }},{{ mypkY }},{{ mypkRadius }});
 }    
     
     
