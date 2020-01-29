@@ -120,7 +120,7 @@
   
   <p>Hello: X= {{ mypkX }} </p>
   
-  
+  <table id="ReloadTable"></table>
         
 
   <table id="empTable" class="table editabletable" align="center">
@@ -361,17 +361,16 @@ var myRadiuss = myRadius.split(',');
 //}
 //thistable = thistable + '</table>';
 
-var thistable='<table><tr><td>Hello</td></tr></table>';
+var thistable='<tr><td>Hello</td></tr>';
 
 //alert("I got to the end!");
 //document.getElementById("empTable").innerHTML = thistable;
 return thistable;
 }
 
-
-//function loadmyData({{ mypkX }},{{ mypkY }},{{ mypkRadius }}){
-//document.getElementById("empTable").innerHTML = fillTable({{ mypkX }},{{ mypkY }},{{ mypkRadius }});
-//} 
+function loadmyData(){
+document.getElementById("ReloadTable").innerHTML = fillTable();
+} 
    
     
     
