@@ -136,26 +136,13 @@
         <td><div contenteditable></div></td>
         <td><button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button></td>
     </tr> 
-        <tr>
-        <td><div contenteditable></div></td>
-        <td><div contenteditable></div></td>
-        <td><div contenteditable></div></td>
-        <td><button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button></td>
-    </tr> 
-    <tr>
-        <td><div contenteditable></div></td>
-        <td><div contenteditable></div></td>
-        <td><div contenteditable></div></td>
-        <td><button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button></td>
-    </tr> 
 
   </table>
+  <p id="info"></p> 
+  <br>
   <center><button type="button" onclick="AddRowFunction()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></center>
-  <!--<p id="info"></p> -->
-  
   <br>
   <center><button type="submit" name="plot_data" onclick="showTableData();">Submit/Update</button></center>
-
   <br>
   <!--<center><button type="button" onclick="fillmyTable()">Load Data</button></center>-->
 
@@ -327,7 +314,7 @@ init();
 
     }    
     
-    
+showTableData()    
 
 //ADD AND DELETE ROWS!!
 
@@ -357,15 +344,14 @@ var myTab = document.getElementById('empTable');
 var myX = '{{ mypkX }}';
 //alert(myX);
 var myXs = myX.split(',');
-//alert(myXs);
+alert(myXs);
 var myY = '{{ mypkY }}';
 var myYs = myY.split(',');
 var myRadius = '{{ mypkRadius }}';
 var myRadiuss = myRadius.split(',');
 
 for (var i=0; i< myXs.length; i++) {
-    if (i<4){
-    var myrow = myTab.rows[i+1];
+    if (i==0){var myrow = myTab.rows[i+1];
     
     var cell1 = myrow.cells.item(0);
     var cell2 = myrow.cells.item(1);
