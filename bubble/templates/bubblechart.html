@@ -20,13 +20,13 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ formplot.plotname }}
-                
+               
                 <button type="submit" name="make_png">Save plot to gallery</button>
                 
                 <table align="center">
                     <tr>
                         <td style="border: none !important;">Description</td>
-                        <td style="border: none !important;">    <form id="dataform" method="post">
+                        <td style="border: none !important;">    <form method="post">
                             {% csrf_token %}
                             {{ form.graph_description }}
                         </td>
@@ -44,7 +44,7 @@
         <table align="center">
           <tr>
             <th>Filename for your Project</th>
-            <td>    
+            <td>  <form method="post">  
                     {% csrf_token %}
                     {{ form.graph_filename }}
             </td>
@@ -53,7 +53,7 @@
         
           <tr>
             <th>Graph Title</th>
-            <td>    
+            <td>    <form method="post">
                     {% csrf_token %}
                     {{ form.graph_title }}
             </td>
@@ -61,7 +61,7 @@
       
           <tr>
             <th>X-axis label</th>
-            <td>    
+            <td>    <form method="post">
                     {% csrf_token %}
                     {{ form.graph_xlabel }}
             </td>
@@ -69,7 +69,7 @@
           
          <tr>
                 <th>Y-axis label</th>
-        <td>    
+        <td>    <form method="post">
                         {% csrf_token %}
                     {{ form.graph_ylabel }}
         </td>
@@ -77,7 +77,7 @@
               
           <tr style="display:none;">
             <th>x-Values</th>
-            <td>    
+            <td>   <form method="post"> 
             
             
                     {% csrf_token %}
@@ -87,7 +87,7 @@
           
           <tr style="display:none;">
             <th>y-Values</th>
-            <td>
+            <td> <form method="post">
                     {% csrf_token %}
                     {{ form.myY }}
             </td>
@@ -95,7 +95,7 @@
       
           <tr style="display:none;">
             <th>Bubble size</th>
-            <td>    
+            <td>    <form method="post">
                     {% csrf_token %}
                     {{ form.myRadius }}
             </td>
@@ -103,7 +103,7 @@
           
           <tr>
             <th>Scaling Factor</th>
-            <td>    
+            <td>    <form method="post">
                     {% csrf_token %}
                     {{ form.myScale }}
             </td>
@@ -155,7 +155,7 @@
   
   <br>
   <center><button type="submit" name="plot_data" onclick="showTableData();">Submit/Update</button></center>
-  <center><button type="button" name="plot_data2" onclick="SubmitAllFunction();">Submit all/Update</button></center>
+  <!--<center><button type="button" name="plot_data2" onclick="SubmitAllFunction();">Submit all/Update</button></center>-->
   <br>
   <center><button type="button" onclick="fillmyTable()">Load Data</button></center>
 
@@ -391,7 +391,7 @@ function SubmitAllFunction(){
 showTableData();
 //document.forms["dataform"].submit();
 document.getElementById("dataform").submit();
-fillmyTable();
+//fillmyTable();
 }
 
     
