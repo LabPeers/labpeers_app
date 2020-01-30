@@ -453,6 +453,9 @@ class HomeView(TemplateView):
                         formplot = GalleryForm(request.POST)
                 
 
+                mypkX=graph_data.myX
+                mypkY=graph_data.myY
+                mypkRadius=graph_data.myRadius
                 
                 dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkRadius":mypkRadius}
                 dict3={**plotdict , **dict2}
