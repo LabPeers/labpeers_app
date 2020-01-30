@@ -20,14 +20,13 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ formplot.plotname }}
-               
+                
                 <button type="submit" name="make_png">Save plot to gallery</button>
                 
                 <table align="center">
                     <tr>
                         <td style="border: none !important;">Description</td>
-                        <td style="border: none !important;">    
-                        <form method="post">
+                        <td style="border: none !important;">    <form method="post">
                             {% csrf_token %}
                             {{ form.graph_description }}
                         </td>
@@ -45,7 +44,7 @@
         <table align="center">
           <tr>
             <th>Filename for your Project</th>
-            <td>  <form method="post">  
+            <td>    <form method="post">
                     {% csrf_token %}
                     {{ form.graph_filename }}
             </td>
@@ -76,11 +75,11 @@
         </td>
           </tr>
               
-          <tr><!-- style="display:none;">-->
+          <tr style="display:none;">
             <th>x-Values</th>
-            <td>   <form method="post" id="x-values"> 
+            <td>    
             
-            
+            <form method="post">
                     {% csrf_token %}
                     {{ form.myX }}
             </td>
@@ -88,7 +87,7 @@
           
           <tr style="display:none;">
             <th>y-Values</th>
-            <td> <form method="post" id="y-values">
+            <td><form method="post">
                     {% csrf_token %}
                     {{ form.myY }}
             </td>
@@ -96,7 +95,7 @@
       
           <tr style="display:none;">
             <th>Bubble size</th>
-            <td>    <form method="post" id="Bubble-size">
+            <td>    <form method="post">
                     {% csrf_token %}
                     {{ form.myRadius }}
             </td>
@@ -119,7 +118,7 @@
   
   
   
-  <!--<p>Hello: X= {{ mypkX }} </p>-->
+  <p>Hello: X= {{ mypkX }} </p>
   
   <!--<table id="ReloadTable"></table>-->
         
@@ -156,10 +155,9 @@
   
   <br>
   <center><button type="submit" name="plot_data" onclick="showTableData();">Submit/Update</button></center>
-  
-  <!--<center><button type="button" name="plot_data2" onclick="SubmitAllFunction();">Submit all/Update</button></center>-->
+
   <br>
-  <center><button type="button" onclick="fillmyTable()">Load Data</button></center>
+  <!--<center><button type="button" onclick="fillmyTable()">Load Data</button></center>-->
 
           
     
@@ -389,13 +387,6 @@ for (var i=0; i< myXs.length; i++) {
 }
 }
    
-//function SubmitAllFunction(){
-//showTableData();
-//document.forms["dataform"].submit();
-//document.getElementById("dataform").submit();
-//fillmyTable();
-//}
-
     
 </script>
 
