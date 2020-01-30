@@ -350,25 +350,29 @@ var myYs = myY.split(',');
 var myRadius = '{{ mypkRadius }}';
 var myRadiuss = myRadius.split(',');
 
-for (var i=0; i< myXs.length; i++) {
-    var row = myTab.rows[i+1];
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    cell1.innerHTML = '<div contenteditable>'+ myXs[i]+'</div>';
-    cell2.innerHTML = '<div contenteditable>'+ myYs[i]+'</div>';
-    cell3.innerHTML = '<div contenteditable>'+ myRadiuss[i]+'</div>';
-    cell4.innerHTML = '<button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button>';    
-}
-//var thistable = '';  
 //for (var i=0; i< myXs.length; i++) {
-//    thistable = thistable + '<tr><td><div contenteditable>'
-//    + myXs[i]+'</div></td><td><div contenteditable>'
-//    + myYs[i]+'</div></td><td><div contenteditable>' 
-//    + myRadiuss[i]+'</div></td>
-//    <td><button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button></td></tr>';  
+//    var row = myTab.rows[i+1];
+//    var cell1 = row.insertCell(0);
+//    var cell2 = row.insertCell(1);
+//    var cell3 = row.insertCell(2);
+//    var cell4 = row.insertCell(3);
+//    cell1.innerHTML = '<div contenteditable>'+ myXs[i]+'</div>';
+//    cell2.innerHTML = '<div contenteditable>'+ myYs[i]+'</div>';
+//    cell3.innerHTML = '<div contenteditable>'+ myRadiuss[i]+'</div>';
+//    cell4.innerHTML = '<button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button>';    
 //}
+var thistable = '<tr style="border: none !important;">
+        <th>x-Values</th>
+        <th>y-Values</th>
+        <th>Bubble size</th>
+    </tr>';  
+for (var i=0; i< myXs.length; i++) {
+    thistable = thistable + '<tr><td><div contenteditable>'
+    + myXs[i]+'</div></td><td><div contenteditable>'
+    + myYs[i]+'</div></td><td><div contenteditable>' 
+    + myRadiuss[i]+'</div></td>
+    <td><button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button></td></tr>';  
+}
 
 
 //var thistable='<tr><td>Hello</td></tr>';
