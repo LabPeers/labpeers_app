@@ -78,7 +78,7 @@
               
           <tr style="display:none;">
             <th>x-Values</th>
-            <td id="x-values">   <form method="post"> 
+            <td>   <form method="post" id="x-values"> 
             
             
                     {% csrf_token %}
@@ -88,7 +88,7 @@
           
           <tr style="display:none;">
             <th>y-Values</th>
-            <td id="y-values"> <form method="post">
+            <td> <form method="post" id="y-values">
                     {% csrf_token %}
                     {{ form.myY }}
             </td>
@@ -96,7 +96,7 @@
       
           <tr style="display:none;">
             <th>Bubble size</th>
-            <td id="Bubble-size">    <form method="post">
+            <td>    <form method="post" id="Bubble-size">
                     {% csrf_token %}
                     {{ form.myRadius }}
             </td>
