@@ -346,13 +346,17 @@ function fillmyTable(){
 var myX = '{{ mypkX }}';
 //alert(myX);
 var myXs = myX.split(',');
+alert(myXs);
 var myY = '{{ mypkY }}';
 var myYs = myY.split(',');
 var myRadius = '{{ mypkRadius }}';
 var myRadiuss = myRadius.split(',');
 var thistable = '';
 for (var i=0; i< myXs.length; i++) {
-    thistable = thistable + '<tr><td><div contenteditable>'+ myXs[i]+'</div></td><td><div contenteditable>+ myYs[i]+'</div></td><td><div contenteditable>' + myRadiuss[i]+'</div></td><td><button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button></td></tr>';
+    thistable = thistable + '<tr><td><div contenteditable>'
+    + myXs[i]+'</div></td><td><div contenteditable>
+    + myYs[i]+'</div></td><td><div contenteditable>' 
+    + myRadiuss[i]+'</div></td></tr>';
 }
 
 
