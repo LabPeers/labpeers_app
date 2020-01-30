@@ -41,10 +41,10 @@
 
     <div class="col-sm-6 col-12 offset-0 offset-sm-6 py-2">
         <center><H4>Your Bubblechart Data</H4></center>
-        <table align="center">
+        <table align="center"><form id="dataform" method="post">
           <tr>
             <th>Filename for your Project</th>
-            <td>    <form method="post">
+            <td>    
                     {% csrf_token %}
                     {{ form.graph_filename }}
             </td>
@@ -53,7 +53,7 @@
         
           <tr>
             <th>Graph Title</th>
-            <td>    <form method="post">
+            <td>    
                     {% csrf_token %}
                     {{ form.graph_title }}
             </td>
@@ -61,7 +61,7 @@
       
           <tr>
             <th>X-axis label</th>
-            <td>    <form method="post">
+            <td>    
                     {% csrf_token %}
                     {{ form.graph_xlabel }}
             </td>
@@ -69,7 +69,7 @@
           
          <tr>
                 <th>Y-axis label</th>
-        <td>    <form method="post">
+        <td>    
                         {% csrf_token %}
                     {{ form.graph_ylabel }}
         </td>
@@ -79,7 +79,7 @@
             <th>x-Values</th>
             <td>    
             
-            <form method="post">
+            
                     {% csrf_token %}
                     {{ form.myX }}
             </td>
@@ -87,7 +87,7 @@
           
           <tr style="display:none;">
             <th>y-Values</th>
-            <td><form method="post">
+            <td>
                     {% csrf_token %}
                     {{ form.myY }}
             </td>
@@ -95,7 +95,7 @@
       
           <tr style="display:none;">
             <th>Bubble size</th>
-            <td>    <form method="post">
+            <td>    
                     {% csrf_token %}
                     {{ form.myRadius }}
             </td>
@@ -103,13 +103,13 @@
           
           <tr>
             <th>Scaling Factor</th>
-            <td>    <form method="post">
+            <td>    
                     {% csrf_token %}
                     {{ form.myScale }}
             </td>
           </tr>
 
-          
+        </form>  
         </table>
         <br>
 
@@ -118,7 +118,7 @@
   
   
   
-  <p>Hello: X= {{ mypkX }} </p>
+  <!--<p>Hello: X= {{ mypkX }} </p>-->
   
   <!--<table id="ReloadTable"></table>-->
         
@@ -136,13 +136,26 @@
         <td><div contenteditable></div></td>
         <td><button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button></td>
     </tr> 
+        <tr>
+        <td><div contenteditable></div></td>
+        <td><div contenteditable></div></td>
+        <td><div contenteditable></div></td>
+        <td><button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button></td>
+    </tr> 
+    <tr>
+        <td><div contenteditable></div></td>
+        <td><div contenteditable></div></td>
+        <td><div contenteditable></div></td>
+        <td><button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button></td>
+    </tr> 
 
   </table>
-  <p id="info"></p> 
-  <br>
   <center><button type="button" onclick="AddRowFunction()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></center>
+  <!--<p id="info"></p> -->
+  
   <br>
-  <center><button type="submit" name="plot_data" onclick="showTableData();fillmyTable();">Submit/Update</button></center>
+  <!--<center><button type="submit" name="plot_data" onclick="showTableData();">Submit/Update</button></center>-->
+  <center><button type="button" name="plot_data" onclick="SubmitAllFunction();">Submit/Update</button></center>
   <br>
   <!--<center><button type="button" onclick="fillmyTable()">Load Data</button></center>-->
 
@@ -233,7 +246,7 @@ init();
 
 
 
-
+//show the data filled into the empTable in the upper original table:
     function showTableData() {
        
        
@@ -344,14 +357,14 @@ var myTab = document.getElementById('empTable');
 var myX = '{{ mypkX }}';
 //alert(myX);
 var myXs = myX.split(',');
-alert(myXs);
+//alert(myXs);
 var myY = '{{ mypkY }}';
 var myYs = myY.split(',');
 var myRadius = '{{ mypkRadius }}';
 var myRadiuss = myRadius.split(',');
 
 for (var i=0; i< myXs.length; i++) {
-    if (i==0){var myrow = myTab.rows[i+1];
+    if (i<4){var myrow = myTab.rows[i+1];
     
     var cell1 = myrow.cells.item(0);
     var cell2 = myrow.cells.item(1);
@@ -373,6 +386,12 @@ for (var i=0; i< myXs.length; i++) {
 }
 }
    
+function SubmitAllFunction{
+showTableData();
+document.forms["dataform"].submit();
+fillmyTable();
+}
+
     
 </script>
 
