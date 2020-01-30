@@ -17,22 +17,12 @@
                 {{ the_script| safe}}
         
                 <br>
-                <form method="post">
+                <form method="post" id ="form1">
                     {% csrf_token %}
                     {{ formplot.plotname }}
-               
-                <button type="submit" name="make_png">Save plot to gallery</button>
+               </form>
+                <button type="submit" form="form1" name="make_png">Save plot to gallery</button>
                 
-                <table align="center">
-                    <tr>
-                        <td style="border: none !important;">Description</td>
-                        <td style="border: none !important;">    
-                        <form method="post">
-                            {% csrf_token %}
-                            {{ form.graph_description }}
-                        </td>
-                    </tr>
-                </table>
                 
              </div>   
         
@@ -42,86 +32,61 @@
 
     <div class="col-sm-6 col-12 offset-0 offset-sm-6 py-2">
         <center><H4>Your Bubblechart Data</H4></center>
-        <table align="center">
-          <tr>
-            <th>Filename for your Project</th>
-            <td>  <form method="post">  
+        
+        <form method="post" id="form2">
+        Description
+                            {% csrf_token %}
+                            {{ form.graph_description }}
+<br>
+        
+        Project Filename
+
                     {% csrf_token %}
                     {{ form.graph_filename }}
-            </td>
-          </tr>
+
+     <br>   
         
-        
-          <tr>
-            <th>Graph Title</th>
-            <td>    <form method="post">
+        Graph Title
+
                     {% csrf_token %}
                     {{ form.graph_title }}
-            </td>
-          </tr>
-      
-          <tr>
-            <th>X-axis label</th>
-            <td>    <form method="post">
+<br>
+        X-axis label
+        
                     {% csrf_token %}
                     {{ form.graph_xlabel }}
-            </td>
-          </tr>
-          
-         <tr>
-                <th>Y-axis label</th>
-        <td>    <form method="post">
+<br>
+        Y-axis label
+
                         {% csrf_token %}
                     {{ form.graph_ylabel }}
-        </td>
-          </tr>
-              
-          <tr style="display:none;">
-            <th>x-Values</th>
-            <td>   <form method="post"> 
-            
-            
+<br>
+         x-Values
+
                     {% csrf_token %}
                     {{ form.myX }}
-            </td>
-          </tr>
-          
-          <tr style="display:none;">
-            <th>y-Values</th>
-            <td> <form method="post">
+ <br>       
+        
+        y-Values
+
                     {% csrf_token %}
                     {{ form.myY }}
-            </td>
-          </tr>
-      
-          <tr style="display:none;">
-            <th>Bubble size</th>
-            <td>    <form method="post">
+<br>
+
+        Bubble size
+
                     {% csrf_token %}
                     {{ form.myRadius }}
-            </td>
-          </tr>
-          
-          <tr>
-            <th>Scaling Factor</th>
-            <td>    <form method="post">
+<br>
+        Scaling Factor</th>
+   
                     {% csrf_token %}
                     {{ form.myScale }}
-            </td>
-          </tr>
-
-          
-        </table>
-        <br>
+<br>
+        </form>
 
         
-  
-  
-  
-  
-  <!--<p>Hello: X= {{ mypkX }} </p>-->
-  
-  <!--<table id="ReloadTable"></table>-->
+
         
 
   <table id="empTable" class="table editabletable" align="center">
@@ -155,7 +120,8 @@
   <!--<p id="info"></p> -->
   
   <br>
-  <center><button type="submit" name="plot_data" onclick="showTableData();">Submit/Update</button></center>
+  <center><button type="submit" name="plot_data" form="form2" onclick="showTableData();">Submit/Update</button></center>
+  
   <!--<center><button type="button" name="plot_data2" onclick="SubmitAllFunction();">Submit all/Update</button></center>-->
   <br>
   <center><button type="button" onclick="fillmyTable()">Load Data</button></center>
