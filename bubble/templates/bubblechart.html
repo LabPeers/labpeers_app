@@ -142,9 +142,9 @@
   <br>
   <center><button type="button" onclick="AddRowFunction()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></center>
   <br>
-  <center><button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button></center>
+  <center><button type="submit" name="plot_data" onclick="showTableData();fillmyTable();">Submit/Update</button></center>
   <br>
-  <center><button type="button" onclick="fillmyTable()">Load Data</button></center>
+  <!--<center><button type="button" onclick="fillmyTable()">Load Data</button></center>-->
 
           
     
@@ -311,7 +311,7 @@ init();
         }
         document.getElementById('Bubble-size').value = info.innerText; //Write the column content into Data Table
        
-    fillmyTable();//Fill the empTable with data again after submit
+
     }    
     
     
@@ -372,30 +372,7 @@ for (var i=0; i< myXs.length; i++) {
     
 }
 }
-
-
-//var thistable = '<tr style="border: none !important;">
-//        <th>x-Values</th>
-//        <th>y-Values</th>
-//        <th>Bubble size</th>
-//    </tr>';  
-//for (var i=0; i< myXs.length; i++) {
-//    thistable = thistable + '<tr><td><div contenteditable>'
-//    + myXs[i]+'</div></td><td><div contenteditable>'
-//    + myYs[i]+'</div></td><td><div contenteditable>' 
-//    + myRadiuss[i]+'</div></td>
-//    <td><button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button></td></tr>';  
-//}
-
-//var thistable='<tr><td>Hello</td></tr>';
-//return thistable;
-//}
-
-//function loadmyData(){
-//document.getElementById("ReloadTable").innerHTML = fillmyTable();
-//} 
    
-    
     
 </script>
 
