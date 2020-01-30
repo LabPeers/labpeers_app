@@ -155,7 +155,7 @@
   
   <br>
   <center><button type="submit" name="plot_data" onclick="showTableData();">Submit/Update</button></center>
-  <!--<center><button type="button" name="plot_data2" onclick="SubmitAllFunction();">Submit all/Update</button></center>-->
+  <center><button type="button" name="plot_data2" onclick="SubmitAllFunction();">Submit all/Update</button></center>
   <br>
   <center><button type="button" onclick="fillmyTable()">Load Data</button></center>
 
@@ -364,7 +364,8 @@ var myRadius = '{{ mypkRadius }}';
 var myRadiuss = myRadius.split(',');
 
 for (var i=0; i< myXs.length; i++) {
-    if (i<4){var myrow = myTab.rows[i+1];
+    if (i<4){
+    var myrow = myTab.rows[i+1];
     
     var cell1 = myrow.cells.item(0);
     var cell2 = myrow.cells.item(1);
@@ -386,11 +387,12 @@ for (var i=0; i< myXs.length; i++) {
 }
 }
    
-//function SubmitAllFunction(){
-//showTableData();
+function SubmitAllFunction(){
+showTableData();
 //document.forms["dataform"].submit();
-//fillmyTable();
-//}
+document.getElementById("dataform").submit();
+fillmyTable();
+}
 
     
 </script>
