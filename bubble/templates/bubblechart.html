@@ -112,7 +112,7 @@
           
         </table>
         <br>
-       <!-- <button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button>-->
+
         
   
   
@@ -140,13 +140,12 @@
   </table>
   <p id="info"></p> 
   <br>
-  <center><button type="button" onclick="AddRowFunction()">Add row</button></center>
+  <center><button type="button" onclick="AddRowFunction()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></center>
   <br>
   <center><button type="submit" name="plot_data" onclick="showTableData()">Submit/Update</button></center>
   <br>
   <center><button type="button" onclick="fillmyTable()">Load Data</button></center>
 
-  <!--<p><input type="button" id="bt" value="Show Table Data" onclick="showTableData()" /></p>-->
           
     
         </div>
@@ -312,7 +311,7 @@ init();
         }
         document.getElementById('Bubble-size').value = info.innerText; //Write the column content into Data Table
        
-    
+    fillmyTable();//Fill the empTable with data again after submit
     }    
     
     
