@@ -605,9 +605,6 @@ class EditView(TemplateView):
                     
                 myfilename=form.cleaned_data['graph_filename']
                 graph_data=Graph_Data.objects.filter(user=request.user)
-                mypkX=graph_data.myX
-                mypkY=graph_data.myY
-                mypkRadius=graph_data.myRadius
                 filename_list=graph_data.values_list('graph_filename',flat=True)
                 filename_list2=list(filename_list)
                 print('HELLO')
@@ -687,8 +684,13 @@ class EditView(TemplateView):
                         instance2.save()                    
                     
                         formplot = GalleryForm(request.POST)
-                
+   
 
+
+             
+                mypkX=myXdata
+                mypkY=myYdata
+                mypkRadius=myRdata
                 
                 dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkRadius":mypkRadius}
                 dict3={**plotdict , **dict2}
