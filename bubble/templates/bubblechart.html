@@ -26,7 +26,7 @@
                 <table align="center">
                     <tr>
                         <td style="border: none !important;">Description</td>
-                        <td style="border: none !important;">    <form method="post">
+                        <td style="border: none !important;">    <form id="dataform" method="post">
                             {% csrf_token %}
                             {{ form.graph_description }}
                         </td>
@@ -41,7 +41,7 @@
 
     <div class="col-sm-6 col-12 offset-0 offset-sm-6 py-2">
         <center><H4>Your Bubblechart Data</H4></center>
-        <table align="center"><form id="dataform" method="post">
+        <table align="center">
           <tr>
             <th>Filename for your Project</th>
             <td>    
