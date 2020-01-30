@@ -374,6 +374,9 @@ class HomeView(TemplateView):
                     #Avoid rows with same filename!!
                 myfilename=form.cleaned_data['graph_filename']
                 graph_data=Graph_Data.objects.filter(user=request.user)
+                mypkX=graph_data.myX
+                mypkY=graph_data.myY
+                mypkRadius=graph_data.myRadius
                 filename_list=graph_data.values_list('graph_filename',flat=True)
                 filename_list2=list(filename_list)
                 print('HELLO')
@@ -451,7 +454,7 @@ class HomeView(TemplateView):
                 
 
                 
-                dict2={"form":form,"formplot":formplot}
+                dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkRadius":mypkRadius}
                 dict3={**plotdict , **dict2}
                     
                     
@@ -602,6 +605,9 @@ class EditView(TemplateView):
                     
                 myfilename=form.cleaned_data['graph_filename']
                 graph_data=Graph_Data.objects.filter(user=request.user)
+                mypkX=graph_data.myX
+                mypkY=graph_data.myY
+                mypkRadius=graph_data.myRadius
                 filename_list=graph_data.values_list('graph_filename',flat=True)
                 filename_list2=list(filename_list)
                 print('HELLO')
@@ -684,7 +690,7 @@ class EditView(TemplateView):
                 
 
                 
-                dict2={"form":form,"formplot":formplot}
+                dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkRadius":mypkRadius}
                 dict3={**plotdict , **dict2}
                 
 
