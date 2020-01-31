@@ -317,7 +317,6 @@ var myTab = document.getElementById('empTable');
 var myX = '{{ mypkX }}';
 //alert(myX);
 var myXs = myX.split(',');
-alert(myXs);
 var myY = '{{ mypkY }}';
 var myYs = myY.split(',');
 var myRadius = '{{ mypkRadius }}';
@@ -351,7 +350,7 @@ for (var i=0; i< myXs.length; i++) {
 function SubmitAll(){
 showTableData()
 document.getElementById("form1").submit();
-setTimeout(function(){ alert("Hello"); }, 3000);
+setTimeout(function(){ alert("Hello"); }, 6000);
 fillmyTable();
 }
 
