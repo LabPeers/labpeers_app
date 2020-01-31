@@ -8,7 +8,6 @@
     
         <div class="col-sm-6 col-12 py-2 d-flex align-items-center justify-content-center" id="left">
 
-            <div style="width=97.5%;">
                 <br>
                 {{ the_div.plot | safe}}
         
@@ -22,8 +21,7 @@
                     {{ formplot.plotname }}
                 </form>
                 <button type="submit" name="make_png">Save plot to gallery</button>
-                
-             </div>   
+                 
         
         </div>
 
@@ -51,9 +49,11 @@
                     {{ form.graph_ylabel }}
  <!--style="display:none;">-->
         <br>
+        <p style="display:none;">
         X-Values:
                     {% csrf_token %}
                     {{ form.myX }}
+       </p>             
        <br>
        Y-Values:
                     {% csrf_token %}
@@ -62,7 +62,9 @@
        Bubble size:
                     {% csrf_token %}
                     {{ form.myRadius }}
+                               
        <br>
+       </p>
        Scaling Factor:
                     {% csrf_token %}
                     {{ form.myScale }}
@@ -113,7 +115,7 @@
   <center><button type="button" onclick="AddRowFunction()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></center>
   <br>
   <!--<center><button type="submit" name="plot_data" onclick="showTableData();">Submit/Update</button></center>-->
-  <center><button type="button" onclick="SubmitAll();fillmyTable();">Submit/Update</button></center>
+  <center><button id="greatSubmit" type="button" onclick="SubmitAll();">Submit/Update</button></center>
   <br>
   <center><button type="button" onclick="fillmyTable()">Reload Data</button></center>
   <!--<center><button type="button" onclick="fillmyTable()">Load Data</button></center>-->
@@ -352,6 +354,7 @@ showTableData()
 document.getElementById("form1").submit();
 }
 
+document.getElementById("greatSubmit").addEventListener("click", fillmyTable);
 
 
 
