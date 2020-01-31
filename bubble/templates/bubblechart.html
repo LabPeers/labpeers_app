@@ -29,55 +29,115 @@
 
     <div class="col-sm-6 col-12 offset-0 offset-sm-6 py-2">
         <center><H4>Your Bubblechart Data</H4></center>
-        <form method="post" id="form1">
         
-        Filename for your Project:
-
+    <div class="table">
+  <div class="table-row">
+    <div class="cell">
+      text 1
+    </div>
+    <div class="cell">
+      text 2
+    </div>
+  </div>
+    <div class="table-row">
+    <div class="cell">
+      text 3
+    </div>
+    <div class="cell">
+      text 4
+    </div>
+  </div>
+</div>
+        <form method="post" id="form1">
+        <div class="table">
+        <div class="table-row">
+        <div class="cell">
+        Project Filename:
+        </div>
+        <div class="cell">
                     {% csrf_token %}
                     {{ form.graph_filename }}
-        <br>
+        </div>
+        </div>
+        <div class="table-row">
+        <div class="cell">
         Graph Title:
+        </div>
+        <div class="cell">
                     {% csrf_token %}
                     {{ form.graph_title }}
-        <br>
+        </div>
+        </div>
+        <div class="table-row">
+        <div class="cell">
         X-axis label:
+        </div>
+        <div class="cell">
                     {% csrf_token %}
                     {{ form.graph_xlabel }}
-        <br>
+        </div>
+        </div>
+        <div class="table-row">
+        <div class="cell">
         Y-axis label:
+        </div>
+        <div class="cell">
                     {% csrf_token %}
                     {{ form.graph_ylabel }}
- <!--style="display:none;">-->
-        <br>
-        <p style="display:none;">
+        </div>
+        </div>
+        <div class="table-row" style="display:none;">
+        <div class="cell">
         X-Values:
+        </div>
+        <div class="cell">
                     {% csrf_token %}
                     {{ form.myX }}            
-       <br>
-       Y-Values:
+        </div>
+        </div>
+        <div class="table-row" style="display:none;">
+        <div class="cell">
+        Y-Values:
+        </div>
+        <div class="cell">
                     {% csrf_token %}
                     {{ form.myY }}
-       <br>                    
+        </div>
+        </div>
+        <div class="table-row" style="display:none;">
+        <div class="cell">                    
        Bubble size:
+       </div>
+        <div class="cell">
                     {% csrf_token %}
                     {{ form.myRadius }}
-                               
-       <br>
-       </p>
+       </div>
+        </div>
+        <div class="table-row">
+        <div class="cell">
        Scaling Factor:
+       </div>
+       <div class="cell">
                     {% csrf_token %}
                     {{ form.myScale }}
-       <br>  
+        </div>
+        </div>
+        <div class="table-row">
+        <div class="cell">
        Description:
+       </div>
+        <div class="cell">
                     {% csrf_token %}
                     {{ form.graph_description }}  
+        </div>
+        </div>            
         </form>
         <br>
   
   
   
   
-  <p>Hello: X= {{ mypkX }} </p>
+  <!--<p>Hello: X= {{ mypkX }} </p>-->
   
   <!--<table id="ReloadTable"></table>-->
         
