@@ -323,7 +323,7 @@ var myRadius = '{{ mypkRadius }}';
 var myRadiuss = myRadius.split(',');
 
 for (var i=0; i< myXs.length; i++) {
-    if (i<4){
+    if (i<3){
     var myrow = myTab.rows[i+1];
     
     var cell1 = myrow.cells.item(0);
@@ -350,9 +350,8 @@ for (var i=0; i< myXs.length; i++) {
 function SubmitAll(){
 showTableData()
 document.getElementById("form1").submit();
-setTimeout(function(){ alert("Hello"); }, 6000);
-fillmyTable();
 }
+
 
 <!--document.getElementById("greatSubmit").addEventListener("click", fillmyTable);-->
 
