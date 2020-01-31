@@ -7,7 +7,7 @@
     <div class="row">
     
         <div class="col-sm-6 col-12 py-2 d-flex align-items-center justify-content-center" id="left">
-
+            <div style="width:99%;">
                 <br>
                 {{ the_div.plot | safe}}
         
@@ -21,7 +21,7 @@
                     {{ formplot.plotname }}
                 </form>
                 <button type="submit" name="make_png">Save plot to gallery</button>
-                 
+             </div>   
         
         </div>
 
@@ -52,8 +52,7 @@
         <p style="display:none;">
         X-Values:
                     {% csrf_token %}
-                    {{ form.myX }}
-       </p>             
+                    {{ form.myX }}            
        <br>
        Y-Values:
                     {% csrf_token %}
@@ -352,9 +351,11 @@ for (var i=0; i< myXs.length; i++) {
 function SubmitAll(){
 showTableData()
 document.getElementById("form1").submit();
+setTimeout(function(){ alert("Hello"); }, 3000);
+fillmyTable();
 }
 
-document.getElementById("greatSubmit").addEventListener("click", fillmyTable);
+<!--document.getElementById("greatSubmit").addEventListener("click", fillmyTable);-->
 
 
 
