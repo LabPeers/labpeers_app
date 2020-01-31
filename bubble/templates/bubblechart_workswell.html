@@ -20,8 +20,18 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ formplot.plotname }}
-                </form>
+                
                 <button type="submit" name="make_png">Save plot to gallery</button>
+                
+                <table align="center">
+                    <tr>
+                        <td style="border: none !important;">Description</td>
+                        <td style="border: none !important;">    <form method="post">
+                            {% csrf_token %}
+                            {{ form.graph_description }}
+                        </td>
+                    </tr>
+                </table>
                 
              </div>   
         
@@ -31,47 +41,79 @@
 
     <div class="col-sm-6 col-12 offset-0 offset-sm-6 py-2">
         <center><H4>Your Bubblechart Data</H4></center>
-        <form method="post" id="form1">
-        
-        Filename for your Project:
-
+        <table align="center">
+          <tr>
+            <th>Filename for your Project</th>
+            <td>    <form method="post">
                     {% csrf_token %}
                     {{ form.graph_filename }}
-        <br>
-        Graph Title:
+            </td>
+          </tr>
+        
+        
+          <tr>
+            <th>Graph Title</th>
+            <td>    <form method="post">
                     {% csrf_token %}
                     {{ form.graph_title }}
-        <br>
-        X-axis label:
+            </td>
+          </tr>
+      
+          <tr>
+            <th>X-axis label</th>
+            <td>    <form method="post">
                     {% csrf_token %}
                     {{ form.graph_xlabel }}
-        <br>
-        Y-axis label:
-                    {% csrf_token %}
+            </td>
+          </tr>
+          
+         <tr>
+                <th>Y-axis label</th>
+        <td>    <form method="post">
+                        {% csrf_token %}
                     {{ form.graph_ylabel }}
- <!--style="display:none;">-->
-        <br>
-        X-Values:
+        </td>
+          </tr>
+              
+          <tr style="display:none;">
+            <th>x-Values</th>
+            <td>    
+            
+            <form method="post">
                     {% csrf_token %}
                     {{ form.myX }}
-       <br>
-       Y-Values:
+            </td>
+          </tr>
+          
+          <tr style="display:none;">
+            <th>y-Values</th>
+            <td><form method="post">
                     {% csrf_token %}
                     {{ form.myY }}
-       <br>                    
-       Bubble size:
+            </td>
+          </tr>
+      
+          <tr style="display:none;">
+            <th>Bubble size</th>
+            <td>    <form method="post">
                     {% csrf_token %}
                     {{ form.myRadius }}
-       <br>
-       Scaling Factor:
+            </td>
+          </tr>
+          
+          <tr>
+            <th>Scaling Factor</th>
+            <td>    <form method="post">
                     {% csrf_token %}
                     {{ form.myScale }}
-       <br>  
-       Description:
-                    {% csrf_token %}
-                    {{ form.graph_description }}  
-        </form>
+            </td>
+          </tr>
+
+          
+        </table>
         <br>
+
+        
   
   
   
@@ -112,8 +154,7 @@
   <br>
   <center><button type="button" onclick="AddRowFunction()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></center>
   <br>
-  <!--<center><button type="submit" name="plot_data" onclick="showTableData();">Submit/Update</button></center>-->
-  <center><button type="button" onclick="SubmitAll()">Submit/Update</button></center>
+  <center><button type="submit" name="plot_data" onclick="showTableData();">Submit/Update</button></center>
   <br>
   <center><button type="button" onclick="fillmyTable()">Reload Data</button></center>
   <!--<center><button type="button" onclick="fillmyTable()">Load Data</button></center>-->
@@ -346,19 +387,6 @@ for (var i=0; i< myXs.length; i++) {
 }
 }
    
-
-function SubmitAll(){
-showTableData()
-alert("Step One done");
-document.getElementById("form1").submit();
-alert("Step Two done");
-fillmyTable();
-alert("Step Three done");
-}
-
-
-
-
     
 </script>
 
