@@ -10,7 +10,7 @@ from django.conf import settings
 #             
 # =============================================================================
  
-class Graph_Data(models.Model):
+class Tracking_Data(models.Model):
         user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, 
                                  on_delete=models.CASCADE)
         graph_filename=models.CharField(default='Your_file_name',max_length=500)
@@ -28,12 +28,12 @@ class Graph_Data(models.Model):
 
 
 
-class Gallery_Plots(models.Model):
-        user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, 
-                                 on_delete=models.CASCADE)
-        plotname = models.CharField(default='NewPlot',max_length=200)
-        myDate = models.DateTimeField(auto_now=True)
-        myplots = models.ImageField(upload_to='plots', blank=True, null=True)
+#class Gallery_Plots(models.Model):
+#        user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, 
+#                                 on_delete=models.CASCADE)
+#        plotname = models.CharField(default='NewPlot',max_length=200)
+#        myDate = models.DateTimeField(auto_now=True)
+#        myplots = models.ImageField(upload_to='plots', blank=True, null=True)
         
  
 

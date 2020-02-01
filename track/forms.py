@@ -6,7 +6,7 @@ Created on Sun Jul 21 11:00:53 2019
 @author: egetenmeyer
 """
 from django import forms
-from .models import Graph_Data, Gallery_Plots
+from .models import Tracking_Data
 
 MARKER_CHOICES=[
     ('o+', 'Circle and Cross'),
@@ -23,7 +23,7 @@ MARKER_CHOICES=[
     ('*', 'Asterisk *'),
     ]
 
-class HomeForm(forms.ModelForm):
+class TrackingForm(forms.ModelForm):
     graph_filename=forms.CharField(widget=forms.TextInput(attrs={'placeholder':'e.g. MyFilename'}))
     graph_title = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder':'e.g. MyTitle'}))
     graph_xlabel = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder':'e.g. x-axis'}))
@@ -38,17 +38,17 @@ class HomeForm(forms.ModelForm):
     
 
     class Meta:
-        model = Graph_Data
+        model = Tracking_Data
         #fields = ('post','myX',)
 #        fields = "__all__"
         fields = ('graph_filename','graph_title','graph_xlabel','graph_ylabel','graph_description',
-                  'myX','myY','myRadius','myScale',)
+                  'myX','myY','myError','mySymbol',)
 
 
 
-class GalleryForm(forms.ModelForm):
-    plotname=forms.CharField(required=False,widget=forms.TextInput(attrs={'placeholder':'e.g. MyPlot'}))
+#class GalleryForm(forms.ModelForm):
+#    plotname=forms.CharField(required=False,widget=forms.TextInput(attrs={'placeholder':'e.g. MyPlot'}))
     
-    class Meta:
-        model = Gallery_Plots
-        fields = ('plotname',)
+#    class Meta:
+#        model = Gallery_Plots
+#        fields = ('plotname',)
