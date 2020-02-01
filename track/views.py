@@ -63,10 +63,10 @@ from bokeh.io.export import get_screenshot_as_png
 #from django.template.defaultfilters import slugify
 
 #from .models import Greeting 
-from .models import Graph_Data, Gallery_Plots
+from .models import Tracking_Data
 from .forms import HomeForm, GalleryForm
 
-from accounts.forms import UserProfileForm
+
 
 
 
