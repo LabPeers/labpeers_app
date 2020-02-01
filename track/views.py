@@ -190,6 +190,7 @@ class TrackView(TemplateView):
         
         form = TrackingForm()
         formplot = GalleryForm()
+        mySymbol='x';
         
      
         plotdict , plot =trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,mySymbol)
