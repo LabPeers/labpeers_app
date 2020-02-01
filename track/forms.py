@@ -8,7 +8,20 @@ Created on Sun Jul 21 11:00:53 2019
 from django import forms
 from .models import Graph_Data, Gallery_Plots
 
-
+MARKER_CHOICES=[
+    ('o+', 'Circle and Cross'),
+    ('square_cross', 'Square and Cross'),
+    ('diamond', 'Diamond'),
+    ('+', 'cross'),
+    ('ox', 'Circle and x'),
+    ('square_x', 'Square and x'),
+    ('inverted_triangle', 'Up-side-down triangle'),
+    ('x', 'x'),
+    ('o', 'Circle'),
+    ('square', 'Square'),
+    ('triangle', 'Triangle'),
+    ('*', 'Asterisk *'),
+    ]
 
 class HomeForm(forms.ModelForm):
     graph_filename=forms.CharField(widget=forms.TextInput(attrs={'placeholder':'e.g. MyFilename'}))
@@ -19,8 +32,8 @@ class HomeForm(forms.ModelForm):
                                                                                      'style': 'height: 60px;'}))
     myX = forms.CharField(widget=forms.TextInput(attrs={'id':'x-values','placeholder':'e.g. 1,2,3'}))
     myY = forms.CharField(widget=forms.TextInput(attrs={'id':'y-values','placeholder':'e.g. 1,5,9'}))
-    myRadius= forms.CharField(widget=forms.TextInput(attrs={'id':'Bubble-size','placeholder':'e.g. 5,10,30'}))
-    myScale=forms.FloatField(widget=forms.NumberInput(attrs={'placeholder':'e.g. 1.2'}))
+    myError= forms.CharField(widget=forms.TextInput(attrs={'id':'Bubble-size','placeholder':'e.g. 5,10,30'}))
+    mySymbol=forms.CharField(label='Choose your marker symbol!', widget=forms.Select(choices=MARKER_CHOICES))
    # slug=forms.SlugField(widget=forms.TextInput())
     
 

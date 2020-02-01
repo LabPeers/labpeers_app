@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "bubble",
     "accounts.apps.AccountsConfig",
     "storages",
+    "track",
 ]
 
 MIDDLEWARE = [    

@@ -75,14 +75,14 @@ from accounts.forms import UserProfileForm
 
 
 
-def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, myScale):
+def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol):
 #    myscale=1
 #    myRlist=[x / abs(myscale) for x in myRlist]
 #    
     
-    myRlist2=myRlist/myScale
     
-    d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myBubble': myRlist, 'myBubble2': myRlist2, 'myScale' : myScale}
+    
+    d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myError': myRlist, 'mySymbol': mySymbol}
 
 
 
@@ -142,16 +142,16 @@ def bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, myScale):
 
 
 
-    color_mapper = LinearColorMapper(palette = LabPeers, low = min(df['myBubble']), 
-                                             high = max(df['myBubble']))
+    color_mapper = LinearColorMapper(palette = LabPeers, low = min(df['myError']), 
+                                             high = max(df['myError']))
             #color_mapper = LinearColorMapper(palette = Viridis256, low = min(myRlist), high = max(myRlist))
-    color_bar = ColorBar(color_mapper = color_mapper,
-                         location = (0, 0),
-                         ticker = BasicTicker())
-    plot.add_layout(color_bar, 'right')
-    plot.scatter(x = 'myXaxis', y = 'myYaxis', size = 'myBubble2', legend = None, 
-                 fill_color = transform('myBubble', color_mapper), source = source)
-    plot.add_tools(HoverTool(tooltips = [('Count', '@myBubble')]))
+
+    plot.scatter(x = 'myXaxis', y = 'myYaxis', marker = 'mySymbol', size=15,
+                 line_color="navy", fill_color="orange", alpha=0.5)
+    
+    
+    
+    #plot.add_tools(HoverTool(tooltips = [('Count', '@myError')]))
    # plot.add_tools(slider)
 
 
@@ -293,61 +293,8 @@ class HomeView(TemplateView):
         form = HomeForm()
         formplot = GalleryForm()
         
-        #users = User.objects.exclude(id=request.user.id)
-        #plot = figure(plot_width=600, plot_height=600, title='Your title will go here')
-        #script, div = components(plot, CDN)
-        
-        ########### -----DATA TABLE----- ########### 
-#        dict_table = {
-#                'myXlist': myXlist,
-#                'myYlist': myYlist,
-#                'myRlist': myRlist,
-#                }
-#        source = ColumnDataSource(data=dict_table)
-
-        #old_source = ColumnDataSource(copy.deepcopy(dict_table))
-#
-#        columns = [
-#                TableColumn(field="myXlist", title="X-values"),
-#                TableColumn(field="myYlist", title="Y-values"),
-#                TableColumn(field="myRlist", title="Bubble size"),
-#        ]
-#        
-#        data_table = DataTable(source=source, columns=columns, width=500)
-#            editable=True,
-#            reorderable=False,
-       
-
-#        def on_change_data_source(attr, old, new):
-#            # old, new and source.data are the same dictionaries
-#            print('-- SOURCE DATA: {}'.format(source.data))
-#            print('>> OLD SOURCE: {}'.format(old_source.data))
-#
-#            # to check changes in the 'y' column:
-#            indices = list(range(len(old['y'])))
-#            changes = [(i,j,k) for i,j,k in zip(indices, old_source.data['y'], source.data['y']) if j != k]
-#            print('>> CHANGES: {}'.format(changes))
-#
-#            old_source.data = copy.deepcopy(source.data)
-#
-#        
-#    
-#        print('SOURCE DATA: {}'.format(source.data))
-#
-#
-#        data_table.source.on_change('data', on_change_data_source)
-#
-#        curdoc().add_root(data_table)
-#        
-#        script_t, div_t = components({'data_table': data_table})
-#        tabledict={"the_script_t": script_t, "the_div_t": div_t}
-#    
-        ########### -----DATA TABLE END----- ###########
-        
-      
-        
-        
-        plotdict , plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
+     
+        plotdict , plot =trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,mySymbol)
         
 #        x = plotdict["the_script"]
 #        y = plotdict["the_div"]
@@ -407,14 +354,14 @@ class HomeView(TemplateView):
                 myYdata=form.cleaned_data['myY']
                 myYlist=myYdata.split(",")
                 myYlist=np.array(myYlist, dtype=np.float32)
-                myRdata=form.cleaned_data['myRadius']
+                myRdata=form.cleaned_data['myError']
                 myRlist=myRdata.split(",")
                 myRlist=np.array(myRlist, dtype=np.float32)
-                myScale=form.cleaned_data['myScale']
+                mySymbol=form.cleaned_data['mySymbol']
 #                
                     
                     #scale = 10
-                plotdict, plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
+                plotdict, plot =trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,mySymbol)
                 
                 
                 if 'make_png' in request.POST:
@@ -452,9 +399,9 @@ class HomeView(TemplateView):
 
                 mypkX=myXdata
                 mypkY=myYdata
-                mypkRadius=myRdata
+                mypkError=myRdata
                 
-                dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkRadius":mypkRadius}
+                dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkError":mypkError}
                 dict3={**plotdict , **dict2}
                     
                     
@@ -551,7 +498,7 @@ class EditView(TemplateView):
             graph_data=Graph_Data.objects.get(pk=pk)
             mypkX=graph_data.myX
             mypkY=graph_data.myY
-            mypkRadius=graph_data.myRadius
+            mypkError=graph_data.myError
         
            # form=graph_data
 #            form = HomeForm()
@@ -569,16 +516,16 @@ class EditView(TemplateView):
             myYdata=graph_data.myY
             myYlist=myYdata.split(",")
             myYlist=np.array(myYlist, dtype=np.float32)
-            myRdata=graph_data.myRadius
+            myRdata=graph_data.myError
             myRlist=myRdata.split(",")
             myRlist=np.array(myRlist, dtype=np.float32)
-            myScale=graph_data.myScale
+            mySymbol=graph_data.mySymbol
             
 #            
             
             #scale = 10
-            plotdict, plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
-            dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkRadius":mypkRadius}
+            plotdict, plot =trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,mySymbol)
+            dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkError":mypkError}
             dict3={**plotdict , **dict2}
                 
 
@@ -645,13 +592,13 @@ class EditView(TemplateView):
                 myYdata=form.cleaned_data['myY']
                 myYlist=myYdata.split(",")
                 myYlist=np.array(myYlist, dtype=np.float32)
-                myRdata=form.cleaned_data['myRadius']
+                myRdata=form.cleaned_data['myError']
                 myRlist=myRdata.split(",")
                 myRlist=np.array(myRlist, dtype=np.float32)
-                myScale=form.cleaned_data['myScale']
+                mySymbol=form.cleaned_data['mySymbol']
                     
                     #scale = 10
-                plotdict, plot=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
+                plotdict, plot=trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,mySymbol)
                 
                 if 'make_png' in request.POST:
                     print("1 I'm in the make png loop now!")
@@ -690,9 +637,9 @@ class EditView(TemplateView):
              
                 mypkX=myXdata
                 mypkY=myYdata
-                mypkRadius=myRdata
+                mypkError=myRdata
                 
-                dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkRadius":mypkRadius}
+                dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkError":mypkError}
                 dict3={**plotdict , **dict2}
                 
 
