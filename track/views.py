@@ -64,7 +64,7 @@ from bokeh.io.export import get_screenshot_as_png
 
 #from .models import Greeting 
 from .models import Tracking_Data
-from .forms import HomeForm, GalleryForm
+from .forms import TrackingForm
 
 
 
@@ -187,7 +187,7 @@ class TrackView(TemplateView):
         
         
         
-        form = HomeForm()
+        form = TrackingForm()
         formplot = GalleryForm()
         
      
@@ -209,7 +209,7 @@ class TrackView(TemplateView):
         if request.user.is_authenticated:
             #raise Http404
         
-            form = HomeForm(request.POST) # A form bound to the POST data
+            form = TrackingForm(request.POST) # A form bound to the POST data
             formplot = GalleryForm()
     
             if form.is_valid():
@@ -230,7 +230,7 @@ class TrackView(TemplateView):
                     print(x)
                     
                     instance=get_object_or_404(Graph_Data,id = x)
-                    form = HomeForm(request.POST or None, instance=instance)
+                    form = TrackingForm(request.POST or None, instance=instance)
                     if form.is_valid():
                         instance = form.save(commit=False)
                         
@@ -303,7 +303,7 @@ class TrackView(TemplateView):
                     
                     
                     
-                form = HomeForm(request.POST)
+                form = TrackingForm(request.POST)
                 formplot = GalleryForm(request.POST or None)
                 
                 
@@ -402,7 +402,7 @@ class EditTrackView(TemplateView):
 #            graph_data=Graph_Data.objects.get(pk=pk)
 #            form=graph_data
             instance = get_object_or_404(Graph_Data, pk=pk)
-            form = HomeForm(request.POST or None, instance=instance)
+            form = TrackingForm(request.POST or None, instance=instance)
             
             mytitle=graph_data.graph_title
             myXlabel=graph_data.graph_xlabel
@@ -441,7 +441,7 @@ class EditTrackView(TemplateView):
             #raise Http404
             
             instance = get_object_or_404(Graph_Data, pk=pk)
-            form = HomeForm(request.POST or None, instance=instance)
+            form = TrackingForm(request.POST or None, instance=instance)
             formplot = GalleryForm()
 #                if form.is_valid():
 #                    instance = form.save(commit=False)
@@ -462,7 +462,7 @@ class EditTrackView(TemplateView):
                     print(x)
                 
                     instance=get_object_or_404(Graph_Data,id = x)
-                    form = HomeForm(request.POST or None, instance=instance)
+                    form = TrackingForm(request.POST or None, instance=instance)
                     if form.is_valid():
                         instance = form.save(commit=False)
                     else:
@@ -541,7 +541,7 @@ class EditTrackView(TemplateView):
                 
 
  
-                form = HomeForm(request.POST)
+                form = TrackingForm(request.POST)
                 formplot = GalleryForm()
                     
                     
