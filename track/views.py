@@ -162,112 +162,9 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
 
 
 
-
-
-
-
-class HomeReal(TemplateView):
-    template_name = './home.html'
-  
-    
-
-class Profile(TemplateView):
-    template_name = './profile.html' 
-    
-    def get(self, request):
-        
-        p_form = UserProfileForm(instance=request.user.userprofile)
-        
-        gallery_plots=Gallery_Plots.objects.filter(user=request.user)
-        
-        plots2show = Gallery_Plots.objects.filter(user=request.user).order_by('-myDate')[0:2]
-        
-        args = {'user': request.user, 'p_form': p_form, 'gallery_plots' : gallery_plots, 'plots2show' : plots2show}
-        
-        return render(request, self.template_name, args)
-
-    
-    
-    
-    def post(self,request):
-    #if request.method == 'POST': # If the form has been submitted...
-        if request.user.is_authenticated:
-            #raise Http404
-        
-            #p_form = UserProfileForm(request.POST or None, request.FILES or None) # A form bound to the POST data
-            p_form = UserProfileForm(request.POST, request.FILES, instance=request.user.userprofile) # A form bound to the POST data
-            
-            if p_form.is_valid():
-                #p_form = p_form.save(commit=False)
-                #p_form.user = request.user
-                p_form.save()
-              #  return HttpResponseRedirect(instance.get_absolute_url())
-                messages.success(request, f'Image successfully uploaded!')
-                return redirect('profile')
-            
-            args = {'user': request.user,'p_form':p_form}
-                
-            return render(request, self.template_name, args)  
-
-
-
-#def youfunc(request):
-#    youtemplate = UserProfileForm()
-#    if request.method == 'POST':
-#        youform = UserProfileForm(request.POST, request.FILES)
-#        if youform.is_valid():
-#           youform.save()
-#           #return HttpResponseRedirect('http://www.You.url') # or other
-#    #youquery = .objects.order_by('image').last()
-#    return render(request, "YouProject/YouHtml.html", {'youtemplate': youtemplate})
-
    
     
-
-class Projects(TemplateView):
-    template_name = './projects.html'
-    
-    def get(self, request):
-        graph_data=Graph_Data.objects.filter(user=request.user)
-       # myfilename=graph_data.graph_filename
-       # mydate=graph_data.myDate
-        return render(request, self.template_name, 
-                      {'graph_data' : graph_data})
-        
-
-class DeleteView(TemplateView):
-    template_name = './projects.html'
-  
-#if request.method == 'POST': # If the form has been submitted...
-    def get(self,request,pk):
-    
-        if request.user.is_authenticated:
-            #raise Http404
-            data_row_old=Graph_Data.objects.get(pk=pk)
-            data_row_old.delete()
-            
-            return redirect('projects')
-
-
-class DeletePlotView(TemplateView):
-    template_name = './gallery.html'
-  
-#if request.method == 'POST': # If the form has been submitted...
-    def get(self,request,pk):
-    
-        if request.user.is_authenticated:
-            #raise Http404
-            plot_row_old=Gallery_Plots.objects.get(pk=pk)
-            plot_row_old.delete()
-            
-            return redirect('gallery')        
-        
-
-
-
-   
-    
-class HomeView(TemplateView):
+class TrackView(TemplateView):
     template_name = './bubblechart.html' 
     
     
@@ -485,7 +382,7 @@ class HomeView(TemplateView):
     
 
     
-class EditView(TemplateView):
+class EditTrackView(TemplateView):
     template_name = './bubblechart.html'     
     
     

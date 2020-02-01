@@ -3,6 +3,9 @@ from django.urls import path, include
 
 admin.autodiscover()
 
+
+from track.views import TrackView
+from track.views import EditTrackView
 from bubble.views import HomeView
 from bubble.views import HomeReal
 #from hello.views import Register
@@ -34,6 +37,8 @@ urlpatterns = [
     path("accounts/", include('django.contrib.auth.urls')),
     path("accounts/profile/",Profile.as_view(), name='profile'),
     path("", HomeReal.as_view(), name='home'),
+    path("track/", TrackView.as_view(), name='track'),
+    path("track/<int:pk>", EditTrackView.as_view(), name='track_project'),
     path("bubblechart/", HomeView.as_view(), name='bubblechart'),
     path("bubblechart/<int:pk>", EditView.as_view(), name='bubblechart_project'),
     path("projects/", Projects.as_view(), name='projects'),
