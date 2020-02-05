@@ -171,7 +171,7 @@ class TrackView(TemplateView):
     
     def get(self,request):
         
-        myXlist='1,2'
+        myXlist='1,3'
         myYlist='3,4'
         myRlist='10,50'
         myScale=1
@@ -222,7 +222,7 @@ class TrackView(TemplateView):
                 graph_data=Graph_Data.objects.filter(user=request.user)
                 filename_list=graph_data.values_list('graph_filename',flat=True)
                 filename_list2=list(filename_list)
-                print('HELLO')
+                print('HELLO WORLD!!')
                 print(filename_list)
                 print(filename_list2)
                 print(myfilename)
