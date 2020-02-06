@@ -132,22 +132,12 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
     plot = figure(title=mytitle, x_axis_label=myXlabel, y_axis_label=myYlabel, 
                   x_range=(myxmin, myxmax), y_range=(myymin, myymax))
 
+    #For mobile and desktop automatic resizing
     plot.sizing_mode = "scale_width"
 
 
-    LabPeers = ['#000000','#12030E','#25071C','#380A2B','#4A0E39','#5D1248',
-                    '#701556','#821964','#951C73','#A82081','#BB2490','#BB2490',
-                    '#C1399B','#C84FA6','#CF65B1','#D67BBC','#DD91C7','#E3A7D2',
-                    '#EABDDD','#F1D3E8','#F8E9F3','#FFFFFF']
 
-
-
-
-    color_mapper = LinearColorMapper(palette = LabPeers, low = min(df['myError']), 
-                                             high = max(df['myError']))
-            #color_mapper = LinearColorMapper(palette = Viridis256, low = min(myRlist), high = max(myRlist))
-
-    plot.scatter(x = 'myXaxis', y = 'myYaxis', marker = 'square', size=15,
+    plot.circle(x = 'myXaxis', y = 'myYaxis', size=15,
                  line_color="navy", fill_color="orange", alpha=0.5)
     
     
