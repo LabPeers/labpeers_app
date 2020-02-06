@@ -66,6 +66,7 @@ from bokeh.io.export import get_screenshot_as_png
 from .models import Tracking_Data
 from .forms import TrackingForm
 from bubble.forms import GalleryForm
+from bubble.models import Gallery_Plots
 
 
 
@@ -211,19 +212,19 @@ class TrackView(TemplateView):
                     #form.save()
                     #Avoid rows with same filename!!
                 myfilename=form.cleaned_data['graph_filename']
-                graph_data=Graph_Data.objects.filter(user=request.user)
-                filename_list=graph_data.values_list('graph_filename',flat=True)
+                tracking_data=Tracking_Data.objects.filter(user=request.user)
+                filename_list=tracking_data.values_list('graph_filename',flat=True)
                 filename_list2=list(filename_list)
                 print('HELLO WORLD!!')
                 print(filename_list)
                 print(filename_list2)
                 print(myfilename)
                 if myfilename in filename_list:
-                    repeat=Graph_Data.objects.get(graph_filename=myfilename)
+                    repeat=Tracking_Data.objects.get(graph_filename=myfilename)
                     x=repeat.id
                     print(x)
                     
-                    instance=get_object_or_404(Graph_Data,id = x)
+                    instance=get_object_or_404(Tracking_Data,id = x)
                     form = TrackingForm(request.POST or None, instance=instance)
                     if form.is_valid():
                         instance = form.save(commit=False)
@@ -382,35 +383,32 @@ class EditTrackView(TemplateView):
     
     def get(self,request,pk):
         if request.user.is_authenticated:
-#        #        graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
+
             
             formplot = GalleryForm()
 
-            graph_data=Graph_Data.objects.get(pk=pk)
-            mypkX=graph_data.myX
-            mypkY=graph_data.myY
-            mypkError=graph_data.myError
+            tracking_data=Tracking_Data.objects.get(pk=pk)
+            mypkX=tracking_data.myX
+            mypkY=tracking_data.myY
+            mypkError=tracking_data.myError
         
-           # form=graph_data
-#            form = HomeForm()
-#            graph_data=Graph_Data.objects.get(pk=pk)
-#            form=graph_data
-            instance = get_object_or_404(Graph_Data, pk=pk)
+
+            instance = get_object_or_404(Tracking_Data, pk=pk)
             form = TrackingForm(request.POST or None, instance=instance)
             
-            mytitle=graph_data.graph_title
-            myXlabel=graph_data.graph_xlabel
-            myYlabel=graph_data.graph_ylabel
-            myXdata=graph_data.myX
+            mytitle=tracking_data.graph_title
+            myXlabel=tracking_data.graph_xlabel
+            myYlabel=tracking_data.graph_ylabel
+            myXdata=tracking_data.myX
             myXlist=myXdata.split(",")
             myXlist=np.array(myXlist, dtype=np.float32)
-            myYdata=graph_data.myY
+            myYdata=tracking_data.myY
             myYlist=myYdata.split(",")
             myYlist=np.array(myYlist, dtype=np.float32)
-            myRdata=graph_data.myError
+            myRdata=tracking_data.myError
             myRlist=myRdata.split(",")
             myRlist=np.array(myRlist, dtype=np.float32)
-            mySymbol=graph_data.mySymbol
+            mySymbol=tracking_data.mySymbol
             
 #            
             
@@ -434,7 +432,7 @@ class EditTrackView(TemplateView):
 
             #raise Http404
             
-            instance = get_object_or_404(Graph_Data, pk=pk)
+            instance = get_object_or_404(Tracking_Data, pk=pk)
             form = TrackingForm(request.POST or None, instance=instance)
             formplot = GalleryForm()
 #                if form.is_valid():
@@ -442,8 +440,8 @@ class EditTrackView(TemplateView):
             if form.is_valid():
                     
                 myfilename=form.cleaned_data['graph_filename']
-                graph_data=Graph_Data.objects.filter(user=request.user)
-                filename_list=graph_data.values_list('graph_filename',flat=True)
+                tracking_data=Tracking_Data.objects.filter(user=request.user)
+                filename_list=tracking_data.values_list('graph_filename',flat=True)
                 filename_list2=list(filename_list)
                 print('HELLO')
                 print(filename_list)
@@ -451,11 +449,11 @@ class EditTrackView(TemplateView):
                 print(myfilename)
                         
                 if myfilename in filename_list:
-                    repeat=Graph_Data.objects.get(graph_filename=myfilename)
+                    repeat=Tracking_Data.objects.get(graph_filename=myfilename)
                     x=repeat.id
                     print(x)
                 
-                    instance=get_object_or_404(Graph_Data,id = x)
+                    instance=get_object_or_404(Tracking_Data,id = x)
                     form = TrackingForm(request.POST or None, instance=instance)
                     if form.is_valid():
                         instance = form.save(commit=False)
@@ -543,7 +541,7 @@ class EditTrackView(TemplateView):
             
             else: 
                     
-                return redirect("bubblechart")
+                return redirect("track")
             
     
         else:
@@ -558,7 +556,6 @@ class GalleryView(TemplateView):
       
     def get(self, request):
         gallery_plots=Gallery_Plots.objects.filter(user=request.user)
-       # myfilename=graph_data.graph_filename
-       # mydate=graph_data.myDate
+
         return render(request, self.template_name, 
                       {'gallery_plots' : gallery_plots})

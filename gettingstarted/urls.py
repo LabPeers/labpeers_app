@@ -20,6 +20,11 @@ from tracking.views import EditTrackView
 #from . import views
 
 
+#To be able to run app locally
+from django.conf import settings
+from django.views.static import serve
+
+
 
 # To add a new path, first import the app:
 # import blog
@@ -49,3 +54,14 @@ urlpatterns = [
  #   path("accounts/signup/", views.SignUp, name='signup'),
  #   path("db/", hello.views.db, name="db"),
 ]
+
+
+#To be able to run app locally
+
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]
+

@@ -31,6 +31,7 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     "bubble",
     "accounts.apps.AccountsConfig",
     "storages",
+    "tracking",
 ]
 
 MIDDLEWARE = [    
@@ -151,9 +153,12 @@ django_heroku.settings(locals())
 
 
 AWS_QUERYSTRING_AUTH = False
-AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = os.environ['S3_BUCKET_NAME']
+#AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_ACCESS_KEY_ID = 'AKIAJABVOWD2HG5TRHBA'
+#AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_SECRET_ACCESS_KEY = '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'
+#AWS_STORAGE_BUCKET_NAME = os.environ['S3_BUCKET_NAME']
+AWS_STORAGE_BUCKET_NAME = 'labpeersbubble'
 MEDIA_URL = 'http://%s.s3.us-east-2.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 AWS_REGION = 'us-east-2'
