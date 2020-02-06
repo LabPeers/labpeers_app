@@ -87,7 +87,7 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
 
 
 
-    df = pd.DataFrame(data = d)
+   # df = pd.DataFrame(data = d)
  #   source = ColumnDataSource(df)
 #    plot = figure(plot_width=600, plot_height=600, title=mytitle, 
 #                  x_axis_label=myXlabel, y_axis_label=myYlabel)
@@ -137,8 +137,10 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
 
 
 
-    plot.circle(x = 'myXaxis', y = 'myYaxis', size=15,
-                 line_color="navy", fill_color="orange", alpha=0.5)
+    #plot.circle(x = 'myXaxis', y = 'myYaxis', size=15,
+     #            line_color="navy", fill_color="orange", alpha=0.5)
+    
+    plot.circle(x = 'myXaxis', y = 'myYaxis', size=15, color ="orange")
     
     
     
