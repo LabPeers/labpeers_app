@@ -89,6 +89,15 @@
             </td>
           </tr>
           
+          
+        <tr>
+            <th>Plot marker</th>
+            <td>   
+                    {% csrf_token %}
+                    {{ form.mySymbol }}
+            </td>
+          </tr>
+          
 <!--          <tr>-->
 <!--            <th>Plot Marker</th>-->
 <!--            <td>    -->
@@ -310,7 +319,7 @@ init();
             }
             info.innerText = info.innerText.split(" ").join(""); 
         }
-        document.getElementById('Bubble-size').value = info.innerText; //Write the column content into Data Table
+        document.getElementById('Error-bar').value = info.innerText; //Write the column content into Data Table
        
 
     }    
