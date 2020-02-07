@@ -159,7 +159,7 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
    
     
 class TrackView(TemplateView):
-    template_name = './bubblechart.html' 
+    template_name = './track.html' 
     
     
     def get(self,request):
@@ -365,7 +365,7 @@ class TrackView(TemplateView):
                 
             
             else:
-                return redirect("bubblechart")
+                return redirect("track")
             
             
             
@@ -378,7 +378,7 @@ class TrackView(TemplateView):
 
     
 class EditTrackView(TemplateView):
-    template_name = './bubblechart.html'     
+    template_name = './tack.html'     
     
     
     def get(self,request,pk):
@@ -458,7 +458,7 @@ class EditTrackView(TemplateView):
                     if form.is_valid():
                         instance = form.save(commit=False)
                     else:
-                        return redirect("bubblechart")
+                        return redirect("track")
                             
                 else:
                     instance=form.save(commit=False)  
