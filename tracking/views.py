@@ -64,12 +64,12 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
 #    myscale=1
 #    myRlist=[x / abs(myscale) for x in myRlist]
 #    
-    #upper = [x+e for x,e in zip(myYlist, myRlist) ]
-    #lower = [x-e for x,e in zip(myYlist, myRlist) ]
+    upper = [x+e for x,e in zip(myYlist, myRlist) ]
+    lower = [x-e for x,e in zip(myYlist, myRlist) ]
     
     
-    #d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myError': myRlist, 'upper': upper, 'lower': lower, 'mySymbol': mySymbol}
-    d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myError': myRlist, 'mySymbol': mySymbol}
+    d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myError': myRlist, 'upper': upper, 'lower': lower, 'mySymbol': mySymbol}
+    #d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myError': myRlist, 'mySymbol': mySymbol}
 
 
 
@@ -133,7 +133,7 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
     
     
     ##Scipt error bars for now!
-    #plot.add_layout(Whisker(source=source, base="myXaxis", upper="upper", lower="lower", level="overlay"))
+    plot.add_layout(Whisker(source=source, base="myXaxis", upper="upper", lower="lower", level="overlay"))
                  
                  
     #plot.add_tools(HoverTool(tooltips = [('Count', '@myError')]))
@@ -176,7 +176,7 @@ class TrackView(TemplateView):
         
         form = TrackingForm()
         formplot = GalleryForm()
-        mySymbol='square';
+        mySymbol='circle';
         
      
         plotdict , plot =trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,mySymbol)

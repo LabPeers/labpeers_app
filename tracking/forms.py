@@ -9,7 +9,6 @@ from django import forms
 from .models import Tracking_Data
 
 MARKER_CHOICES=[
-    ('o+', 'Circle and Cross'),
     ('square_cross', 'Square and Cross'),
     ('diamond', 'Diamond'),
     ('+', 'cross'),
@@ -17,7 +16,7 @@ MARKER_CHOICES=[
     ('square_x', 'Square and x'),
     ('inverted_triangle', 'Up-side-down triangle'),
     ('x', 'x'),
-    ('o', 'Circle'),
+    ('circle', 'Circle'),
     ('square', 'Square'),
     ('triangle', 'Triangle'),
     ('*', 'Asterisk *'),
