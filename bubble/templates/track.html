@@ -63,6 +63,7 @@
                     {{ form.graph_ylabel }}
         </td>
           </tr>
+           
               
           <tr style="display:none;">
             <th>x-Values</th>
@@ -99,13 +100,14 @@
             </td>
           </tr>
           
-<!--          <tr>-->
-<!--            <th>Plot Marker</th>-->
-<!--            <td>    -->
-<!--                    {% csrf_token %}-->
-<!--                    {{ form.myScale }}-->
-<!--            </td>-->
-<!--          </tr>-->
+          
+        <tr>
+                <th>Description</th>
+        <td>    
+                        {% csrf_token %}
+                    {{ form.graph_description }}
+        </td>
+          </tr>  
 
           
         </table>    
@@ -125,7 +127,7 @@
         <th>x-Values</th>
         <th>y-Values</th>
         <th>Error bar</th>
-        <th>Action</th>
+        <th></th>
     </tr>
     <tr>
         <td><div contenteditable></div></td>

@@ -64,6 +64,7 @@
                     {{ form.graph_ylabel }}
         </td>
           </tr>
+         
               
           <tr style="display:none;">
             <th>x-Values</th>
@@ -98,7 +99,14 @@
                     {{ form.myScale }}
             </td>
           </tr>
-
+          
+        <tr>
+                <th>Description</th>
+        <td>    
+                        {% csrf_token %}
+                    {{ form.graph_description }}
+        </td>
+          </tr> 
           
         </table>    
         </form>

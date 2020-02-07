@@ -65,6 +65,7 @@ from bokeh.io.export import get_screenshot_as_png
 #from .models import Greeting 
 from .models import Graph_Data, Gallery_Plots
 from .forms import HomeForm, GalleryForm
+from tracking.models import Tracking_Data
 
 from accounts.forms import UserProfileForm
 
@@ -229,6 +230,8 @@ class Projects(TemplateView):
     
     def get(self, request):
         graph_data=Graph_Data.objects.filter(user=request.user)
+        tracking_data=Tracking_Data.objects.filter(user=request.user)
+        
        # myfilename=graph_data.graph_filename
        # mydate=graph_data.myDate
         return render(request, self.template_name, 
