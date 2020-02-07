@@ -130,8 +130,8 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
 # 
     
     
-    plot = figure(title=mytitle, x_axis_label=myXlabel, y_axis_label=myYlabel, 
-                  x_range=(myxmin, myxmax), y_range=(myymin, myymax))
+    plot = figure(title=mytitle, x_axis_label=myXlabel, y_axis_label=myYlabel) 
+              #    x_range=(myxmin, myxmax), y_range=(myymin, myymax))
 
     #For mobile and desktop automatic resizing
     plot.sizing_mode = "scale_width"
@@ -164,11 +164,10 @@ class TrackView(TemplateView):
     
     def get(self,request):
         
-        myXlist='1,3'
-        myYlist='3,4'
-        myRlist='1,2'
-        myScale=1
-        mytitle='Your title will go here'
+        myXlist='1,3,2,8'
+        myYlist='3,4,0,9'
+        myRlist='1,2,1,0.5'
+        mytitle='This is an example plot'
         myXlabel='x-axis label'
         myYlabel='y-axis label'
         
@@ -183,7 +182,7 @@ class TrackView(TemplateView):
         
         form = TrackingForm()
         formplot = GalleryForm()
-        mySymbol='x';
+        mySymbol='o';
         
      
         plotdict , plot =trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,mySymbol)
