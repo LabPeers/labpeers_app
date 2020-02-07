@@ -32,7 +32,7 @@ class TrackingForm(forms.ModelForm):
                                                                                      'style': 'height: 60px;'}))
     myX = forms.CharField(widget=forms.TextInput(attrs={'id':'x-values','placeholder':'e.g. 1,2,3'}))
     myY = forms.CharField(widget=forms.TextInput(attrs={'id':'y-values','placeholder':'e.g. 1,5,9'}))
-    myError= forms.CharField(widget=forms.TextInput(attrs={'id':'Error-bar','placeholder':'e.g. 5,10,30'}))
+    myError= forms.CharField(required=False,widget=forms.TextInput(attrs={'id':'Error-bar','placeholder':'e.g. 5,10,30'}))
     mySymbol=forms.CharField(label='Choose your marker symbol!', widget=forms.Select(choices=MARKER_CHOICES))
    # slug=forms.SlugField(widget=forms.TextInput())
     

@@ -149,7 +149,7 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
     
     
     
-    plot.add_layout(Whisker(source=source, base="groups", upper="upper", lower="lower", level="overlay"))
+    plot.add_layout(Whisker(source=source, base="myXaxis", upper="upper", lower="lower", level="overlay"))
                  
                  
     #plot.add_tools(HoverTool(tooltips = [('Count', '@myError')]))
