@@ -19,7 +19,25 @@
 <a type="button" class="btn btn-lg btn-default" href="/projects/{{ myvar.pk }}">
 <i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 </tr>
+
 {% endfor %}
+
+{% for myvar in tracking_data %}
+<tr>
+<td><strong>{{ myvar.graph_filename }}</strong></td>
+<td>{{ myvar.graph_description }}</td>
+<td>{{ myvar.myDate }}</td> 
+<!--<td>{{ myvar.user }}</td>-->
+<td>
+<a type="button" class="btn btn-lg btn-default" href="/bubblechart/{{ myvar.pk }}">>
+<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+
+<a type="button" class="btn btn-lg btn-default" href="/projects/{{ myvar.pk }}">
+<i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+</tr>
+
+{% endfor %}
+
 </table>
 
 </div>

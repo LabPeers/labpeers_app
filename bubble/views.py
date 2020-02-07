@@ -235,7 +235,7 @@ class Projects(TemplateView):
        # myfilename=graph_data.graph_filename
        # mydate=graph_data.myDate
         return render(request, self.template_name, 
-                      {'graph_data' : graph_data})
+                      {'graph_data' : graph_data, 'tracking_data' : tracking_data})
         
 
 class DeleteView(TemplateView):

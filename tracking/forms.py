@@ -12,7 +12,6 @@ MARKER_CHOICES=[
     ('square_cross', 'Square and Cross'),
     ('diamond', 'Diamond'),
     ('+', 'cross'),
-    ('ox', 'Circle and x'),
     ('square_x', 'Square and x'),
     ('inverted_triangle', 'Up-side-down triangle'),
     ('x', 'x'),
