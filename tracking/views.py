@@ -81,11 +81,12 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
 #    myscale=1
 #    myRlist=[x / abs(myscale) for x in myRlist]
 #    
-    upper = [x+e for x,e in zip(myYlist, myRlist) ]
-    lower = [x-e for x,e in zip(myYlist, myRlist) ]
+    #upper = [x+e for x,e in zip(myYlist, myRlist) ]
+    #lower = [x-e for x,e in zip(myYlist, myRlist) ]
     
     
-    d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myError': myRlist, 'upper': upper, 'lower': lower, 'mySymbol': mySymbol}
+    #d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myError': myRlist, 'upper': upper, 'lower': lower, 'mySymbol': mySymbol}
+    d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myError': myRlist, 'mySymbol': mySymbol}
 
 
 
