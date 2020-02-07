@@ -208,7 +208,7 @@ class TrackView(TemplateView):
             formplot = GalleryForm()
     
             if form.is_valid():
-            
+                print("Form is valid!")
                     #form.save()
                     #Avoid rows with same filename!!
                 myfilename=form.cleaned_data['graph_filename']
