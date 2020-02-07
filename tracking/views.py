@@ -147,6 +147,33 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
 
 
 
+
+class Projects(TemplateView):
+    template_name = './tracking_projects.html'
+    
+    def get(self, request):
+        tracking_data=Tracking_Data.objects.filter(user=request.user)
+        
+       # myfilename=graph_data.graph_filename
+       # mydate=graph_data.myDate
+        return render(request, self.template_name, 
+                      {'tracking_data' : tracking_data})
+        
+
+class DeleteView(TemplateView):
+    template_name = './tracking_projects.html'
+  
+#if request.method == 'POST': # If the form has been submitted...
+    def get(self,request,pk):
+    
+        if request.user.is_authenticated:
+            #raise Http404
+            data_row_old=Tracking_Data.objects.get(pk=pk)
+            data_row_old.delete()
+            
+            return redirect('projects')
+
+
    
     
 class TrackView(TemplateView):
