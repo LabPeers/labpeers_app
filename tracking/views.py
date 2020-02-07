@@ -141,7 +141,7 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
     #plot.circle(x = 'myXaxis', y = 'myYaxis', size=15,
      #            line_color="navy", fill_color="orange", alpha=0.5)
     
-    plot.circle(x = 'myXaxis', y = 'myYaxis', size=15, color ="orange", source=source)
+    plot.scatter(x = 'myXaxis', y = 'myYaxis', size=15, color ="#bb2490", marker='mySymbol' , source=source)
     
     
     
