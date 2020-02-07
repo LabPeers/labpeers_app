@@ -319,7 +319,7 @@ init();
             }
             info.innerText = info.innerText.split(" ").join(""); 
         }
-        document.getElementById('Bubble-size').value = info.innerText; //Write the column content into Data Table
+        document.getElementById('Error-bar').value = info.innerText; //Write the column content into Data Table
        
 
     }    
@@ -356,8 +356,8 @@ var myX = '{{ mypkX }}';
 var myXs = myX.split(',');
 var myY = '{{ mypkY }}';
 var myYs = myY.split(',');
-var myRadius = '{{ mypkRadius }}';
-var myRadiuss = myRadius.split(',');
+var myError = '{{ mypkError }}';
+var myErrors = myError.split(',');
 
 for (var i=0; i< myXs.length; i++) {
     if (i<3){
@@ -377,7 +377,7 @@ for (var i=0; i< myXs.length; i++) {
     
     cell1.innerHTML = '<div contenteditable>'+ myXs[i]+'</div>';
     cell2.innerHTML = '<div contenteditable>'+ myYs[i]+'</div>';
-    cell3.innerHTML = '<div contenteditable>'+ myRadiuss[i]+'</div>';    
+    cell3.innerHTML = '<div contenteditable>'+ myErrors[i]+'</div>';    
     cell4.innerHTML = '<button type="button" class="ibtnDel btn btn-md btn-danger" onclick="myDeleteFunction()">Delete</button>';    
     
 }
