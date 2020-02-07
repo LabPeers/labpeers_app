@@ -299,6 +299,7 @@ class TrackView(TemplateView):
                     
                     
                 form = TrackingForm(request.POST)
+                print("Hi! I am in line 302")
                 formplot = GalleryForm(request.POST or None)
                 
                 

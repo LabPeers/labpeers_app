@@ -11,8 +11,6 @@
                 <br>
                 {{ the_div.plot | safe}}
         
-                {{ the_div.table | safe}}
-        
                 {{ the_script| safe}}
         
                 <br>
@@ -28,7 +26,7 @@
 
 
     <div class="col-sm-6 col-12 offset-0 offset-sm-6 py-2">
-        <center><H4>Your Bubblechart Data</H4></center>
+        <center><H4>Your Tracking Data</H4></center>
         
         <form method="post" id="form1">
         <table align="center">
@@ -87,7 +85,7 @@
             <th>Bubble size</th>
             <td>   
                     {% csrf_token %}
-                    {{ form.myRadius }}
+                    {{ form.myError }}
             </td>
           </tr>
           
