@@ -240,7 +240,11 @@ class TrackView(TemplateView):
                 myYlist=myYdata.split(",")
                 myYlist=np.array(myYlist, dtype=np.float32)
                 myRdata=form.cleaned_data['myError']
-                myRlist=myRdata.split(",")
+                if any(char.isdigit() for char in myRdata):
+                    myRlist=myRdata.split(",")
+                else:
+                    myRlist=np.zeros_like(myXlist)
+                
                 myRlist=np.array(myRlist, dtype=np.float32)
                 mySymbol=form.cleaned_data['mySymbol']
 #                
