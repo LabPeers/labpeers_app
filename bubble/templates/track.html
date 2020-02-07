@@ -63,7 +63,7 @@
         </td>
           </tr>
               
-          <tr style="display:none;">
+          <tr> <!-- style="display:none;">-->
             <th>x-Values</th>
             <td>    
             
@@ -73,7 +73,7 @@
             </td>
           </tr>
           
-          <tr style="display:none;">
+          <tr> 
             <th>y-Values</th>
             <td>
                     {% csrf_token %}
@@ -81,8 +81,8 @@
             </td>
           </tr>
       
-          <tr style="display:none;">
-            <th>Bubble size</th>
+          <tr>
+            <th>Error bar</th>
             <td>   
                     {% csrf_token %}
                     {{ form.myError }}

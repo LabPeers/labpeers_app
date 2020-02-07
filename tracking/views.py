@@ -166,7 +166,7 @@ class TrackView(TemplateView):
         
         myXlist='1,3'
         myYlist='3,4'
-        myRlist='10,50'
+        myRlist='1,2'
         myScale=1
         mytitle='Your title will go here'
         myXlabel='x-axis label'
@@ -194,7 +194,7 @@ class TrackView(TemplateView):
         dict2={"form":form,"formplot":formplot}
         dict3={**plotdict , **dict2}
 #        dict4={**dict3, **tabledict}
-     
+        print("I almost finished the get part")
         return render(request, self.template_name, dict3)
    
     
