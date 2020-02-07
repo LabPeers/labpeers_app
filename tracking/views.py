@@ -1,21 +1,4 @@
-# =============================================================================
-# from django.shortcuts import render
-# from django.http import HttpResponse
-# 
-# #from django.shortcuts import render_to_response
-# from django.template import RequestContext
-# from .models import InputForm
-# from .compute import compute
-# 
-# import requests
-# 
-# from .models import Greeting
-# =============================================================================
 
-# Create your views here.
-#def index(request):
-    # return HttpResponse('Hello from Python!')
- #   return render(request, "index.html")
 from django.views.generic import TemplateView
 from django.urls import reverse_lazy
 from django.views import generic
@@ -193,7 +176,7 @@ class TrackView(TemplateView):
         
         form = TrackingForm()
         formplot = GalleryForm()
-        mySymbol='o';
+        mySymbol='square';
         
      
         plotdict , plot =trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,mySymbol)
