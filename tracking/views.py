@@ -148,8 +148,8 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
     plot.scatter(x = 'myXaxis', y = 'myYaxis', size=15, color ="#bb2490", marker='mySymbol' , source=source)
     
     
-    
-    plot.add_layout(Whisker(source=source, base="myXaxis", upper="upper", lower="lower", level="overlay"))
+    ##Scipt error bars for now!
+    #plot.add_layout(Whisker(source=source, base="myXaxis", upper="upper", lower="lower", level="overlay"))
                  
                  
     #plot.add_tools(HoverTool(tooltips = [('Count', '@myError')]))
