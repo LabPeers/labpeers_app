@@ -29,7 +29,7 @@ from bokeh.plotting import figure , curdoc , show , output_file
 from bokeh.resources import CDN
 from bokeh.embed import components
 import pandas as pd
-from bokeh.models import ColumnDataSource, LinearColorMapper, ColorBar, BasicTicker, PrintfTickFormatter, HoverTool
+from bokeh.models import ColumnDataSource, LinearColorMapper, ColorBar, BasicTicker, PrintfTickFormatter, HoverTool, Whisker
 from bokeh.palettes import Viridis256
 from bokeh.transform import transform
 import numpy as np
@@ -81,10 +81,11 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
 #    myscale=1
 #    myRlist=[x / abs(myscale) for x in myRlist]
 #    
+    upper = [x+e for x,e in zip(myYlist, myRlist) ]
+    lower = [x-e for x,e in zip(myYlist, myRlist) ]
     
     
-    
-    d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myError': myRlist, 'mySymbol': mySymbol}
+    d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myError': myRlist, 'upper': upper, 'lower': lower, 'mySymbol': mySymbol}
 
 
 
@@ -92,6 +93,9 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
     source = ColumnDataSource(df)
 #    plot = figure(plot_width=600, plot_height=600, title=mytitle, 
 #                  x_axis_label=myXlabel, y_axis_label=myYlabel)
+    
+    
+    
     
     #Scaled myRlist
     BiggestBubble=max(myRlist)
@@ -145,6 +149,9 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
     
     
     
+    plot.add_layout(Whisker(source=source, base="groups", upper="upper", lower="lower", level="overlay"))
+                 
+                 
     #plot.add_tools(HoverTool(tooltips = [('Count', '@myError')]))
    # plot.add_tools(slider)
 
@@ -177,6 +184,9 @@ class TrackView(TemplateView):
         myYlist=np.array(myYlist, dtype=np.float32)
         myRlist=myRlist.split(",")
         myRlist=np.array(myRlist, dtype=np.float32)
+        
+        
+        
         
         
         
