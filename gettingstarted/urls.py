@@ -13,8 +13,9 @@ from bubble.views import EditView
 from bubble.views import DeleteView
 from bubble.views import GalleryView
 from bubble.views import DeletePlotView
-from tracking.views import TrackView
-from tracking.views import EditTrackView
+from tracking.views import TrackView, EditTrackView, TrackingProjects, TrackingDeleteView
+
+
 #from hello.views import HomeView_details
 #from accounts.views import SignUp
 #from . import views
@@ -46,6 +47,8 @@ urlpatterns = [
     path("bubblechart/<int:pk>", EditView.as_view(), name='bubblechart_project'),
     path("projects/", Projects.as_view(), name='projects'),
     path("projects/<int:pk>", DeleteView.as_view(), name='projects_delete'),
+    path("tracking_projects/", TrackingProjects.as_view(), name='projects'),
+    path("tracking_projects/<int:pk>", TrackingDeleteView.as_view(), name='projects_delete'),
     path("gallery/", GalleryView.as_view(), name='gallery'),
     path("gallery/<int:pk>", DeletePlotView.as_view(), name='plot_delete'),
     path("track/", TrackView.as_view(), name='track'),

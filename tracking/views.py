@@ -148,7 +148,7 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
 
 
 
-class Projects(TemplateView):
+class TrackingProjects(TemplateView):
     template_name = './tracking_projects.html'
     
     def get(self, request):
@@ -160,7 +160,7 @@ class Projects(TemplateView):
                       {'tracking_data' : tracking_data})
         
 
-class DeleteView(TemplateView):
+class TrackingDeleteView(TemplateView):
     template_name = './tracking_projects.html'
   
 #if request.method == 'POST': # If the form has been submitted...
