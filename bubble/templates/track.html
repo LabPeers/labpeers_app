@@ -9,18 +9,19 @@
         <div class="col-sm-6 col-12 py-2 d-flex align-items-center justify-content-center" id="left">
                 <br>
                 <br>
+                <br>
             <div style="width:93%;">
 
                 {{ the_div.plot | safe}}
         
                 {{ the_script| safe}}
-            </div>
                 <br>
                 <form method="post">
                     {% csrf_token %}
                     {{ formplot.plotname }}
                 </form>
                 <button type="submit" name="make_png">Save plot to gallery</button> 
+            </div>    
         
         </div>
 
