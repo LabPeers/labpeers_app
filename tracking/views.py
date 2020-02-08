@@ -348,7 +348,7 @@ class TrackView(TemplateView):
 
     
 class EditTrackView(TemplateView):
-    template_name = './tack.html'     
+    template_name = './track.html'     
     
     
     def get(self,request,pk):
