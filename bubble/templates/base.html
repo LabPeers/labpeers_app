@@ -76,13 +76,13 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Sodo Sans", sans-serif}
             </li>
             </ul>
             
-            <ul class="navbar-nav ml-md-auto nav">
+            <ul class="navbar-nav ml-auto nav">
               {% if user.is_authenticated %}
                   <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fa fa-user-circle-o" aria-hidden="true"></i> {{user.username}} <span class="caret"></span>
                       </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/accounts/profile/"> My Profile</a>
                         <a class="dropdown-item" href="/projects/"> My Bubble Projects</a>
                         <a class="dropdown-item" href="/tracking_projects/"> My Tracking Projects</a>
