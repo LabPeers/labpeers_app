@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 def upload_pic(instance, filename):
-        return 'profile_pics/%s/%s' % (instance.user.pk, filename)
+        return 'yourspace/%s/profile_pics/%s/' % (instance.user.username, filename)
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)

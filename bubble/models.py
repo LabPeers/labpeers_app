@@ -28,7 +28,7 @@ class Graph_Data(models.Model):
 
 
 def upload_plots(instance, filename):
-        return 'plots/%s/%s' % (instance.user.pk, filename)
+        return 'yourspace/%s/plots/%s/' % (instance.user.pk, filename)
 
 
 
