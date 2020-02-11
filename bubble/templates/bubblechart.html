@@ -7,7 +7,7 @@
     <div class="row">
     
         <div class="col-sm-6 col-12 py-2 d-flex align-items-center justify-content-center" id="left">
-            <div style="width:97%;">
+            <div style="width:95%;">
                 <br>
                 {{ the_div.plot | safe}}
         
@@ -19,9 +19,9 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ formplot.plotname }}
-                    <input type="submit" name="make_png" value="Save plot to gallery">
-                </form>
-                <!--<button type="submit" name="make_png">Save plot to gallery</button>-->
+                    <!--<input type="submit" name="make_png" value="Save plot to gallery">-->
+                
+                <button type="submit" name="make_png">Save plot to gallery</button>
              </div>   
         
         </div>
