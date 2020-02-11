@@ -19,8 +19,9 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ formplot.plotname }}
+                    <input type="submit" name="make_png" value="Save plot to gallery">
                 </form>
-                <button type="submit" name="make_png">Save plot to gallery</button>
+                <!--<button type="submit" name="make_png">Save plot to gallery</button>-->
              </div>   
         
         </div>
