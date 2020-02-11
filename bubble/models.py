@@ -27,13 +27,17 @@ class Graph_Data(models.Model):
        # slug=models.SlugField(default='new',null=False, unique=True)
 
 
+def upload_plots(instance, filename):
+        return '%s/plots/%s' % (instance.user.username, filename)
+
+
 
 class Gallery_Plots(models.Model):
         user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, 
                                  on_delete=models.CASCADE)
         plotname = models.CharField(default='NewPlot',max_length=200)
         myDate = models.DateTimeField(auto_now=True)
-        myplots = models.ImageField(upload_to='plots', blank=True, null=True)
+        myplots = models.ImageField(upload_to=upload_plots, blank=True, null=True)
         
  
 
