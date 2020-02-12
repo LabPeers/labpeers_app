@@ -7,7 +7,7 @@
     <div class="row">
     
         <div class="col-sm-6 col-12 py-2 d-flex align-items-center justify-content-center" id="left">
-            <div style="width:95%;">
+            <div style="width:95%;margin-top: 25px;">
                 <br>
                 {{ the_div.plot | safe}}
         
@@ -16,12 +16,13 @@
                 {{ the_script| safe}}
         
                 <br>
-                <form method="post">
+                <form method="post" id="form0">
                     {% csrf_token %}
                     {{ formplot.plotname }}
                     <!--<input type="submit" name="make_png" value="Save plot to gallery">-->
-                
-                <button type="submit" name="make_png">Save plot to gallery</button>
+                </form>
+                <!--<button type="submit" name="make_png">Save plot to gallery</button>-->
+                <center><button id="make_png" type="button" name="make_png" onclick="SubmitSavePlot();">Save plot to gallery</button></center>
              </div>   
         
         </div>
@@ -394,6 +395,11 @@ document.getElementById("form1").submit();
 
 <!--document.getElementById("greatSubmit").addEventListener("click", fillmyTable);-->
 
+
+function SubmitSavePlot(){
+alert('I submitted save plot button');
+document.getElementById("form0").submit();
+}
 
 
     
