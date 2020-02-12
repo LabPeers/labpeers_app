@@ -16,13 +16,13 @@
                 {{ the_script| safe}}
         
                 <br>
-                <form method="post" id="form0">
+                <form method="post" id="make_png">
                     {% csrf_token %}
                     {{ formplot.plotname }}
                     <!--<input type="submit" name="make_png" value="Save plot to gallery">-->
                 </form>
                 <!--<button type="submit" name="make_png">Save plot to gallery</button>-->
-                <center><button id="make_png" type="button" name="make_png" onclick="SubmitSavePlot();">Save plot to gallery</button></center>
+                <center><button action="make_png" id="make_png" type="button" name="make_png" onclick="SubmitSavePlot();">Save plot to gallery</button></center>
              </div>   
         
         </div>
@@ -154,7 +154,7 @@
   <center><button type="button" onclick="AddRowFunction()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></center>
   <br>
   <!--<center><button type="submit" name="plot_data" onclick="showTableData();">Submit/Update</button></center>-->
-  <center><button id="greatSubmit" type="button" onclick="SubmitAll();">Submit/Update</button></center>
+  <center><button id="greatSubmit" name="bubblechart" type="button" onclick="SubmitAll();">Submit/Update</button></center>
   <br>
   <center><button type="button" onclick="fillmyTable()">Reload Data</button></center>
   <!--<center><button type="button" onclick="fillmyTable()">Load Data</button></center>-->
