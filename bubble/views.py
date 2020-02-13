@@ -419,9 +419,10 @@ class HomeView(TemplateView):
                     #scale = 10
                 plotdict, plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
                 
-                action = request.POST.get('action')
-                if action == 'make_png':
-                #if 'make_png' in request.POST:
+                #action = request.POST.get('action')
+                #if action == 'make_png':
+                print('I am infront of the if statement')
+                if 'make_png' in request.POST:
                     print("1 I'm in the make png loop now!")
                     formplot = GalleryForm(request.POST)
             
