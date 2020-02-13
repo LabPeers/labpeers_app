@@ -7,7 +7,7 @@
     <div class="row">
     
         <div class="col-sm-6 col-12 py-2 d-flex align-items-center justify-content-center" id="left">
-            <div style="width:95%;margin-top: 25px;">
+            <div style="width:95%;margin-top: 35px;">
                 <br>
                 {{ the_div.plot | safe}}
         
@@ -16,7 +16,7 @@
                 {{ the_script| safe}}
         
                 <br>
-                <form method="post" id="form1">
+                <form method="post" id="make_png">
                     {% csrf_token %}
                     {{ formplot.plotname }}
                 <input type="submit" name="make_png" value="Save plot to gallery">
@@ -33,7 +33,7 @@
     <div class="col-sm-6 col-12 offset-0 offset-sm-6 py-2">
         <center><H4>Your Bubblechart Data</H4></center>
         
-        <!--<form method="post" id="form1">-->
+        <form method="post" id="form1">
         <table align="center">
           <tr>
             <th>Filename for your Project</th>
@@ -113,11 +113,7 @@
           
         </table>    
         <br>
-  
-  <center><button id="greatSubmit" name="bubblechart" type="button" onclick="SubmitAll();">Submit/Update</button></center>
-  <br>
-
-</form>  
+ 
   
   
   <!--<p>Hello: X= {{ mypkX }} </p>-->
@@ -157,7 +153,10 @@
   <center><button type="button" onclick="AddRowFunction()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></center>
   <br>
   <!--<center><button type="submit" name="plot_data" onclick="showTableData();">Submit/Update</button></center>-->
+  <center><button id="greatSubmit" name="bubblechart" type="button" onclick="SubmitAll();">Submit/Update</button></center>
+  <br>
 
+</form> 
 
   <center><button type="button" onclick="fillmyTable()">Reload Data</button></center>
   <!--<center><button type="button" onclick="fillmyTable()">Load Data</button></center>-->
