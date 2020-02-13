@@ -19,8 +19,8 @@
                 <form method="post" id="form1">
                     {% csrf_token %}
                     {{ formplot.plotname }}
-                    <input type="submit" name="make_png" value="Save plot to gallery">
-                    
+                <input type="submit" name="make_png" value="Save plot to gallery">
+                </form>    
                 
                 <!--<button type="submit" name="make_png">Save plot to gallery</button>-->
                 <!--<center><button action="make_png" id="make_png" type="submit" name="make_png">Save plot to gallery</button></center>-->
@@ -112,7 +112,6 @@
           </tr> 
           
         </table>    
-        </form>
         <br>
   
   
@@ -157,6 +156,9 @@
   <!--<center><button type="submit" name="plot_data" onclick="showTableData();">Submit/Update</button></center>-->
   <center><button id="greatSubmit" name="bubblechart" type="button" onclick="SubmitAll();">Submit/Update</button></center>
   <br>
+
+</form>
+
   <center><button type="button" onclick="fillmyTable()">Reload Data</button></center>
   <!--<center><button type="button" onclick="fillmyTable()">Load Data</button></center>-->
 
