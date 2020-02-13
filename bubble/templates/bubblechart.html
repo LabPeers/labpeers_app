@@ -16,13 +16,14 @@
                 {{ the_script| safe}}
         
                 <br>
-                <form method="post" id="make_png">
+                <form method="post" id="form1">
                     {% csrf_token %}
                     {{ formplot.plotname }}
-                    <!--<input type="submit" name="make_png" value="Save plot to gallery">-->
-                </form>
+                    <input type="submit" name="make_png" value="Save plot to gallery">
+                    
+                
                 <!--<button type="submit" name="make_png">Save plot to gallery</button>-->
-                <center><button action="make_png" id="make_png" type="submit" name="make_png">Save plot to gallery</button></center>
+                <!--<center><button action="make_png" id="make_png" type="submit" name="make_png">Save plot to gallery</button></center>-->
              </div>   
         
         </div>
@@ -32,7 +33,7 @@
     <div class="col-sm-6 col-12 offset-0 offset-sm-6 py-2">
         <center><H4>Your Bubblechart Data</H4></center>
         
-        <form method="post" id="form1">
+        <!--<form method="post" id="form1">-->
         <table align="center">
           <tr>
             <th>Filename for your Project</th>
