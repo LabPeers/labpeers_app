@@ -367,141 +367,106 @@ class HomeView(TemplateView):
     #if request.method == 'POST': # If the form has been submitted...
         if request.user.is_authenticated:
             #raise Http404
+        
             form = HomeForm(request.POST) # A form bound to the POST data
             formplot = GalleryForm()
-            
-            if request.method=='POST' and 'make_png' in request.POST:
-                print("1 I'm in the make png loop now!")
-                formplot = GalleryForm(request.POST)
-            
-                if formplot.is_valid():
-                    print("2 I'm in the make png loop now!")
-                    instance2=formplot.save(commit=False)
-                    myplotname=formplot.cleaned_data['plotname']
-                    instance2.plotname=myplotname
-                    instance2.user=request.user
-                    
-                    pillow_image = get_screenshot_as_png(plot)
-        
-                        
-                    image_field = instance2.myplots
-                    img_name = myplotname + '.png'
-                        
-                    f = BytesIO()
-                        
-                    try: 
-                        pillow_image.save(f, format = 'png')
-                        image_field.save(img_name, ContentFile(f.getvalue()))
-                        
-                    finally:
-                        f.close()
-                        
-                        #newplot=export_png(plot)
-                        
-                    instance2.save()                    
-                    
-                    formplot = GalleryForm(request.POST)
-                    return redirect("bubblechart")
-             
-            else:    
-            
-            
     
-                if form.is_valid():
+            if form.is_valid():
             
                     #form.save()
                     #Avoid rows with same filename!!
-                    myfilename=form.cleaned_data['graph_filename']
-                    graph_data=Graph_Data.objects.filter(user=request.user)
-                    filename_list=graph_data.values_list('graph_filename',flat=True)
-                    filename_list2=list(filename_list)
-                    print('HELLO')
-                    print(filename_list)
-                    print(filename_list2)
-                    print(myfilename)
-                    if myfilename in filename_list:
-                        repeat=Graph_Data.objects.get(graph_filename=myfilename)
-                        x=repeat.id
-                        print(x)
+                myfilename=form.cleaned_data['graph_filename']
+                graph_data=Graph_Data.objects.filter(user=request.user)
+                filename_list=graph_data.values_list('graph_filename',flat=True)
+                filename_list2=list(filename_list)
+                print('HELLO')
+                print(filename_list)
+                print(filename_list2)
+                print(myfilename)
+                if myfilename in filename_list:
+                    repeat=Graph_Data.objects.get(graph_filename=myfilename)
+                    x=repeat.id
+                    print(x)
                     
-                        instance=get_object_or_404(Graph_Data,id = x)
-                        form = HomeForm(request.POST or None, instance=instance)
-                        if form.is_valid():
-                            instance = form.save(commit=False)
+                    instance=get_object_or_404(Graph_Data,id = x)
+                    form = HomeForm(request.POST or None, instance=instance)
+                    if form.is_valid():
+                        instance = form.save(commit=False)
                         
-                        else:
-                            instance=form.save(commit=False)  
-                            instance.user=request.user
-                            instance.save()
-                                    
+                else:
+                    instance=form.save(commit=False)  
+                    instance.user=request.user
+                    instance.save()
+                                
 #                    myfilename=form.cleaned_data['graph_filename']
 #                    myslug=slugify(myfilename)   
-                    mytitle=form.cleaned_data['graph_title']
-                    myXlabel=form.cleaned_data['graph_xlabel']
-                    myYlabel=form.cleaned_data['graph_ylabel']
-                    
-                    myXdata=form.cleaned_data['myX']
-                    myXlist=myXdata.split(",")
-                    myXlist=np.array(myXlist, dtype=np.float32)
-                    myYdata=form.cleaned_data['myY']
-                    myYlist=myYdata.split(",")
-                    myYlist=np.array(myYlist, dtype=np.float32)
-                    myRdata=form.cleaned_data['myRadius']
-                    myRlist=myRdata.split(",")
-                    myRlist=np.array(myRlist, dtype=np.float32)
-                    myScale=form.cleaned_data['myScale']
+                mytitle=form.cleaned_data['graph_title']
+                myXlabel=form.cleaned_data['graph_xlabel']
+                myYlabel=form.cleaned_data['graph_ylabel']
+                
+                myXdata=form.cleaned_data['myX']
+                myXlist=myXdata.split(",")
+                myXlist=np.array(myXlist, dtype=np.float32)
+                myYdata=form.cleaned_data['myY']
+                myYlist=myYdata.split(",")
+                myYlist=np.array(myYlist, dtype=np.float32)
+                myRdata=form.cleaned_data['myRadius']
+                myRlist=myRdata.split(",")
+                myRlist=np.array(myRlist, dtype=np.float32)
+                myScale=form.cleaned_data['myScale']
 #                
                     
                     #scale = 10
-                    plotdict, plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
+                plotdict, plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
                 
-                #action = request.POST.get('action')
-                #if action == 'make_png':
-#                print('I am infront of the if statement')
-#                if 'make_png' in request.POST:
-#                    print("1 I'm in the make png loop now!")
-#                    formplot = GalleryForm(request.POST)
-#            
-#                    if formplot.is_valid():
-#                        print("2 I'm in the make png loop now!")
-#                        instance2=formplot.save(commit=False)
-#                        myplotname=formplot.cleaned_data['plotname']
-#                        instance2.plotname=myplotname
-#                        instance2.user=request.user
-#                        
-#                        pillow_image = get_screenshot_as_png(plot)
-#                        
-#                        
-#                        image_field = instance2.myplots
-#                        img_name = myplotname + '.png'
-#                        
-#                        f = BytesIO()
-#                        
-#                        try: 
-#                            pillow_image.save(f, format = 'png')
-#                            image_field.save(img_name, ContentFile(f.getvalue()))
-#                        
-#                        finally:
-#                            f.close()
-#                        
-#                        #newplot=export_png(plot)
-#                        
-#                        instance2.save()                    
-#                    
-#                        formplot = GalleryForm(request.POST)
+                name = request.POST.get('name')
+                print(name)
+                if name == 'make_png':
+                    #print('I am infront of the if statement')
+                #if 'make_png' in request.POST:
+                    print("1 I'm in the make png loop now!")
+                    formplot = GalleryForm(request.POST)
+            
+                    if formplot.is_valid():
+                        print("2 I'm in the make png loop now!")
+                        instance2=formplot.save(commit=False)
+                        myplotname=formplot.cleaned_data['plotname']
+                        instance2.plotname=myplotname
+                        instance2.user=request.user
+                        
+                        pillow_image = get_screenshot_as_png(plot)
+                        
+                        
+                        image_field = instance2.myplots
+                        img_name = myplotname + '.png'
+                        
+                        f = BytesIO()
+                        
+                        try: 
+                            pillow_image.save(f, format = 'png')
+                            image_field.save(img_name, ContentFile(f.getvalue()))
+                        
+                        finally:
+                            f.close()
+                        
+                        #newplot=export_png(plot)
+                        
+                        instance2.save()                    
+                    
+                        formplot = GalleryForm(request.POST)
                 
 
-                    mypkX=myXdata
-                    mypkY=myYdata
-                    mypkRadius=myRdata
+                mypkX=myXdata
+                mypkY=myYdata
+                mypkRadius=myRdata
+                
+                dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkRadius":mypkRadius}
+                dict3={**plotdict , **dict2}
                     
-                    dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkRadius":mypkRadius}
-                    dict3={**plotdict , **dict2}
-                        
                     
                     
-                    form = HomeForm(request.POST)
-                    formplot = GalleryForm(request.POST or None)
+                form = HomeForm(request.POST)
+                formplot = GalleryForm(request.POST or None)
                 
                 
                         ########### -----DATA TABLE----- ########### 
@@ -563,11 +528,11 @@ class HomeView(TemplateView):
                 
 
             
-                    return render(request, self.template_name, dict3)
+                return render(request, self.template_name, dict3)
                 
             
-                else:
-                    return redirect("bubblechart")
+            else:
+                return redirect("bubblechart")
             
             
             
@@ -634,154 +599,119 @@ class EditView(TemplateView):
     def post(self,request,pk):
     #if request.method == 'POST': # If the form has been submitted...
         if request.user.is_authenticated:
+
+            #raise Http404
             
-            if request.method=='POST' and 'make_png' in request.POST:
-                print("1 I'm in the make png loop now!")
-                formplot = GalleryForm(request.POST)
+            instance = get_object_or_404(Graph_Data, pk=pk)
+            form = HomeForm(request.POST or None, instance=instance)
+            formplot = GalleryForm()
+#                if form.is_valid():
+#                    instance = form.save(commit=False)
+            if form.is_valid():
+                    
+                myfilename=form.cleaned_data['graph_filename']
+                graph_data=Graph_Data.objects.filter(user=request.user)
+                filename_list=graph_data.values_list('graph_filename',flat=True)
+                filename_list2=list(filename_list)
+                print('HELLO')
+                print(filename_list)
+                print(filename_list2)
+                print(myfilename)
+                        
+                if myfilename in filename_list:
+                    repeat=Graph_Data.objects.get(graph_filename=myfilename)
+                    x=repeat.id
+                    print(x)
+                
+                    instance=get_object_or_404(Graph_Data,id = x)
+                    form = HomeForm(request.POST or None, instance=instance)
+                    if form.is_valid():
+                        instance = form.save(commit=False)
+                    else:
+                        return redirect("bubblechart")
+                            
+                else:
+                    instance=form.save(commit=False)  
+                                
+                                
+            #form.save()
+                instance=form.save(commit=False)
+                instance.user=request.user
+                instance.save()
+                    
+#                    myfilename=form.cleaned_data['graph_filename']
+#                    myslug=slugify(myfilename)
+                mytitle=form.cleaned_data['graph_title']
+                myXlabel=form.cleaned_data['graph_xlabel']
+                myYlabel=form.cleaned_data['graph_ylabel']
+                    
+                myXdata=form.cleaned_data['myX']
+                myXlist=myXdata.split(",")
+                myXlist=np.array(myXlist, dtype=np.float32)
+                myYdata=form.cleaned_data['myY']
+                myYlist=myYdata.split(",")
+                myYlist=np.array(myYlist, dtype=np.float32)
+                myRdata=form.cleaned_data['myRadius']
+                myRlist=myRdata.split(",")
+                myRlist=np.array(myRlist, dtype=np.float32)
+                myScale=form.cleaned_data['myScale']
+                    
+                    #scale = 10
+                plotdict, plot=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
+                
+                if 'make_png' in request.POST:
+                    print("1 I'm in the make png loop now!")
+                    formplot = GalleryForm(request.POST)
             
-                if formplot.is_valid():
-                    print("2 I'm in the make png loop now!")
-                    instance2=formplot.save(commit=False)
-                    myplotname=formplot.cleaned_data['plotname']
-                    instance2.plotname=myplotname
-                    instance2.user=request.user
+                    if formplot.is_valid():
+                        print("2 I'm in the make png loop now!")
+                        instance2=formplot.save(commit=False)
+                        myplotname=formplot.cleaned_data['plotname']
+                        instance2.plotname=myplotname
+                        instance2.user=request.user
                         
-                    pillow_image = get_screenshot_as_png(plot)
+                        pillow_image = get_screenshot_as_png(plot)
                         
                         
-                    image_field = instance2.myplots
-                    img_name = myplotname + '.png'
+                        image_field = instance2.myplots
+                        img_name = myplotname + '.png'
                         
-                    f = BytesIO()
+                        f = BytesIO()
                         
-                    try: 
-                        pillow_image.save(f, format = 'png')
-                        image_field.save(img_name, ContentFile(f.getvalue()))
+                        try: 
+                            pillow_image.save(f, format = 'png')
+                            image_field.save(img_name, ContentFile(f.getvalue()))
                         
-                    finally:
-                        f.close()
+                        finally:
+                            f.close()
                         
                         #newplot=export_png(plot)
                         
-                    instance2.save()                    
-                    formplot = GalleryForm(request.POST)
-                    return redirect("bubblechart")
-                
-            else:
-                
-                
-            #raise Http404
-            
-                instance = get_object_or_404(Graph_Data, pk=pk)
-                form = HomeForm(request.POST or None, instance=instance)
-                formplot = GalleryForm()
-#                if form.is_valid():
-#                    instance = form.save(commit=False)
-                if form.is_valid():
-                        
-                    myfilename=form.cleaned_data['graph_filename']
-                    graph_data=Graph_Data.objects.filter(user=request.user)
-                    filename_list=graph_data.values_list('graph_filename',flat=True)
-                    filename_list2=list(filename_list)
-                    print('HELLO')
-                    print(filename_list)
-                    print(filename_list2)
-                    print(myfilename)
-                            
-                    if myfilename in filename_list:
-                        repeat=Graph_Data.objects.get(graph_filename=myfilename)
-                        x=repeat.id
-                        print(x)
-                        
-                        instance=get_object_or_404(Graph_Data,id = x)
-                        form = HomeForm(request.POST or None, instance=instance)
-                        if form.is_valid():
-                        instance = form.save(commit=False)
-                        else:
-                            return redirect("bubblechart")
-                            
-                        else:
-                            instance=form.save(commit=False)  
-                                    
-                                
-            #form.save()
-                    instance=form.save(commit=False)
-                    instance.user=request.user
-                    instance.save()
-                        
-#                     myfilename=form.cleaned_data['graph_filename']
-#                     myslug=slugify(myfilename)
-                    mytitle=form.cleaned_data['graph_title']
-                    myXlabel=form.cleaned_data['graph_xlabel']
-                    myYlabel=form.cleaned_data['graph_ylabel']
-                        
-                    myXdata=form.cleaned_data['myX']
-                    myXlist=myXdata.split(",")
-                        myXlist=np.array(myXlist, dtype=np.float32)
-                        myYdata=form.cleaned_data['myY']
-                        myYlist=myYdata.split(",")
-                        myYlist=np.array(myYlist, dtype=np.float32)
-                        myRdata=form.cleaned_data['myRadius']
-                        myRlist=myRdata.split(",")
-                        myRlist=np.array(myRlist, dtype=np.float32)
-                        myScale=form.cleaned_data['myScale']
+                        instance2.save()                    
                     
-                    #scale = 10
-                    plotdict, plot=bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
-                
-#                if 'make_png' in request.POST:
-#                    print("1 I'm in the make png loop now!")
-#                    formplot = GalleryForm(request.POST)
-#            
-#                    if formplot.is_valid():
-#                        print("2 I'm in the make png loop now!")
-#                        instance2=formplot.save(commit=False)
-#                        myplotname=formplot.cleaned_data['plotname']
-#                        instance2.plotname=myplotname
-#                        instance2.user=request.user
-#                        
-#                        pillow_image = get_screenshot_as_png(plot)
-#                        
-#                        
-#                        image_field = instance2.myplots
-#                        img_name = myplotname + '.png'
-#                        
-#                        f = BytesIO()
-#                        
-#                        try: 
-#                            pillow_image.save(f, format = 'png')
-#                            image_field.save(img_name, ContentFile(f.getvalue()))
-#                        
-#                        finally:
-#                            f.close()
-#                        
-#                        #newplot=export_png(plot)
-#                        
-#                        instance2.save()                    
-#                    
-#                        formplot = GalleryForm(request.POST)
+                        formplot = GalleryForm(request.POST)
    
 
 
              
-                    mypkX=myXdata
-                    mypkY=myYdata
-                    mypkRadius=myRdata
+                mypkX=myXdata
+                mypkY=myYdata
+                mypkRadius=myRdata
+                
+                dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkRadius":mypkRadius}
+                dict3={**plotdict , **dict2}
+                
+
+ 
+                form = HomeForm(request.POST)
+                formplot = GalleryForm()
                     
-                    dict2={"form":form,"formplot":formplot,"mypkX":mypkX,"mypkY":mypkY,"mypkRadius":mypkRadius}
-                    dict3={**plotdict , **dict2}
                     
+                return render(request, self.template_name, dict3)
+            
+            else: 
                     
-                    
-                    form = HomeForm(request.POST)
-                    formplot = GalleryForm()
-                        
-                        
-                    return render(request, self.template_name, dict3)
-                    
-                else: 
-                    
-                    return redirect("bubblechart")
+                return redirect("bubblechart")
             
     
         else:
