@@ -421,10 +421,10 @@ class HomeView(TemplateView):
                 
                 print('HELLO The Third Time')
                 
-                myname = request.POST.get('name')
-                print(myname)
-                myaction = request.POST.get('action')
-                print(myaction)
+                #myname = request.POST.get('name')
+                #print(myname)
+                #myaction = request.POST.get('action')
+                #print(myaction)
                 #if myname == 'make_png'or myaction=='make_png':
                     #print('I am infront of the if statement')
                 if 'make_png' in request.POST:
