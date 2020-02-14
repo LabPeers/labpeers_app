@@ -21,7 +21,6 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ formplot.plotname }}
-                </form>
                 <button type="submit" name="make_png">Save plot to gallery</button> 
             </div>    
         
@@ -117,7 +116,7 @@
         </form>
         <br>
   
-  
+   <button style="display:none;" type="submit" id="trackme">Plot</button>
   
   
   <!--<p>Hello: X= {{ mypkX }} </p>-->
@@ -392,7 +391,8 @@ for (var i=0; i< myXs.length; i++) {
 
 function SubmitAll(){
 showTableData()
-document.getElementById("form1").submit();
+//document.getElementById("form1").submit();
+document.getElementById('trackme').click();
 }
 
 
