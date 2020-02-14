@@ -425,9 +425,9 @@ class HomeView(TemplateView):
                 print(myname)
                 myaction = request.POST.get('action')
                 print(myaction)
-                if myname == 'make_png'or myaction=='make_png':
+                #if myname == 'make_png'or myaction=='make_png':
                     #print('I am infront of the if statement')
-                #if 'make_png' in request.POST:
+                if 'make_png' in request.POST:
                     print("1 I'm in the make png loop now!")
                     formplot = GalleryForm(request.POST)
             
