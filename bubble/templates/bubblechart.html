@@ -19,10 +19,10 @@
                 <form method="post" id="make_png">
                     {% csrf_token %}
                     {{ formplot.plotname }}
-                <input type="submit" name="make_png" value="Save plot to gallery">
+                <!--<input type="submit" name="make_png" value="Save plot to gallery">-->
    
                 
-                <!--<button type="submit" name="make_png">Save plot to gallery</button>-->
+                <button type="submit" name="make_png">Save plot to gallery</button>
                 <!--<center><button action="make_png" id="make_png" type="submit" name="make_png">Save plot to gallery</button></center>-->
              </div>   
         
@@ -113,8 +113,8 @@
           
         </table>    
         <br>
-     <input type="submit" value="Plot">
-
+     <!--<input type="submit" value="Plot">-->
+    <button type="submit" id="bubble">Plot</button>
   
   
   <!--<p>Hello: X= {{ mypkX }} </p>-->
@@ -397,6 +397,7 @@ for (var i=0; i< myXs.length; i++) {
 function SubmitAll(){
 showTableData()
 //document.getElementById("form1").submit();
+document.getElementById('bubble').click();
 document.bubble.submit();
 }
 
