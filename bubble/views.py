@@ -415,13 +415,17 @@ class HomeView(TemplateView):
                 myRlist=np.array(myRlist, dtype=np.float32)
                 myScale=form.cleaned_data['myScale']
 #                
-                    
+                print('HELLO AGAIN')    
                     #scale = 10
                 plotdict, plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
                 
-                name = request.POST.get('name')
-                print(name)
-                if name == 'make_png':
+                print('HELLO The Third Time')
+                
+                myname = request.POST.get('name')
+                print(myname)
+                myaction = request.POST.get('action')
+                print(myaction)
+                if myname == 'make_png'or myaction=='make_png':
                     #print('I am infront of the if statement')
                 #if 'make_png' in request.POST:
                     print("1 I'm in the make png loop now!")
