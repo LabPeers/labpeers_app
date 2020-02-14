@@ -521,11 +521,11 @@ class EditTrackView(TemplateView):
 
 
 
-class GalleryView(TemplateView):
-    template_name = './gallery.html'  
-      
-    def get(self, request):
-        gallery_plots=Gallery_Plots.objects.filter(user=request.user)
-
-        return render(request, self.template_name, 
-                      {'gallery_plots' : gallery_plots})
+#class GalleryView(TemplateView):
+#    template_name = './gallery.html'  
+#      
+#    def get(self, request):
+#        gallery_plots=Gallery_Plots.objects.filter(user=request.user)
+#
+#        return render(request, self.template_name, 
+#                      {'gallery_plots' : gallery_plots})
