@@ -75,7 +75,7 @@ from django import http
 from django.shortcuts import get_object_or_404
 from django.views.generic import RedirectView
 
-from boto.s3.connection import S3Connection
+from boto3.s3.connection import S3Connection
 
 from gettingstarted.settings import AWS_ACCESS_KEY_ID
 from gettingstarted.settings import AWS_SECRET_ACCESS_KEY
