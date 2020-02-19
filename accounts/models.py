@@ -29,10 +29,10 @@ class UserProfile(models.Model):
     
     
     #works - but not private
-    #image = models.ImageField(default='default.jpg', upload_to=upload_pic, blank=True, null=True)
+    image = models.ImageField(default='default.jpg', upload_to=upload_pic, blank=True, null=True)
     
     #make image private on upload
-    image = S3PrivateFileField(default='default.jpg', upload_to=upload_pic, blank=True, null=True)
+    #image = S3PrivateFileField(default='default.jpg', upload_to=upload_pic, blank=True, null=True)
     
     def __str__(self):
         return f'{self.user.username} UserProfile'

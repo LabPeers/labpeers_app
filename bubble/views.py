@@ -75,7 +75,7 @@ from django import http
 from django.shortcuts import get_object_or_404
 from django.views.generic import RedirectView
 
-from s3boto3.s3.connection import S3Connection
+#from s3boto3.s3.connection import S3Connection
 
 from gettingstarted.settings import AWS_ACCESS_KEY_ID
 from gettingstarted.settings import AWS_SECRET_ACCESS_KEY
@@ -187,48 +187,48 @@ class HomeReal(TemplateView):
 
 #Make image secret
 
-logger = logging.getLogger('django.request')  
-    
-class SecretFileView(RedirectView):
-    permanent = False
-
-    def get_redirect_url(self, **kwargs):
-        s3 = S3Connection(AWS_ACCESS_KEY_ID,
-                            AWS_SECRET_ACCESS_KEY,
-                            is_secure=True)
-        # Create a URL valid for 60 seconds.
-        return s3.generate_url(60, 'GET',
-                            bucket=AWS_STORAGE_BUCKET_NAME,
-                            key=kwargs['filepath'],
-                            force_http=True)
-
-    def get(self, request, *args, **kwargs):
-        m = get_object_or_404(UserProfile(instance=request.user.userprofile))
-        u = request.user
-        instance=request.user.userprofile
-        
-        
-        if u.is_authenticated() and (u.get_profile().is_very_special() or u.is_staff):
-            if m.image:
-                filepath = MEDIA_URL + 'yourspace/%s/profile_pics/%s/' % (instance.user.username, m.image)
-                url = self.get_redirect_url(filepath=filepath)
-                # The below is taken straight from RedirectView.
-                if url:
-                    if self.permanent:
-                        return http.HttpResponsePermanentRedirect(url)
-                    else:
-                        return http.HttpResponseRedirect(url)
-                else:
-                    logger.warning('Gone: %s', self.request.path,
-                                extra={
-                                    'status_code': 410,
-                                    'request': self.request
-                                })
-                    return http.HttpResponseGone()
-            else:
-                raise http.Http404
-        else:
-            raise http.Http404
+#logger = logging.getLogger('django.request')  
+#    
+#class SecretFileView(RedirectView):
+#    permanent = False
+#
+#    def get_redirect_url(self, **kwargs):
+#        s3 = S3Connection(AWS_ACCESS_KEY_ID,
+#                            AWS_SECRET_ACCESS_KEY,
+#                            is_secure=True)
+#        # Create a URL valid for 60 seconds.
+#        return s3.generate_url(60, 'GET',
+#                            bucket=AWS_STORAGE_BUCKET_NAME,
+#                            key=kwargs['filepath'],
+#                            force_http=True)
+#
+#    def get(self, request, *args, **kwargs):
+#        m = get_object_or_404(UserProfile(instance=request.user.userprofile))
+#        u = request.user
+#        instance=request.user.userprofile
+#        
+#        
+#        if u.is_authenticated() and (u.get_profile().is_very_special() or u.is_staff):
+#            if m.image:
+#                filepath = MEDIA_URL + 'yourspace/%s/profile_pics/%s/' % (instance.user.username, m.image)
+#                url = self.get_redirect_url(filepath=filepath)
+#                # The below is taken straight from RedirectView.
+#                if url:
+#                    if self.permanent:
+#                        return http.HttpResponsePermanentRedirect(url)
+#                    else:
+#                        return http.HttpResponseRedirect(url)
+#                else:
+#                    logger.warning('Gone: %s', self.request.path,
+#                                extra={
+#                                    'status_code': 410,
+#                                    'request': self.request
+#                                })
+#                    return http.HttpResponseGone()
+#            else:
+#                raise http.Http404
+#        else:
+#            raise http.Http404
             
             
 class Profile(TemplateView):
