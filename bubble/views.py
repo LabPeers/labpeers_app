@@ -206,9 +206,12 @@ class SecretFileView(RedirectView):
         
         s3 = session.resource('s3')
         
+        s3Client = boto3.client('s3')
+        #s3Client.generate_presigned_url('get_object', Params = {'Bucket': 'www.mybucket.com', 'Key': 'hello.txt'}, ExpiresIn = 100)
+        
         
         # Create a URL valid for 60 seconds.
-        return s3.generate_url(60, 'GET',
+        return s3Client.generate_presigned_url(60, 'GET',
                             bucket=AWS_STORAGE_BUCKET_NAME,
                             key=kwargs['filepath'],
                             force_http=True)
@@ -217,7 +220,7 @@ class SecretFileView(RedirectView):
         instance=request.user.userprofile
         #m = get_object_or_404(UserProfile)
         m = instance
-        u = request.user
+       # u = request.user
         
         
         
