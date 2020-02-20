@@ -207,7 +207,7 @@ class SecretFileView(RedirectView):
         
         s3 = session.resource('s3')
         
-        s3Client = boto3.client('s3',region_name='us-east-2',config=Config(signature_version='s3v4'))
+        s3Client = boto3.client('s3',region_name='us-east-2')
         #s3Client.generate_presigned_url('get_object', Params = {'Bucket': 'www.mybucket.com', 'Key': 'hello.txt'}, ExpiresIn = 100)
         
         
