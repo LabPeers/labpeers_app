@@ -215,7 +215,7 @@ class SecretFileView(RedirectView):
                             force_http=True)
 
     def get(self, request, *args, **kwargs):
-        m = get_object_or_404(UserProfile, pk=kwargs['pk'])
+        m = get_object_or_404(UserProfile)
         u = request.user
         instance=request.user.userprofile
         
