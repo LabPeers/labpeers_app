@@ -13,7 +13,7 @@ from bubble.views import EditView
 from bubble.views import DeleteView
 from bubble.views import GalleryView
 from bubble.views import DeletePlotView
-#from bubble.views import SecretFileView
+from bubble.views import SecretFileView
 from tracking.views import TrackView, EditTrackView, TrackingProjects, TrackingDeleteView
 
 
@@ -43,7 +43,7 @@ urlpatterns = [
     #path("hello/", include('gettingstarted.urls')),
     path("accounts/", include('django.contrib.auth.urls')),
     path("accounts/profile/",Profile.as_view(), name='profile'),
-#    path("accounts/profile/profile_pics/", SecretFileView.as_view(), name='profile_pics'),
+    path("accounts/profile/profile_pics/", SecretFileView.as_view(), name='profile_pics'),
     path("", HomeReal.as_view(), name='home'),
     path("bubblechart/", HomeView.as_view(), name='bubblechart'),
     path("bubblechart/<int:pk>", EditView.as_view(), name='bubblechart_project'),
