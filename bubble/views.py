@@ -222,7 +222,8 @@ class SecretFileView(RedirectView):
         
         
         
-        if u.is_authenticated() and (u.get_profile().is_very_special() or u.is_staff):
+        #if u.is_authenticated() and (u.get_profile().is_very_special() or u.is_staff):
+        if request.user.is_authenticated:    
             if m.image:
                 filepath = MEDIA_URL + 'yourspace/%s/profile_pics/%s/' % (instance.user.username, m.image)
                 url = self.get_redirect_url(filepath=filepath)
