@@ -211,10 +211,9 @@ class SecretFileView(RedirectView):
         
         
         # Create a URL valid for 60 seconds.
-        return s3Client.generate_presigned_url(60, 'GET',
-                            bucket=AWS_STORAGE_BUCKET_NAME,
-                            key=kwargs['filepath'],
-                            force_http=True)
+        return s3Client.generate_presigned_url('GET',
+                                               Params={'Bucket': AWS_STORAGE_BUCKET_NAME,'Key': kwargs['filepath']},
+                                               ExpiresIn=60)
 
     def get(self, request, *args, **kwargs):
         instance=request.user.userprofile
