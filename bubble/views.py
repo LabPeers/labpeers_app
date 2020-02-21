@@ -228,7 +228,7 @@ class SecretFileView(RedirectView):
         if request.user.is_authenticated:    
             if m.image:
                 #filepath = MEDIA_URL + 'yourspace/%s/profile_pics/%s/' % (instance.user.username, m.image)
-                filepath = MEDIA_URL + m.image
+                filepath = MEDIA_URL + '%s/' % (m.image)
                 url = self.get_redirect_url(filepath=filepath)
                 # The below is taken straight from RedirectView.
                 if url:
