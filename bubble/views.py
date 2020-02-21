@@ -249,22 +249,66 @@ class SecretFileView(RedirectView):
                 raise http.Http404
         else:
             raise http.Http404
-            
-            
-class Profile(TemplateView):
-    template_name = './profile.html' 
-    
+
+
+class MyTestView(TemplateView):
+    template_name = './test.html'
+
     
     def get(self, request):
            
-        #p_form = UserProfileForm(instance=request.user.userprofile)
+        p_form = UserProfileForm(instance=request.user.userprofile)
+        
+                
+        args = {'user': request.user, 'p_form': p_form}
+        #args = {'user': request.user, 'gallery_plots' : gallery_plots, 'plots2show' : plots2show}
+        
+        return render(request, self.template_name, args)
+
+    
+    
+    
+    def post(self,request):
+    #if request.method == 'POST': # If the form has been submitted...
+        if request.user.is_authenticated:
+            #raise Http404
+        
+            #p_form = UserProfileForm(request.POST or None, request.FILES or None) # A form bound to the POST data
+            p_form = UserProfileForm(request.POST, request.FILES, instance=request.user.userprofile) # A form bound to the POST data
+            
+            if p_form.is_valid():
+                #p_form = p_form.save(commit=False)
+                #p_form.user = request.user
+                p_form.save()
+              #  return HttpResponseRedirect(instance.get_absolute_url())
+                messages.success(request, f'Image successfully uploaded!')
+                return redirect('test')
+            
+            args = {'user': request.user,'p_form':p_form}
+                
+            return render(request, self.template_name, args) 
+
+
+
+
+
+
+            
+            
+class Profile(TemplateView):
+    template_name = './profile.html'
+
+    
+    def get(self, request):
+           
+        p_form = UserProfileForm(instance=request.user.userprofile)
         
         gallery_plots=Gallery_Plots.objects.filter(user=request.user)
         
         plots2show = Gallery_Plots.objects.filter(user=request.user).order_by('-myDate')[0:2]
         
-        #args = {'user': request.user, 'p_form': p_form, 'gallery_plots' : gallery_plots, 'plots2show' : plots2show}
-        args = {'user': request.user, 'gallery_plots' : gallery_plots, 'plots2show' : plots2show}
+        args = {'user': request.user, 'p_form': p_form, 'gallery_plots' : gallery_plots, 'plots2show' : plots2show}
+        #args = {'user': request.user, 'gallery_plots' : gallery_plots, 'plots2show' : plots2show}
         
         return render(request, self.template_name, args)
 

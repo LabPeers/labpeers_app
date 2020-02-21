@@ -14,6 +14,7 @@ from bubble.views import DeleteView
 from bubble.views import GalleryView
 from bubble.views import DeletePlotView
 from bubble.views import SecretFileView
+from buuble.views import MyTestView
 from tracking.views import TrackView, EditTrackView, TrackingProjects, TrackingDeleteView
 
 
@@ -43,6 +44,7 @@ urlpatterns = [
     #path("hello/", include('gettingstarted.urls')),
     path("accounts/", include('django.contrib.auth.urls')),
     path("accounts/profile/",Profile.as_view(), name='profile'),
+    path("accounts/test/",MyTestView.as_view(), name='test'),
     path("accounts/profile/profile_pics/", SecretFileView.as_view(), name='profile_pics'),
     path("", HomeReal.as_view(), name='home'),
     path("bubblechart/", HomeView.as_view(), name='bubblechart'),
