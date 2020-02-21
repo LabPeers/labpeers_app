@@ -213,7 +213,7 @@ class SecretFileView(RedirectView):
         
         # Create a URL valid for 60 seconds.
         return s3Client.generate_presigned_url('get_object',
-                                               Params={'Bucket': AWS_STORAGE_BUCKET_NAME,'Key': kwargs['mykeyname']},
+                                               Params={'Bucket': AWS_STORAGE_BUCKET_NAME,'Key': kwargs['filepath']},
                                                ExpiresIn=60)
 
     def get(self, request, *args, **kwargs):
@@ -228,9 +228,10 @@ class SecretFileView(RedirectView):
         if request.user.is_authenticated:    
             if m.image:
                 #filepath = MEDIA_URL + 'yourspace/%s/profile_pics/%s/' % (instance.user.username, m.image)
-                mykeyname = 'yourspace/%s/profile_pics/%s/' % (instance.user.username, m.image)
+                #mykeyname = 'yourspace/%s/profile_pics/%s/' % (instance.user.username, m.image)
+                filepath = 'yourspace/%s/profile_pics/%s/' % (instance.user.username, m.image)
                 #filepath = MEDIA_URL + '%s' % (m.image)
-                url = self.get_redirect_url(filepath=mykeyname)
+                url = self.get_redirect_url(filepath=filepath)
                 # The below is taken straight from RedirectView.
                 if url:
                     if self.permanent:
