@@ -257,13 +257,14 @@ class Profile(TemplateView):
     
     def get(self, request):
            
-        p_form = UserProfileForm(instance=request.user.userprofile)
+        #p_form = UserProfileForm(instance=request.user.userprofile)
         
         gallery_plots=Gallery_Plots.objects.filter(user=request.user)
         
         plots2show = Gallery_Plots.objects.filter(user=request.user).order_by('-myDate')[0:2]
         
-        args = {'user': request.user, 'p_form': p_form, 'gallery_plots' : gallery_plots, 'plots2show' : plots2show}
+        #args = {'user': request.user, 'p_form': p_form, 'gallery_plots' : gallery_plots, 'plots2show' : plots2show}
+        args = {'user': request.user, 'gallery_plots' : gallery_plots, 'plots2show' : plots2show}
         
         return render(request, self.template_name, args)
 
