@@ -229,7 +229,7 @@ class SecretFileView(RedirectView):
             if m.image:
                 #filepath = MEDIA_URL + 'yourspace/%s/profile_pics/%s/' % (instance.user.username, m.image)
                 #mykeyname = 'yourspace/%s/profile_pics/%s/' % (instance.user.username, m.image)
-                filepath =  m.image
+                filepath =  '%s' % (m.image)
                 #filepath = MEDIA_URL + '%s' % (m.image)
                 url = self.get_redirect_url(filepath=filepath)
                 # The below is taken straight from RedirectView.
