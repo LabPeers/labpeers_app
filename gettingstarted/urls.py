@@ -14,7 +14,7 @@ from bubble.views import DeleteView
 from bubble.views import GalleryView
 from bubble.views import DeletePlotView
 from bubble.views import SecretFileView
-from buuble.views import MyTestView
+from bubble.views import MyTestView
 from tracking.views import TrackView, EditTrackView, TrackingProjects, TrackingDeleteView
 
 
