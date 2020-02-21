@@ -258,9 +258,12 @@ class MyTestView(TemplateView):
     def get(self, request):
            
         p_form = UserProfileForm(instance=request.user.userprofile)
-        
+        print(p_form)
+        print("I just printed p_form")
                 
         args = {'user': request.user, 'p_form': p_form}
+        print(args)
+        print("I just printed args")
         #args = {'user': request.user, 'gallery_plots' : gallery_plots, 'plots2show' : plots2show}
         
         return render(request, self.template_name, args)
