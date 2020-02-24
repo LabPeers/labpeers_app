@@ -4,14 +4,33 @@
 {% block content %}
 
 <!-- templates/registration/login.html -->
+<body class="w3-theme-l5">
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:20px">    
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Middle Column -->
+    <div class="w3-col m7">
+
+
+
+<div class="w3-container w3-card w3-white w3-round w3-margin"><br>
 <h2>Login</h2>
-<div class="w3-container w3-card w3-white w3-round w3-margin">
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Login</button>
 </form>
+<br>
 </div>
+<div>
 Forgot your password? Click <a type="button" href="/accounts/password_reset/"> here </a>!
+</div>
+
+</div>
+</div>
+</div>
+</body>
 
 {% endblock %}
