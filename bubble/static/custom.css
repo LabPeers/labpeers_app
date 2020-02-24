@@ -261,3 +261,8 @@ background:#5D1248 !important;
 background:#aaaaaa !important;
 color:white !important;
 }
+
+
+.nav-border {
+border-radius: 30px;    
+}
