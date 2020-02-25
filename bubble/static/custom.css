@@ -234,6 +234,43 @@ color: #bb2490;
 color: black; !important
 }
 
+.navbar-nav > li{
+  padding-left:20px;
+  padding-right:20px;
+}
+
+.sb-button1 {
+    display: inline-block;
+    background: none;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 50px;
+    padding: 7px 16px;
+    #font-size: 1.4rem;
+    #font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+
+.sb-button2 {
+    display: inline-block;
+    background: black;
+    color:white !important;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 50px;
+    padding: 7px 16px;
+    #font-size: 1.4rem;
+    #font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
 
 /*End of NAVBAR DEFINITION!!!*/
 
@@ -271,34 +308,3 @@ border-radius: 30px;
 border-radius: 30px;
 }
 
-.sb-button1 {
-    display: inline-block;
-    background: none;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 50px;
-    padding: 7px 16px;
-    #font-size: 1.4rem;
-    #font-weight: 600;
-    line-height: 1.2;
-    text-align: center;
-    text-decoration: none;
-    transition: all .2s ease;
-}
-
-
-.sb-button2 {
-    display: inline-block;
-    background: black;
-    color:white !important;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 50px;
-    padding: 7px 16px;
-    #font-size: 1.4rem;
-    #font-weight: 600;
-    line-height: 1.2;
-    text-align: center;
-    text-decoration: none;
-    transition: all .2s ease;
-}
