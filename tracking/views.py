@@ -233,6 +233,8 @@ class TrackView(TemplateView):
                     #Avoid rows with same filename!!
                 myfilename=form.cleaned_data['graph_filename']
                 tracking_data=Tracking_Data.objects.filter(user=request.user)
+                print('This is the filtered tracking_data')
+                print(tracking_data)
                 filename_list=tracking_data.values_list('graph_filename',flat=True)
                 filename_list2=list(filename_list)
                 print('HELLO WORLD!!')
@@ -240,7 +242,8 @@ class TrackView(TemplateView):
                 print(filename_list2)
                 print(myfilename)
                 if myfilename in filename_list:
-                    repeat=Tracking_Data.objects.get(graph_filename=myfilename)
+                    #repeat=Tracking_Data.objects.get(graph_filename=myfilename)
+                    repeat=tracking_data(graph_filename=myfilename)
                     x=repeat.id
                     print(x)
                     
