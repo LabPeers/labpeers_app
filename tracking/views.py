@@ -422,7 +422,8 @@ class EditTrackView(TemplateView):
                 print(myfilename)
                         
                 if myfilename in filename_list:
-                    repeat=Tracking_Data.objects.get(graph_filename=myfilename)
+                    #repeat=Tracking_Data.objects.get(graph_filename=myfilename)
+                    repeat=Tracking_Data.objects.filter(user=request.user).get(graph_filename=myfilename)
                     x=repeat.id
                     print(x)
                 
