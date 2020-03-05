@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "accounts.apps.AccountsConfig",
     "storages",
     "tracking",
+    "mycity",
 ]
 
 MIDDLEWARE = [    
