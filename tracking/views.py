@@ -171,7 +171,7 @@ class TrackingDeleteView(TemplateView):
             data_row_old=Tracking_Data.objects.get(pk=pk)
             data_row_old.delete()
             
-            return redirect('projects')
+            return redirect('tracking_projects')
 
 
    
