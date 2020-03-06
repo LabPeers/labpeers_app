@@ -72,14 +72,15 @@ with urllib.request.urlopen("https://inmuebles.mercadolibre.com.mx/casas/venta/s
     zippedList =  list(zip(price, area))
     
     # Create a dataframe from zipped list
-    df = pd.DataFrame(zippedList, columns = ['price' , 'area']) 
+    df = pd.DataFrame(zippedList)#, columns = ['price' , 'area'], index=False) 
 #
 #    df = pd.DataFrame(columns=["price", "area"])
 #    df["price"] = price
 #    df["area"] = area
 
-    df.to_csv("output.csv", index=True)   
+    df.to_csv("output.csv", index=False)   
     
+    print(df.axes)
 
 # Write Prices to csv file
 #    with open('output.csv','wt') as result_file:
@@ -88,7 +89,7 @@ with urllib.request.urlopen("https://inmuebles.mercadolibre.com.mx/casas/venta/s
     
     #print(prices)
     
-    df = pd.read_csv('/Users/egetenmeyer/labpeers/mycity/output.csv')
+    #df = pd.read_csv('/Users/egetenmeyer/labpeers/mycity/output.csv')
     
     #df.describe()
     
