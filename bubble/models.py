@@ -12,7 +12,7 @@ import uuid
 # =============================================================================
  
 class Graph_Data(models.Model):
-        id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+        safekey = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
         user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, 
                                  on_delete=models.CASCADE)
         graph_filename=models.CharField(default='Your_file_name',max_length=500)

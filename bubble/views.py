@@ -685,13 +685,14 @@ class EditView(TemplateView):
     template_name = './bubblechart.html'     
     
     
-    def get(self,request,pk):
+    def get(self,request,safekey):
         if request.user.is_authenticated:
 #        #        graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
             
             formplot = GalleryForm()
-
-            graph_data=Graph_Data.objects.get(pk=pk)
+            graph_data=Graph_Data.objects.get(safekey=safekey)
+            pk=graph_data.pk
+            #graph_data=Graph_Data.objects.get(pk=pk)
             mypkX=graph_data.myX
             mypkY=graph_data.myY
             mypkRadius=graph_data.myRadius
