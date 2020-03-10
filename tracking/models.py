@@ -2,6 +2,7 @@ from django.db import models
 
 #Import so you can associate user and their data
 from django.conf import settings
+import uuid
 
 # Create your models here.
 # =============================================================================
@@ -11,6 +12,7 @@ from django.conf import settings
 # =============================================================================
  
 class Tracking_Data(models.Model):
+        id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
         user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, 
                                  on_delete=models.CASCADE)
         graph_filename=models.CharField(default='Your_file_name',max_length=500)
