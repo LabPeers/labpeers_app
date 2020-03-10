@@ -3,6 +3,7 @@
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
+import mybubble.models
 import uuid
 
 
@@ -16,7 +17,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Tracking_Data',
+            name='Graph_Data',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('safekey', models.UUIDField(default=uuid.uuid4, editable=False, unique=True)),
@@ -27,9 +28,19 @@ class Migration(migrations.Migration):
                 ('graph_description', models.CharField(default='This is what you can see in this graph...', max_length=2000)),
                 ('myX', models.CharField(max_length=500)),
                 ('myY', models.CharField(max_length=500)),
-                ('myError', models.CharField(max_length=500)),
-                ('mySymbol', models.CharField(default='x', max_length=30)),
+                ('myRadius', models.CharField(max_length=500)),
+                ('myScale', models.FloatField(default=1, max_length=1)),
                 ('myDate', models.DateTimeField(auto_now=True)),
+                ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Gallery_Plots',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('plotname', models.CharField(default='NewPlot', max_length=200)),
+                ('myDate', models.DateTimeField(auto_now=True)),
+                ('myplots', models.ImageField(blank=True, null=True, upload_to=mybubble.models.upload_plots)),
                 ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),

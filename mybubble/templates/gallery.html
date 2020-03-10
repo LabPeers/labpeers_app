@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="main-container">
+<h3>Your Plot Gallery</h3>
+<table>
+{% for myvar in gallery_plots %}
+<tr>
+<td><strong>{{ myvar.plotname }}</strong></td>
+<td>{{ myvar.myDate }}</td> 
+<!--<td>{{ myvar.user }}</td>--> 
+<!--<td>{{ myvar.myplots }}</td>--> 
+<td><img src="{{ myvar.myplots.url }}" alt="image" style="width:200px;height:200px;"></td>
+<td>
+
+<a type="button" class="btn btn-lg btn-default" href="/gallery/{{ myvar.pk }}">
+<i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+</tr>
+{% endfor %}
+</table>
+
+</div>
+
+{% endblock %}
+
+<!-- 
+    <div class="col-md-8">
+        <h2>Title</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.graph_title }}
+            <br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.myX }}
+            <br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.myY }}
+            <br>  
+        <form method="post">
+            {% csrf_token %}
+            {{ form.myRadius }}
+            <br>   
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+ -->    
+    
+
+
+<!-- 
+ <div class="container">
+    <div class="col-md-8">
+        <h2>Data</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.myX }}
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+ </div>
+ -->
+ 
+ 
+<!-- 
+ <div class="container">
+    <div class="col-md-8">
+        <h2>Data</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.myX }}
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+ </div>
+
+-->
+
+<!--
+    
+<form method="post" action="">{% csrf_token %}
+    Hello, World! Enter and ArrayField here {{ form }}
+    <input type="submit" value="equals" />
+</form>  
+ --> 
+ 

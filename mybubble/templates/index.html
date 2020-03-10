@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+  <div class="container">
+  <a href="https://lab-peers.com">
+  <img src="{% static 'LabPeers_icon.png'%}" alt="LabPeers_logo" style="width:170px;height:170px;border:0;">
+</a>
+    <h1>Track anything anywhere</h1>
+    <p>The data entered here will be saved for you. So you can find your data to a later point in time.</p>
+    <a type="button" class="btn btn-lg btn-default" href="https://lab-peers.com"><span class="glyphicon glyphicon-flash"></span> Read our Python Blog</a>
+    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/python-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
+  </div>
+</div>
+<div class="container">
+
+   <div class="alert alert-info text-center" role="alert">
+    Enter your data in the fields below and you will see your data displayed in the plot.
+  </div>
+
+
+  
+    {{ the_script| safe}}
+
+    {{ the_div| safe}}   
+
+
+    
+<!--    {{ the_form|safe }} -->
+<div class="container">
+    <div class="col-md-8">
+        <h2>Home</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.post }}
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+ </div>
+ 
+<!-- 
+ <div class="container">
+    <div class="col-md-8">
+        <h2>Data</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.myX }}
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+ </div>
+
+-->
+
+<!--
+    
+<form method="post" action="">{% csrf_token %}
+    Hello, World! Enter and ArrayField here {{ form }}
+    <input type="submit" value="equals" />
+</form>  
+ --> 
+ 
+</div>
+{% endblock %}

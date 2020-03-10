@@ -48,8 +48,8 @@ from bokeh.io.export import get_screenshot_as_png
 #from .models import Greeting 
 from .models import Tracking_Data
 from .forms import TrackingForm
-from bubble.forms import GalleryForm
-from bubble.models import Gallery_Plots
+from mybubble.forms import GalleryForm
+from mybubble.models import Gallery_Plots
 
 
 

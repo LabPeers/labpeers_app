@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
-    "bubble",
+    "mybubble",
     "accounts.apps.AccountsConfig",
     "storages",
     "tracking",

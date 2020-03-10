@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block content %}
+
+
+<body class="w3-theme-l5">
+
+
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:20px">    
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m3">
+      <!-- Profile -->
+      <div class="w3-card w3-round w3-white">
+        <div class="w3-container">
+         <h4 class="w3-center">My Profile</h4>
+         <!--<p class="w3-center"><img src="https://www.w3schools.com/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>-->
+         <!--<p class="w3-center"><img src="{{ user.userprofile.image.url }}" class="w3-circle" style="height:106px;width:106px" alt=""></p>-->
+         <p class="w3-center"><img src="{% url 'profile_pics' %}" class="w3-circle" style="height:106px;width:106px" alt=""></p>
+         
+         <form method="post" action='' enctype="multipart/form-data">{% csrf_token %}
+         {{ p_form }}
+         <input type='submit' class='btn btn=default' value='Update profile picture' />
+         </form>
+         
+         <!--<img src="{% static 'default.png' %}" alt="Hi!" style="width:170px;height:170px;border:0;"/>-->
+         <!--<img src="{% static 'profile_pics/Foto_NikolaEgetenmeyer1.jpg' %}"/>-->
+         <hr>
+         <p><i class="fa fa-user-circle-o fa-fw w3-margin-right w3-text-theme"></i> Username: {{ user.username }}</p>
+         <p><i class="fa fa-address-book-o fa-fw w3-margin-right w3-text-theme"></i> First name: {{ user.first_name }}</p>
+         <p><i class="fa fa-address-book-o fa-fw w3-margin-right w3-text-theme"></i> Last name: {{ user.last_name }}</p>
+         <p><i class="fa fa-envelope-o fa-fw w3-margin-right w3-text-theme"></i>Email: {{ user.email }}</p>
+        </div>
+      </div>
+      <br>
+      
+
+      <!-- Accordion -->
+      <div class="w3-card w3-round">
+        <div class="w3-white">
+          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i> My Plots </button>
+          <div id="Demo3" class="w3-hide w3-container">
+         <div class="w3-row-padding">
+         <br>
+        {% for myvar in gallery_plots %}
+           <div class="w3-half">
+             <img src="{{ myvar.myplots.url }}" style="width:100%" class="w3-margin-bottom">
+           </div>
+         {% endfor %}  
+           <!--<div class="w3-half">-->
+             <!--<img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">-->
+           <!--</div>-->
+         </div>
+          </div>
+        </div>      
+      </div>
+      <br>
+      
+      
+      <!-- Alert Box -->
+      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p><strong>Did you know?</strong></p>
+        <p>You can edit or remove your current projects in your List of Projects!</p>
+      </div>
+    
+    <!-- End Left Column -->
+    </div>
+    
+    <!-- Middle Column -->
+    <div class="w3-col m7">
+    
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <a type="button" class="btn btn-lg btn-default" href="/projects"><span class="glyphicon glyphicon-list-alt"></span> List of your projects </a>
+            </div>
+            
+            <div class="w3-container w3-padding">
+              <a type="button" class="btn btn-lg btn-default" href="/gallery"><span class="glyphicon glyphicon-list-alt"></span> Plot Gallery </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <!--<img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">-->
+        <span class="w3-right w3-opacity">1 min</span>
+        <h4>My Latest Plots</h4><br>
+        <hr class="w3-clear">
+          <div class="w3-row-padding" style="margin:0 -16px">
+          {% for myvar in plots2show %}
+            <div class="w3-half">
+              <img src="{{ myvar.myplots.url }}" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+            </div>
+          {% endfor %}
+        </div>
+        <!--<button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>--> 
+        <!--<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>--> 
+      </div>
+      
+ 
+ 
+      
+    <!-- End Middle Column -->
+    </div>
+    
+    <!-- Right Column -->
+    <div class="w3-col m2">
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <p>Current date:</p>
+          <p id="demo"></p>
+          <script>
+          var d = new Date();
+          document.getElementById("demo").innerHTML = d;
+          </script>
+        </div>
+      </div>
+      <br>
+      
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <p>Number of Projects:</p>
+          
+        </div>
+      </div>
+      <br>
+      
+      <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
+        <p>Send us your feedback!</p>
+      </div>
+      <br>
+      
+      <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
+        <p><i class="fa fa-bug w3-xxlarge"></i></p>
+      </div>
+      
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+<!-- End Page Container -->
+</div>
+<br>
+
+<!-- Footer -->
+
+<footer class="w3-container w3-theme-d5">
+  <p>Powered by <a href="https://lab-peers.com" target="_blank">LabPeers</a></p>
+</footer>
+ 
+<script>
+// Accordion
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className += " w3-theme-d1";
+  } else { 
+    x.className = x.className.replace("w3-show", "");
+    x.previousElementSibling.className = 
+    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+  }
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+{% endblock %}
+

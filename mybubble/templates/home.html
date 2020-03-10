@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <!--<p><a href="{% url 'logout' %}">logout</a></p>-->
+  <!--<p><a href="{% url 'password_reset' %}">reset password</a></p>-->
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+
+<div class="container-fluid">
+    <div class="row">
+ 
+        <div class="col-sm-6 col-12 py-2 d-flex align-items-center justify-content-center" id="left">
+            <div>
+            <center><h3>You are on the best track!</h3></center>
+          <!--<img src="{% static 'mountain_climbing.jpeg'%} class="w3-circle" style="height:106px;width:106px" alt="">-->
+            <br>
+            <!--<center><img src="{% static 'mountain_climbing.jpeg'%}" style="height:180px;width:180px" alt="Mountain_climbing" class="center"></center>-->
+            <center><img src="{% static 'Tarzan.png'%}" style="height:width:350px" alt="Tarzan" class="center"></center>
+            
+             </div>
+         </div>
+
+
+        <div class="col-sm-6 col-12 offset-0 offset-sm-6 py-2">
+            
+{% if user.is_authenticated %}
+         
+            
+            
+            <h2>What would you like to do?</h2>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" id="purplebutton" href="/bubblechart" style="background:#821964; color:white;"><span class="glyphicon glyphicon-hand-right"></span> Track something new? </a>
+            <br>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" id="mygreybutton" href="/projects" style="background:#dfe0e2;color:black;"><span class="glyphicon glyphicon-hand-right"></span> Update a previous chart? </a>
+            <br>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" id="purplebutton" href="/gallery" style="background:#821964; color:white;"><span class="glyphicon glyphicon-hand-right"></span> See your tracking plots? </a>
+            <br>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" id="mygreybutton" href="/bubblechart" style="background:#dfe0e2;color:black;"><span class="glyphicon glyphicon-hand-right"></span> Make a bubble chart? </a>
+            <br>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" id="purplebutton" href="https://lab-peers.com" style="background:#821964; color:white;"><span class="glyphicon glyphicon-hand-right"></span> Read our blog? </a>   
+        
+{% else %}        
+            <h2>What would you like to do?</h2>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" id="purplebutton" href="/register" style="background:#821964; color:white;">
+            <span class="glyphicon glyphicon-hand-right"></span> Register? </a>
+            <br>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" id="mygreybutton" href="/login" style="background:#dfe0e2;color:black;">
+            <span class="glyphicon glyphicon-hand-right"></span> Login? </a>
+            <br>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" id="purplebutton" href="/register" style="background:#821964; color:white;">
+            <span class="glyphicon glyphicon-hand-right"></span> Track something? </a>
+            <br>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" id="mygreybutton" href="/register" style="background:#dfe0e2;color:black;">
+            <span class="glyphicon glyphicon-hand-right"></span> Make a bubble chart? </a>
+            <br>
+            <br>
+            <a type="button" class="btn btn-lg btn-default" id="purplebutton" href="https://lab-peers.com" style="background:#821964; color:white;">
+            <span class="glyphicon glyphicon-hand-right"></span> Read our blog? </a>   
+
+        
+{% endif %}        
+        
+        </div>
+
+    </div>
+  
+</div>
+
+
+{% endblock %}

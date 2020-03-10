@@ -4,17 +4,17 @@ from django.urls import path, include
 admin.autodiscover()
 
 
-from bubble.views import HomeView
-from bubble.views import HomeReal
+from mybubble.views import HomeView
+from mybubble.views import HomeReal
 #from hello.views import Register
-from bubble.views import Profile
-from bubble.views import Projects
-from bubble.views import EditView
-from bubble.views import DeleteView
-from bubble.views import GalleryView
-from bubble.views import DeletePlotView
-from bubble.views import SecretFileView
-from bubble.views import MyTestView
+from mybubble.views import Profile
+from mybubble.views import Projects
+from mybubble.views import EditView
+from mybubble.views import DeleteView
+from mybubble.views import GalleryView
+from mybubble.views import DeletePlotView
+from mybubble.views import SecretFileView
+from mybubble.views import MyTestView
 from tracking.views import TrackView, EditTrackView, TrackingProjects, TrackingDeleteView
 
 
