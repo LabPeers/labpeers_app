@@ -1,21 +1,4 @@
-# =============================================================================
-# from django.shortcuts import render
-# from django.http import HttpResponse
-# 
-# #from django.shortcuts import render_to_response
-# from django.template import RequestContext
-# from .models import InputForm
-# from .compute import compute
-# 
-# import requests
-# 
-# from .models import Greeting
-# =============================================================================
 
-# Create your views here.
-#def index(request):
-    # return HttpResponse('Hello from Python!')
- #   return render(request, "index.html")
 from django.views.generic import TemplateView
 from django.urls import reverse_lazy
 from django.views import generic
@@ -29,7 +12,7 @@ from bokeh.plotting import figure , curdoc , show , output_file
 from bokeh.resources import CDN
 from bokeh.embed import components
 import pandas as pd
-from bokeh.models import ColumnDataSource, LinearColorMapper, ColorBar, BasicTicker, PrintfTickFormatter, HoverTool
+from bokeh.models import ColumnDataSource, LinearColorMapper, ColorBar, BasicTicker, PrintfTickFormatter, HoverTool, Whisker
 from bokeh.palettes import Viridis256
 from bokeh.transform import transform
 import numpy as np
@@ -65,7 +48,8 @@ from bokeh.io.export import get_screenshot_as_png
 #from .models import Greeting 
 from .models import Tracking_Data
 from .forms import TrackingForm
-from bubble.forms import GalleryForm
+from mybubble.forms import GalleryForm
+from mybubble.models import Gallery_Plots
 
 
 
@@ -80,10 +64,12 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
 #    myscale=1
 #    myRlist=[x / abs(myscale) for x in myRlist]
 #    
+    upper = [x+e for x,e in zip(myYlist, myRlist) ]
+    lower = [x-e for x,e in zip(myYlist, myRlist) ]
     
     
-    
-    d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myError': myRlist, 'mySymbol': mySymbol}
+    d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myError': myRlist, 'upper': upper, 'lower': lower, 'mySymbol': mySymbol}
+    #d = {'myXaxis': myXlist, 'myYaxis': myYlist, 'myError': myRlist, 'mySymbol': mySymbol}
 
 
 
@@ -91,6 +77,9 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
     source = ColumnDataSource(df)
 #    plot = figure(plot_width=600, plot_height=600, title=mytitle, 
 #                  x_axis_label=myXlabel, y_axis_label=myYlabel)
+    
+    
+    
     
     #Scaled myRlist
     BiggestBubble=max(myRlist)
@@ -129,29 +118,24 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
 # 
     
     
-    plot = figure(title=mytitle, x_axis_label=myXlabel, y_axis_label=myYlabel, 
-                  x_range=(myxmin, myxmax), y_range=(myymin, myymax))
+    plot = figure(title=mytitle, x_axis_label=myXlabel, y_axis_label=myYlabel) 
+              #    x_range=(myxmin, myxmax), y_range=(myymin, myymax))
 
+    #For mobile and desktop automatic resizing
     plot.sizing_mode = "scale_width"
 
 
-    LabPeers = ['#000000','#12030E','#25071C','#380A2B','#4A0E39','#5D1248',
-                    '#701556','#821964','#951C73','#A82081','#BB2490','#BB2490',
-                    '#C1399B','#C84FA6','#CF65B1','#D67BBC','#DD91C7','#E3A7D2',
-                    '#EABDDD','#F1D3E8','#F8E9F3','#FFFFFF']
 
-
-
-
-    color_mapper = LinearColorMapper(palette = LabPeers, low = min(df['myError']), 
-                                             high = max(df['myError']))
-            #color_mapper = LinearColorMapper(palette = Viridis256, low = min(myRlist), high = max(myRlist))
-
-    plot.scatter(x = 'myXaxis', y = 'myYaxis', marker = 'mySymbol', size=15,
-                 line_color="navy", fill_color="orange", alpha=0.5)
+    #plot.circle(x = 'myXaxis', y = 'myYaxis', size=15,
+     #            line_color="navy", fill_color="orange", alpha=0.5)
+    
+    plot.scatter(x = 'myXaxis', y = 'myYaxis', size=15, color ="#bb2490", marker='mySymbol' , source=source)
     
     
-    
+    ##Scipt error bars for now!
+    plot.add_layout(Whisker(source=source, base="myXaxis", upper="upper", lower="lower", level="overlay"))
+                 
+                 
     #plot.add_tools(HoverTool(tooltips = [('Count', '@myError')]))
    # plot.add_tools(slider)
 
@@ -163,19 +147,45 @@ def trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist, mySymbol)
 
 
 
+
+class TrackingProjects(TemplateView):
+    template_name = './tracking_projects.html'
+    
+    def get(self, request):
+        tracking_data=Tracking_Data.objects.filter(user=request.user)
+        
+       # myfilename=graph_data.graph_filename
+       # mydate=graph_data.myDate
+        return render(request, self.template_name, 
+                      {'tracking_data' : tracking_data})
+        
+
+class TrackingDeleteView(TemplateView):
+    template_name = './tracking_projects.html'
+  
+#if request.method == 'POST': # If the form has been submitted...
+    def get(self,request,pk):
+    
+        if request.user.is_authenticated:
+            #raise Http404
+            data_row_old=Tracking_Data.objects.get(pk=pk)
+            data_row_old.delete()
+            
+            return redirect('tracking_projects')
+
+
    
     
 class TrackView(TemplateView):
-    template_name = './bubblechart.html' 
+    template_name = './track.html' 
     
     
     def get(self,request):
         
-        myXlist='1,3'
-        myYlist='3,4'
-        myRlist='10,50'
-        myScale=1
-        mytitle='Your title will go here'
+        myXlist='1,3,2,8'
+        myYlist='3,4,0,9'
+        myRlist='1,2,1,0.5'
+        mytitle='This is an example plot'
         myXlabel='x-axis label'
         myYlabel='y-axis label'
         
@@ -188,9 +198,12 @@ class TrackView(TemplateView):
         
         
         
+        
+        
+        
         form = TrackingForm()
         formplot = GalleryForm()
-        mySymbol='x';
+        mySymbol='circle';
         
      
         plotdict , plot =trackingplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,mySymbol)
@@ -201,7 +214,7 @@ class TrackView(TemplateView):
         dict2={"form":form,"formplot":formplot}
         dict3={**plotdict , **dict2}
 #        dict4={**dict3, **tabledict}
-     
+        print("I almost finished the get part")
         return render(request, self.template_name, dict3)
    
     
@@ -215,23 +228,26 @@ class TrackView(TemplateView):
             formplot = GalleryForm()
     
             if form.is_valid():
-            
+                print("Form is valid!")
                     #form.save()
                     #Avoid rows with same filename!!
                 myfilename=form.cleaned_data['graph_filename']
-                graph_data=Graph_Data.objects.filter(user=request.user)
-                filename_list=graph_data.values_list('graph_filename',flat=True)
+                tracking_data=Tracking_Data.objects.filter(user=request.user)
+                print('This is the filtered tracking_data')
+                print(tracking_data)
+                filename_list=tracking_data.values_list('graph_filename',flat=True)
                 filename_list2=list(filename_list)
                 print('HELLO WORLD!!')
                 print(filename_list)
                 print(filename_list2)
                 print(myfilename)
                 if myfilename in filename_list:
-                    repeat=Graph_Data.objects.get(graph_filename=myfilename)
+                    #repeat=Tracking_Data.objects.get(graph_filename=myfilename)
+                    repeat=Tracking_Data.objects.filter(user=request.user).get(graph_filename=myfilename)
                     x=repeat.id
                     print(x)
                     
-                    instance=get_object_or_404(Graph_Data,id = x)
+                    instance=get_object_or_404(Tracking_Data,id = x)
                     form = TrackingForm(request.POST or None, instance=instance)
                     if form.is_valid():
                         instance = form.save(commit=False)
@@ -254,7 +270,11 @@ class TrackView(TemplateView):
                 myYlist=myYdata.split(",")
                 myYlist=np.array(myYlist, dtype=np.float32)
                 myRdata=form.cleaned_data['myError']
-                myRlist=myRdata.split(",")
+                if any(char.isdigit() for char in myRdata):
+                    myRlist=myRdata.split(",")
+                else:
+                    myRlist=np.zeros_like(myXlist)
+                
                 myRlist=np.array(myRlist, dtype=np.float32)
                 mySymbol=form.cleaned_data['mySymbol']
 #                
@@ -306,64 +326,10 @@ class TrackView(TemplateView):
                     
                     
                 form = TrackingForm(request.POST)
+                print("Hi! I am in line 302")
                 formplot = GalleryForm(request.POST or None)
                 
-                
-                        ########### -----DATA TABLE----- ########### 
-#                dict_table = {
-#                        'myXlist': myXlist,
-#                        'myYlist': myYlist,
-#                        'myRlist': myRlist,
-#                        }
-#                source = ColumnDataSource(data=dict_table)
-#
-#                #old_source = ColumnDataSource(copy.deepcopy(dict_table))
-#
-#                columns = [
-#                        TableColumn(field="myXlist", title="X-values"),
-#                        TableColumn(field="myYlist", title="Y-values"),
-#                        TableColumn(field="myRlist", title="Bubble size"),
-#                ]
-#
-#                data_table = DataTable(
-#                        source=source,
-#                        columns=columns,
-#                        width=800,
-##                        editable=True,
-##                        reorderable=False,
-#                        )
 
-#                def on_change_data_source(attr, old, new):
-#                    # old, new and source.data are the same dictionaries
-#                    print('-- SOURCE DATA: {}'.format(source.data))
-#                    print('>> OLD SOURCE: {}'.format(old_source.data))
-#                    
-#                    # to check changes in the 'y' column:
-#                    indices = list(range(len(old['y'])))
-#                    changes = [(i,j,k) for i,j,k in zip(indices, old_source.data['y'], source.data['y']) if j != k]
-#                    print('>> CHANGES: {}'.format(changes))
-#                    
-#                    old_source.data = copy.deepcopy(source.data)
-#
-#        
-#    
-#                print('SOURCE DATA: {}'.format(source.data))
-#
-#
-#                data_table.source.on_change('data', on_change_data_source)
-#
-#                curdoc().add_root(data_table)
-#        
-#                script_t, div_t = components({'data_table': data_table})
-#                tabledict={"the_script_t": script_t, "the_div_t": div_t}
-    
-                ########### -----DATA TABLE END----- ###########
-                
-                
-                
-                #dict4={**dict3, **tabledict}
-                
-                
                 
                 
 
@@ -372,7 +338,7 @@ class TrackView(TemplateView):
                 
             
             else:
-                return redirect("bubblechart")
+                return redirect("track")
             
             
             
@@ -385,40 +351,37 @@ class TrackView(TemplateView):
 
     
 class EditTrackView(TemplateView):
-    template_name = './bubblechart.html'     
+    template_name = './track.html'     
     
     
     def get(self,request,pk):
         if request.user.is_authenticated:
-#        #        graph_data=Graph_Data.objects.get(pk=self.kwargs.get('pk'))
+
             
             formplot = GalleryForm()
 
-            graph_data=Graph_Data.objects.get(pk=pk)
-            mypkX=graph_data.myX
-            mypkY=graph_data.myY
-            mypkError=graph_data.myError
+            tracking_data=Tracking_Data.objects.get(pk=pk)
+            mypkX=tracking_data.myX
+            mypkY=tracking_data.myY
+            mypkError=tracking_data.myError
         
-           # form=graph_data
-#            form = HomeForm()
-#            graph_data=Graph_Data.objects.get(pk=pk)
-#            form=graph_data
-            instance = get_object_or_404(Graph_Data, pk=pk)
+
+            instance = get_object_or_404(Tracking_Data, pk=pk)
             form = TrackingForm(request.POST or None, instance=instance)
             
-            mytitle=graph_data.graph_title
-            myXlabel=graph_data.graph_xlabel
-            myYlabel=graph_data.graph_ylabel
-            myXdata=graph_data.myX
+            mytitle=tracking_data.graph_title
+            myXlabel=tracking_data.graph_xlabel
+            myYlabel=tracking_data.graph_ylabel
+            myXdata=tracking_data.myX
             myXlist=myXdata.split(",")
             myXlist=np.array(myXlist, dtype=np.float32)
-            myYdata=graph_data.myY
+            myYdata=tracking_data.myY
             myYlist=myYdata.split(",")
             myYlist=np.array(myYlist, dtype=np.float32)
-            myRdata=graph_data.myError
+            myRdata=tracking_data.myError
             myRlist=myRdata.split(",")
             myRlist=np.array(myRlist, dtype=np.float32)
-            mySymbol=graph_data.mySymbol
+            mySymbol=tracking_data.mySymbol
             
 #            
             
@@ -442,7 +405,7 @@ class EditTrackView(TemplateView):
 
             #raise Http404
             
-            instance = get_object_or_404(Graph_Data, pk=pk)
+            instance = get_object_or_404(Tracking_Data, pk=pk)
             form = TrackingForm(request.POST or None, instance=instance)
             formplot = GalleryForm()
 #                if form.is_valid():
@@ -450,8 +413,8 @@ class EditTrackView(TemplateView):
             if form.is_valid():
                     
                 myfilename=form.cleaned_data['graph_filename']
-                graph_data=Graph_Data.objects.filter(user=request.user)
-                filename_list=graph_data.values_list('graph_filename',flat=True)
+                tracking_data=Tracking_Data.objects.filter(user=request.user)
+                filename_list=tracking_data.values_list('graph_filename',flat=True)
                 filename_list2=list(filename_list)
                 print('HELLO')
                 print(filename_list)
@@ -459,16 +422,17 @@ class EditTrackView(TemplateView):
                 print(myfilename)
                         
                 if myfilename in filename_list:
-                    repeat=Graph_Data.objects.get(graph_filename=myfilename)
+                    #repeat=Tracking_Data.objects.get(graph_filename=myfilename)
+                    repeat=Tracking_Data.objects.filter(user=request.user).get(graph_filename=myfilename)
                     x=repeat.id
                     print(x)
                 
-                    instance=get_object_or_404(Graph_Data,id = x)
+                    instance=get_object_or_404(Tracking_Data,id = x)
                     form = TrackingForm(request.POST or None, instance=instance)
                     if form.is_valid():
                         instance = form.save(commit=False)
                     else:
-                        return redirect("bubblechart")
+                        return redirect("track")
                             
                 else:
                     instance=form.save(commit=False)  
@@ -551,7 +515,7 @@ class EditTrackView(TemplateView):
             
             else: 
                     
-                return redirect("bubblechart")
+                return redirect("track")
             
     
         else:
@@ -561,12 +525,11 @@ class EditTrackView(TemplateView):
 
 
 
-class GalleryView(TemplateView):
-    template_name = './gallery.html'  
-      
-    def get(self, request):
-        gallery_plots=Gallery_Plots.objects.filter(user=request.user)
-       # myfilename=graph_data.graph_filename
-       # mydate=graph_data.myDate
-        return render(request, self.template_name, 
-                      {'gallery_plots' : gallery_plots})
+#class GalleryView(TemplateView):
+#    template_name = './gallery.html'  
+#      
+#    def get(self, request):
+#        gallery_plots=Gallery_Plots.objects.filter(user=request.user)
+#
+#        return render(request, self.template_name, 
+#                      {'gallery_plots' : gallery_plots})

@@ -4,8 +4,8 @@ from django.urls import path, include
 admin.autodiscover()
 
 
-from trackchart.views import TrackView
-from trackchart.views import EditTrackView
+from tracking.views import TrackView
+from tracking.views import EditTrackView
 
 # To add a new path, first import the app:
 # import blog

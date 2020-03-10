@@ -9,15 +9,13 @@ from django import forms
 from .models import Tracking_Data
 
 MARKER_CHOICES=[
-    ('o+', 'Circle and Cross'),
     ('square_cross', 'Square and Cross'),
     ('diamond', 'Diamond'),
     ('+', 'cross'),
-    ('ox', 'Circle and x'),
     ('square_x', 'Square and x'),
     ('inverted_triangle', 'Up-side-down triangle'),
     ('x', 'x'),
-    ('o', 'Circle'),
+    ('circle', 'Circle'),
     ('square', 'Square'),
     ('triangle', 'Triangle'),
     ('*', 'Asterisk *'),
@@ -32,7 +30,7 @@ class TrackingForm(forms.ModelForm):
                                                                                      'style': 'height: 60px;'}))
     myX = forms.CharField(widget=forms.TextInput(attrs={'id':'x-values','placeholder':'e.g. 1,2,3'}))
     myY = forms.CharField(widget=forms.TextInput(attrs={'id':'y-values','placeholder':'e.g. 1,5,9'}))
-    myError= forms.CharField(widget=forms.TextInput(attrs={'id':'Bubble-size','placeholder':'e.g. 5,10,30'}))
+    myError= forms.CharField(required=False,widget=forms.TextInput(attrs={'id':'Error-bar','placeholder':'e.g. 5,10,30'}))
     mySymbol=forms.CharField(label='Choose your marker symbol!', widget=forms.Select(choices=MARKER_CHOICES))
    # slug=forms.SlugField(widget=forms.TextInput())
     
