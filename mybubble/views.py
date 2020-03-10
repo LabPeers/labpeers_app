@@ -65,7 +65,7 @@ from bokeh.io.export import get_screenshot_as_png
 #from .models import Greeting 
 from .models import Graph_Data, Gallery_Plots
 from .forms import HomeForm, GalleryForm
-from track.models import Tracking_Data
+from myscatter.models import Tracking_Data
 from accounts.models import UserProfile
 
 from accounts.forms import UserProfileForm

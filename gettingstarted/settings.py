@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     "mybubble",
     "accounts.apps.AccountsConfig",
     "storages",
-    "track",
+    "myscatter",
     "mycity",
 ]
 
