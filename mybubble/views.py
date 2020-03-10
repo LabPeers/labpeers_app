@@ -691,7 +691,9 @@ class EditView(TemplateView):
             
             formplot = GalleryForm()
             graph_data=Graph_Data.objects.get(safekey=safekey)
+            print(safekey)
             pk=graph_data.pk
+            print(pk)
             #graph_data=Graph_Data.objects.get(pk=pk)
             mypkX=graph_data.myX
             mypkY=graph_data.myY
