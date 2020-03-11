@@ -164,11 +164,11 @@ class TrackingDeleteView(TemplateView):
     template_name = './tracking_projects.html'
   
 #if request.method == 'POST': # If the form has been submitted...
-    def get(self,request,pk):
+    def get(self,request,safekey):
     
         if request.user.is_authenticated:
             #raise Http404
-            data_row_old=Tracking_Data.objects.get(pk=pk)
+            data_row_old=Tracking_Data.objects.get(safekey=safekey)
             data_row_old.delete()
             
             return redirect('tracking_projects')
@@ -354,13 +354,18 @@ class EditTrackView(TemplateView):
     template_name = './track.html'     
     
     
-    def get(self,request,pk):
+    def get(self,request,safekey):
         if request.user.is_authenticated:
 
             
             formplot = GalleryForm()
+            tracking_data=Tracking_Data.objects.get(safekey=safekey)
+            print(safekey)
+            pk=tracking_data.pk
+            print(pk)
 
-            tracking_data=Tracking_Data.objects.get(pk=pk)
+
+            #tracking_data=Tracking_Data.objects.get(pk=pk)
             mypkX=tracking_data.myX
             mypkY=tracking_data.myY
             mypkError=tracking_data.myError
@@ -399,13 +404,13 @@ class EditTrackView(TemplateView):
    
     
     
-    def post(self,request,pk):
+    def post(self,request,safekey):
     #if request.method == 'POST': # If the form has been submitted...
         if request.user.is_authenticated:
 
             #raise Http404
             
-            instance = get_object_or_404(Tracking_Data, pk=pk)
+            instance = get_object_or_404(Tracking_Data, safekey=safekey)
             form = TrackingForm(request.POST or None, instance=instance)
             formplot = GalleryForm()
 #                if form.is_valid():
