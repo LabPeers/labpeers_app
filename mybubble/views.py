@@ -374,11 +374,11 @@ class DeleteView(TemplateView):
     template_name = './projects.html'
   
 #if request.method == 'POST': # If the form has been submitted...
-    def get(self,request,pk):
+    def get(self,request,safekey):
     
         if request.user.is_authenticated:
             #raise Http404
-            data_row_old=Graph_Data.objects.get(pk=pk)
+            data_row_old=Graph_Data.objects.get(safekey=safekey)
             data_row_old.delete()
             
             return redirect('projects')
@@ -736,13 +736,13 @@ class EditView(TemplateView):
    
     
     
-    def post(self,request,pk):
+    def post(self,request,safekey):
     #if request.method == 'POST': # If the form has been submitted...
         if request.user.is_authenticated:
 
             #raise Http404
             
-            instance = get_object_or_404(Graph_Data, pk=pk)
+            instance = get_object_or_404(Graph_Data, safekey=safekey)
             form = HomeForm(request.POST or None, instance=instance)
             formplot = GalleryForm()
 #                if form.is_valid():
