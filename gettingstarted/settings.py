@@ -164,8 +164,7 @@ AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID_USER']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY_USER']
 
 
-#AWS_STORAGE_BUCKET_NAME = os.environ['S3_BUCKET_NAME']
-AWS_STORAGE_BUCKET_NAME = 'labpeersbubble'
+AWS_STORAGE_BUCKET_NAME = os.environ['S3_BUCKET_NAME']
 MEDIA_URL = 'https://%s.s3.us-east-2.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 AWS_REGION = 'us-east-2'
