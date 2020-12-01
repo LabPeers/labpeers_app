@@ -1,21 +1,3 @@
-# =============================================================================
-# from django.shortcuts import render
-# from django.http import HttpResponse
-# 
-# #from django.shortcuts import render_to_response
-# from django.template import RequestContext
-# from .models import InputForm
-# from .compute import compute
-# 
-# import requests
-# 
-# from .models import Greeting
-# =============================================================================
-
-# Create your views here.
-#def index(request):
-    # return HttpResponse('Hello from Python!')
- #   return render(request, "index.html")
 from django.views.generic import TemplateView
 from django.urls import reverse_lazy
 from django.views import generic
@@ -35,13 +17,6 @@ from bokeh.transform import transform
 import numpy as np
 from io import BytesIO
 from django.core.files.base import ContentFile
-
-#from bokeh.models import ColumnDataSource, ColorBar
-#from bokeh.palettes import Spectral6
-#from bokeh.transform import linear_cmap
-
-
-########
  
 from bokeh.client import push_session
 from bokeh.document import Document
@@ -56,13 +31,6 @@ from bokeh.models.widgets import (
 
 from bokeh.io.export import get_screenshot_as_png
 
-
-
-########
-
-#from django.template.defaultfilters import slugify
-
-#from .models import Greeting 
 from .models import Graph_Data, Gallery_Plots
 from .forms import HomeForm, GalleryForm
 from myscatter.models import Tracking_Data
@@ -427,61 +395,7 @@ class HomeView(TemplateView):
         
         form = HomeForm()
         formplot = GalleryForm()
-        
-        #users = User.objects.exclude(id=request.user.id)
-        #plot = figure(plot_width=600, plot_height=600, title='Your title will go here')
-        #script, div = components(plot, CDN)
-        
-        ########### -----DATA TABLE----- ########### 
-#        dict_table = {
-#                'myXlist': myXlist,
-#                'myYlist': myYlist,
-#                'myRlist': myRlist,
-#                }
-#        source = ColumnDataSource(data=dict_table)
-
-        #old_source = ColumnDataSource(copy.deepcopy(dict_table))
-#
-#        columns = [
-#                TableColumn(field="myXlist", title="X-values"),
-#                TableColumn(field="myYlist", title="Y-values"),
-#                TableColumn(field="myRlist", title="Bubble size"),
-#        ]
-#        
-#        data_table = DataTable(source=source, columns=columns, width=500)
-#            editable=True,
-#            reorderable=False,
-       
-
-#        def on_change_data_source(attr, old, new):
-#            # old, new and source.data are the same dictionaries
-#            print('-- SOURCE DATA: {}'.format(source.data))
-#            print('>> OLD SOURCE: {}'.format(old_source.data))
-#
-#            # to check changes in the 'y' column:
-#            indices = list(range(len(old['y'])))
-#            changes = [(i,j,k) for i,j,k in zip(indices, old_source.data['y'], source.data['y']) if j != k]
-#            print('>> CHANGES: {}'.format(changes))
-#
-#            old_source.data = copy.deepcopy(source.data)
-#
-#        
-#    
-#        print('SOURCE DATA: {}'.format(source.data))
-#
-#
-#        data_table.source.on_change('data', on_change_data_source)
-#
-#        curdoc().add_root(data_table)
-#        
-#        script_t, div_t = components({'data_table': data_table})
-#        tabledict={"the_script_t": script_t, "the_div_t": div_t}
-#    
-        ########### -----DATA TABLE END----- ###########
-        
-      
-        
-        
+                       
         plotdict , plot =bubbleplot(mytitle, myXlabel, myYlabel,myXlist, myYlist,myRlist,myScale)
         
 #        x = plotdict["the_script"]
@@ -606,64 +520,6 @@ class HomeView(TemplateView):
                 formplot = GalleryForm(request.POST or None)
                 
                 
-                        ########### -----DATA TABLE----- ########### 
-#                dict_table = {
-#                        'myXlist': myXlist,
-#                        'myYlist': myYlist,
-#                        'myRlist': myRlist,
-#                        }
-#                source = ColumnDataSource(data=dict_table)
-#
-#                #old_source = ColumnDataSource(copy.deepcopy(dict_table))
-#
-#                columns = [
-#                        TableColumn(field="myXlist", title="X-values"),
-#                        TableColumn(field="myYlist", title="Y-values"),
-#                        TableColumn(field="myRlist", title="Bubble size"),
-#                ]
-#
-#                data_table = DataTable(
-#                        source=source,
-#                        columns=columns,
-#                        width=800,
-##                        editable=True,
-##                        reorderable=False,
-#                        )
-
-#                def on_change_data_source(attr, old, new):
-#                    # old, new and source.data are the same dictionaries
-#                    print('-- SOURCE DATA: {}'.format(source.data))
-#                    print('>> OLD SOURCE: {}'.format(old_source.data))
-#                    
-#                    # to check changes in the 'y' column:
-#                    indices = list(range(len(old['y'])))
-#                    changes = [(i,j,k) for i,j,k in zip(indices, old_source.data['y'], source.data['y']) if j != k]
-#                    print('>> CHANGES: {}'.format(changes))
-#                    
-#                    old_source.data = copy.deepcopy(source.data)
-#
-#        
-#    
-#                print('SOURCE DATA: {}'.format(source.data))
-#
-#
-#                data_table.source.on_change('data', on_change_data_source)
-#
-#                curdoc().add_root(data_table)
-#        
-#                script_t, div_t = components({'data_table': data_table})
-#                tabledict={"the_script_t": script_t, "the_div_t": div_t}
-    
-                ########### -----DATA TABLE END----- ###########
-                
-                
-                
-                #dict4={**dict3, **tabledict}
-                
-                
-                
-                
-
             
                 return render(request, self.template_name, dict3)
                 
