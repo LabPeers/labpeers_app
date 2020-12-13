@@ -20,7 +20,7 @@ function makeTableEditable(table)
 		{
 			var cell = cols[c];
 			var listener = makeEditListener(table, r, c);
-			cell.addEventListener("input", listener, false);
+			cell.addEventListener('input type="number"', listener, false);
 		}
 	}
 }
