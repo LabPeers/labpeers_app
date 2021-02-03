@@ -20,7 +20,7 @@ function makeTableEditable(table)
 		{
 			var cell = cols[c];
 			var listener = makeEditListener(table, r, c);
-			cell.addEventListener('input type="number"', listener, false);
+            cell.addEventListener('input', listener, false);
 		}
 	}
 }
@@ -29,10 +29,26 @@ function makeEditListener(table, row, col)
 {
 	return function(event)
 	{
-		var cell = getCellElement(table, row, col);
-		var text = cell.innerHTML.replace(/<br>$/, '');
+        var cell = getCellElement(table, row, col);
+        var text = cell.innerHTML.replace(/<br>$/, '');
+        if(isNaN(text)) {
+            if (text=='-'){return;}
+            else if (text==','){
+                var items = split(text);
+		        if (items.length === 1)
+		        {
+			    // Text is a single element, so do nothing.
+			    // Without this each keypress resets the focus.
+			    return;
+		        }
+            }
+            else{
+                alert("Invalid input!");
+                cell.innerHTML=''
+            }
+        }
+        else{
 		var items = split(text);
-
 		if (items.length === 1)
 		{
 			// Text is a single element, so do nothing.
@@ -55,7 +71,8 @@ function makeEditListener(table, row, col)
 				c = 0;
 			}
 		}
-		cell.focus();
+        cell.focus();
+        }
 	};
 }
 
